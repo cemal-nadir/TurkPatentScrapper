@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\.NET PROJELER\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Main\\TPHunter.Source.Main.csproj": {}
+    "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Main\\TPHunter.Source.Main.csproj": {}
   },
   "projects": {
-    "D:\\.NET PROJELER\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Main\\TPHunter.Source.Main.csproj": {
+    "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Main\\TPHunter.Source.Main.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\.NET PROJELER\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Main\\TPHunter.Source.Main.csproj",
+        "projectUniqueName": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Main\\TPHunter.Source.Main.csproj",
         "projectName": "TPHunter.Source.Main",
-        "projectPath": "D:\\.NET PROJELER\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Main\\TPHunter.Source.Main.csproj",
+        "projectPath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Main\\TPHunter.Source.Main.csproj",
         "packagesPath": "C:\\Users\\cemal\\.nuget\\packages\\",
-        "outputPath": "D:\\.NET PROJELER\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Main\\obj\\",
+        "outputPath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Main\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\DevExpress\\Components\\Offline Packages",
