@@ -5,4 +5,14 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>D:\.NET PROJELER\SistemPatent\tphunter\App\</OutputPath>
+    <DocumentationFile></DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TPHunter.Source.Contract\TPHunter.Source.Contract.csproj" />
+    <ProjectReference Include="..\TPHunter.Source.Core\TPHunter.Source.Core.csproj" />
+  </ItemGroup>
+
 </Project>

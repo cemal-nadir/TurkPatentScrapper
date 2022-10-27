@@ -1,0 +1,11 @@
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Core\bin\Debug\net5.0\TPHunter.Source.Core.deps.json
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Core\bin\Debug\net5.0\TPHunter.Source.Core.dll
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Core\bin\Debug\net5.0\ref\TPHunter.Source.Core.dll
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Core\bin\Debug\net5.0\TPHunter.Source.Core.pdb
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Core\obj\Debug\net5.0\TPHunter.Source.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Core\obj\Debug\net5.0\TPHunter.Source.Core.AssemblyInfoInputs.cache
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Core\obj\Debug\net5.0\TPHunter.Source.Core.AssemblyInfo.cs
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Core\obj\Debug\net5.0\TPHunter.Source.Core.csproj.CoreCompileInputs.cache
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Core\obj\Debug\net5.0\TPHunter.Source.Core.dll
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Core\obj\Debug\net5.0\ref\TPHunter.Source.Core.dll
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Core\obj\Debug\net5.0\TPHunter.Source.Core.pdb
