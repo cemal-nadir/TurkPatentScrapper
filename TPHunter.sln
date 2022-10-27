@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{A7C320CD-CC66-4862-B28E-8097E2016D4F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{D7B7ACD0-D4C0-4A22-95C7-CDAFC18CABEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPHunter.Source.Main", "Source\TPHunter.Source.Main\TPHunter.Source.Main.csproj", "{3FF9D3D5-2C49-41A8-BC64-6730509A7D7A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3FF9D3D5-2C49-41A8-BC64-6730509A7D7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FF9D3D5-2C49-41A8-BC64-6730509A7D7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FF9D3D5-2C49-41A8-BC64-6730509A7D7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FF9D3D5-2C49-41A8-BC64-6730509A7D7A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3FF9D3D5-2C49-41A8-BC64-6730509A7D7A} = {A7C320CD-CC66-4862-B28E-8097E2016D4F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {920A07D5-8595-4D62-AB08-67D929EF8037}
+	EndGlobalSection
+EndGlobal
