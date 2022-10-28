@@ -8,6 +8,7 @@ namespace TPHunter.Source.Core.Configs
 {
     public static class RuntimeConfigs
     {
-       public static string ApplicationStartupPath { get; set; }
+        public static string ApplicationStartupPath { get; set; }
+        public static string TpSearchPage { get; set; }
     }
 }

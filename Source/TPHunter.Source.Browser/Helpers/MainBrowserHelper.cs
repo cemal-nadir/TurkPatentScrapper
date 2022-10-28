@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.Extensions;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace Browser.Helpers
             ((IJavaScriptExecutor)driver).ExecuteScript("window.open();");
             driver.SwitchTo().Window(driver.WindowHandles.Last());
         }
-        public static void SwitchTab(this IWebDriver driver,int tabNumber)
+        public static void SwitchTab(this IWebDriver driver, int tabNumber)
         {
             driver.SwitchTo().Window(driver.WindowHandles[tabNumber]);
         }
@@ -32,63 +33,25 @@ namespace Browser.Helpers
         {
             driver.Close();
         }
-        public static bool PageIsLoad(this IWebDriver driver)
+        public static IWebElement FindElement(this IWebDriver driver, By by, int timeoutInSeconds)
         {
-            try
+            if (timeoutInSeconds > 0)
             {
-                return (bool)((IJavaScriptExecutor)driver).ExecuteScript("return jQuery.active == 0 && document.readyState === 'complete'");
+                var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeoutInSeconds));
+                return wait.Until(drv => drv.FindElement(by));
             }
-            catch (JavaScriptException ex)
-            {
-                if (ex.Message.Contains("javascript error: jQuery is not defined"))
-                {
-                    return (bool)((IJavaScriptExecutor)driver).ExecuteScript("return document.readyState === 'complete'");
-                }
-                else
-                    throw new Exception("Javascript çalıştırılırken bir hata meydana geldi " + ex.Message);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Sebebi Bilinmeyen Bir Hata Oluştu " + ex.Message);
-            }
-
+            return driver.FindElement(by);
         }
-        public static Task WaitPageLoad(this IWebDriver driver, int second)
+        public static IEnumerable<IWebElement> FindElements(this IWebDriver driver, By by, int timeoutInSeconds)
         {
-            return Task.Run(() =>
+            if (timeoutInSeconds > 0)
             {
-                var cacheSecond = second;
-                try
-                {
-                    while (second > 0 && !(bool)((IJavaScriptExecutor)driver).ExecuteScript("return jQuery.active == 0 && document.readyState === 'complete'"))
-                    {
-                        Thread.Sleep(1000);
-                        second--;
-                    }
-                    if (!(bool)((IJavaScriptExecutor)driver).ExecuteScript("return jQuery.active == 0 && document.readyState === 'complete'"))
-                        throw new Exception(cacheSecond + " Saniye Beklendi Sayfa Yüklenmedi !");
-                }
-                catch (JavaScriptException ex)
-                {
-                    if (ex.Message.Contains("javascript error: jQuery is not defined"))
-                    {
-                        while (second > 0 && !(bool)((IJavaScriptExecutor)driver).ExecuteScript("return document.readyState === 'complete'"))
-                        {
-                            Thread.Sleep(1000);
-                            second--;
-                        }
-                        if (!(bool)((IJavaScriptExecutor)driver).ExecuteScript("return document.readyState === 'complete'"))
-                            throw new Exception(cacheSecond + " Saniye Beklendi Sayfa Yüklenmedi !");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Sebebi Bilinmeyen Bir Hata Oluştu " + ex.Message);
-                }
-
-            });
+                var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeoutInSeconds));
+                return wait.Until(drv => drv.FindElements(by));
+            }
+            return driver.FindElements(by);
         }
-        public static void ClickWithJs(this IWebDriver webDriver,IWebElement webElement)
+        public static void ClickWithJs(this IWebDriver webDriver, IWebElement webElement)
         {
 
             IJavaScriptExecutor executor = (IJavaScriptExecutor)webDriver;

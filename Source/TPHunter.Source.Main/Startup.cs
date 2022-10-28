@@ -12,6 +12,7 @@ namespace TPHunter.Source.Main
         public static void SetConfigs()
         {
             RuntimeConfigs.ApplicationStartupPath = System.AppDomain.CurrentDomain.BaseDirectory;
+            RuntimeConfigs.TpSearchPage = "https://www.turkpatent.gov.tr/arastirma-yap";
         }
        
     }

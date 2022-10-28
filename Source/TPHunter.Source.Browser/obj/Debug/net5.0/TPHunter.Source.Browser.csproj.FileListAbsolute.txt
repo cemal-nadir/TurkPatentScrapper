@@ -12,3 +12,4 @@ D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Browser\obj\Debug\
 D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Browser\obj\Debug\net5.0\TPHunter.Source.Browser.dll
 D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Browser\obj\Debug\net5.0\ref\TPHunter.Source.Browser.dll
 D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Browser\obj\Debug\net5.0\TPHunter.Source.Browser.pdb
+D:\.NET PROJELER\SistemPatent\TPHunter\Source\TPHunter.Source.Browser\obj\Debug\net5.0\TPHunter.Source.Browser.csproj.CopyComplete
