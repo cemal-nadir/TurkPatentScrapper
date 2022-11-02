@@ -1,0 +1,15 @@
+D:\.NET PROJELER\SistemPatent\TPHunter\Source\TPHunter.Source.FileStorage\obj\Debug\net5.0\TPHunter.Source.FileStorage.csproj.AssemblyReference.cache
+D:\.NET PROJELER\SistemPatent\TPHunter\Source\TPHunter.Source.FileStorage\obj\Debug\net5.0\TPHunter.Source.FileStorage.GeneratedMSBuildEditorConfig.editorconfig
+D:\.NET PROJELER\SistemPatent\TPHunter\Source\TPHunter.Source.FileStorage\obj\Debug\net5.0\TPHunter.Source.FileStorage.AssemblyInfoInputs.cache
+D:\.NET PROJELER\SistemPatent\TPHunter\Source\TPHunter.Source.FileStorage\obj\Debug\net5.0\TPHunter.Source.FileStorage.AssemblyInfo.cs
+D:\.NET PROJELER\SistemPatent\TPHunter\Source\TPHunter.Source.FileStorage\obj\Debug\net5.0\TPHunter.Source.FileStorage.csproj.CoreCompileInputs.cache
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.FileStorage\bin\Debug\net5.0\TPHunter.Source.FileStorage.deps.json
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.FileStorage\bin\Debug\net5.0\TPHunter.Source.FileStorage.dll
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.FileStorage\bin\Debug\net5.0\ref\TPHunter.Source.FileStorage.dll
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.FileStorage\bin\Debug\net5.0\TPHunter.Source.FileStorage.pdb
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.FileStorage\bin\Debug\net5.0\TPHunter.Source.Core.dll
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.FileStorage\bin\Debug\net5.0\TPHunter.Source.Core.pdb
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.FileStorage\obj\Debug\net5.0\TPHunter.Source.FileStorage.csproj.CopyComplete
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.FileStorage\obj\Debug\net5.0\TPHunter.Source.FileStorage.dll
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.FileStorage\obj\Debug\net5.0\ref\TPHunter.Source.FileStorage.dll
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.FileStorage\obj\Debug\net5.0\TPHunter.Source.FileStorage.pdb

@@ -22,10 +22,19 @@ namespace TPHunter.Source.Scrapper.DI
                 Component.For<IWorker>().ImplementedBy<MarkaWorker>()
                 );
         }
-
+        public static void DesignWorkerFactory()
+        {
+            container.Register(
+                Component.For<IWorker>().ImplementedBy<DesignWorker>()
+                );
+        }
         public static void MarkaPageFactory(IWebDriver driver)
         {
-            container.Register(Component.For(typeof(IPage<>)).ImplementedBy(typeof(MarkaPage)).DependsOn(Dependency.OnValue("webDriver", driver)));
+            container.Register(Component.For(typeof(IPage<>)).ImplementedBy(typeof(MarkaPage<>)).DependsOn(Dependency.OnValue("webDriver", driver)));
+        }
+        public static void DesignPageFactory(IWebDriver driver)
+        {
+            container.Register(Component.For(typeof(IPage<>)).ImplementedBy(typeof(DesignPage<>)).DependsOn(Dependency.OnValue("webDriver", driver)));
         }
 
         public static T Resolve<T>()

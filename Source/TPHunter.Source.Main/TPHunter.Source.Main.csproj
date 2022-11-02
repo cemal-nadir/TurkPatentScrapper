@@ -12,6 +12,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TPHunter.Source.Core\TPHunter.Source.Core.csproj" />
+    <ProjectReference Include="..\TPHunter.Source.Scrapper\TPHunter.Source.Scrapper.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

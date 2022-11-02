@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mLoXRhNGmxtAWigSCasKS/PqO+Fx1RwepL58nO5F+VbjSYhesGiKXb+5RHmsNvkViP0TsGVqqrLU6kOmmUnHEA==",
+  "dgSpecHash": "f9RyLCJsTMSymVk6KVS5lWUiQt8Z8NxTboWM9R3cub1q+j7jdfeSUUo7+IaL/xSTPM/5dbEo9yPlmwhElBznEQ==",
   "success": true,
-  "projectFilePath": "D:\\.NET PROJELER\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Browser\\TPHunter.Source.Browser.csproj",
+  "projectFilePath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Browser\\TPHunter.Source.Browser.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\cemal\\.nuget\\packages\\anglesharp\\0.17.1\\anglesharp.0.17.1.nupkg.sha512",
     "C:\\Users\\cemal\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",

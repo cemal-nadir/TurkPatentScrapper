@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "g4xYyXgB69S+Roz/0NELFemV6MntCBOTfl5Xy9L6nxG+Gn+Z7mpwAHajFQNa5YMum56IKhk1loi5sU+Fr+hyzA==",
+  "dgSpecHash": "4CeoW2vf5xws12QV+glPyyw+Wa4N7xLa3iRBhu5b+SgHj2erhiirgbO9R4UQDhETiNUndmb0Fm1ebmqjw4B4Gw==",
   "success": true,
-  "projectFilePath": "D:\\.NET PROJELER\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Core\\TPHunter.Source.Core.csproj",
+  "projectFilePath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Core\\TPHunter.Source.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\cemal\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
     "C:\\Users\\cemal\\.nuget\\packages\\castle.windsor\\5.1.2\\castle.windsor.5.1.2.nupkg.sha512",

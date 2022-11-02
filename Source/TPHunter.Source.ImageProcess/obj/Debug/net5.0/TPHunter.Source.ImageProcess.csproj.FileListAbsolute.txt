@@ -1,0 +1,16 @@
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.ImageProcess\bin\Debug\net5.0\DesignRejectImage.cng
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.ImageProcess\bin\Debug\net5.0\TPHunter.Source.ImageProcess.deps.json
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.ImageProcess\bin\Debug\net5.0\TPHunter.Source.ImageProcess.dll
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.ImageProcess\bin\Debug\net5.0\ref\TPHunter.Source.ImageProcess.dll
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.ImageProcess\bin\Debug\net5.0\TPHunter.Source.ImageProcess.pdb
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.ImageProcess\bin\Debug\net5.0\TPHunter.Source.Core.dll
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.ImageProcess\bin\Debug\net5.0\TPHunter.Source.Core.pdb
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.ImageProcess\obj\Debug\net5.0\TPHunter.Source.ImageProcess.csproj.AssemblyReference.cache
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.ImageProcess\obj\Debug\net5.0\TPHunter.Source.ImageProcess.GeneratedMSBuildEditorConfig.editorconfig
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.ImageProcess\obj\Debug\net5.0\TPHunter.Source.ImageProcess.AssemblyInfoInputs.cache
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.ImageProcess\obj\Debug\net5.0\TPHunter.Source.ImageProcess.AssemblyInfo.cs
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.ImageProcess\obj\Debug\net5.0\TPHunter.Source.ImageProcess.csproj.CoreCompileInputs.cache
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.ImageProcess\obj\Debug\net5.0\TPHunter.Source.ImageProcess.csproj.CopyComplete
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.ImageProcess\obj\Debug\net5.0\TPHunter.Source.ImageProcess.dll
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.ImageProcess\obj\Debug\net5.0\ref\TPHunter.Source.ImageProcess.dll
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.ImageProcess\obj\Debug\net5.0\TPHunter.Source.ImageProcess.pdb

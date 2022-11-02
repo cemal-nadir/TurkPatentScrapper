@@ -1,0 +1,10 @@
+D:\.NET PROJELER\RadisorApp\Backend\Libraries\Shared\RadisorApp.Backend.Libraries.Shared.ApiResponse\bin\Debug\netcoreapp3.1\RadisorApp.Backend.Libraries.Shared.ApiResponse.deps.json
+D:\.NET PROJELER\RadisorApp\Backend\Libraries\Shared\RadisorApp.Backend.Libraries.Shared.ApiResponse\bin\Debug\netcoreapp3.1\RadisorApp.Backend.Libraries.Shared.ApiResponse.dll
+D:\.NET PROJELER\RadisorApp\Backend\Libraries\Shared\RadisorApp.Backend.Libraries.Shared.ApiResponse\bin\Debug\netcoreapp3.1\RadisorApp.Backend.Libraries.Shared.ApiResponse.pdb
+D:\.NET PROJELER\RadisorApp\Backend\Libraries\Shared\RadisorApp.Backend.Libraries.Shared.ApiResponse\obj\Debug\netcoreapp3.1\RadisorApp.Backend.Libraries.Shared.ApiResponse.csproj.AssemblyReference.cache
+D:\.NET PROJELER\RadisorApp\Backend\Libraries\Shared\RadisorApp.Backend.Libraries.Shared.ApiResponse\obj\Debug\netcoreapp3.1\RadisorApp.Backend.Libraries.Shared.ApiResponse.GeneratedMSBuildEditorConfig.editorconfig
+D:\.NET PROJELER\RadisorApp\Backend\Libraries\Shared\RadisorApp.Backend.Libraries.Shared.ApiResponse\obj\Debug\netcoreapp3.1\RadisorApp.Backend.Libraries.Shared.ApiResponse.AssemblyInfoInputs.cache
+D:\.NET PROJELER\RadisorApp\Backend\Libraries\Shared\RadisorApp.Backend.Libraries.Shared.ApiResponse\obj\Debug\netcoreapp3.1\RadisorApp.Backend.Libraries.Shared.ApiResponse.AssemblyInfo.cs
+D:\.NET PROJELER\RadisorApp\Backend\Libraries\Shared\RadisorApp.Backend.Libraries.Shared.ApiResponse\obj\Debug\netcoreapp3.1\RadisorApp.Backend.Libraries.Shared.ApiResponse.csproj.CoreCompileInputs.cache
+D:\.NET PROJELER\RadisorApp\Backend\Libraries\Shared\RadisorApp.Backend.Libraries.Shared.ApiResponse\obj\Debug\netcoreapp3.1\RadisorApp.Backend.Libraries.Shared.ApiResponse.dll
+D:\.NET PROJELER\RadisorApp\Backend\Libraries\Shared\RadisorApp.Backend.Libraries.Shared.ApiResponse\obj\Debug\netcoreapp3.1\RadisorApp.Backend.Libraries.Shared.ApiResponse.pdb

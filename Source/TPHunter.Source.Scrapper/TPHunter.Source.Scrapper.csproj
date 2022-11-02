@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -7,6 +7,8 @@
   <ItemGroup>
     <ProjectReference Include="..\TPHunter.Source.Browser\TPHunter.Source.Browser.csproj" />
     <ProjectReference Include="..\TPHunter.Source.Core\TPHunter.Source.Core.csproj" />
+    <ProjectReference Include="..\TPHunter.Source.FileStorage\TPHunter.Source.FileStorage.csproj" />
+    <ProjectReference Include="..\TPHunter.Source.ImageProcess\TPHunter.Source.ImageProcess.csproj" />
   </ItemGroup>
 
 </Project>

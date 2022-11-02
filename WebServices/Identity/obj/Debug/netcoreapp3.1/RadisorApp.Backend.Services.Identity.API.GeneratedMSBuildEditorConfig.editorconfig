@@ -1,0 +1,3 @@
+is_global = true
+build_property.RootNamespace = RadisorApp.Backend.Services.Identity.API
+build_property.ProjectDir = D:\.NET PROJELER\RadisorApp\Backend\Services\RadisorApp.Backend.Services.Identity.API\

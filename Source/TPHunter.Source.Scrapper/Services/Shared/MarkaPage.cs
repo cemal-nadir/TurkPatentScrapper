@@ -1,20 +1,24 @@
 ﻿using Browser.Helpers;
 using OpenQA.Selenium;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using TPHunter.Source.Scrapper.Abstract.Main;
+using TPHunter.Source.Core.Models.Scrapper;
 using TPHunter.Source.Scrapper.Abstract.Shared;
 using TPHunter.Source.Scrapper.Functions;
 using TPHunter.Source.Scrapper.Models;
 
 namespace TPHunter.Source.Scrapper.Services.Shared
 {
-    public class MarkaPage : IPage<MarkModel>
+    public class MarkaPage<T> : IPage<MarkModel>
     {
         private readonly IWebDriver _webDriver;
         public MarkaPage(IWebDriver webDriver)
         {
             _webDriver = webDriver;
+        }
+
+        public bool CheckAndClickNext()
+        {
+           return _webDriver.CheckPageIsLastAndClick();
         }
 
         public void Prepare()
@@ -31,7 +35,7 @@ namespace TPHunter.Source.Scrapper.Services.Shared
             foreach(var responseListTableModel in responseListTableModels)
             {
                 _webDriver.ClickWithJs(responseListTableModel.DetailButton);
-                markModels.Add(_webDriver.GetMarkData());
+                markModels.Add(_webDriver.GetMarkData(MainHelper.ScrapType.Download));
                 _webDriver.CloseDataPopUp();
             }
             return markModels;
@@ -40,12 +44,17 @@ namespace TPHunter.Source.Scrapper.Services.Shared
 
         public MarkModel ScrapSingle()
         {
-            throw new System.NotImplementedException();
+            return _webDriver.GetMarkData(MainHelper.ScrapType.Upload);
         }
 
         public void Search(object searchParam)
         {
             _webDriver.SearchMarks(searchParam.ToString());
+        }
+
+        public void Search(string applicationNumber)
+        {
+            _webDriver.SearchSingle(applicationNumber);
         }
     }
 }

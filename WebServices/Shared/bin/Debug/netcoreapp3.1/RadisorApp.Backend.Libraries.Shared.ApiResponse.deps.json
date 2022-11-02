@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "RadisorApp.Backend.Libraries.Shared.ApiResponse/1.0.0": {
+        "runtime": {
+          "RadisorApp.Backend.Libraries.Shared.ApiResponse.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "RadisorApp.Backend.Libraries.Shared.ApiResponse/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

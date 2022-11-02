@@ -5937,11 +5937,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\.NET PROJELER\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Browser\\TPHunter.Source.Browser.csproj",
+      "projectUniqueName": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Browser\\TPHunter.Source.Browser.csproj",
       "projectName": "TPHunter.Source.Browser",
-      "projectPath": "D:\\.NET PROJELER\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Browser\\TPHunter.Source.Browser.csproj",
+      "projectPath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Browser\\TPHunter.Source.Browser.csproj",
       "packagesPath": "C:\\Users\\cemal\\.nuget\\packages\\",
-      "outputPath": "D:\\.NET PROJELER\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Browser\\obj\\",
+      "outputPath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Browser\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\DevExpress\\Components\\Offline Packages",
@@ -5966,8 +5966,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "D:\\.NET PROJELER\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Core\\TPHunter.Source.Core.csproj": {
-              "projectPath": "D:\\.NET PROJELER\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Core\\TPHunter.Source.Core.csproj"
+            "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Core\\TPHunter.Source.Core.csproj": {
+              "projectPath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Core\\TPHunter.Source.Core.csproj"
             }
           }
         }

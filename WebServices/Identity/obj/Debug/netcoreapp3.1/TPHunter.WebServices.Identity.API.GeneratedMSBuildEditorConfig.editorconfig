@@ -1,0 +1,3 @@
+is_global = true
+build_property.RootNamespace = TPHunter.WebServices.Identity.API
+build_property.ProjectDir = D:\.NET PROJELER\SistemPatent\tphunter\WebServices\Identity\

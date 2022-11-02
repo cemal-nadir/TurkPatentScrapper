@@ -19,12 +19,19 @@ namespace TPHunter.Source.Core.Helpers
         }
         public static int[] ParseClasses(this string classesText)
         {
+            classesText = classesText.Replace(" ", "");
             if (string.IsNullOrEmpty(classesText) || classesText == "-")
                 return null;
-            classesText = classesText.Replace(" ", "");
-            string[] classesArrayCache = classesText.Split('/');
-            int[] classesArray = Array.ConvertAll(classesArrayCache, int.Parse);
+
+            int[] classesArray = Array.ConvertAll(classesText.Split('/').Where(x => !string.IsNullOrEmpty(x)).ToArray(), int.Parse);
             return classesArray;
+        }
+        public static int? ParseClass(this string classText)
+        {
+            classText = classText.Replace(" ", "");
+            if (string.IsNullOrEmpty(classText) || classText == "-")
+                return null;
+            return Convert.ToInt32(classText);
         }
     }
 }

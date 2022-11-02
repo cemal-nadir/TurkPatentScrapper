@@ -16,7 +16,7 @@ namespace Browser.Base
         {
             new DriverManager().SetUpDriver(new ChromeConfig(), VersionResolveStrategy.MatchingBrowser);
             options = new ChromeOptions();
-            options.AddArgument("--headless");             
+      //      options.AddArgument("--headless");             
             options.AddArguments("--enable-extensions");
             options.AddArgument("no-sandbox");
             options.AddArgument("--ignore-certificate-errors");
@@ -25,7 +25,7 @@ namespace Browser.Base
             options.AddArgument("disable-infobars");
             options.AddArgument("--disable-setuid-sandbox");
             options.AddArgument("--disable-gpu");
-            options.AddArguments("--start-maximized");
+      //      options.AddArguments("--start-maximized");
             options.AddArgument("--user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36");
             options.AddArguments("--window-size=1280,1024");
         }

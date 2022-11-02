@@ -12,6 +12,7 @@ namespace Browser.Helpers
 {
     public static class MainBrowserHelper
     {
+      
         public static void OpenNewTab(this IWebDriver driver)
         {
             ((IJavaScriptExecutor)driver).ExecuteScript("window.open();");
@@ -32,24 +33,6 @@ namespace Browser.Helpers
         public static void CloseCurrentTab(this IWebDriver driver)
         {
             driver.Close();
-        }
-        public static IWebElement FindElement(this IWebDriver driver, By by, int timeoutInSeconds)
-        {
-            if (timeoutInSeconds > 0)
-            {
-                var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeoutInSeconds));
-                return wait.Until(drv => drv.FindElement(by));
-            }
-            return driver.FindElement(by);
-        }
-        public static IEnumerable<IWebElement> FindElements(this IWebDriver driver, By by, int timeoutInSeconds)
-        {
-            if (timeoutInSeconds > 0)
-            {
-                var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeoutInSeconds));
-                return wait.Until(drv => drv.FindElements(by));
-            }
-            return driver.FindElements(by);
         }
         public static void ClickWithJs(this IWebDriver webDriver, IWebElement webElement)
         {
