@@ -15,6 +15,7 @@ namespace TPHunter.Source.Core.Configs
     public class TPConfig
     {
         public string TPSearchPage { get; set; }
+        public string TPPatentPdfPage { get; set; }
     }
     public class AmazonConfig
     {

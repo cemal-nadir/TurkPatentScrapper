@@ -4,6 +4,8 @@ using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using TPHunter.Source.Core.Configs;
@@ -307,6 +309,212 @@ namespace TPHunter.Source.Scrapper.Functions
             #endregion
 
             return designModel;
+        }
+        public static PatentModel GetPatentData(this IWebDriver driver, ScrapType scrapType)
+        {
+            PatentModel patentModel = new();
+            List<IWebElement> cacheRows = new();
+            var sections = (scrapType is ScrapType.Download) ? driver.FindElement(By.ClassName("MuiCardContent-root"), 20).FindElements(By.TagName("fieldset"))
+                : driver.FindElement(By.Id("search-results"), 20).FindElements(By.TagName("fieldset"));
+            IWebElement cacheSection;
+
+            #region Section Başvuru Bilgileri
+            cacheRows = sections[0].FindElement(By.TagName("tbody")).FindElements(By.TagName("tr")).ToList();
+            patentModel.ApplicationNumber = cacheRows[0].FindElements(By.TagName("td"))[1].Text;
+            patentModel.ApplicationDate = cacheRows[0].FindElements(By.TagName("td"))[3].Text.CustomConvertToDatetime();
+            patentModel.ApplicationType = cacheRows[1].FindElements(By.TagName("td"))[1].Text;
+            patentModel.DocumentNumber = cacheRows[1].FindElements(By.TagName("td"))[3].Text;
+            patentModel.DocumentDate = cacheRows[2].FindElements(By.TagName("td"))[1].Text.CustomConvertToDatetime();
+            patentModel.RegistrationNumber = cacheRows[2].FindElements(By.TagName("td"))[3].Text;
+            patentModel.RegistrationDate = cacheRows[3].FindElements(By.TagName("td"))[1].Text.CustomConvertToDatetime();
+            patentModel.ProtectionType = cacheRows[3].FindElements(By.TagName("td"))[3].Text;
+            patentModel.EPCPublishNumber = cacheRows[4].FindElements(By.TagName("td"))[1].Text;
+            patentModel.EPCApplicationNumber = cacheRows[4].FindElements(By.TagName("td"))[3].Text;
+            patentModel.PCTPublishNumber = cacheRows[5].FindElements(By.TagName("td"))[1].Text;
+            patentModel.PCTApplicationNumber = cacheRows[5].FindElements(By.TagName("td"))[3].Text;
+            patentModel.PCTPublishDate = cacheRows[6].FindElements(By.TagName("td"))[1].Text.CustomConvertToDatetime();
+            #endregion
+            #region Section Başvuru Sahipleri
+
+            cacheSection = sections.FirstOrDefault(x => x.FindElement(By.TagName("legend")).Text == "Başvuru Sahipleri");
+            if (cacheSection != null)
+            {
+                List<HolderModel> cacheHolders = new();
+                cacheRows = cacheSection.FindElement(By.TagName("tbody")).FindElements(By.TagName("tr")).ToList();
+                foreach (var cacheRow in cacheRows)
+                {
+
+                    cacheHolders.Add(new HolderModel()
+                    {
+                        HolderCode = cacheRow.FindElements(By.TagName("td"))[0].Text,
+                        HolderName = cacheRow.FindElements(By.TagName("td"))[1].Text,
+                        Address = cacheRow.FindElements(By.TagName("td"))[2].Text
+                    });
+                }
+                patentModel.Holders = cacheHolders;
+            }
+            #endregion
+            #region Section Buluş Sahipleri
+
+            cacheSection = sections.FirstOrDefault(x => x.FindElement(By.TagName("legend")).Text == "Buluş Sahipleri");
+            if (cacheSection != null)
+            {
+                List<InventorModel> cacheInventors = new();
+                cacheRows = cacheSection.FindElement(By.TagName("tbody")).FindElements(By.TagName("tr")).ToList();
+                foreach (var cacheRow in cacheRows)
+                {
+                    cacheInventors.Add(new InventorModel()
+                    {
+                        InventorCode = cacheRow.FindElements(By.TagName("td"))[0].Text,
+                        InventorName = cacheRow.FindElements(By.TagName("td"))[1].Text,
+                        Address = cacheRow.FindElements(By.TagName("td"))[2].Text
+                    });
+
+                }
+                patentModel.Inventors = cacheInventors;
+            }
+            #endregion
+            #region Section Buluş Bilgileri
+            cacheSection = sections.FirstOrDefault(x => x.FindElement(By.TagName("legend")).Text == "Buluş Bilgileri");
+            if (cacheSection != null)
+            {
+                cacheRows = cacheSection.FindElement(By.TagName("tbody")).FindElements(By.TagName("tr")).ToList();
+                patentModel.InventionTitle = cacheRows[0].FindElements(By.TagName("td"))[1].Text;
+                patentModel.InventionSummary = cacheRows[1].FindElements(By.TagName("td"))[1].Text;
+            }
+            #endregion
+            #region Section Vekil Bilgileri
+            cacheSection = sections.FirstOrDefault(x => x.FindElement(By.TagName("legend")).Text == "Vekil Bilgileri");
+            if (cacheSection != null)
+            {
+                cacheRows = cacheSection.FindElement(By.TagName("tbody")).FindElements(By.TagName("tr")).ToList();
+                patentModel.AttorneyName = cacheRows[0].FindElements(By.TagName("td"))[1].FindElements(By.TagName("h6"))[0].Text;
+                patentModel.AttorneyCompanyName = cacheRows[0].FindElements(By.TagName("td"))[1].FindElements(By.TagName("h6"))[1].Text;
+                patentModel.AttorneyCompanyAddress = cacheRows[1].FindElements(By.TagName("td"))[1].Text;
+            }
+            #endregion
+            #region Section Buluşun Tasnif Sınıfları
+            cacheSection = sections.FirstOrDefault(x => x.FindElement(By.TagName("legend")).Text == "Buluşun Tasnif Sınıfları");
+            if (cacheSection != null)
+            {
+                List<PatentClassesModel> cachePatentClasses = new();
+                var cacheTables = cacheSection.FindElements(By.TagName("table")).ToList();
+                foreach (var cacheTable in cacheTables)
+                {
+                    var cacheClassTitle = cacheTable.FindElement(By.TagName("th")).Text;
+                    cacheRows = cacheTable.FindElement(By.TagName("tbody")).FindElements(By.TagName("tr")).ToList();
+                    foreach (var cacheRow in cacheRows)
+                    {
+                        cachePatentClasses.Add(new PatentClassesModel()
+                        {
+                            Name = cacheRow.FindElement(By.TagName("td")).Text,
+                            Type = cacheClassTitle
+                        });
+                    }
+                }
+                patentModel.PatentClasses = cachePatentClasses;
+            }
+            #endregion
+            #region Section Başvuruya İlişkin Bilgiler
+            cacheSection = sections.FirstOrDefault(x => x.FindElement(By.TagName("legend")).Text == "Başvuruya İlişkin Bilgiler");
+            if (cacheSection != null)
+            {
+                List<PatentTransactionModel> cachePatentTransactions = new();
+                cacheRows = cacheSection.FindElement(By.TagName("tbody")).FindElements(By.TagName("tr")).ToList();
+                foreach (var cacheRow in cacheRows)
+                {
+                    cachePatentTransactions.Add(new PatentTransactionModel()
+                    {
+                        Date = cacheRow.FindElements(By.TagName("td"))[0].Text.CustomConvertToDatetime(),
+                        NotificationDate = cacheRow.FindElements(By.TagName("td"))[1].Text.CustomConvertToDatetime(),
+                        Transaction = cacheRow.FindElements(By.TagName("td"))[2].Text
+                    });
+
+
+
+                }
+                patentModel.PatentTransactions = cachePatentTransactions;
+            }
+            #endregion
+            #region Section Yayınlar
+            cacheSection = sections.FirstOrDefault(x => x.FindElement(By.TagName("legend")).Text == "Yayınlar");
+            if (cacheSection != null)
+            {
+                List<PatentPublicationModel> cachePatentPulication = new();
+                cacheRows = cacheSection.FindElement(By.TagName("tbody")).FindElements(By.TagName("tr")).ToList();
+                foreach (var cacheRow in cacheRows)
+                {
+                    cachePatentPulication.Add(new PatentPublicationModel()
+                    {
+                        PublishDate = cacheRow.FindElements(By.TagName("td"))[0].Text.CustomConvertToDatetime(),
+                        Description = cacheRow.FindElements(By.TagName("td"))[1].Text
+                    }); ;
+
+
+
+                }
+                patentModel.PatentPublications = cachePatentPulication;
+            }
+            #endregion
+            #region Section Rüçhan Bilgileri
+            cacheSection = sections.FirstOrDefault(x => x.FindElement(By.TagName("legend")).Text == "Rüçhan Bilgileri");
+            if (cacheSection != null)
+            {
+                List<PatentPriortyModel> cachePatentpriorties = new();
+                cacheRows = cacheSection.FindElement(By.TagName("tbody")).FindElements(By.TagName("tr")).ToList();
+                foreach (var cacheRow in cacheRows)
+                {
+                    cachePatentpriorties.Add(new PatentPriortyModel()
+                    {
+                        PriortyDate = cacheRow.FindElements(By.TagName("td"))[0].Text.CustomConvertToDatetime(),
+                        PriortyNumber = cacheRow.FindElements(By.TagName("td"))[1].Text,
+                        PriortyCounter = cacheRow.FindElements(By.TagName("td"))[2].Text
+                    });
+                }
+                patentModel.PatentPriorties = cachePatentpriorties;
+            }
+            #endregion
+
+            //Bu Pdfleri Api tarafında indirticem bu kısımda sadece mevcut ise linkini aldırıcam. Şuan indirme kodları yazılı, değişecek
+            #region Patent'le İlişkili Pdf'ler
+            using (var webClient = new WebClient())
+            {
+                #region Döküman Pdf'i
+                try
+                {
+                    patentModel.Documents = webClient.DownloadData(new Uri($"{RuntimeConfigs.GeneralConfig.TPConfig.TPPatentPdfPage}?patentAppNo={patentModel.ApplicationNumber}&documentsTpye=all"));
+                }
+                catch
+                {
+
+                }
+
+                #endregion
+                #region İnceleme Raporu Pdf'i
+                try
+                {
+                    patentModel.AnalysisReport = webClient.DownloadData(new Uri($"{RuntimeConfigs.GeneralConfig.TPConfig.TPPatentPdfPage}?patentAppNo={patentModel.ApplicationNumber}&documentsTpye=inceleme"));
+                }
+                catch
+                {
+
+                }
+                #endregion
+                #region Araştırma Raporu Pdf'i
+                try
+                {
+                    patentModel.ResearchReport = webClient.DownloadData(new Uri($"{RuntimeConfigs.GeneralConfig.TPConfig.TPPatentPdfPage}?patentAppNo={patentModel.ApplicationNumber}&documentsTpye=arastirma"));
+                }
+                catch
+                {
+
+                }
+
+                #endregion
+            }
+            #endregion
+
+            return patentModel;
         }
         public static void CheckAndSolveCaptcha(this IWebDriver driver)
         {

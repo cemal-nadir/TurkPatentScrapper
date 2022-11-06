@@ -10,26 +10,18 @@
         "projectUniqueName": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\WebServices\\Identity\\TPHunter.WebServices.Identity.API.csproj",
         "projectName": "TPHunter.WebServices.Identity.API",
         "projectPath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\WebServices\\Identity\\TPHunter.WebServices.Identity.API.csproj",
-        "packagesPath": "C:\\Users\\cemal\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\90538\\.nuget\\packages\\",
         "outputPath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\WebServices\\Identity\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "D:\\DevExpress\\Components\\Offline Packages",
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\cemal\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 21.1.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\90538\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "D:\\DevExpress\\Components\\System\\Components\\Packages": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -123,7 +115,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.413\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -133,26 +125,18 @@
         "projectUniqueName": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\WebServices\\Shared\\TPHunter.WebServices.Shared.ApiResponse.csproj",
         "projectName": "TPHunter.WebServices.Shared.ApiResponse",
         "projectPath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\WebServices\\Shared\\TPHunter.WebServices.Shared.ApiResponse.csproj",
-        "packagesPath": "C:\\Users\\cemal\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\90538\\.nuget\\packages\\",
         "outputPath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\WebServices\\Shared\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "D:\\DevExpress\\Components\\Offline Packages",
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\cemal\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 21.1.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\90538\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "D:\\DevExpress\\Components\\System\\Components\\Packages": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -188,7 +172,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.413\\RuntimeIdentifierGraph.json"
         }
       }
     }
