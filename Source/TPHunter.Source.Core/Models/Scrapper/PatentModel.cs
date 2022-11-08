@@ -32,9 +32,10 @@ namespace TPHunter.Source.Core.Models.Scrapper
         public IEnumerable<PatentClassesModel> PatentClasses { get; set; }
         public IEnumerable<PatentTransactionModel> PatentTransactions { get; set; }
         public IEnumerable<PatentPublicationModel> PatentPublications { get; set; }
-        public byte[] Documents { get; set; }
-        public byte[] AnalysisReport { get; set; }
-        public byte[] ResearchReport { get; set; }
+        public IEnumerable<PatentPaymentModel> PatentPayments { get; set; }
+        public string DocumentsUrl { get; set; }
+        public string AnalysisReportUrl { get; set; }
+        public string ResearchReportUrl { get; set; }
 
     }
 }

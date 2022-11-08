@@ -1407,19 +1407,6 @@
         "compile": {
           "ref/netstandard1.2/System.Threading.Timer.dll": {}
         }
-      },
-      "TPHunter.WebServices.Shared.ApiResponse/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
-        "compile": {
-          "bin/placeholder/TPHunter.WebServices.Shared.ApiResponse.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/TPHunter.WebServices.Shared.ApiResponse.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
       }
     }
   },
@@ -4826,11 +4813,6 @@
         "system.threading.timer.4.0.1.nupkg.sha512",
         "system.threading.timer.nuspec"
       ]
-    },
-    "TPHunter.WebServices.Shared.ApiResponse/1.0.0": {
-      "type": "project",
-      "path": "../Shared/TPHunter.WebServices.Shared.ApiResponse.csproj",
-      "msbuildProject": "../Shared/TPHunter.WebServices.Shared.ApiResponse.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -4846,8 +4828,7 @@
       "Microsoft.EntityFrameworkCore.Design >= 3.1.27",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.18",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 3.1.18",
-      "Serilog.AspNetCore >= 3.2.0",
-      "TPHunter.WebServices.Shared.ApiResponse >= 1.0.0"
+      "Serilog.AspNetCore >= 3.2.0"
     ]
   },
   "packageFolders": {
@@ -4876,11 +4857,7 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "projectReferences": {
-            "D:\\.NET PROJELER\\SistemPatent\\tphunter\\WebServices\\Shared\\TPHunter.WebServices.Shared.ApiResponse.csproj": {
-              "projectPath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\WebServices\\Shared\\TPHunter.WebServices.Shared.ApiResponse.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {

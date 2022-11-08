@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "1dNbhHgZcJjRWdKeD277Tj8+Rwa6XYs9tRpkOmPx6QABl/rT3j61mwy26qFTVx8c0pAZ6r8nBbGn8/2TuFtTpw==",
+  "dgSpecHash": "OMBg+EDVIl7JCy0uH8Y0m80Dsj327AfsqoKDc0IrY1ZcV/axbDiRnNWOwMVji9HGEyOZu9SSfDxvanaJBJHvZA==",
   "success": true,
   "projectFilePath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Core\\TPHunter.Source.Core.csproj",
   "expectedPackageFiles": [
@@ -94,10 +94,7 @@
     "C:\\Users\\90538\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\90538\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\90538\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\90538\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\90538\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
-    "C:\\Users\\90538\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
-    "C:\\Users\\90538\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512"
+    "C:\\Users\\90538\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }

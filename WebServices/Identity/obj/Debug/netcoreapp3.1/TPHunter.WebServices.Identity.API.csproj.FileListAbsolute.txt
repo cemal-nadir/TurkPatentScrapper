@@ -1,4 +1,3 @@
-D:\.NET PROJELER\SistemPatent\tphunter\WebServices\Identity\obj\Debug\netcoreapp3.1\TPHunter.WebServices.Identity.API.csproj.AssemblyReference.cache
 D:\.NET PROJELER\SistemPatent\tphunter\WebServices\Identity\obj\Debug\netcoreapp3.1\TPHunter.WebServices.Identity.API.GeneratedMSBuildEditorConfig.editorconfig
 D:\.NET PROJELER\SistemPatent\tphunter\WebServices\Identity\obj\Debug\netcoreapp3.1\TPHunter.WebServices.Identity.API.AssemblyInfoInputs.cache
 D:\.NET PROJELER\SistemPatent\tphunter\WebServices\Identity\obj\Debug\netcoreapp3.1\TPHunter.WebServices.Identity.API.AssemblyInfo.cs
@@ -78,8 +77,6 @@ D:\.NET PROJELER\SistemPatent\tphunter\WebServices\Identity\bin\Debug\netcoreapp
 D:\.NET PROJELER\SistemPatent\tphunter\WebServices\Identity\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
 D:\.NET PROJELER\SistemPatent\tphunter\WebServices\Identity\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
 D:\.NET PROJELER\SistemPatent\tphunter\WebServices\Identity\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
-D:\.NET PROJELER\SistemPatent\tphunter\WebServices\Identity\bin\Debug\netcoreapp3.1\TPHunter.WebServices.Shared.ApiResponse.dll
-D:\.NET PROJELER\SistemPatent\tphunter\WebServices\Identity\bin\Debug\netcoreapp3.1\TPHunter.WebServices.Shared.ApiResponse.pdb
 D:\.NET PROJELER\SistemPatent\tphunter\WebServices\Identity\obj\Debug\netcoreapp3.1\staticwebassets\TPHunter.WebServices.Identity.API.StaticWebAssets.Manifest.cache
 D:\.NET PROJELER\SistemPatent\tphunter\WebServices\Identity\obj\Debug\netcoreapp3.1\staticwebassets\TPHunter.WebServices.Identity.API.StaticWebAssets.xml
 D:\.NET PROJELER\SistemPatent\tphunter\WebServices\Identity\obj\Debug\netcoreapp3.1\scopedcss\bundle\TPHunter.WebServices.Identity.API.styles.css

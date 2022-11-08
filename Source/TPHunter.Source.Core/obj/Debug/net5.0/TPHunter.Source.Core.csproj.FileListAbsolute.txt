@@ -9,4 +9,3 @@ D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Core\obj\Debug\net
 D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Core\obj\Debug\net5.0\TPHunter.Source.Core.dll
 D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Core\obj\Debug\net5.0\ref\TPHunter.Source.Core.dll
 D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Core\obj\Debug\net5.0\TPHunter.Source.Core.pdb
-D:\.NET PROJELER\SistemPatent\TPHunter\Source\TPHunter.Source.Core\obj\Debug\net5.0\TPHunter.Source.Core.csproj.AssemblyReference.cache

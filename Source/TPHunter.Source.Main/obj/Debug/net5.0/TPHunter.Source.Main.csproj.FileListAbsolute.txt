@@ -24,4 +24,5 @@ D:\.NET PROJELER\SistemPatent\tphunter\App\net5.0\TPHunter.Source.Main.dll
 D:\.NET PROJELER\SistemPatent\tphunter\App\net5.0\ref\TPHunter.Source.Main.dll
 D:\.NET PROJELER\SistemPatent\tphunter\App\net5.0\TPHunter.Source.Main.pdb
 D:\.NET PROJELER\SistemPatent\tphunter\App\net5.0\config.json
-D:\.NET PROJELER\SistemPatent\tphunter\App\net5.0\Resources\designrejectedimage.png
+D:\.NET PROJELER\SistemPatent\tphunter\App\net5.0\DesignRejectImage.cng
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Main\obj\Debug\net5.0\TPHunter.Source.Main.csproj.CopyComplete

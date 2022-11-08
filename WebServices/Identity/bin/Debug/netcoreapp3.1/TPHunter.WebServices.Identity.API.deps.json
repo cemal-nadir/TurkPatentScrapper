@@ -43,7 +43,6 @@
           "Microsoft.EntityFrameworkCore.Tools": "3.1.18",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "3.1.18",
           "Serilog.AspNetCore": "3.2.0",
-          "TPHunter.WebServices.Shared.ApiResponse": "1.0.0",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.1.0.0",
@@ -1511,14 +1510,6 @@
           "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
-        }
-      },
-      "TPHunter.WebServices.Shared.ApiResponse/1.0.0": {
-        "runtime": {
-          "TPHunter.WebServices.Shared.ApiResponse.dll": {}
-        },
-        "compile": {
-          "TPHunter.WebServices.Shared.ApiResponse.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/3.1.0.0": {
@@ -3841,11 +3832,6 @@
       "sha512": "sha512-saGfUV8uqVW6LeURiqxcGhZ24PzuRNaUBtbhVeuUAvky1naH395A/1nY0P2bWvrw/BreRtIB/EzTDkGBpqCwEw==",
       "path": "system.threading.timer/4.0.1",
       "hashPath": "system.threading.timer.4.0.1.nupkg.sha512"
-    },
-    "TPHunter.WebServices.Shared.ApiResponse/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
     },
     "Microsoft.AspNetCore.Antiforgery/3.1.0.0": {
       "type": "referenceassembly",

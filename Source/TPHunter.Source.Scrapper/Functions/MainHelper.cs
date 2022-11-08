@@ -456,6 +456,25 @@ namespace TPHunter.Source.Scrapper.Functions
                 patentModel.PatentPublications = cachePatentPulication;
             }
             #endregion
+            #region Section Ödeme Tarihleri
+            cacheSection = sections.FirstOrDefault(x => x.FindElement(By.TagName("legend")).Text == "Ödeme Tarihleri");
+            if (cacheSection != null)
+            {
+                List<PatentPaymentModel> cachePatentPayments = new();
+                cacheRows = cacheSection.FindElement(By.TagName("tbody")).FindElements(By.TagName("tr")).ToList();
+                foreach (var cacheRow in cacheRows)
+                {
+                    cachePatentPayments.Add(new PatentPaymentModel()
+                    {
+                        Queue = cacheRow.FindElements(By.TagName("td"))[0].Text,
+                        Year = cacheRow.FindElements(By.TagName("td"))[1].Text,
+                        PaymentDate = cacheRow.FindElements(By.TagName("td"))[2].Text.CustomConvertToDatetime(),
+                        PaidAmount = cacheRow.FindElements(By.TagName("td"))[3].Text
+                    });
+                }
+                patentModel.PatentPayments = cachePatentPayments;
+            }
+            #endregion
             #region Section Rüçhan Bilgileri
             cacheSection = sections.FirstOrDefault(x => x.FindElement(By.TagName("legend")).Text == "Rüçhan Bilgileri");
             if (cacheSection != null)
@@ -474,44 +493,15 @@ namespace TPHunter.Source.Scrapper.Functions
                 patentModel.PatentPriorties = cachePatentpriorties;
             }
             #endregion
-
-            //Bu Pdfleri Api tarafında indirticem bu kısımda sadece mevcut ise linkini aldırıcam. Şuan indirme kodları yazılı, değişecek
             #region Patent'le İlişkili Pdf'ler
-            using (var webClient = new WebClient())
-            {
-                #region Döküman Pdf'i
-                try
-                {
-                    patentModel.Documents = webClient.DownloadData(new Uri($"{RuntimeConfigs.GeneralConfig.TPConfig.TPPatentPdfPage}?patentAppNo={patentModel.ApplicationNumber}&documentsTpye=all"));
-                }
-                catch
-                {
+            patentModel.DocumentsUrl = $"{RuntimeConfigs.GeneralConfig.TPConfig.TPPatentPdfPage}?patentAppNo={patentModel.ApplicationNumber}&documentsTpye=all";
+            #region İnceleme Raporu Pdf'i
+            patentModel.AnalysisReportUrl = $"{RuntimeConfigs.GeneralConfig.TPConfig.TPPatentPdfPage}?patentAppNo={patentModel.ApplicationNumber}&documentsTpye=inceleme";
+            #endregion
+            #region Araştırma Raporu Pdf'i
+            patentModel.ResearchReportUrl = $"{RuntimeConfigs.GeneralConfig.TPConfig.TPPatentPdfPage}?patentAppNo={patentModel.ApplicationNumber}&documentsTpye=arastirma";
+            #endregion
 
-                }
-
-                #endregion
-                #region İnceleme Raporu Pdf'i
-                try
-                {
-                    patentModel.AnalysisReport = webClient.DownloadData(new Uri($"{RuntimeConfigs.GeneralConfig.TPConfig.TPPatentPdfPage}?patentAppNo={patentModel.ApplicationNumber}&documentsTpye=inceleme"));
-                }
-                catch
-                {
-
-                }
-                #endregion
-                #region Araştırma Raporu Pdf'i
-                try
-                {
-                    patentModel.ResearchReport = webClient.DownloadData(new Uri($"{RuntimeConfigs.GeneralConfig.TPConfig.TPPatentPdfPage}?patentAppNo={patentModel.ApplicationNumber}&documentsTpye=arastirma"));
-                }
-                catch
-                {
-
-                }
-
-                #endregion
-            }
             #endregion
 
             return patentModel;

@@ -29,8 +29,4 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.18" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.18" />
   </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Shared\TPHunter.WebServices.Shared.ApiResponse.csproj" />
-  </ItemGroup>
 </Project>

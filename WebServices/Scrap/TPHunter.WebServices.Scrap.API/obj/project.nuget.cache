@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "QjFT5FvO/uyR770XmH2ZtLBA7khLy1+ckRyItEY9oFH6QbNB0odpD1uxwipTf6gPFJGlueX1HPxS9suVYPHaJw==",
+  "dgSpecHash": "cZ2Fn1Ued6QxE9zsZ5AdJl7NsuY/ru4TU/+ctWGo2Xq0rzcLqAdfTpbvCKes6XsrT2v2iG6Hmxp0wwYv3Edokw==",
   "success": true,
   "projectFilePath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\WebServices\\Scrap\\TPHunter.WebServices.Scrap.API\\TPHunter.WebServices.Scrap.API.csproj",
   "expectedPackageFiles": [
@@ -24,11 +24,7 @@
     "C:\\Users\\90538\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512",
     "C:\\Users\\90538\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.7.1\\system.identitymodel.tokens.jwt.6.7.1.nupkg.sha512",
     "C:\\Users\\90538\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
-    "C:\\Users\\90538\\.nuget\\packages\\system.security.cryptography.cng\\4.5.0\\system.security.cryptography.cng.4.5.0.nupkg.sha512",
-    "C:\\Users\\90538\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512",
-    "C:\\Users\\90538\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
-    "C:\\Users\\90538\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
-    "C:\\Users\\90538\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512"
+    "C:\\Users\\90538\\.nuget\\packages\\system.security.cryptography.cng\\4.5.0\\system.security.cryptography.cng.4.5.0.nupkg.sha512"
   ],
   "logs": []
 }

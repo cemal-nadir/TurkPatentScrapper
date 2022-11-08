@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "DHy8FPfZ6IVqkLFy44nIXxXE8xzhH0A94a1eU91S6xKPyMI6mFlXTpEMSK8GAGtaF3UpBqkd7KWn8OgNuFEFew==",
+  "dgSpecHash": "U99eYkJb1JwVpQHwqortZCCLEWG0Vj1yrkozprJPrvFVUS7kOVlaVUJtXEedtvyV6hoN/grXICrZgtrzHJ5npQ==",
   "success": true,
   "projectFilePath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Main\\TPHunter.Source.Main.csproj",
   "expectedPackageFiles": [
@@ -108,11 +108,7 @@
     "C:\\Users\\90538\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\90538\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\90538\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\90538\\.nuget\\packages\\webdrivermanager\\2.16.0\\webdrivermanager.2.16.0.nupkg.sha512",
-    "C:\\Users\\90538\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512",
-    "C:\\Users\\90538\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
-    "C:\\Users\\90538\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
-    "C:\\Users\\90538\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512"
+    "C:\\Users\\90538\\.nuget\\packages\\webdrivermanager\\2.16.0\\webdrivermanager.2.16.0.nupkg.sha512"
   ],
   "logs": []
 }

@@ -16,7 +16,7 @@ D:\.NET PROJELER\SistemPatent\TPHunter\Source\TPHunter.Source.Scrapper\obj\Debug
 D:\.NET PROJELER\SistemPatent\TPHunter\Source\TPHunter.Source.Scrapper\obj\Debug\net5.0\TPHunter.Source.Scrapper.pdb
 D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Scrapper\bin\Debug\net5.0\TPHunter.Source.FileStorage.dll
 D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Scrapper\bin\Debug\net5.0\TPHunter.Source.FileStorage.pdb
-D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Scrapper\bin\Debug\net5.0\Resources\designrejectedimage.png
-D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Scrapper\bin\Debug\net5.0\TPHunter.Source.ImageProcessor.dll
-D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Scrapper\bin\Debug\net5.0\TPHunter.Source.ImageProcessor.pdb
 D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Scrapper\obj\Debug\net5.0\TPHunter.Source.Scrapper.csproj.CopyComplete
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Scrapper\bin\Debug\net5.0\DesignRejectImage.cng
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Scrapper\bin\Debug\net5.0\TPHunter.Source.ImageProcess.dll
+D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Scrapper\bin\Debug\net5.0\TPHunter.Source.ImageProcess.pdb
