@@ -4,7 +4,7 @@
 
 using System.Collections.Generic;
 
-namespace IdentityServerHost.Quickstart.UI
+namespace TPHunter.WebServices.Identity.API.Quickstart.Consent
 {
     public class ConsentInputModel
     {

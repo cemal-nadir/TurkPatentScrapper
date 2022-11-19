@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using TPHunter.Source.Core.Configs;
 
-namespace Browser.Helpers
+namespace TPHunter.Source.Browser.Helpers
 {
     public class ChromeHelper
     {
@@ -14,13 +12,13 @@ namespace Browser.Helpers
             try
             {
               
-                var directories = new DirectoryInfo(RuntimeConfigs.ApplicationStartupPath.ToString()+"Chrome").EnumerateDirectories()
+                var directories = new DirectoryInfo(RuntimeConfigs.ApplicationStartupPath+"Chrome").EnumerateDirectories()
                     .OrderByDescending(d => d.CreationTime)
                     .Select(d => d.Name)
                     .ToList();
                 foreach (var directory in directories)
                 {
-                    var serviceLocation = Directory.GetDirectories(RuntimeConfigs.ApplicationStartupPath.ToString() + "Chrome\\"+directory).FirstOrDefault();
+                    var serviceLocation = Directory.GetDirectories(RuntimeConfigs.ApplicationStartupPath + "Chrome\\"+directory).FirstOrDefault();
                     if (serviceLocation != null)
                         return serviceLocation;
                 }

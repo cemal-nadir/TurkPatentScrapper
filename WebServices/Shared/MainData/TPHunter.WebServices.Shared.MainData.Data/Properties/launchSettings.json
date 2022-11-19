@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "TPHunter.WebServices.Shared.MainData.Data": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:61159;http://localhost:61162"
+    }
+  }
+}

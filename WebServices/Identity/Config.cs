@@ -2,17 +2,15 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
-using IdentityModel;
 using IdentityServer4;
 using IdentityServer4.Models;
-using System;
 using System.Collections.Generic;
 
 namespace TPHunter.WebServices.Identity.API
 {
     public static class Config
     {
-        public static IEnumerable<ApiResource> ApiResources => new ApiResource[]
+        public static IEnumerable<ApiResource> ApiResources => new[]
         {
             new ApiResource("resource_scrap"){Scopes={ "scrap_full_perm" } },
             new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
@@ -27,7 +25,7 @@ namespace TPHunter.WebServices.Identity.API
         //        new IdentityResource(){Name="roles",DisplayName="Roles",Description="Kullanıcı rolleri",UserClaims=new[]{"role" } }
         //    };
         public static IEnumerable<ApiScope> ApiScopes =>
-            new ApiScope[]
+            new[]
             {
           
               new ApiScope("scrap_full_perm","Scrap Api için Full Yetki"),
@@ -35,7 +33,7 @@ namespace TPHunter.WebServices.Identity.API
             };
 
         public static IEnumerable<Client> Clients =>
-            new Client[]
+            new[]
             {
                
                    new Client
@@ -44,14 +42,14 @@ namespace TPHunter.WebServices.Identity.API
                     ClientId="DataSupplierClient",
                     ClientSecrets={new Secret("cv7VzznOzv8RrqLaaSJA4jZ5GeB3TvM8".Sha256())},
                     AllowedGrantTypes=GrantTypes.ClientCredentials,
-                    AllowedScopes={ "scrap_full_perm", IdentityServerConstants.LocalApi.ScopeName },
-                },
-               
-                  
+                    AllowedScopes={ "scrap_full_perm", IdentityServerConstants.LocalApi.ScopeName }
+                }
 
 
 
-                //   new Client
+
+
+                   //   new Client
                 //{
                 //    ClientName="React App Customer Client",
                 //    ClientId="AppCustomerClient",

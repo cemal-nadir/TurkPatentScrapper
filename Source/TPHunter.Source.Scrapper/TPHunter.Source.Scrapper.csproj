@@ -5,9 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Scrapper\TPHunter.Shared.Scrapper\TPHunter.Shared.Scrapper.csproj" />
     <ProjectReference Include="..\TPHunter.Source.Browser\TPHunter.Source.Browser.csproj" />
     <ProjectReference Include="..\TPHunter.Source.Core\TPHunter.Source.Core.csproj" />
-    <ProjectReference Include="..\TPHunter.Source.FileStorage\TPHunter.Source.FileStorage.csproj" />
     <ProjectReference Include="..\TPHunter.Source.ImageProcess\TPHunter.Source.ImageProcess.csproj" />
   </ItemGroup>
 

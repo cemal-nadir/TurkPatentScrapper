@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Main\\TPHunter.Source.Main.csproj": {}
+    "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Main\\TPHunter.Source.Main.csproj": {}
   },
   "projects": {
-    "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Browser\\TPHunter.Source.Browser.csproj": {
+    "D:\\CustomProjects\\SistemPatent\\TPHunter\\Shared\\Scrapper\\TPHunter.Shared.Scrapper\\TPHunter.Shared.Scrapper.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Browser\\TPHunter.Source.Browser.csproj",
-        "projectName": "TPHunter.Source.Browser",
-        "projectPath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Browser\\TPHunter.Source.Browser.csproj",
-        "packagesPath": "C:\\Users\\90538\\.nuget\\packages\\",
-        "outputPath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Browser\\obj\\",
+        "projectUniqueName": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Shared\\Scrapper\\TPHunter.Shared.Scrapper\\TPHunter.Shared.Scrapper.csproj",
+        "projectName": "TPHunter.Shared.Scrapper",
+        "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Shared\\Scrapper\\TPHunter.Shared.Scrapper\\TPHunter.Shared.Scrapper.csproj",
+        "packagesPath": "C:\\Users\\HUAWEI\\.nuget\\packages\\",
+        "outputPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Shared\\Scrapper\\TPHunter.Shared.Scrapper\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\90538\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\HUAWEI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,14 +26,75 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Browser\\TPHunter.Source.Browser.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Browser\\TPHunter.Source.Browser.csproj",
+        "projectName": "TPHunter.Source.Browser",
+        "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Browser\\TPHunter.Source.Browser.csproj",
+        "packagesPath": "C:\\Users\\HUAWEI\\.nuget\\packages\\",
+        "outputPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Browser\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\HUAWEI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Core\\TPHunter.Source.Core.csproj": {
-                "projectPath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Core\\TPHunter.Source.Core.csproj"
+              "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Core\\TPHunter.Source.Core.csproj": {
+                "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Core\\TPHunter.Source.Core.csproj"
               }
             }
           }
@@ -67,7 +132,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -76,21 +142,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.413\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Core\\TPHunter.Source.Core.csproj": {
+    "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Core\\TPHunter.Source.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Core\\TPHunter.Source.Core.csproj",
+        "projectUniqueName": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Core\\TPHunter.Source.Core.csproj",
         "projectName": "TPHunter.Source.Core",
-        "projectPath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Core\\TPHunter.Source.Core.csproj",
-        "packagesPath": "C:\\Users\\90538\\.nuget\\packages\\",
-        "outputPath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Core\\obj\\",
+        "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Core\\TPHunter.Source.Core.csproj",
+        "packagesPath": "C:\\Users\\HUAWEI\\.nuget\\packages\\",
+        "outputPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Core\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\90538\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\HUAWEI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -98,6 +168,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -127,7 +198,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -136,85 +208,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.413\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.FileStorage\\TPHunter.Source.FileStorage.csproj": {
+    "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.ImageProcess\\TPHunter.Source.ImageProcess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.FileStorage\\TPHunter.Source.FileStorage.csproj",
-        "projectName": "TPHunter.Source.FileStorage",
-        "projectPath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.FileStorage\\TPHunter.Source.FileStorage.csproj",
-        "packagesPath": "C:\\Users\\90538\\.nuget\\packages\\",
-        "outputPath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.FileStorage\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\90538\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "net5.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net5.0": {
-            "targetAlias": "net5.0",
-            "projectReferences": {
-              "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Core\\TPHunter.Source.Core.csproj": {
-                "projectPath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Core\\TPHunter.Source.Core.csproj"
-              }
-            }
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
-          "dependencies": {
-            "AWSSDK.S3": {
-              "target": "Package",
-              "version": "[3.7.101.6, )"
-            }
-          },
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.413\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.ImageProcess\\TPHunter.Source.ImageProcess.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.ImageProcess\\TPHunter.Source.ImageProcess.csproj",
+        "projectUniqueName": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.ImageProcess\\TPHunter.Source.ImageProcess.csproj",
         "projectName": "TPHunter.Source.ImageProcess",
-        "projectPath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.ImageProcess\\TPHunter.Source.ImageProcess.csproj",
-        "packagesPath": "C:\\Users\\90538\\.nuget\\packages\\",
-        "outputPath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.ImageProcess\\obj\\",
+        "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.ImageProcess\\TPHunter.Source.ImageProcess.csproj",
+        "packagesPath": "C:\\Users\\HUAWEI\\.nuget\\packages\\",
+        "outputPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.ImageProcess\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\90538\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\HUAWEI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -222,14 +234,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Core\\TPHunter.Source.Core.csproj": {
-                "projectPath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Core\\TPHunter.Source.Core.csproj"
+              "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Core\\TPHunter.Source.Core.csproj": {
+                "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Core\\TPHunter.Source.Core.csproj"
               }
             }
           }
@@ -255,7 +268,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -264,21 +278,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.413\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Main\\TPHunter.Source.Main.csproj": {
+    "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Main\\TPHunter.Source.Main.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Main\\TPHunter.Source.Main.csproj",
+        "projectUniqueName": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Main\\TPHunter.Source.Main.csproj",
         "projectName": "TPHunter.Source.Main",
-        "projectPath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Main\\TPHunter.Source.Main.csproj",
-        "packagesPath": "C:\\Users\\90538\\.nuget\\packages\\",
-        "outputPath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Main\\obj\\",
+        "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Main\\TPHunter.Source.Main.csproj",
+        "packagesPath": "C:\\Users\\HUAWEI\\.nuget\\packages\\",
+        "outputPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Main\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\90538\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\HUAWEI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -286,17 +304,18 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Core\\TPHunter.Source.Core.csproj": {
-                "projectPath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Core\\TPHunter.Source.Core.csproj"
+              "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Core\\TPHunter.Source.Core.csproj": {
+                "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Core\\TPHunter.Source.Core.csproj"
               },
-              "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Scrapper\\TPHunter.Source.Scrapper.csproj": {
-                "projectPath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Scrapper\\TPHunter.Source.Scrapper.csproj"
+              "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Scrapper\\TPHunter.Source.Scrapper.csproj": {
+                "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Scrapper\\TPHunter.Source.Scrapper.csproj"
               }
             }
           }
@@ -316,7 +335,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -325,21 +345,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.413\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Scrapper\\TPHunter.Source.Scrapper.csproj": {
+    "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Scrapper\\TPHunter.Source.Scrapper.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Scrapper\\TPHunter.Source.Scrapper.csproj",
+        "projectUniqueName": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Scrapper\\TPHunter.Source.Scrapper.csproj",
         "projectName": "TPHunter.Source.Scrapper",
-        "projectPath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Scrapper\\TPHunter.Source.Scrapper.csproj",
-        "packagesPath": "C:\\Users\\90538\\.nuget\\packages\\",
-        "outputPath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Scrapper\\obj\\",
+        "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Scrapper\\TPHunter.Source.Scrapper.csproj",
+        "packagesPath": "C:\\Users\\HUAWEI\\.nuget\\packages\\",
+        "outputPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Scrapper\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\90538\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\HUAWEI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -347,23 +371,24 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Browser\\TPHunter.Source.Browser.csproj": {
-                "projectPath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Browser\\TPHunter.Source.Browser.csproj"
+              "D:\\CustomProjects\\SistemPatent\\TPHunter\\Shared\\Scrapper\\TPHunter.Shared.Scrapper\\TPHunter.Shared.Scrapper.csproj": {
+                "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Shared\\Scrapper\\TPHunter.Shared.Scrapper\\TPHunter.Shared.Scrapper.csproj"
               },
-              "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Core\\TPHunter.Source.Core.csproj": {
-                "projectPath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.Core\\TPHunter.Source.Core.csproj"
+              "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Browser\\TPHunter.Source.Browser.csproj": {
+                "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Browser\\TPHunter.Source.Browser.csproj"
               },
-              "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.FileStorage\\TPHunter.Source.FileStorage.csproj": {
-                "projectPath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.FileStorage\\TPHunter.Source.FileStorage.csproj"
+              "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Core\\TPHunter.Source.Core.csproj": {
+                "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Core\\TPHunter.Source.Core.csproj"
               },
-              "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.ImageProcess\\TPHunter.Source.ImageProcess.csproj": {
-                "projectPath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\Source\\TPHunter.Source.ImageProcess\\TPHunter.Source.ImageProcess.csproj"
+              "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.ImageProcess\\TPHunter.Source.ImageProcess.csproj": {
+                "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.ImageProcess\\TPHunter.Source.ImageProcess.csproj"
               }
             }
           }
@@ -383,7 +408,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -392,7 +418,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.413\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

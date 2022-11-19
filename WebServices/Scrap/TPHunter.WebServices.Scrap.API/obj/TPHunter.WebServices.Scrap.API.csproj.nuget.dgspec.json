@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\.NET PROJELER\\SistemPatent\\tphunter\\WebServices\\Scrap\\TPHunter.WebServices.Scrap.API\\TPHunter.WebServices.Scrap.API.csproj": {}
+    "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Scrap\\TPHunter.WebServices.Scrap.API\\TPHunter.WebServices.Scrap.API.csproj": {}
   },
   "projects": {
-    "D:\\.NET PROJELER\\SistemPatent\\tphunter\\WebServices\\Scrap\\TPHunter.WebServices.Scrap.API\\TPHunter.WebServices.Scrap.API.csproj": {
+    "D:\\CustomProjects\\SistemPatent\\TPHunter\\Shared\\Scrapper\\TPHunter.Shared.Scrapper\\TPHunter.Shared.Scrapper.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\WebServices\\Scrap\\TPHunter.WebServices.Scrap.API\\TPHunter.WebServices.Scrap.API.csproj",
-        "projectName": "TPHunter.WebServices.Scrap.API",
-        "projectPath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\WebServices\\Scrap\\TPHunter.WebServices.Scrap.API\\TPHunter.WebServices.Scrap.API.csproj",
-        "packagesPath": "C:\\Users\\90538\\.nuget\\packages\\",
-        "outputPath": "D:\\.NET PROJELER\\SistemPatent\\tphunter\\WebServices\\Scrap\\TPHunter.WebServices.Scrap.API\\obj\\",
+        "projectUniqueName": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Shared\\Scrapper\\TPHunter.Shared.Scrapper\\TPHunter.Shared.Scrapper.csproj",
+        "projectName": "TPHunter.Shared.Scrapper",
+        "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Shared\\Scrapper\\TPHunter.Shared.Scrapper\\TPHunter.Shared.Scrapper.csproj",
+        "packagesPath": "C:\\Users\\HUAWEI\\.nuget\\packages\\",
+        "outputPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Shared\\Scrapper\\TPHunter.Shared.Scrapper\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\90538\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\HUAWEI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,12 +26,158 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\CustomProjects\\SistemPatent\\TPHunter\\Shared\\Utility\\TPHunter.Shared.Utility.ApiUtility\\TPHunter.Shared.Utility.ApiUtility.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Shared\\Utility\\TPHunter.Shared.Utility.ApiUtility\\TPHunter.Shared.Utility.ApiUtility.csproj",
+        "projectName": "TPHunter.Shared.Utility.ApiUtility",
+        "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Shared\\Utility\\TPHunter.Shared.Utility.ApiUtility\\TPHunter.Shared.Utility.ApiUtility.csproj",
+        "packagesPath": "C:\\Users\\HUAWEI\\.nuget\\packages\\",
+        "outputPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Shared\\Utility\\TPHunter.Shared.Utility.ApiUtility\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\HUAWEI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Scrap\\TPHunter.WebServices.Scrap.API\\TPHunter.WebServices.Scrap.API.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Scrap\\TPHunter.WebServices.Scrap.API\\TPHunter.WebServices.Scrap.API.csproj",
+        "projectName": "TPHunter.WebServices.Scrap.API",
+        "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Scrap\\TPHunter.WebServices.Scrap.API\\TPHunter.WebServices.Scrap.API.csproj",
+        "packagesPath": "C:\\Users\\HUAWEI\\.nuget\\packages\\",
+        "outputPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Scrap\\TPHunter.WebServices.Scrap.API\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\HUAWEI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "D:\\CustomProjects\\SistemPatent\\TPHunter\\Shared\\Scrapper\\TPHunter.Shared.Scrapper\\TPHunter.Shared.Scrapper.csproj": {
+                "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Shared\\Scrapper\\TPHunter.Shared.Scrapper\\TPHunter.Shared.Scrapper.csproj"
+              },
+              "D:\\CustomProjects\\SistemPatent\\TPHunter\\Shared\\Utility\\TPHunter.Shared.Utility.ApiUtility\\TPHunter.Shared.Utility.ApiUtility.csproj": {
+                "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Shared\\Utility\\TPHunter.Shared.Utility.ApiUtility\\TPHunter.Shared.Utility.ApiUtility.csproj"
+              },
+              "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Scrap\\TPHunter.WebServices.Scrap.PatentPdf\\TPHunter.WebServices.Scrap.PatentPdf.csproj": {
+                "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Scrap\\TPHunter.WebServices.Scrap.PatentPdf\\TPHunter.WebServices.Scrap.PatentPdf.csproj"
+              },
+              "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\MainData\\TPHunter.WebServices.Shared.MainData.Data\\TPHunter.WebServices.Shared.MainData.Data.csproj": {
+                "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\MainData\\TPHunter.WebServices.Shared.MainData.Data\\TPHunter.WebServices.Shared.MainData.Data.csproj"
+              },
+              "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\MainData\\TPHunter.WebServices.Shared.MainData.Services\\TPHunter.WebServices.Shared.MainData.Services.csproj": {
+                "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\MainData\\TPHunter.WebServices.Shared.MainData.Services\\TPHunter.WebServices.Shared.MainData.Services.csproj"
+              },
+              "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\Utility\\TPHunter.WebServices.Shared.Utility.ApiUtility\\TPHunter.WebServices.Shared.Utility.ApiUtility.csproj": {
+                "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\Utility\\TPHunter.WebServices.Shared.Utility.ApiUtility\\TPHunter.WebServices.Shared.Utility.ApiUtility.csproj"
+              },
+              "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\Utility\\TPHunter.WebServices.Shared.Utility.FileStorage\\TPHunter.WebServices.Shared.Utility.FileStorage.csproj": {
+                "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\Utility\\TPHunter.WebServices.Shared.Utility.FileStorage\\TPHunter.WebServices.Shared.Utility.FileStorage.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -52,6 +202,12 @@
               "target": "Package",
               "version": "[5.0.17, )"
             },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"
@@ -63,7 +219,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -75,7 +232,410 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.413\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Scrap\\TPHunter.WebServices.Scrap.PatentPdf\\TPHunter.WebServices.Scrap.PatentPdf.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Scrap\\TPHunter.WebServices.Scrap.PatentPdf\\TPHunter.WebServices.Scrap.PatentPdf.csproj",
+        "projectName": "TPHunter.WebServices.Scrap.PatentPdf",
+        "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Scrap\\TPHunter.WebServices.Scrap.PatentPdf\\TPHunter.WebServices.Scrap.PatentPdf.csproj",
+        "packagesPath": "C:\\Users\\HUAWEI\\.nuget\\packages\\",
+        "outputPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Scrap\\TPHunter.WebServices.Scrap.PatentPdf\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\HUAWEI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\MainData\\TPHunter.WebServices.Shared.MainData.Core\\TPHunter.WebServices.Shared.MainData.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\MainData\\TPHunter.WebServices.Shared.MainData.Core\\TPHunter.WebServices.Shared.MainData.Core.csproj",
+        "projectName": "TPHunter.WebServices.Shared.MainData.Core",
+        "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\MainData\\TPHunter.WebServices.Shared.MainData.Core\\TPHunter.WebServices.Shared.MainData.Core.csproj",
+        "packagesPath": "C:\\Users\\HUAWEI\\.nuget\\packages\\",
+        "outputPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\MainData\\TPHunter.WebServices.Shared.MainData.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\HUAWEI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\MainData\\TPHunter.WebServices.Shared.MainData.Data\\TPHunter.WebServices.Shared.MainData.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\MainData\\TPHunter.WebServices.Shared.MainData.Data\\TPHunter.WebServices.Shared.MainData.Data.csproj",
+        "projectName": "TPHunter.WebServices.Shared.MainData.Data",
+        "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\MainData\\TPHunter.WebServices.Shared.MainData.Data\\TPHunter.WebServices.Shared.MainData.Data.csproj",
+        "packagesPath": "C:\\Users\\HUAWEI\\.nuget\\packages\\",
+        "outputPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\MainData\\TPHunter.WebServices.Shared.MainData.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\HUAWEI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\MainData\\TPHunter.WebServices.Shared.MainData.Core\\TPHunter.WebServices.Shared.MainData.Core.csproj": {
+                "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\MainData\\TPHunter.WebServices.Shared.MainData.Core\\TPHunter.WebServices.Shared.MainData.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.EntityFrameworkCore.DynamicLinq": {
+              "target": "Package",
+              "version": "[5.2.22, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[5.0.10, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\MainData\\TPHunter.WebServices.Shared.MainData.Services\\TPHunter.WebServices.Shared.MainData.Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\MainData\\TPHunter.WebServices.Shared.MainData.Services\\TPHunter.WebServices.Shared.MainData.Services.csproj",
+        "projectName": "TPHunter.WebServices.Shared.MainData.Services",
+        "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\MainData\\TPHunter.WebServices.Shared.MainData.Services\\TPHunter.WebServices.Shared.MainData.Services.csproj",
+        "packagesPath": "C:\\Users\\HUAWEI\\.nuget\\packages\\",
+        "outputPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\MainData\\TPHunter.WebServices.Shared.MainData.Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\HUAWEI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\MainData\\TPHunter.WebServices.Shared.MainData.Core\\TPHunter.WebServices.Shared.MainData.Core.csproj": {
+                "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\MainData\\TPHunter.WebServices.Shared.MainData.Core\\TPHunter.WebServices.Shared.MainData.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\Utility\\TPHunter.WebServices.Shared.Utility.ApiUtility\\TPHunter.WebServices.Shared.Utility.ApiUtility.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\Utility\\TPHunter.WebServices.Shared.Utility.ApiUtility\\TPHunter.WebServices.Shared.Utility.ApiUtility.csproj",
+        "projectName": "TPHunter.WebServices.Shared.Utility.ApiUtility",
+        "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\Utility\\TPHunter.WebServices.Shared.Utility.ApiUtility\\TPHunter.WebServices.Shared.Utility.ApiUtility.csproj",
+        "packagesPath": "C:\\Users\\HUAWEI\\.nuget\\packages\\",
+        "outputPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\Utility\\TPHunter.WebServices.Shared.Utility.ApiUtility\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\HUAWEI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\Utility\\TPHunter.WebServices.Shared.Utility.FileStorage\\TPHunter.WebServices.Shared.Utility.FileStorage.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\Utility\\TPHunter.WebServices.Shared.Utility.FileStorage\\TPHunter.WebServices.Shared.Utility.FileStorage.csproj",
+        "projectName": "TPHunter.WebServices.Shared.Utility.FileStorage",
+        "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\Utility\\TPHunter.WebServices.Shared.Utility.FileStorage\\TPHunter.WebServices.Shared.Utility.FileStorage.csproj",
+        "packagesPath": "C:\\Users\\HUAWEI\\.nuget\\packages\\",
+        "outputPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\Utility\\TPHunter.WebServices.Shared.Utility.FileStorage\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\HUAWEI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "AWSSDK.S3": {
+              "target": "Package",
+              "version": "[3.7.101.16, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

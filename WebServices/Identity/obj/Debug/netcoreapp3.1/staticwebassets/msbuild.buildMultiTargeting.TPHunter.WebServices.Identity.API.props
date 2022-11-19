@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\TPHunter.WebServices.Identity.API.props" />
+</Project>

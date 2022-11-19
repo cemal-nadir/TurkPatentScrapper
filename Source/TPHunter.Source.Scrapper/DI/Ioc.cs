@@ -1,11 +1,6 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TPHunter.Source.Scrapper.Abstract.Main;
 using TPHunter.Source.Scrapper.Abstract.Shared;
 using TPHunter.Source.Scrapper.Services.Main;
@@ -15,41 +10,41 @@ namespace TPHunter.Source.Scrapper.DI
 {
     public static class Ioc
     {
-        private static readonly IWindsorContainer container = new WindsorContainer();
+        private static readonly IWindsorContainer Container = new WindsorContainer();
         public static void MarkaWorkerFactory()
         {
-            container.Register(
+            Container.Register(
                 Component.For<IWorker>().ImplementedBy<MarkaWorker>()
                 );
         }
         public static void DesignWorkerFactory()
         {
-            container.Register(
+            Container.Register(
                 Component.For<IWorker>().ImplementedBy<DesignWorker>()
                 );
         }
         public static void PatentWorkerFactory()
         {
-            container.Register(
+            Container.Register(
                 Component.For<IWorker>().ImplementedBy<PatentWorker>()
                 );
         }
         public static void MarkaPageFactory(IWebDriver driver)
         {
-            container.Register(Component.For(typeof(IPage<>)).ImplementedBy(typeof(MarkaPage<>)).DependsOn(Dependency.OnValue("webDriver", driver)));
+            Container.Register(Component.For(typeof(IPage<>)).ImplementedBy(typeof(MarkaPage)).DependsOn(Dependency.OnValue("webDriver", driver)));
         }
         public static void DesignPageFactory(IWebDriver driver)
         {
-            container.Register(Component.For(typeof(IPage<>)).ImplementedBy(typeof(DesignPage<>)).DependsOn(Dependency.OnValue("webDriver", driver)));
+            Container.Register(Component.For(typeof(IPage<>)).ImplementedBy(typeof(DesignPage)).DependsOn(Dependency.OnValue("webDriver", driver)));
         }
         public static void PatentPageFactory(IWebDriver driver)
         {
-            container.Register(Component.For(typeof(IPage<>)).ImplementedBy(typeof(PatentPage<>)).DependsOn(Dependency.OnValue("webDriver", driver)));
+            Container.Register(Component.For(typeof(IPage<>)).ImplementedBy(typeof(PatentPage)).DependsOn(Dependency.OnValue("webDriver", driver)));
         }
 
         public static T Resolve<T>()
         {
-            return container.Resolve<T>();
+            return Container.Resolve<T>();
         }
     }
 }

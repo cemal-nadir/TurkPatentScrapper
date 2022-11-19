@@ -21,8 +21,18 @@ D:\.NET PROJELER\SistemPatent\tphunter\App\net5.0\TPHunter.Source.Main.deps.json
 D:\.NET PROJELER\SistemPatent\tphunter\App\net5.0\TPHunter.Source.Main.runtimeconfig.json
 D:\.NET PROJELER\SistemPatent\tphunter\App\net5.0\TPHunter.Source.Main.runtimeconfig.dev.json
 D:\.NET PROJELER\SistemPatent\tphunter\App\net5.0\TPHunter.Source.Main.dll
-D:\.NET PROJELER\SistemPatent\tphunter\App\net5.0\ref\TPHunter.Source.Main.dll
 D:\.NET PROJELER\SistemPatent\tphunter\App\net5.0\TPHunter.Source.Main.pdb
 D:\.NET PROJELER\SistemPatent\tphunter\App\net5.0\config.json
 D:\.NET PROJELER\SistemPatent\tphunter\App\net5.0\DesignRejectImage.cng
 D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Main\obj\Debug\net5.0\TPHunter.Source.Main.csproj.CopyComplete
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Main\obj\Debug\net5.0\TPHunter.Source.Main.csproj.AssemblyReference.cache
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Main\obj\Debug\net5.0\TPHunter.Source.Main.GeneratedMSBuildEditorConfig.editorconfig
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Main\obj\Debug\net5.0\TPHunter.Source.Main.AssemblyInfoInputs.cache
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Main\obj\Debug\net5.0\TPHunter.Source.Main.AssemblyInfo.cs
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Main\obj\Debug\net5.0\TPHunter.Source.Main.csproj.CoreCompileInputs.cache
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Main\obj\Debug\net5.0\TPHunter.Source.Main.csproj.CopyComplete
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Main\obj\Debug\net5.0\TPHunter.Source.Main.dll
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Main\obj\Debug\net5.0\refint\TPHunter.Source.Main.dll
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Main\obj\Debug\net5.0\TPHunter.Source.Main.pdb
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Main\obj\Debug\net5.0\TPHunter.Source.Main.genruntimeconfig.cache
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Main\obj\Debug\net5.0\ref\TPHunter.Source.Main.dll

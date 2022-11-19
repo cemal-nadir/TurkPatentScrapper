@@ -1,14 +1,13 @@
-﻿using Browser.Helpers;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using System.Collections.Generic;
-using TPHunter.Source.Core.Models.Scrapper;
+using TPHunter.Shared.Scrapper.Models;
+using TPHunter.Source.Browser.Helpers;
 using TPHunter.Source.Scrapper.Abstract.Shared;
 using TPHunter.Source.Scrapper.Functions;
-using TPHunter.Source.Scrapper.Models;
 
 namespace TPHunter.Source.Scrapper.Services.Shared
 {
-    public class MarkaPage<T> : IPage<MarkModel>
+    public class MarkaPage : IPage<MarkModel>
     {
         private readonly IWebDriver _webDriver;
         public MarkaPage(IWebDriver webDriver)
@@ -23,7 +22,7 @@ namespace TPHunter.Source.Scrapper.Services.Shared
 
         public void Prepare()
         {
-            _webDriver.GoTPPage();
+            _webDriver.GoTpPage();
             _webDriver.ClickSearchType(MainHelper.SearchType.Trademark);
         }
 

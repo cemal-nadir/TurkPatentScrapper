@@ -2,7 +2,9 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
-namespace IdentityServerHost.Quickstart.UI
+using TPHunter.WebServices.Identity.API.Quickstart.Consent;
+
+namespace TPHunter.WebServices.Identity.API.Quickstart.Device
 {
     public class DeviceAuthorizationViewModel : ConsentViewModel
     {

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TPHunter.Source.Core.Helpers
 {
@@ -23,7 +20,7 @@ namespace TPHunter.Source.Core.Helpers
             if (string.IsNullOrEmpty(classesText) || classesText == "-")
                 return null;
 
-            int[] classesArray = Array.ConvertAll(classesText.Split('/').Where(x => !string.IsNullOrEmpty(x)).ToArray(), int.Parse);
+            var classesArray = Array.ConvertAll(classesText.Split('/').Where(x => !string.IsNullOrEmpty(x)).ToArray(), int.Parse);
             return classesArray;
         }
         public static int? ParseClass(this string classText)

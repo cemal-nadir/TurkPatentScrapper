@@ -14,3 +14,19 @@ D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.ImageProcess\obj\D
 D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.ImageProcess\obj\Debug\net5.0\TPHunter.Source.ImageProcess.dll
 D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.ImageProcess\obj\Debug\net5.0\ref\TPHunter.Source.ImageProcess.dll
 D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.ImageProcess\obj\Debug\net5.0\TPHunter.Source.ImageProcess.pdb
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.ImageProcess\bin\Debug\net5.0\DesignRejectImage.cng
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.ImageProcess\bin\Debug\net5.0\TPHunter.Source.ImageProcess.deps.json
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.ImageProcess\bin\Debug\net5.0\TPHunter.Source.ImageProcess.dll
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.ImageProcess\bin\Debug\net5.0\TPHunter.Source.ImageProcess.pdb
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.ImageProcess\bin\Debug\net5.0\TPHunter.Source.Core.dll
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.ImageProcess\bin\Debug\net5.0\TPHunter.Source.Core.pdb
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.ImageProcess\obj\Debug\net5.0\TPHunter.Source.ImageProcess.csproj.AssemblyReference.cache
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.ImageProcess\obj\Debug\net5.0\TPHunter.Source.ImageProcess.GeneratedMSBuildEditorConfig.editorconfig
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.ImageProcess\obj\Debug\net5.0\TPHunter.Source.ImageProcess.AssemblyInfoInputs.cache
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.ImageProcess\obj\Debug\net5.0\TPHunter.Source.ImageProcess.AssemblyInfo.cs
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.ImageProcess\obj\Debug\net5.0\TPHunter.Source.ImageProcess.csproj.CoreCompileInputs.cache
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.ImageProcess\obj\Debug\net5.0\TPHunter.Source.ImageProcess.csproj.CopyComplete
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.ImageProcess\obj\Debug\net5.0\TPHunter.Source.ImageProcess.dll
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.ImageProcess\obj\Debug\net5.0\refint\TPHunter.Source.ImageProcess.dll
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.ImageProcess\obj\Debug\net5.0\TPHunter.Source.ImageProcess.pdb
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.ImageProcess\obj\Debug\net5.0\ref\TPHunter.Source.ImageProcess.dll

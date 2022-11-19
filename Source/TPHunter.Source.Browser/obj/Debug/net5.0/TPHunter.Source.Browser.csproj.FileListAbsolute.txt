@@ -13,3 +13,18 @@ D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Browser\obj\Debug\
 D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Browser\obj\Debug\net5.0\ref\TPHunter.Source.Browser.dll
 D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Browser\obj\Debug\net5.0\TPHunter.Source.Browser.pdb
 D:\.NET PROJELER\SistemPatent\TPHunter\Source\TPHunter.Source.Browser\obj\Debug\net5.0\TPHunter.Source.Browser.csproj.CopyComplete
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Browser\bin\Debug\net5.0\TPHunter.Source.Browser.deps.json
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Browser\bin\Debug\net5.0\TPHunter.Source.Browser.dll
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Browser\bin\Debug\net5.0\TPHunter.Source.Browser.pdb
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Browser\bin\Debug\net5.0\TPHunter.Source.Core.dll
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Browser\bin\Debug\net5.0\TPHunter.Source.Core.pdb
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Browser\obj\Debug\net5.0\TPHunter.Source.Browser.csproj.AssemblyReference.cache
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Browser\obj\Debug\net5.0\TPHunter.Source.Browser.GeneratedMSBuildEditorConfig.editorconfig
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Browser\obj\Debug\net5.0\TPHunter.Source.Browser.AssemblyInfoInputs.cache
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Browser\obj\Debug\net5.0\TPHunter.Source.Browser.AssemblyInfo.cs
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Browser\obj\Debug\net5.0\TPHunter.Source.Browser.csproj.CoreCompileInputs.cache
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Browser\obj\Debug\net5.0\TPHunter.Source.Browser.csproj.CopyComplete
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Browser\obj\Debug\net5.0\TPHunter.Source.Browser.dll
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Browser\obj\Debug\net5.0\refint\TPHunter.Source.Browser.dll
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Browser\obj\Debug\net5.0\TPHunter.Source.Browser.pdb
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Browser\obj\Debug\net5.0\ref\TPHunter.Source.Browser.dll

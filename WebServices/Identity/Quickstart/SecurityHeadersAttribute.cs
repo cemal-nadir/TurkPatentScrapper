@@ -5,7 +5,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace IdentityServerHost.Quickstart.UI
+namespace TPHunter.WebServices.Identity.API.Quickstart
 {
     public class SecurityHeadersAttribute : ActionFilterAttribute
     {
@@ -45,10 +45,10 @@ namespace IdentityServerHost.Quickstart.UI
                 }
 
                 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
-                var referrer_policy = "no-referrer";
+                var referrerPolicy = "no-referrer";
                 if (!context.HttpContext.Response.Headers.ContainsKey("Referrer-Policy"))
                 {
-                    context.HttpContext.Response.Headers.Add("Referrer-Policy", referrer_policy);
+                    context.HttpContext.Response.Headers.Add("Referrer-Policy", referrerPolicy);
                 }
             }
         }

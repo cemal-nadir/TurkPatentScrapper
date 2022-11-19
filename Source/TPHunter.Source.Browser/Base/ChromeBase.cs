@@ -1,42 +1,41 @@
-﻿
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using TPHunter.Source.Browser.Helpers;
 using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
 using WebDriverManager.Helpers;
-using Browser.Helpers;
 
-namespace Browser.Base
+namespace TPHunter.Source.Browser.Base
 {
     public class ChromeBase : IBrowserBase
     {
-        private readonly ChromeOptions options;
-        private ChromeHelper chromeHelper;
+        private readonly ChromeOptions _options;
+        private ChromeHelper _chromeHelper;
         public ChromeBase()
         {
             new DriverManager().SetUpDriver(new ChromeConfig(), VersionResolveStrategy.MatchingBrowser);
-            options = new ChromeOptions();
+            _options = new ChromeOptions();
       //      options.AddArgument("--headless");             
-            options.AddArguments("--enable-extensions");
-            options.AddArgument("no-sandbox");
-            options.AddArgument("--ignore-certificate-errors");
+            _options.AddArguments("--enable-extensions");
+            _options.AddArgument("no-sandbox");
+            _options.AddArgument("--ignore-certificate-errors");
        //     options.AddUserProfilePreference("download.default_directory", Configs.appConfiguration.GetSection("GeneralSettings").GetSection("DownloadLocation").Value);
        //     options.AddUserProfilePreference("download.prompt_for_download", false);
-            options.AddArgument("disable-infobars");
-            options.AddArgument("--disable-setuid-sandbox");
-            options.AddArgument("--disable-gpu");
+            _options.AddArgument("disable-infobars");
+            _options.AddArgument("--disable-setuid-sandbox");
+            _options.AddArgument("--disable-gpu");
       //      options.AddArguments("--start-maximized");
-            options.AddArgument("--user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36");
-            options.AddArguments("--window-size=1280,1024");
+            _options.AddArgument("--user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36");
+            _options.AddArguments("--window-size=1280,1024");
         }
         public IWebDriver GenerateBrowser()
         {
-            chromeHelper = new ChromeHelper();
-            var serviceLoc=chromeHelper.FindReleaseService();
+            _chromeHelper = new ChromeHelper();
+            var serviceLoc=_chromeHelper.FindReleaseService();
             var service=ChromeDriverService.CreateDefaultService(serviceLoc);
             service.SuppressInitialDiagnosticInformation = true;
             service.HideCommandPromptWindow = true;
-            return new ChromeDriver(service, options);
+            return new ChromeDriver(service, _options);
         }
     }
 }

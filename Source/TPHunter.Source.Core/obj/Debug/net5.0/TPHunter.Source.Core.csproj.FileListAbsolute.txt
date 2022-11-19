@@ -9,3 +9,15 @@ D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Core\obj\Debug\net
 D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Core\obj\Debug\net5.0\TPHunter.Source.Core.dll
 D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Core\obj\Debug\net5.0\ref\TPHunter.Source.Core.dll
 D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Core\obj\Debug\net5.0\TPHunter.Source.Core.pdb
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Core\bin\Debug\net5.0\TPHunter.Source.Core.deps.json
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Core\bin\Debug\net5.0\TPHunter.Source.Core.dll
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Core\bin\Debug\net5.0\TPHunter.Source.Core.pdb
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Core\obj\Debug\net5.0\TPHunter.Source.Core.csproj.AssemblyReference.cache
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Core\obj\Debug\net5.0\TPHunter.Source.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Core\obj\Debug\net5.0\TPHunter.Source.Core.AssemblyInfoInputs.cache
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Core\obj\Debug\net5.0\TPHunter.Source.Core.AssemblyInfo.cs
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Core\obj\Debug\net5.0\TPHunter.Source.Core.csproj.CoreCompileInputs.cache
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Core\obj\Debug\net5.0\TPHunter.Source.Core.dll
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Core\obj\Debug\net5.0\refint\TPHunter.Source.Core.dll
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Core\obj\Debug\net5.0\TPHunter.Source.Core.pdb
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Core\obj\Debug\net5.0\ref\TPHunter.Source.Core.dll

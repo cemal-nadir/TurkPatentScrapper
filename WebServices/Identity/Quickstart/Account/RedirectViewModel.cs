@@ -3,7 +3,7 @@
 
 
 
-namespace IdentityServerHost.Quickstart.UI
+namespace TPHunter.WebServices.Identity.API.Quickstart.Account
 {
     public class RedirectViewModel
     {

@@ -3,11 +3,9 @@ using TPHunter.Source.Scrapper.Abstract.Main;
 
 namespace TPHunter.Source.Main
 {
-    class Program
+    internal static class Program
     {
-      
-
-        static void Main(string[] args)
+        private static void Main()
         {
             Startup.SetConfigs();
             Scrapper.DI.Ioc.MarkaWorkerFactory();

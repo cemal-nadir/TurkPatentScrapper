@@ -1,8 +1,9 @@
 using System;
 using IdentityServer4.Models;
 using Microsoft.AspNetCore.Mvc;
+using TPHunter.WebServices.Identity.API.Quickstart.Account;
 
-namespace IdentityServerHost.Quickstart.UI
+namespace TPHunter.WebServices.Identity.API.Quickstart
 {
     public static class Extensions
     {

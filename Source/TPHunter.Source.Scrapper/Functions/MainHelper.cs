@@ -1,16 +1,12 @@
-﻿using Browser.Helpers;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using TPHunter.Source.Core.Configs;
 using TPHunter.Source.Core.Helpers;
-using TPHunter.Source.Core.Models.Scrapper;
+using TPHunter.Shared.Scrapper.Models;
+using TPHunter.Source.Browser.Helpers;
 using TPHunter.Source.ImageProcess;
 using TPHunter.Source.Scrapper.Models;
 
@@ -18,9 +14,9 @@ namespace TPHunter.Source.Scrapper.Functions
 {
     public static class MainHelper
     {
-        public static void GoTPPage(this IWebDriver driver)
+        public static void GoTpPage(this IWebDriver driver)
         {
-            driver.Navigate().GoToUrl(RuntimeConfigs.GeneralConfig.TPConfig.TPSearchPage);
+            driver.Navigate().GoToUrl(RuntimeConfigs.GeneralConfig.TpConfig.TpSearchPage);
         }
         public static void ClickSearchType(this IWebDriver driver, SearchType searchType)
         {
@@ -54,31 +50,24 @@ namespace TPHunter.Source.Scrapper.Functions
         }
         public static IEnumerable<ResponseListTableModel> GetResponseListButtons(this IEnumerable<IWebElement> webElements)
         {
-            List<ResponseListTableModel> responseListTableModels = new();
-            foreach (var rows in webElements)
-            {
-                var cols = rows.FindElements(By.TagName("td"));
-                var button = cols.LastOrDefault().FindElement(By.TagName("button"));
-                var applicationNumber = cols.FirstOrDefault(x => x.GetAttribute("role") == "applicationNo");
-                responseListTableModels.Add(new()
-                {
-                    ApplicationNumber = applicationNumber.Text,
-                    DetailButton = button
-                });
-            }
-            return responseListTableModels;
+            return (from rows in webElements
+                select rows.FindElements(By.TagName("td"))
+                into cols
+                let button = cols.LastOrDefault()?.FindElement(By.TagName("button"))
+                let applicationNumber = cols.FirstOrDefault(x => x.GetAttribute("role") == "applicationNo")
+                select new ResponseListTableModel()
+                    { ApplicationNumber = applicationNumber?.Text, DetailButton = button }).ToList();
         }
         public static MarkModel GetMarkData(this IWebDriver driver, ScrapType scrapType)
         {
             MarkModel markModel = new();
-            List<IWebElement> cacheRows = new();
             var sections = (scrapType is ScrapType.Download) ? driver.FindElement(By.ClassName("MuiCardContent-root"), 20).FindElements(By.TagName("fieldset"))
                 : driver.FindElement(By.Id("search-results"), 20).FindElements(By.TagName("fieldset"));
 
             #region Section Marka Bilgileri
             List<HolderModel> cacheHolders = new();
             markModel.ImageText = sections[0].FindElement(By.TagName("img")).GetAttribute("src");
-            cacheRows = sections[0].FindElement(By.TagName("tbody")).FindElements(By.TagName("tr")).ToList();
+            var cacheRows = sections[0].FindElement(By.TagName("tbody")).FindElements(By.TagName("tr")).ToList();
             markModel.ApplicationNumber = cacheRows[0].FindElements(By.TagName("td"))[1].Text;
             markModel.ApplicationDate = cacheRows[0].FindElements(By.TagName("td"))[3].Text.CustomConvertToDatetime();
             markModel.RegistrationNumber = cacheRows[1].FindElements(By.TagName("td"))[1].Text;
@@ -131,7 +120,7 @@ namespace TPHunter.Source.Scrapper.Functions
             if (sections.Count > 1)
             {
                 List<MarkTransactionsModel> cacheMarkTransactions = new();
-                string transactionType = default(string);
+                var transactionType = default(string);
                 var markTransactionSection = sections.Last();
                 cacheRows = markTransactionSection.FindElement(By.TagName("tbody")).FindElements(By.TagName("tr")).ToList();
 
@@ -182,13 +171,11 @@ namespace TPHunter.Source.Scrapper.Functions
         public static DesignModel GetDesignData(this IWebDriver driver, ScrapType scrapType)
         {
             DesignModel designModel = new();
-            List<IWebElement> cacheRows = new();
             var sections = (scrapType is ScrapType.Download) ? driver.FindElement(By.ClassName("MuiCardContent-root"), 20).FindElements(By.TagName("fieldset"))
                 : driver.FindElement(By.Id("search-results"), 20).FindElements(By.TagName("fieldset"));
-            IWebElement cacheSection;
 
             #region Section Dosya Bilgileri
-            cacheRows = sections[0].FindElement(By.TagName("tbody")).FindElements(By.TagName("tr")).ToList();
+            var cacheRows = sections[0].FindElement(By.TagName("tbody")).FindElements(By.TagName("tr")).ToList();
             designModel.ApplicationNumber = cacheRows[0].FindElements(By.TagName("td"))[1].Text;
             designModel.ApplicationDate = cacheRows[1].FindElements(By.TagName("td"))[1].Text.CustomConvertToDatetime();
             designModel.RegistrationNumber = cacheRows[2].FindElements(By.TagName("td"))[1].Text;
@@ -199,21 +186,17 @@ namespace TPHunter.Source.Scrapper.Functions
             #endregion
             #region Section Başvuru Sahipleri
 
-            cacheSection = sections.FirstOrDefault(x => x.FindElement(By.TagName("legend")).Text == "Başvuru Sahipleri");
+            var cacheSection = sections.FirstOrDefault(x => x.FindElement(By.TagName("legend")).Text == "Başvuru Sahipleri");
             if (cacheSection != null)
             {
-                List<HolderModel> cacheHolders = new();
                 cacheRows = cacheSection.FindElement(By.TagName("tbody")).FindElements(By.TagName("tr")).ToList();
-                foreach (var cacheRow in cacheRows)
-                {
-                    var cacheHolderCols = cacheRow.FindElements(By.TagName("td"));
-                    cacheHolders.Add(new HolderModel()
+                var cacheHolders = cacheRows.Select(cacheRow => cacheRow.FindElements(By.TagName("td")))
+                    .Select(cacheHolderCols => new HolderModel()
                     {
                         HolderCode = cacheHolderCols[0].Text,
-                        HolderName = cacheHolderCols[1].FindElements(By.TagName("h6")).FirstOrDefault().Text,
-                        Address = cacheHolderCols[1].FindElements(By.TagName("h6")).LastOrDefault().Text
-                    });
-                }
+                        HolderName = cacheHolderCols[1].FindElements(By.TagName("h6")).FirstOrDefault()?.Text,
+                        Address = cacheHolderCols[1].FindElements(By.TagName("h6")).LastOrDefault()?.Text
+                    }).ToList();
                 designModel.Holders = cacheHolders;
             }
             #endregion
@@ -226,7 +209,7 @@ namespace TPHunter.Source.Scrapper.Functions
                 cacheRows = cacheSection.FindElement(By.TagName("tbody")).FindElements(By.TagName("tr")).ToList();
                 foreach (var cacheRow in cacheRows)
                 {
-                    cacheDesigners.Add(cacheRow.FindElement(By.TagName("td")).FindElements(By.TagName("h6")).FirstOrDefault().Text);
+                    cacheDesigners.Add(cacheRow.FindElement(By.TagName("td")).FindElements(By.TagName("h6")).FirstOrDefault()?.Text);
                 }
                 designModel.Designers = cacheDesigners;
             }
@@ -252,10 +235,12 @@ namespace TPHunter.Source.Scrapper.Functions
                 foreach (var cacheRow in cacheRows)
                 {
                     var cacheCols = cacheRow.FindElements(By.TagName("td"));
-                    ProductModel cacheProductModel = new();
-                    cacheProductModel.Name = cacheCols[1].Text;
-                    cacheProductModel.LocarnoClass = cacheCols[2].Text.Contains(",") ? cacheCols[2].Text.Split(',') : new string[] { cacheCols[2].Text };
-                    cacheProductModel.ProductImages = cacheCols[3].FindElements(By.TagName("img")).Select(x => x.GetAttribute("src")).ToArray();
+                    ProductModel cacheProductModel = new()
+                    {
+                        Name = cacheCols[1].Text,
+                        LocarnoClass = cacheCols[2].Text.Contains(",") ? cacheCols[2].Text.Split(',') : new[] { cacheCols[2].Text },
+                        ProductImages = cacheCols[3].FindElements(By.TagName("img")).Select(x => x.GetAttribute("src")).ToArray()
+                    };
                     Ioc.ProcessorFactory();
                     cacheProductModel.IsProductApproved = Ioc.Resolve<IProcessor>().IsProductImageApproved(cacheProductModel.ProductImages.FirstOrDefault()).Result;
                     if (cacheCols[4].FindElements(By.TagName("tbody")).Any())
@@ -282,8 +267,8 @@ namespace TPHunter.Source.Scrapper.Functions
             {
                 List<DesignTransactionModel> cacheDesignTransactionModel = new();
                 cacheRows = cacheSection.FindElement(By.TagName("tbody")).FindElements(By.TagName("tr")).ToList();
-                string transactionType = default(string);
-                string transactionDetail = default(string);
+                var transactionType = default(string);
+                var transactionDetail = default(string);
                 foreach (var cacheRow in cacheRows)
                 {
                     var cols = cacheRow.FindElements(By.TagName("td"));
@@ -313,13 +298,11 @@ namespace TPHunter.Source.Scrapper.Functions
         public static PatentModel GetPatentData(this IWebDriver driver, ScrapType scrapType)
         {
             PatentModel patentModel = new();
-            List<IWebElement> cacheRows = new();
             var sections = (scrapType is ScrapType.Download) ? driver.FindElement(By.ClassName("MuiCardContent-root"), 20).FindElements(By.TagName("fieldset"))
                 : driver.FindElement(By.Id("search-results"), 20).FindElements(By.TagName("fieldset"));
-            IWebElement cacheSection;
 
             #region Section Başvuru Bilgileri
-            cacheRows = sections[0].FindElement(By.TagName("tbody")).FindElements(By.TagName("tr")).ToList();
+            var cacheRows = sections[0].FindElement(By.TagName("tbody")).FindElements(By.TagName("tr")).ToList();
             patentModel.ApplicationNumber = cacheRows[0].FindElements(By.TagName("td"))[1].Text;
             patentModel.ApplicationDate = cacheRows[0].FindElements(By.TagName("td"))[3].Text.CustomConvertToDatetime();
             patentModel.ApplicationType = cacheRows[1].FindElements(By.TagName("td"))[1].Text;
@@ -328,29 +311,24 @@ namespace TPHunter.Source.Scrapper.Functions
             patentModel.RegistrationNumber = cacheRows[2].FindElements(By.TagName("td"))[3].Text;
             patentModel.RegistrationDate = cacheRows[3].FindElements(By.TagName("td"))[1].Text.CustomConvertToDatetime();
             patentModel.ProtectionType = cacheRows[3].FindElements(By.TagName("td"))[3].Text;
-            patentModel.EPCPublishNumber = cacheRows[4].FindElements(By.TagName("td"))[1].Text;
-            patentModel.EPCApplicationNumber = cacheRows[4].FindElements(By.TagName("td"))[3].Text;
-            patentModel.PCTPublishNumber = cacheRows[5].FindElements(By.TagName("td"))[1].Text;
-            patentModel.PCTApplicationNumber = cacheRows[5].FindElements(By.TagName("td"))[3].Text;
-            patentModel.PCTPublishDate = cacheRows[6].FindElements(By.TagName("td"))[1].Text.CustomConvertToDatetime();
+            patentModel.EpcPublishNumber = cacheRows[4].FindElements(By.TagName("td"))[1].Text;
+            patentModel.EpcApplicationNumber = cacheRows[4].FindElements(By.TagName("td"))[3].Text;
+            patentModel.PctPublishNumber = cacheRows[5].FindElements(By.TagName("td"))[1].Text;
+            patentModel.PctApplicationNumber = cacheRows[5].FindElements(By.TagName("td"))[3].Text;
+            patentModel.PctPublishDate = cacheRows[6].FindElements(By.TagName("td"))[1].Text.CustomConvertToDatetime();
             #endregion
             #region Section Başvuru Sahipleri
 
-            cacheSection = sections.FirstOrDefault(x => x.FindElement(By.TagName("legend")).Text == "Başvuru Sahipleri");
+            var cacheSection = sections.FirstOrDefault(x => x.FindElement(By.TagName("legend")).Text == "Başvuru Sahipleri");
             if (cacheSection != null)
             {
-                List<HolderModel> cacheHolders = new();
                 cacheRows = cacheSection.FindElement(By.TagName("tbody")).FindElements(By.TagName("tr")).ToList();
-                foreach (var cacheRow in cacheRows)
+                var cacheHolders = cacheRows.Select(cacheRow => new HolderModel()
                 {
-
-                    cacheHolders.Add(new HolderModel()
-                    {
-                        HolderCode = cacheRow.FindElements(By.TagName("td"))[0].Text,
-                        HolderName = cacheRow.FindElements(By.TagName("td"))[1].Text,
-                        Address = cacheRow.FindElements(By.TagName("td"))[2].Text
-                    });
-                }
+                    HolderCode = cacheRow.FindElements(By.TagName("td"))[0].Text,
+                    HolderName = cacheRow.FindElements(By.TagName("td"))[1].Text,
+                    Address = cacheRow.FindElements(By.TagName("td"))[2].Text
+                }).ToList();
                 patentModel.Holders = cacheHolders;
             }
             #endregion
@@ -440,20 +418,9 @@ namespace TPHunter.Source.Scrapper.Functions
             cacheSection = sections.FirstOrDefault(x => x.FindElement(By.TagName("legend")).Text == "Yayınlar");
             if (cacheSection != null)
             {
-                List<PatentPublicationModel> cachePatentPulication = new();
                 cacheRows = cacheSection.FindElement(By.TagName("tbody")).FindElements(By.TagName("tr")).ToList();
-                foreach (var cacheRow in cacheRows)
-                {
-                    cachePatentPulication.Add(new PatentPublicationModel()
-                    {
-                        PublishDate = cacheRow.FindElements(By.TagName("td"))[0].Text.CustomConvertToDatetime(),
-                        Description = cacheRow.FindElements(By.TagName("td"))[1].Text
-                    }); ;
-
-
-
-                }
-                patentModel.PatentPublications = cachePatentPulication;
+                var cachePatentPublication = cacheRows.Select(cacheRow => new PatentPublicationModel() { PublishDate = cacheRow.FindElements(By.TagName("td"))[0].Text.CustomConvertToDatetime(), Description = cacheRow.FindElements(By.TagName("td"))[1].Text }).ToList();
+                patentModel.PatentPublications = cachePatentPublication;
             }
             #endregion
             #region Section Ödeme Tarihleri
@@ -487,19 +454,19 @@ namespace TPHunter.Source.Scrapper.Functions
                     {
                         PriortyDate = cacheRow.FindElements(By.TagName("td"))[0].Text.CustomConvertToDatetime(),
                         PriortyNumber = cacheRow.FindElements(By.TagName("td"))[1].Text,
-                        PriortyCounter = cacheRow.FindElements(By.TagName("td"))[2].Text
+                        PriortyCountry = cacheRow.FindElements(By.TagName("td"))[2].Text
                     });
                 }
                 patentModel.PatentPriorties = cachePatentpriorties;
             }
             #endregion
             #region Patent'le İlişkili Pdf'ler
-            patentModel.DocumentsUrl = $"{RuntimeConfigs.GeneralConfig.TPConfig.TPPatentPdfPage}?patentAppNo={patentModel.ApplicationNumber}&documentsTpye=all";
+            patentModel.DocumentsUrl = $"{RuntimeConfigs.GeneralConfig.TpConfig.TpPatentPdfPage}?patentAppNo={patentModel.ApplicationNumber}&documentsTpye=all";
             #region İnceleme Raporu Pdf'i
-            patentModel.AnalysisReportUrl = $"{RuntimeConfigs.GeneralConfig.TPConfig.TPPatentPdfPage}?patentAppNo={patentModel.ApplicationNumber}&documentsTpye=inceleme";
+            patentModel.AnalysisReportUrl = $"{RuntimeConfigs.GeneralConfig.TpConfig.TpPatentPdfPage}?patentAppNo={patentModel.ApplicationNumber}&documentsTpye=inceleme";
             #endregion
             #region Araştırma Raporu Pdf'i
-            patentModel.ResearchReportUrl = $"{RuntimeConfigs.GeneralConfig.TPConfig.TPPatentPdfPage}?patentAppNo={patentModel.ApplicationNumber}&documentsTpye=arastirma";
+            patentModel.ResearchReportUrl = $"{RuntimeConfigs.GeneralConfig.TpConfig.TpPatentPdfPage}?patentAppNo={patentModel.ApplicationNumber}&documentsTpye=arastirma";
             #endregion
 
             #endregion
@@ -536,7 +503,7 @@ namespace TPHunter.Source.Scrapper.Functions
         public static bool CheckPageIsLastAndClick(this IWebDriver driver)
         {
             var nextPageButton = driver.FindElement(By.ClassName("MuiTablePagination-root"), 20).FindElements(By.TagName("button")).FirstOrDefault(x => x.GetAttribute("title") == "Next page");
-            if (nextPageButton.GetAttribute("class").Contains("Mui-disabled"))
+            if (nextPageButton != null && nextPageButton.GetAttribute("class").Contains("Mui-disabled"))
                 return true;
 
             driver.ClickWithJs(nextPageButton);

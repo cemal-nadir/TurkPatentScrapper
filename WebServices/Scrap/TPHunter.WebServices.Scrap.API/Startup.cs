@@ -1,17 +1,24 @@
+using System;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Reflection;
+using TPHunter.WebServices.Scrap.PatentPdf.Abstract;
+using TPHunter.WebServices.Scrap.PatentPdf.Concrete;
+using TPHunter.WebServices.Shared.MainData.Core.Repositories;
+using TPHunter.WebServices.Shared.MainData.Core.Services;
+using TPHunter.WebServices.Shared.MainData.Core.UnitOfWorks;
+using TPHunter.WebServices.Shared.MainData.Data;
+using TPHunter.WebServices.Shared.MainData.Data.Repositories;
+using TPHunter.WebServices.Shared.MainData.Data.UnitOfWorks;
+using TPHunter.WebServices.Shared.MainData.Services;
+using TPHunter.WebServices.Shared.Utility.FileStorage;
 
 namespace TPHunter.WebServices.Scrap.API
 {
@@ -34,22 +41,29 @@ namespace TPHunter.WebServices.Scrap.API
                 options.RequireHttpsMetadata = false;
             });
 
+            var migrationsAssembly = typeof(MainDataContext).GetTypeInfo().Assembly.GetName().Name;
+            services.AddDbContext<MainDataContext>(options =>
+            {
+                options.UseNpgsql(Configuration["ConnectionStrings:RDS"], x => x.MigrationsAssembly(migrationsAssembly));
+                options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+            });
+            services.AddAutoMapper(typeof(Startup));
+            services.AddScoped<DbContext, MainDataContext>();
+            services.AddScoped(typeof(IService<>), typeof(Service<>));
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
+            services.AddScoped(typeof(IAmazonS3ClientFactory), typeof(AmazonS3ClientFactory));
+            services.AddScoped(typeof(IFileTransferManager), typeof(AmazonStorage));
+            services.AddAutoMapper(typeof(Startup));
+            services.AddScoped(typeof(IService<>), typeof(Service<>));
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
+            services.AddHttpClient<IPdfDownloaderService,PdfDownloaderService>(client =>
+                client.Timeout = TimeSpan.FromMinutes(10));
             services.AddControllers();
 
-
-
-
-            //var migrationsAssembly = typeof(AppDbContext).GetTypeInfo().Assembly.GetName().Name;
-            //services.AddDbContext<AppDbContext>(options =>
-            //{
-            //    options.UseNpgsql(Configuration["ConnectionStrings:PostgreConStr"].ToString(), x => x.MigrationsAssembly(migrationsAssembly));
-            //});
-            //services.AddAutoMapper(typeof(Startup));
-            //services.AddScoped<DbContext, AppDbContext>();
-            //services.AddScoped(typeof(IService<>), typeof(Service<>));
-            //services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            //services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
-            //services.AddScoped(typeof(NotFoundFilter<>));
+         
+          
 
             services.AddSwaggerGen(c =>
             {
@@ -76,9 +90,9 @@ namespace TPHunter.WebServices.Scrap.API
               },
               Scheme = "oauth2",
               Name = "Bearer",
-              In = ParameterLocation.Header,
+              In = ParameterLocation.Header
 
-            },
+          },
             new List<string>()
           }
         });

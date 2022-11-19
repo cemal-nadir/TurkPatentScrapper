@@ -1,7 +1,6 @@
 ﻿using Emgu.CV;
 using Emgu.CV.Structure;
 using System;
-using System.Drawing;
 using System.IO;
 using System.Threading.Tasks;
 using TPHunter.Source.Core.Configs;
@@ -18,29 +17,24 @@ namespace TPHunter.Source.ImageProcess
           
 
 
-            using Mat checkerMat = new Mat();
+            using var checkerMat = new Mat();
             CvInvoke.Imdecode(Convert.FromBase64String(checkerImageByteText), Emgu.CV.CvEnum.ImreadModes.Color, checkerMat);
             
-            using Mat productMat = new Mat();
+            using var productMat = new Mat();
             CvInvoke.Imdecode(Convert.FromBase64String(byteText), Emgu.CV.CvEnum.ImreadModes.Color, productMat);
 
-            using Image<Bgr, byte> productImage = new Image<Bgr, byte>(productMat.Width,productMat.Height);
+            using var productImage = new Image<Bgr, byte>(productMat.Width,productMat.Height);
             productImage.Bytes = Convert.FromBase64String(byteText);
 
-            using Image<Bgr, byte> checkerImage = new Image<Bgr, byte>(checkerMat.Width,checkerMat.Height);
+            using var checkerImage = new Image<Bgr, byte>(checkerMat.Width,checkerMat.Height);
             checkerImage.Bytes = Convert.FromBase64String(checkerImageByteText);
 
             //Template Matching MatchTemplate ile uygulanmaktadır.
-            using (Image<Gray, float> result = productImage.MatchTemplate(checkerImage,Emgu.CV.CvEnum.TemplateMatchingType.CcoeffNormed))
-            {
-                double[] minValues, maxValues;
-                Point[] minLocations, maxLocations;
-                result.MinMax(out minValues, out maxValues, out minLocations, out maxLocations);
+            using var result = productImage.MatchTemplate(checkerImage,Emgu.CV.CvEnum.TemplateMatchingType.CcoeffNormed);
+            result.MinMax(out _, out var maxValues, out _, out _);
 
-                //Benzerlik eşiği. İdeal olanı siz seçeceksiniz.
-                return !(maxValues[0] > 0.6);
-                
-            } 
+            //Benzerlik eşiği. İdeal olanı siz seçeceksiniz.
+            return !(maxValues[0] > 0.6);
         }
     }
 }

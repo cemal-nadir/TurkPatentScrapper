@@ -1,10 +1,6 @@
-﻿using Browser.Helpers;
-using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
+﻿using OpenQA.Selenium;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using TPHunter.Source.Browser.Helpers;
 
 namespace TPHunter.Source.Scrapper.Functions
 {

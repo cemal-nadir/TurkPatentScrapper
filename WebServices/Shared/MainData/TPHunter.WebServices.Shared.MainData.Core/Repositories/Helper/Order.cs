@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TPHunter.WebServices.Shared.MainData.Core.Repositories.Helper
+﻿namespace TPHunter.WebServices.Shared.MainData.Core.Repositories.Helper
 {
     /// <summary>
     /// Tablo verilerinde kolon adı, yön bazlı sıralama yapılmasını sağlayan model
@@ -20,14 +14,7 @@ namespace TPHunter.WebServices.Shared.MainData.Core.Repositories.Helper
         public Order()
         {
             OrderColumnName = nameof(EntityBase.CreateTime);
-            OrderColumnDirection = OrderDirection.desc;
+            OrderColumnDirection = OrderDirection.Desc;
         }
-    }
-    /// <summary>
-    /// Sıralama yönü
-    /// </summary>
-    public enum OrderDirection
-    {
-        asc, desc
     }
 }

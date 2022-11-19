@@ -1,14 +1,7 @@
-﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.Extensions;
-using OpenQA.Selenium.Support.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Linq;
+using OpenQA.Selenium;
 
-namespace Browser.Helpers
+namespace TPHunter.Source.Browser.Helpers
 {
     public static class MainBrowserHelper
     {
@@ -37,7 +30,7 @@ namespace Browser.Helpers
         public static void ClickWithJs(this IWebDriver webDriver, IWebElement webElement)
         {
 
-            IJavaScriptExecutor executor = (IJavaScriptExecutor)webDriver;
+            var executor = (IJavaScriptExecutor)webDriver;
             executor.ExecuteScript("arguments[0].click();", webElement);
         }
         public static void PressEsc(this IWebDriver driver)

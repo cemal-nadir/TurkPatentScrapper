@@ -1,17 +1,14 @@
-﻿using Browser.Helpers;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TPHunter.Source.Core.Models.Scrapper;
+using TPHunter.Shared.Scrapper.Models;
+using TPHunter.Source.Browser.Helpers;
 using TPHunter.Source.Scrapper.Abstract.Shared;
 using TPHunter.Source.Scrapper.Functions;
 
 namespace TPHunter.Source.Scrapper.Services.Shared
 {
-   public class PatentPage<T>:IPage<PatentModel>
+   public class PatentPage :IPage<PatentModel>
     {
         private readonly IWebDriver _webDriver;
         public PatentPage(IWebDriver webDriver)
@@ -26,7 +23,7 @@ namespace TPHunter.Source.Scrapper.Services.Shared
 
         public void Prepare()
         {
-            _webDriver.GoTPPage();
+            _webDriver.GoTpPage();
             _webDriver.ClickSearchType(MainHelper.SearchType.Patent);
         }
 
@@ -50,8 +47,7 @@ namespace TPHunter.Source.Scrapper.Services.Shared
 
         public void Search(object searchParam)
         {
-            var dates = searchParam as DateTime[];
-            _webDriver.SearchPatents(dates[0],dates[1]);
+            if (searchParam is DateTime[] dates) _webDriver.SearchPatents(dates[0], dates[1]);
         }
 
         public void Search(string applicationNumber)

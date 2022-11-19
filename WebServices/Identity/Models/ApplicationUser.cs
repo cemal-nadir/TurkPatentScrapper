@@ -16,10 +16,4 @@ namespace TPHunter.WebServices.Identity.API.Models
         public string PostalCode { get; set; }
         public Gender Gender { get; set; }
     }
-    public enum Gender
-    {
-        Male,
-        Female,
-        Other
-    }
 }

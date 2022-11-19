@@ -1,18 +1,13 @@
-﻿using Browser.Helpers;
-using OpenQA.Selenium;
-using System;
+﻿using OpenQA.Selenium;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TPHunter.Source.Core.Models.Scrapper;
+using TPHunter.Shared.Scrapper.Models;
+using TPHunter.Source.Browser.Helpers;
 using TPHunter.Source.Scrapper.Abstract.Shared;
 using TPHunter.Source.Scrapper.Functions;
-using TPHunter.Source.Scrapper.Models;
 
 namespace TPHunter.Source.Scrapper.Services.Shared
 {
-    public class DesignPage<T> : IPage<DesignModel>
+    public class DesignPage : IPage<DesignModel>
     {
         private readonly IWebDriver _webDriver;
         public DesignPage(IWebDriver webDriver)
@@ -26,7 +21,7 @@ namespace TPHunter.Source.Scrapper.Services.Shared
 
         public void Prepare()
         {
-            _webDriver.GoTPPage();
+            _webDriver.GoTpPage();
             _webDriver.ClickSearchType(MainHelper.SearchType.Design);
         }
 

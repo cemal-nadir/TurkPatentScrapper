@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31729.503
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{A7C320CD-CC66-4862-B28E-8097E2016D4F}"
 EndProject
@@ -14,8 +14,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TPHunter.Source.Core", "Source\TPHunter.Source.Core\TPHunter.Source.Core.csproj", "{496F3572-A5BE-4BAD-9AA6-5B784263026A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TPHunter.Source.Scrapper", "Source\TPHunter.Source.Scrapper\TPHunter.Source.Scrapper.csproj", "{744CD2B9-1978-4715-B692-A1EA48ABB6E0}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TPHunter.Source.FileStorage", "Source\TPHunter.Source.FileStorage\TPHunter.Source.FileStorage.csproj", "{49EDDAB3-0BF8-4E30-8ECB-3A3F8202AAB6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebServices", "WebServices", "{F5E6DC35-0227-45D1-9D3C-ED2AFACF448E}"
 EndProject
@@ -35,9 +33,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MainData", "MainData", "{56
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TPHunter.WebServices.Shared.MainData.Data", "WebServices\Shared\MainData\TPHunter.WebServices.Shared.MainData.Data\TPHunter.WebServices.Shared.MainData.Data.csproj", "{8328DA58-E3CE-4AB8-8576-82690DF42D81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPHunter.WebServices.Shared.MainData.Services", "WebServices\Shared\MainData\TPHunter.WebServices.Shared.MainData.Services\TPHunter.WebServices.Shared.MainData.Services.csproj", "{BDD18CA8-92AE-4425-8272-F9E058F12469}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TPHunter.WebServices.Shared.MainData.Services", "WebServices\Shared\MainData\TPHunter.WebServices.Shared.MainData.Services\TPHunter.WebServices.Shared.MainData.Services.csproj", "{BDD18CA8-92AE-4425-8272-F9E058F12469}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPHunter.WebServices.Shared.MainData.Core", "WebServices\Shared\MainData\TPHunter.WebServices.Shared.MainData.Core\TPHunter.WebServices.Shared.MainData.Core.csproj", "{6F46584D-BD32-4952-8BEE-F66C90994AD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TPHunter.WebServices.Shared.MainData.Core", "WebServices\Shared\MainData\TPHunter.WebServices.Shared.MainData.Core\TPHunter.WebServices.Shared.MainData.Core.csproj", "{6F46584D-BD32-4952-8BEE-F66C90994AD1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utility", "Utility", "{FB887598-4397-4EFF-8D9C-90565AF580DF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{DB567948-31CA-482D-B4AF-46B79144912A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scrapper", "Scrapper", "{8FCCC5CE-09CC-4633-BEC1-718F8D3E8301}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TPHunter.Shared.Scrapper", "Shared\Scrapper\TPHunter.Shared.Scrapper\TPHunter.Shared.Scrapper.csproj", "{C027E720-FD9E-43A3-A76C-65EA46640D23}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TPHunter.WebServices.Shared.Utility.ApiUtility", "WebServices\Shared\Utility\TPHunter.WebServices.Shared.Utility.ApiUtility\TPHunter.WebServices.Shared.Utility.ApiUtility.csproj", "{5E13FEE6-BC2C-40AD-ACB7-D84AD48C6993}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TPHunter.WebServices.Shared.Utility.FileStorage", "WebServices\Shared\Utility\TPHunter.WebServices.Shared.Utility.FileStorage\TPHunter.WebServices.Shared.Utility.FileStorage.csproj", "{06F15747-33B2-4DAE-8346-19DDBB5B8968}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPHunter.WebServices.Scrap.PatentPdf", "WebServices\Scrap\TPHunter.WebServices.Scrap.PatentPdf\TPHunter.WebServices.Scrap.PatentPdf.csproj", "{5EE9B428-954E-426A-8DF2-DF49A43BA53D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,10 +73,6 @@ Global
 		{744CD2B9-1978-4715-B692-A1EA48ABB6E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{744CD2B9-1978-4715-B692-A1EA48ABB6E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{744CD2B9-1978-4715-B692-A1EA48ABB6E0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{49EDDAB3-0BF8-4E30-8ECB-3A3F8202AAB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{49EDDAB3-0BF8-4E30-8ECB-3A3F8202AAB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{49EDDAB3-0BF8-4E30-8ECB-3A3F8202AAB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{49EDDAB3-0BF8-4E30-8ECB-3A3F8202AAB6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FAA2A5F2-968E-446A-BBD8-5A2DA489E95E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FAA2A5F2-968E-446A-BBD8-5A2DA489E95E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FAA2A5F2-968E-446A-BBD8-5A2DA489E95E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -89,6 +97,22 @@ Global
 		{6F46584D-BD32-4952-8BEE-F66C90994AD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F46584D-BD32-4952-8BEE-F66C90994AD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F46584D-BD32-4952-8BEE-F66C90994AD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C027E720-FD9E-43A3-A76C-65EA46640D23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C027E720-FD9E-43A3-A76C-65EA46640D23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C027E720-FD9E-43A3-A76C-65EA46640D23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C027E720-FD9E-43A3-A76C-65EA46640D23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E13FEE6-BC2C-40AD-ACB7-D84AD48C6993}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E13FEE6-BC2C-40AD-ACB7-D84AD48C6993}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E13FEE6-BC2C-40AD-ACB7-D84AD48C6993}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E13FEE6-BC2C-40AD-ACB7-D84AD48C6993}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06F15747-33B2-4DAE-8346-19DDBB5B8968}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06F15747-33B2-4DAE-8346-19DDBB5B8968}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06F15747-33B2-4DAE-8346-19DDBB5B8968}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06F15747-33B2-4DAE-8346-19DDBB5B8968}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EE9B428-954E-426A-8DF2-DF49A43BA53D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EE9B428-954E-426A-8DF2-DF49A43BA53D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EE9B428-954E-426A-8DF2-DF49A43BA53D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EE9B428-954E-426A-8DF2-DF49A43BA53D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -98,7 +122,6 @@ Global
 		{03459350-4363-4EE0-9A53-0F0BA3133AA0} = {A7C320CD-CC66-4862-B28E-8097E2016D4F}
 		{496F3572-A5BE-4BAD-9AA6-5B784263026A} = {A7C320CD-CC66-4862-B28E-8097E2016D4F}
 		{744CD2B9-1978-4715-B692-A1EA48ABB6E0} = {A7C320CD-CC66-4862-B28E-8097E2016D4F}
-		{49EDDAB3-0BF8-4E30-8ECB-3A3F8202AAB6} = {A7C320CD-CC66-4862-B28E-8097E2016D4F}
 		{EAABB774-165C-4521-8A33-E7A794C5512D} = {F5E6DC35-0227-45D1-9D3C-ED2AFACF448E}
 		{FAA2A5F2-968E-446A-BBD8-5A2DA489E95E} = {EAABB774-165C-4521-8A33-E7A794C5512D}
 		{EF4E5B07-B14C-454F-916D-370074EECEC2} = {F5E6DC35-0227-45D1-9D3C-ED2AFACF448E}
@@ -109,6 +132,12 @@ Global
 		{8328DA58-E3CE-4AB8-8576-82690DF42D81} = {5603FF76-C49D-44E6-BB19-853DA42E1AB2}
 		{BDD18CA8-92AE-4425-8272-F9E058F12469} = {5603FF76-C49D-44E6-BB19-853DA42E1AB2}
 		{6F46584D-BD32-4952-8BEE-F66C90994AD1} = {5603FF76-C49D-44E6-BB19-853DA42E1AB2}
+		{FB887598-4397-4EFF-8D9C-90565AF580DF} = {EF4E5B07-B14C-454F-916D-370074EECEC2}
+		{8FCCC5CE-09CC-4633-BEC1-718F8D3E8301} = {DB567948-31CA-482D-B4AF-46B79144912A}
+		{C027E720-FD9E-43A3-A76C-65EA46640D23} = {8FCCC5CE-09CC-4633-BEC1-718F8D3E8301}
+		{5E13FEE6-BC2C-40AD-ACB7-D84AD48C6993} = {FB887598-4397-4EFF-8D9C-90565AF580DF}
+		{06F15747-33B2-4DAE-8346-19DDBB5B8968} = {FB887598-4397-4EFF-8D9C-90565AF580DF}
+		{5EE9B428-954E-426A-8DF2-DF49A43BA53D} = {55F8BC61-9160-4DC5-8209-CC8C98C7E62B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {920A07D5-8595-4D62-AB08-67D929EF8037}

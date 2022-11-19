@@ -20,3 +20,25 @@ D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Scrapper\obj\Debug
 D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Scrapper\bin\Debug\net5.0\DesignRejectImage.cng
 D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Scrapper\bin\Debug\net5.0\TPHunter.Source.ImageProcess.dll
 D:\.NET PROJELER\SistemPatent\tphunter\Source\TPHunter.Source.Scrapper\bin\Debug\net5.0\TPHunter.Source.ImageProcess.pdb
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Scrapper\bin\Debug\net5.0\DesignRejectImage.cng
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Scrapper\bin\Debug\net5.0\TPHunter.Source.Scrapper.deps.json
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Scrapper\bin\Debug\net5.0\TPHunter.Source.Scrapper.dll
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Scrapper\bin\Debug\net5.0\TPHunter.Source.Scrapper.pdb
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Scrapper\bin\Debug\net5.0\TPHunter.Source.Browser.dll
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Scrapper\bin\Debug\net5.0\TPHunter.Source.Core.dll
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Scrapper\bin\Debug\net5.0\TPHunter.Source.FileStorage.dll
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Scrapper\bin\Debug\net5.0\TPHunter.Source.ImageProcess.dll
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Scrapper\bin\Debug\net5.0\TPHunter.Source.Browser.pdb
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Scrapper\bin\Debug\net5.0\TPHunter.Source.Core.pdb
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Scrapper\bin\Debug\net5.0\TPHunter.Source.FileStorage.pdb
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Scrapper\bin\Debug\net5.0\TPHunter.Source.ImageProcess.pdb
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Scrapper\obj\Debug\net5.0\TPHunter.Source.Scrapper.csproj.AssemblyReference.cache
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Scrapper\obj\Debug\net5.0\TPHunter.Source.Scrapper.GeneratedMSBuildEditorConfig.editorconfig
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Scrapper\obj\Debug\net5.0\TPHunter.Source.Scrapper.AssemblyInfoInputs.cache
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Scrapper\obj\Debug\net5.0\TPHunter.Source.Scrapper.AssemblyInfo.cs
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Scrapper\obj\Debug\net5.0\TPHunter.Source.Scrapper.csproj.CoreCompileInputs.cache
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Scrapper\obj\Debug\net5.0\TPHunter.Source.Scrapper.csproj.CopyComplete
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Scrapper\obj\Debug\net5.0\TPHunter.Source.Scrapper.dll
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Scrapper\obj\Debug\net5.0\refint\TPHunter.Source.Scrapper.dll
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Scrapper\obj\Debug\net5.0\TPHunter.Source.Scrapper.pdb
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.Scrapper\obj\Debug\net5.0\ref\TPHunter.Source.Scrapper.dll

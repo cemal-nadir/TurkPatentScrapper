@@ -8,7 +8,21 @@
     <PackageReference Include="AutoMapper" Version="12.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.17" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.17">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\Scrapper\TPHunter.Shared.Scrapper\TPHunter.Shared.Scrapper.csproj" />
+    <ProjectReference Include="..\..\..\Shared\Utility\TPHunter.Shared.Utility.ApiUtility\TPHunter.Shared.Utility.ApiUtility.csproj" />
+    <ProjectReference Include="..\..\Shared\MainData\TPHunter.WebServices.Shared.MainData.Data\TPHunter.WebServices.Shared.MainData.Data.csproj" />
+    <ProjectReference Include="..\..\Shared\MainData\TPHunter.WebServices.Shared.MainData.Services\TPHunter.WebServices.Shared.MainData.Services.csproj" />
+    <ProjectReference Include="..\..\Shared\Utility\TPHunter.WebServices.Shared.Utility.ApiUtility\TPHunter.WebServices.Shared.Utility.ApiUtility.csproj" />
+    <ProjectReference Include="..\..\Shared\Utility\TPHunter.WebServices.Shared.Utility.FileStorage\TPHunter.WebServices.Shared.Utility.FileStorage.csproj" />
+    <ProjectReference Include="..\TPHunter.WebServices.Scrap.PatentPdf\TPHunter.WebServices.Scrap.PatentPdf.csproj" />
   </ItemGroup>
 
 </Project>
