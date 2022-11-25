@@ -1,5 +1,4 @@
 ﻿using OpenQA.Selenium;
-using System;
 using System.Collections.Generic;
 using TPHunter.Shared.Scrapper.Abstracts;
 using TPHunter.Shared.Scrapper.Models;
