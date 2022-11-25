@@ -14,6 +14,15 @@ namespace TPHunter.Source.Core.Helpers
             DateTime? date = Convert.ToDateTime(dateText);
             return date;
         }
+
+        public static string NormalizeText(this string text)
+        {
+
+            if (text.Length == 1)
+                text = text.Replace("-", "");
+            text = text.Replace("*", "");
+            return text.Length == 0 ? null : text;
+        }
         public static int[] ParseClasses(this string classesText)
         {
             classesText = classesText.Replace(" ", "");

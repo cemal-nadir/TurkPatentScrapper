@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using TPHunter.Shared.Scrapper.Abstracts;
 using TPHunter.Shared.Scrapper.Models;
 using TPHunter.Source.Browser.Base;
 using TPHunter.Source.Scrapper.Abstract.Main;
@@ -26,7 +27,10 @@ namespace TPHunter.Source.Scrapper.Services.Main
                 var number = 200;
                 #endregion
                 Ioc.Resolve<IPage<DesignModel>>().Prepare();
-                Ioc.Resolve<IPage<DesignModel>>().Search(number);
+                Ioc.Resolve<IPage<DesignModel>>().Search(new BulletinParam()
+                {
+                    BulletinNumber = number
+                });
                 while (!ısLastPage)
                 {
                     var scrappedDatas = Ioc.Resolve<IPage<DesignModel>>().ScrapMulti();

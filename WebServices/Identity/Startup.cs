@@ -36,9 +36,9 @@ namespace TPHunter.WebServices.Identity.API
             services.AddControllersWithViews();
 
             services.AddDbContext<ApplicationDbContext>(options =>
-              options.UseNpgsql(Configuration.GetConnectionString("PostgreConStr")));
+              options.UseNpgsql(Configuration.GetConnectionString("RDS")));
 
-              
+
 
             services.AddTransient<IPersistedGrantStore, PersistedGrantStore>();
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
@@ -56,13 +56,13 @@ namespace TPHunter.WebServices.Identity.API
             .AddConfigurationStore(options =>
             {
                 options.ConfigureDbContext = builder =>
-                  builder.UseNpgsql(Configuration.GetConnectionString("PostgreConStr"),
+                  builder.UseNpgsql(Configuration.GetConnectionString("RDS"),
                   sqlOptions => sqlOptions.MigrationsAssembly(migrationsAssembly));
             })
             .AddOperationalStore(options =>
             {
                 options.ConfigureDbContext = builder =>
-                    builder.UseNpgsql(Configuration.GetConnectionString("PostgreConStr"),
+                    builder.UseNpgsql(Configuration.GetConnectionString("RDS"),
                         sqlOptions => sqlOptions.MigrationsAssembly(migrationsAssembly));
             });
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TPHunter.Shared.Scrapper.Abstracts;
 using TPHunter.Shared.Scrapper.Models;
 using TPHunter.Source.Browser.Base;
 using TPHunter.Source.Scrapper.Abstract.Main;
@@ -22,14 +23,13 @@ namespace TPHunter.Source.Scrapper.Services.Main
             return Task.Run(() =>
             {
                 var ısLastPage = false;
-                #region Test Amaçlı
-                var dates = new DateTime[] {
-                    DateTime.Now.AddDays(-30),
-                    DateTime.Now
-                };
-                #endregion
+             
                 Ioc.Resolve<IPage<PatentModel>>().Prepare();
-                Ioc.Resolve<IPage<PatentModel>>().Search(dates);
+                Ioc.Resolve<IPage<PatentModel>>().Search(new DateRangeParam()
+                {
+                    StartDate = DateTime.Now.AddDays(-30),
+                    EndDate = DateTime.Now
+                });
                 while (!ısLastPage)
                 {
                     var scrappedDatas = Ioc.Resolve<IPage<PatentModel>>().ScrapMulti();

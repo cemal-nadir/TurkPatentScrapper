@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
+using TPHunter.Shared.Scrapper.Abstracts;
 
 namespace TPHunter.Source.Scrapper.Abstract.Shared
 {
-    public interface IPage<T> where T:class
+    public interface IPage<out T> where T:class
     {
         public void Prepare();
-        public void Search(object searchParam);
+        public void Search(ISearchParam searchParam);
         public void Search(string applicationNumber);
         public bool CheckAndClickNext();
         public IEnumerable<T> ScrapMulti();

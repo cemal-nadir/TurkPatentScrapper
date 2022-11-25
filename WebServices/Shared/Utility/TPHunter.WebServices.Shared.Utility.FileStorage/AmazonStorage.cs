@@ -5,15 +5,16 @@ using System.Threading.Tasks;
 using Amazon.S3;
 using Amazon.S3.Model;
 using Amazon.S3.Transfer;
+using TPHunter.WebServices.Shared.Utility.Core.Abstract.FileStorage;
 
 namespace TPHunter.WebServices.Shared.Utility.FileStorage
 {
     public class AmazonStorage : IFileTransferManager
     {
-        private readonly IAmazonS3ClientFactory _amazonS3ClientFactory;
-        public AmazonStorage(IAmazonS3ClientFactory amazonS3ClientFactory)
+        private readonly IAmazonS3 _amazonClient;
+        public AmazonStorage(IAmazonS3 amazonClient)
         {
-            _amazonS3ClientFactory= amazonS3ClientFactory;
+            _amazonClient = amazonClient;
         }
         public async Task<string> Upload(string byteText, string extension,string bucketName, string subDirectory)
         {
@@ -29,7 +30,7 @@ namespace TPHunter.WebServices.Shared.Utility.FileStorage
                 CannedACL = S3CannedACL.PublicRead
             };
 
-            var fileTransferUtility = new TransferUtility(_amazonS3ClientFactory.GetClient());
+            var fileTransferUtility = new TransferUtility(_amazonClient);
             await fileTransferUtility.UploadAsync(uploadRequest);
             return fileId;
         }
@@ -47,7 +48,7 @@ namespace TPHunter.WebServices.Shared.Utility.FileStorage
                 CannedACL = S3CannedACL.PublicRead
             };
 
-            var fileTransferUtility = new TransferUtility(_amazonS3ClientFactory.GetClient());
+            var fileTransferUtility = new TransferUtility(_amazonClient);
             await fileTransferUtility.UploadAsync(uploadRequest);
             return fileId;
         }
@@ -65,7 +66,7 @@ namespace TPHunter.WebServices.Shared.Utility.FileStorage
                 CannedACL = S3CannedACL.PublicRead
             };
 
-            var fileTransferUtility = new TransferUtility(_amazonS3ClientFactory.GetClient());
+            var fileTransferUtility = new TransferUtility(_amazonClient);
             await fileTransferUtility.UploadAsync(uploadRequest);
             return fileId;
         }
@@ -79,7 +80,7 @@ namespace TPHunter.WebServices.Shared.Utility.FileStorage
                 Key = $"{fileId}.{extension}"
             };
 
-            using (var response = await _amazonS3ClientFactory.GetClient().GetObjectAsync(getObjectRequest))
+            using (var response = await _amazonClient.GetObjectAsync(getObjectRequest))
             {
                 if (response.HttpStatusCode == HttpStatusCode.OK)
                 {
@@ -102,7 +103,7 @@ namespace TPHunter.WebServices.Shared.Utility.FileStorage
                 BucketName = bucketName + $"/{subDirectory}",
                 Key = $"{fileId}.{extension}"
             };
-            await _amazonS3ClientFactory.GetClient().DeleteObjectAsync(request);
+            await _amazonClient.DeleteObjectAsync(request);
         }
         public bool IsFileExists(string fileId,string extension, string bucketName,string subDirectory)
         {
@@ -114,9 +115,9 @@ namespace TPHunter.WebServices.Shared.Utility.FileStorage
                     Key = $"{fileId}.{extension}"
                 };
 
-                var response = _amazonS3ClientFactory.GetClient().GetObjectMetadataAsync(request).Result;
+                var getObjectMetadataResponse = _amazonClient.GetObjectMetadataAsync(request).Result;
 
-                return true;
+                return getObjectMetadataResponse != null;
             }
             catch (Exception ex)
             {

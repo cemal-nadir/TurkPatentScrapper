@@ -21,14 +21,14 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.Attorney", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
                     b.Property<string>("Address")
                         .HasColumnType("text");
 
-                    b.Property<Guid?>("AttorneyCompanyID")
+                    b.Property<Guid?>("AttorneyCompanyId")
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("CreateTime")
@@ -43,16 +43,16 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("AttorneyCompanyID");
+                    b.HasIndex("AttorneyCompanyId");
 
                     b.ToTable("Attorneys");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.AttorneyCompany", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -68,14 +68,14 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("AttorneyCompanies");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.Design", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -85,7 +85,7 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<string>("ApplicationNumber")
                         .HasColumnType("text");
 
-                    b.Property<Guid?>("AttorneyID")
+                    b.Property<Guid?>("AttorneyId")
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("BulletinDate")
@@ -97,7 +97,7 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<DateTime?>("CreateTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<Guid?>("DesignStatusID")
+                    b.Property<Guid?>("DesignStatusId")
                         .HasColumnType("uuid");
 
                     b.Property<bool>("IsDeleted")
@@ -112,31 +112,31 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<string>("RegistrationNumber")
                         .HasColumnType("text");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("AttorneyID");
+                    b.HasIndex("AttorneyId");
 
-                    b.HasIndex("DesignStatusID");
+                    b.HasIndex("DesignStatusId");
 
                     b.ToTable("Designs");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.DesignProduct", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("CreateTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<Guid>("DesignID")
+                    b.Property<Guid>("DesignId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid?>("DesignPriortyCountryID")
+                    b.Property<Guid?>("DesignPriortyCountryId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid?>("DesignProductPriortyTypeID")
+                    b.Property<Guid?>("DesignProductPriortyTypeId")
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("ExhibitionDate")
@@ -169,27 +169,27 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<DateTime?>("PriortyDate")
                         .HasColumnType("timestamp without time zone");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("DesignID");
+                    b.HasIndex("DesignId");
 
-                    b.HasIndex("DesignPriortyCountryID");
+                    b.HasIndex("DesignPriortyCountryId");
 
-                    b.HasIndex("DesignProductPriortyTypeID");
+                    b.HasIndex("DesignProductPriortyTypeId");
 
                     b.ToTable("DesignProducts");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.DesignProductClassesRelation", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("CreateTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<Guid>("DesignProductID")
+                    b.Property<Guid>("DesignProductId")
                         .HasColumnType("uuid");
 
                     b.Property<bool>("IsDeleted")
@@ -198,31 +198,31 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<DateTime?>("LastChangeTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<Guid>("LocarnoClassID")
+                    b.Property<Guid>("LocarnoClassId")
                         .HasColumnType("uuid");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("DesignProductID");
+                    b.HasIndex("DesignProductId");
 
-                    b.HasIndex("LocarnoClassID");
+                    b.HasIndex("LocarnoClassId");
 
                     b.ToTable("DesignProductClassesRelations");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.DesignProductImage", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("CreateTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<Guid>("DesignProductID")
+                    b.Property<Guid>("DesignProductId")
                         .HasColumnType("uuid");
 
-                    b.Property<string>("ImageID")
+                    b.Property<string>("ImageId")
                         .HasColumnType("text");
 
                     b.Property<bool>("IsDeleted")
@@ -231,16 +231,16 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<DateTime?>("LastChangeTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("DesignProductID");
+                    b.HasIndex("DesignProductId");
 
                     b.ToTable("DesignProductImages");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.DesignProductPriortyCountry", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -256,14 +256,14 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<DateTime?>("LastChangeTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("DesignProductPriortyCountries");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.DesignProductPriortyType", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -279,14 +279,14 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<string>("Type")
                         .HasColumnType("text");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("DesignProductPriortyTypes");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.DesignStatus", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -302,14 +302,14 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<string>("Status")
                         .HasColumnType("text");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("DesignStatuses");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.DesignTransaction", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -319,13 +319,13 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<DateTime?>("Date")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<Guid>("DesignID")
+                    b.Property<Guid>("DesignId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("DesignTransactionDescriptionID")
+                    b.Property<Guid>("DesignTransactionDescriptionId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("DesignTransactionTypeID")
+                    b.Property<Guid>("DesignTransactionTypeId")
                         .HasColumnType("uuid");
 
                     b.Property<bool>("IsDeleted")
@@ -334,20 +334,20 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<DateTime?>("LastChangeTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("DesignID");
+                    b.HasIndex("DesignId");
 
-                    b.HasIndex("DesignTransactionDescriptionID");
+                    b.HasIndex("DesignTransactionDescriptionId");
 
-                    b.HasIndex("DesignTransactionTypeID");
+                    b.HasIndex("DesignTransactionTypeId");
 
                     b.ToTable("DesignTransactions");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.DesignTransactionDescription", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -357,7 +357,7 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
-                    b.Property<Guid?>("DesignTransactionDescriptionDetailID")
+                    b.Property<Guid?>("DesignTransactionDescriptionDetailId")
                         .HasColumnType("uuid");
 
                     b.Property<bool>("IsDeleted")
@@ -366,16 +366,16 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<DateTime?>("LastChangeTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("DesignTransactionDescriptionDetailID");
+                    b.HasIndex("DesignTransactionDescriptionDetailId");
 
                     b.ToTable("DesignTransactionDescriptions");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.DesignTransactionDescriptionDetail", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -391,21 +391,21 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<DateTime?>("LastChangeTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("DesignTransactionDescriptionDetails");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.DesignTransactionType", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("CreateTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<Guid?>("DesignTransactionTypeDetailID")
+                    b.Property<Guid?>("DesignTransactionTypeDetailId")
                         .HasColumnType("uuid");
 
                     b.Property<bool>("IsDeleted")
@@ -417,16 +417,16 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<string>("Type")
                         .HasColumnType("text");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("DesignTransactionTypeDetailID");
+                    b.HasIndex("DesignTransactionTypeDetailId");
 
                     b.ToTable("DesignTransactionTypes");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.DesignTransactionTypeDetail", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -442,14 +442,14 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<DateTime?>("LastChangeTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("DesignTransactionTypeDetails");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.Designer", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -465,24 +465,24 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("Designers");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.DesignerRelation", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("CreateTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<Guid>("DesignID")
+                    b.Property<Guid>("DesignId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("DesignerID")
+                    b.Property<Guid>("DesignerId")
                         .HasColumnType("uuid");
 
                     b.Property<bool>("IsDeleted")
@@ -491,18 +491,18 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<DateTime?>("LastChangeTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("DesignID");
+                    b.HasIndex("DesignId");
 
-                    b.HasIndex("DesignerID");
+                    b.HasIndex("DesignerId");
 
                     b.ToTable("DesignerRelations");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.Holder", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -524,27 +524,27 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<DateTime?>("LastChangeTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("Holders");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.HolderRelation", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("CreateTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<Guid>("DataID")
+                    b.Property<Guid>("DataId")
                         .HasColumnType("uuid");
 
                     b.Property<int>("DataType")
                         .HasColumnType("integer");
 
-                    b.Property<Guid>("HolderID")
+                    b.Property<Guid>("HolderId")
                         .HasColumnType("uuid");
 
                     b.Property<bool>("IsDeleted")
@@ -553,16 +553,16 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<DateTime?>("LastChangeTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("HolderID");
+                    b.HasIndex("HolderId");
 
                     b.ToTable("HolderRelations");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.Inventor", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -584,21 +584,21 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<DateTime?>("LastChangeTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("Inventors");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.InventorRelation", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("CreateTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<Guid>("InventorID")
+                    b.Property<Guid>("InventorId")
                         .HasColumnType("uuid");
 
                     b.Property<bool>("IsDeleted")
@@ -607,21 +607,21 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<DateTime?>("LastChangeTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<Guid>("PatentID")
+                    b.Property<Guid>("PatentId")
                         .HasColumnType("uuid");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("InventorID");
+                    b.HasIndex("InventorId");
 
-                    b.HasIndex("PatentID");
+                    b.HasIndex("PatentId");
 
                     b.ToTable("InventorRelations");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.LocarnoClass", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -637,14 +637,14 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("LocarnoClasses");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.Patent", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -654,7 +654,7 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<string>("ApplicationNumber")
                         .HasColumnType("text");
 
-                    b.Property<Guid?>("AttorneyID")
+                    b.Property<Guid?>("AttorneyId")
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("CreateTime")
@@ -666,10 +666,10 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<string>("DocumentNumber")
                         .HasColumnType("text");
 
-                    b.Property<string>("EPCApplicationNumber")
+                    b.Property<string>("EpcApplicationNumber")
                         .HasColumnType("text");
 
-                    b.Property<string>("EPCPublishNumber")
+                    b.Property<string>("EpcPublishNumber")
                         .HasColumnType("text");
 
                     b.Property<string>("InventionSummary")
@@ -684,20 +684,20 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<DateTime?>("LastChangeTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<string>("PCTApplicationNumber")
+                    b.Property<Guid?>("PatentApplicationTypeId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("PatentProtectionTypeId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("PctApplicationNumber")
                         .HasColumnType("text");
 
-                    b.Property<DateTime?>("PCTPublishDate")
+                    b.Property<DateTime?>("PctPublishDate")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<string>("PCTPublishNumber")
+                    b.Property<string>("PctPublishNumber")
                         .HasColumnType("text");
-
-                    b.Property<Guid?>("PatentApplicationTypeID")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid?>("PatentProtectionTypeID")
-                        .HasColumnType("uuid");
 
                     b.Property<DateTime?>("RegistrationDate")
                         .HasColumnType("timestamp without time zone");
@@ -705,20 +705,20 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<string>("RegistrationNumber")
                         .HasColumnType("text");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("AttorneyID");
+                    b.HasIndex("AttorneyId");
 
-                    b.HasIndex("PatentApplicationTypeID");
+                    b.HasIndex("PatentApplicationTypeId");
 
-                    b.HasIndex("PatentProtectionTypeID");
+                    b.HasIndex("PatentProtectionTypeId");
 
                     b.ToTable("Patents");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.PatentApplicationType", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -734,14 +734,14 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<string>("Type")
                         .HasColumnType("text");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("PatentApplicationTypes");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.PatentClass", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -757,19 +757,19 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
-                    b.Property<Guid>("PatentClassTypeID")
+                    b.Property<Guid>("PatentClassTypeId")
                         .HasColumnType("uuid");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("PatentClassTypeID");
+                    b.HasIndex("PatentClassTypeId");
 
                     b.ToTable("PatentClasses");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.PatentClassRelation", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -782,24 +782,24 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<DateTime?>("LastChangeTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<Guid>("PatentClassID")
+                    b.Property<Guid>("PatentClassId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("PatentID")
+                    b.Property<Guid>("PatentId")
                         .HasColumnType("uuid");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("PatentClassID");
+                    b.HasIndex("PatentClassId");
 
-                    b.HasIndex("PatentID");
+                    b.HasIndex("PatentId");
 
                     b.ToTable("PatentClassRelations");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.PatentClassType", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -815,45 +815,14 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<string>("Type")
                         .HasColumnType("text");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("PatentClassTypes");
                 });
 
-            modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.PatentPDF", b =>
-                {
-                    b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<DateTime?>("CreateTime")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("FileID")
-                        .HasColumnType("text");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("boolean");
-
-                    b.Property<DateTime?>("LastChangeTime")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<int>("PDFType")
-                        .HasColumnType("integer");
-
-                    b.Property<Guid>("PatentID")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("PatentID");
-
-                    b.ToTable("PatentPDFs");
-                });
-
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.PatentPayment", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -866,10 +835,10 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<DateTime?>("LastChangeTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<double?>("PaidAmount")
-                        .HasColumnType("double precision");
+                    b.Property<decimal?>("PaidAmount")
+                        .HasColumnType("numeric");
 
-                    b.Property<Guid>("PatentID")
+                    b.Property<Guid>("PatentId")
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("PaymentDate")
@@ -881,16 +850,47 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<int?>("Year")
                         .HasColumnType("integer");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("PatentID");
+                    b.HasIndex("PatentId");
 
                     b.ToTable("PatentPayments");
                 });
 
+            modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.PatentPdf", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("CreateTime")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("FileId")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime?>("LastChangeTime")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<Guid>("PatentId")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("PdfType")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PatentId");
+
+                    b.ToTable("PatentPdFs");
+                });
+
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.PatentPriorty", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -903,10 +903,10 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<DateTime?>("LastChangeTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<Guid>("PatentID")
+                    b.Property<Guid>("PatentId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid?>("PatentPriortyCountryID")
+                    b.Property<Guid?>("PatentPriortyCountryId")
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("PriortyDate")
@@ -915,18 +915,18 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<string>("PriortyNumber")
                         .HasColumnType("text");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("PatentID");
+                    b.HasIndex("PatentId");
 
-                    b.HasIndex("PatentPriortyCountryID");
+                    b.HasIndex("PatentPriortyCountryId");
 
                     b.ToTable("PatentPriorties");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.PatentPriortyCountry", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -942,14 +942,14 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<DateTime?>("LastChangeTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("PatentPriortyCountries");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.PatentProtectionType", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -965,14 +965,14 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<string>("Type")
                         .HasColumnType("text");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("PatentProtectionTypes");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.PatentPublication", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -985,27 +985,27 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<DateTime?>("LastChangeTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<Guid>("PatentID")
+                    b.Property<Guid>("PatentId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("PatentPublicationDescriptionID")
+                    b.Property<Guid>("PatentPublicationDescriptionId")
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("PublishDate")
                         .HasColumnType("timestamp without time zone");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("PatentID");
+                    b.HasIndex("PatentId");
 
-                    b.HasIndex("PatentPublicationDescriptionID");
+                    b.HasIndex("PatentPublicationDescriptionId");
 
                     b.ToTable("PatentPublications");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.PatentPublicationDescription", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -1021,14 +1021,14 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<DateTime?>("LastChangeTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("PatentPublicationDescriptions");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.PatentTransaction", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -1047,24 +1047,24 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<DateTime?>("NotificationDate")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<Guid>("PatentID")
+                    b.Property<Guid>("PatentId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("PatentTransactionNameID")
+                    b.Property<Guid>("PatentTransactionNameId")
                         .HasColumnType("uuid");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("PatentID");
+                    b.HasIndex("PatentId");
 
-                    b.HasIndex("PatentTransactionNameID");
+                    b.HasIndex("PatentTransactionNameId");
 
                     b.ToTable("PatentTransactions");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.PatentTransactionName", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -1080,14 +1080,14 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<string>("Transaction")
                         .HasColumnType("text");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("PatentTransactionNames");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.TradeMark", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -1097,7 +1097,7 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<string>("ApplicationNumber")
                         .HasColumnType("text");
 
-                    b.Property<Guid?>("AttorneyID")
+                    b.Property<Guid?>("AttorneyId")
                         .HasColumnType("uuid");
 
                     b.Property<int[]>("Classes")
@@ -1115,7 +1115,7 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<string>("DocumentNumber")
                         .HasColumnType("text");
 
-                    b.Property<string>("ImageID")
+                    b.Property<string>("ImageId")
                         .HasColumnType("text");
 
                     b.Property<string>("InternationalRegistrationNumber")
@@ -1145,36 +1145,36 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<string>("RegistrationNumber")
                         .HasColumnType("text");
 
-                    b.Property<Guid?>("TradeMarkDecisionID")
+                    b.Property<Guid?>("TradeMarkDecisionId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid?>("TradeMarkPriortyID")
+                    b.Property<Guid?>("TradeMarkPriortyId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid?>("TradeMarkStatusID")
+                    b.Property<Guid?>("TradeMarkStatusId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid?>("TradeMarkTypeID")
+                    b.Property<Guid?>("TradeMarkTypeId")
                         .HasColumnType("uuid");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("AttorneyID");
+                    b.HasIndex("AttorneyId");
 
-                    b.HasIndex("TradeMarkDecisionID");
+                    b.HasIndex("TradeMarkDecisionId");
 
-                    b.HasIndex("TradeMarkPriortyID");
+                    b.HasIndex("TradeMarkPriortyId");
 
-                    b.HasIndex("TradeMarkStatusID");
+                    b.HasIndex("TradeMarkStatusId");
 
-                    b.HasIndex("TradeMarkTypeID");
+                    b.HasIndex("TradeMarkTypeId");
 
                     b.ToTable("TradeMarks");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.TradeMarkDecision", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -1190,19 +1190,19 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<DateTime?>("LastChangeTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<Guid?>("TradeMarkDecisionReasonID")
+                    b.Property<Guid?>("TradeMarkDecisionReasonId")
                         .HasColumnType("uuid");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("TradeMarkDecisionReasonID");
+                    b.HasIndex("TradeMarkDecisionReasonId");
 
                     b.ToTable("TradeMarkDecisions");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.TradeMarkDecisionReason", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -1218,14 +1218,14 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<string>("Reason")
                         .HasColumnType("text");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("TradeMarkDecisionReasons");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.TradeMarkPriorty", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -1244,19 +1244,19 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<DateTime?>("LastChangeTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<Guid?>("TradeMarkPriortyCountryID")
+                    b.Property<Guid?>("TradeMarkPriortyCountryId")
                         .HasColumnType("uuid");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("TradeMarkPriortyCountryID");
+                    b.HasIndex("TradeMarkPriortyCountryId");
 
                     b.ToTable("TradeMarkPriorties");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.TradeMarkPriortyCountry", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -1272,14 +1272,14 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<DateTime?>("LastChangeTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("TradeMarkPriortyCountries");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.TradeMarkServices", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -1298,19 +1298,19 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<string>("Service")
                         .HasColumnType("text");
 
-                    b.Property<Guid>("TradeMarkID")
+                    b.Property<Guid>("TradeMarkId")
                         .HasColumnType("uuid");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("TradeMarkID");
+                    b.HasIndex("TradeMarkId");
 
                     b.ToTable("TradeMarkServices");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.TradeMarkStatus", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -1326,14 +1326,14 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<string>("Status")
                         .HasColumnType("text");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("TradeMarkStatuses");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.TradeMarkTransaction", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -1349,37 +1349,37 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<DateTime?>("NotificationDate")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<Guid>("TradeMarkID")
+                    b.Property<Guid>("TradeMarkId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid?>("TradeMarkTransactionDescriptionID")
+                    b.Property<Guid?>("TradeMarkTransactionDescriptionId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid?>("TradeMarkTransactionNameID")
+                    b.Property<Guid?>("TradeMarkTransactionNameId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("TradeMarkTransactionTypeID")
+                    b.Property<Guid>("TradeMarkTransactionTypeId")
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("TransactionDate")
                         .HasColumnType("timestamp without time zone");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("TradeMarkID");
+                    b.HasIndex("TradeMarkId");
 
-                    b.HasIndex("TradeMarkTransactionDescriptionID");
+                    b.HasIndex("TradeMarkTransactionDescriptionId");
 
-                    b.HasIndex("TradeMarkTransactionNameID");
+                    b.HasIndex("TradeMarkTransactionNameId");
 
-                    b.HasIndex("TradeMarkTransactionTypeID");
+                    b.HasIndex("TradeMarkTransactionTypeId");
 
                     b.ToTable("TradeMarkTransactions");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.TradeMarkTransactionDescription", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -1395,14 +1395,14 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<DateTime?>("LastChangeTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("TradeMarkTransactionDescriptions");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.TradeMarkTransactionDetail", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -1421,19 +1421,19 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<DateTime?>("LastChangeTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<Guid>("TradeMarkTransactionID")
+                    b.Property<Guid>("TradeMarkTransactionId")
                         .HasColumnType("uuid");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("TradeMarkTransactionID");
+                    b.HasIndex("TradeMarkTransactionId");
 
                     b.ToTable("TradeMarkTransactionDetails");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.TradeMarkTransactionName", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -1449,14 +1449,14 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<string>("Transaction")
                         .HasColumnType("text");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("TradeMarkTransactionNames");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.TradeMarkTransactionType", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -1472,14 +1472,14 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<string>("Type")
                         .HasColumnType("text");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("TradeMarkTransactionTypes");
                 });
 
             modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.TradeMarkType", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -1495,7 +1495,7 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<string>("Type")
                         .HasColumnType("text");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("TradeMarkTypes");
                 });
@@ -1504,7 +1504,7 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                 {
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.AttorneyCompany", "AttorneyCompany")
                         .WithMany("Attorneys")
-                        .HasForeignKey("AttorneyCompanyID");
+                        .HasForeignKey("AttorneyCompanyId");
 
                     b.Navigation("AttorneyCompany");
                 });
@@ -1513,11 +1513,11 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                 {
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.Attorney", "Attorney")
                         .WithMany("Designs")
-                        .HasForeignKey("AttorneyID");
+                        .HasForeignKey("AttorneyId");
 
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.DesignStatus", "DesignStatus")
                         .WithMany("Designs")
-                        .HasForeignKey("DesignStatusID");
+                        .HasForeignKey("DesignStatusId");
 
                     b.Navigation("Attorney");
 
@@ -1528,17 +1528,17 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                 {
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.Design", "Design")
                         .WithMany("DesignProducts")
-                        .HasForeignKey("DesignID")
+                        .HasForeignKey("DesignId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.DesignProductPriortyCountry", "DesignPriortyCountry")
                         .WithMany("DesignProducts")
-                        .HasForeignKey("DesignPriortyCountryID");
+                        .HasForeignKey("DesignPriortyCountryId");
 
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.DesignProductPriortyType", "DesignProductPriortyType")
                         .WithMany("DesignProducts")
-                        .HasForeignKey("DesignProductPriortyTypeID");
+                        .HasForeignKey("DesignProductPriortyTypeId");
 
                     b.Navigation("Design");
 
@@ -1551,13 +1551,13 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                 {
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.DesignProduct", "DesignProduct")
                         .WithMany("DesignProductClassesRelations")
-                        .HasForeignKey("DesignProductID")
+                        .HasForeignKey("DesignProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.LocarnoClass", "LocarnoClass")
                         .WithMany("DesignProductClassesRelations")
-                        .HasForeignKey("LocarnoClassID")
+                        .HasForeignKey("LocarnoClassId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1570,7 +1570,7 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                 {
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.DesignProduct", "DesignProduct")
                         .WithMany("DesignProductImages")
-                        .HasForeignKey("DesignProductID")
+                        .HasForeignKey("DesignProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1581,19 +1581,19 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                 {
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.Design", "Design")
                         .WithMany("DesignTransactions")
-                        .HasForeignKey("DesignID")
+                        .HasForeignKey("DesignId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.DesignTransactionDescription", "DesignTransactionDescription")
                         .WithMany("DesignTransactions")
-                        .HasForeignKey("DesignTransactionDescriptionID")
+                        .HasForeignKey("DesignTransactionDescriptionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.DesignTransactionType", "DesignTransactionType")
                         .WithMany("DesignTransactions")
-                        .HasForeignKey("DesignTransactionTypeID")
+                        .HasForeignKey("DesignTransactionTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1608,7 +1608,7 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                 {
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.DesignTransactionDescriptionDetail", "DesignTransactionDescriptionDetail")
                         .WithMany("DesignTransactionDescriptions")
-                        .HasForeignKey("DesignTransactionDescriptionDetailID");
+                        .HasForeignKey("DesignTransactionDescriptionDetailId");
 
                     b.Navigation("DesignTransactionDescriptionDetail");
                 });
@@ -1617,7 +1617,7 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                 {
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.DesignTransactionTypeDetail", "DesignTransactionTypeDetail")
                         .WithMany("DesignTransactionTypes")
-                        .HasForeignKey("DesignTransactionTypeDetailID");
+                        .HasForeignKey("DesignTransactionTypeDetailId");
 
                     b.Navigation("DesignTransactionTypeDetail");
                 });
@@ -1626,13 +1626,13 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                 {
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.Design", "Design")
                         .WithMany("DesignerRelations")
-                        .HasForeignKey("DesignID")
+                        .HasForeignKey("DesignId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.Designer", "Designer")
                         .WithMany("DesignerRelations")
-                        .HasForeignKey("DesignerID")
+                        .HasForeignKey("DesignerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1645,7 +1645,7 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                 {
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.Holder", "Holder")
                         .WithMany("HolderRelations")
-                        .HasForeignKey("HolderID")
+                        .HasForeignKey("HolderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1656,13 +1656,13 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                 {
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.Inventor", "Inventor")
                         .WithMany("InventorRelations")
-                        .HasForeignKey("InventorID")
+                        .HasForeignKey("InventorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.Patent", "Patent")
                         .WithMany("InventorRelations")
-                        .HasForeignKey("PatentID")
+                        .HasForeignKey("PatentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1675,15 +1675,15 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                 {
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.Attorney", "Attorney")
                         .WithMany("Patents")
-                        .HasForeignKey("AttorneyID");
+                        .HasForeignKey("AttorneyId");
 
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.PatentApplicationType", "PatentApplicationType")
                         .WithMany("Patents")
-                        .HasForeignKey("PatentApplicationTypeID");
+                        .HasForeignKey("PatentApplicationTypeId");
 
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.PatentProtectionType", "PatentProtectionType")
                         .WithMany("Patents")
-                        .HasForeignKey("PatentProtectionTypeID");
+                        .HasForeignKey("PatentProtectionTypeId");
 
                     b.Navigation("Attorney");
 
@@ -1696,7 +1696,7 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                 {
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.PatentClassType", "PatentClassType")
                         .WithMany("PatentClasses")
-                        .HasForeignKey("PatentClassTypeID")
+                        .HasForeignKey("PatentClassTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1707,13 +1707,13 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                 {
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.PatentClass", "PatentClass")
                         .WithMany("PatentClassRelations")
-                        .HasForeignKey("PatentClassID")
+                        .HasForeignKey("PatentClassId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.Patent", "Patent")
                         .WithMany("PatentClassRelations")
-                        .HasForeignKey("PatentID")
+                        .HasForeignKey("PatentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1722,22 +1722,22 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Navigation("PatentClass");
                 });
 
-            modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.PatentPDF", b =>
+            modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.PatentPayment", b =>
                 {
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.Patent", "Patent")
-                        .WithMany("PatentPDFs")
-                        .HasForeignKey("PatentID")
+                        .WithMany("PatentPayments")
+                        .HasForeignKey("PatentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Patent");
                 });
 
-            modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.PatentPayment", b =>
+            modelBuilder.Entity("TPHunter.WebServices.Shared.MainData.Core.Models.PatentPdf", b =>
                 {
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.Patent", "Patent")
-                        .WithMany("PatentPayments")
-                        .HasForeignKey("PatentID")
+                        .WithMany("PatentPdFs")
+                        .HasForeignKey("PatentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1748,13 +1748,13 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                 {
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.Patent", "Patent")
                         .WithMany("PatentPriorties")
-                        .HasForeignKey("PatentID")
+                        .HasForeignKey("PatentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.PatentPriortyCountry", "PatentPriortyCountry")
                         .WithMany("PatentPriorties")
-                        .HasForeignKey("PatentPriortyCountryID");
+                        .HasForeignKey("PatentPriortyCountryId");
 
                     b.Navigation("Patent");
 
@@ -1765,13 +1765,13 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                 {
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.Patent", "Patent")
                         .WithMany("PatentPublications")
-                        .HasForeignKey("PatentID")
+                        .HasForeignKey("PatentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.PatentPublicationDescription", "PatentPublicationDescription")
                         .WithMany("PatentPublications")
-                        .HasForeignKey("PatentPublicationDescriptionID")
+                        .HasForeignKey("PatentPublicationDescriptionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1784,13 +1784,13 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                 {
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.Patent", "Patent")
                         .WithMany("PatentTransactions")
-                        .HasForeignKey("PatentID")
+                        .HasForeignKey("PatentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.PatentTransactionName", "PatentTransactionName")
                         .WithMany("PatentTransactions")
-                        .HasForeignKey("PatentTransactionNameID")
+                        .HasForeignKey("PatentTransactionNameId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1803,23 +1803,23 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                 {
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.Attorney", "Attorney")
                         .WithMany("TradeMarks")
-                        .HasForeignKey("AttorneyID");
+                        .HasForeignKey("AttorneyId");
 
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.TradeMarkDecision", "TradeMarkDecision")
                         .WithMany("TradeMarks")
-                        .HasForeignKey("TradeMarkDecisionID");
+                        .HasForeignKey("TradeMarkDecisionId");
 
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.TradeMarkPriorty", "TradeMarkPriorty")
                         .WithMany("TradeMarks")
-                        .HasForeignKey("TradeMarkPriortyID");
+                        .HasForeignKey("TradeMarkPriortyId");
 
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.TradeMarkStatus", "TradeMarkStatus")
                         .WithMany("TradeMarks")
-                        .HasForeignKey("TradeMarkStatusID");
+                        .HasForeignKey("TradeMarkStatusId");
 
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.TradeMarkType", "TradeMarkType")
                         .WithMany("Trademarks")
-                        .HasForeignKey("TradeMarkTypeID");
+                        .HasForeignKey("TradeMarkTypeId");
 
                     b.Navigation("Attorney");
 
@@ -1836,7 +1836,7 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                 {
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.TradeMarkDecisionReason", "TradeMarkDecisionReason")
                         .WithMany()
-                        .HasForeignKey("TradeMarkDecisionReasonID");
+                        .HasForeignKey("TradeMarkDecisionReasonId");
 
                     b.Navigation("TradeMarkDecisionReason");
                 });
@@ -1845,7 +1845,7 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                 {
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.TradeMarkPriortyCountry", "TradeMarkPriortyCountry")
                         .WithMany("TradeMarkPriorties")
-                        .HasForeignKey("TradeMarkPriortyCountryID");
+                        .HasForeignKey("TradeMarkPriortyCountryId");
 
                     b.Navigation("TradeMarkPriortyCountry");
                 });
@@ -1854,7 +1854,7 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                 {
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.TradeMark", "TradeMark")
                         .WithMany("TradeMarkServices")
-                        .HasForeignKey("TradeMarkID")
+                        .HasForeignKey("TradeMarkId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1865,21 +1865,21 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                 {
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.TradeMark", "TradeMark")
                         .WithMany("TradeMarkTransaction")
-                        .HasForeignKey("TradeMarkID")
+                        .HasForeignKey("TradeMarkId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.TradeMarkTransactionDescription", "TradeMarkTransactionDescription")
                         .WithMany("TradeMarkTransactions")
-                        .HasForeignKey("TradeMarkTransactionDescriptionID");
+                        .HasForeignKey("TradeMarkTransactionDescriptionId");
 
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.TradeMarkTransactionName", "TradeMarkTransactionName")
                         .WithMany("TradeMarkTransactions")
-                        .HasForeignKey("TradeMarkTransactionNameID");
+                        .HasForeignKey("TradeMarkTransactionNameId");
 
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.TradeMarkTransactionType", "TradeMarkTransactionType")
                         .WithMany("TradeMarkTransactions")
-                        .HasForeignKey("TradeMarkTransactionTypeID")
+                        .HasForeignKey("TradeMarkTransactionTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1896,7 +1896,7 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                 {
                     b.HasOne("TPHunter.WebServices.Shared.MainData.Core.Models.TradeMarkTransaction", "TradeMarkTransaction")
                         .WithMany("TradeMarkTransactionDetails")
-                        .HasForeignKey("TradeMarkTransactionID")
+                        .HasForeignKey("TradeMarkTransactionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1996,7 +1996,7 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
 
                     b.Navigation("PatentPayments");
 
-                    b.Navigation("PatentPDFs");
+                    b.Navigation("PatentPdFs");
 
                     b.Navigation("PatentPriorties");
 

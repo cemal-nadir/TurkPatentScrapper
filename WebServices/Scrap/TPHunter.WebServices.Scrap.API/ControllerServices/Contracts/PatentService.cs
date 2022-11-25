@@ -1,16 +1,16 @@
-﻿using Microsoft.Extensions.Configuration;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using TPHunter.Shared.Scrapper.Abstracts;
 using TPHunter.Shared.Scrapper.Models;
 using TPHunter.WebServices.Scrap.API.ControllerServices.Abstract;
-using TPHunter.WebServices.Scrap.API.DI;
 using TPHunter.WebServices.Scrap.PatentPdf.Abstract;
 using TPHunter.WebServices.Shared.MainData.Core.Models;
 using TPHunter.WebServices.Shared.MainData.Core.Services;
-using TPHunter.WebServices.Shared.Utility.FileStorage;
+using TPHunter.WebServices.Shared.Utility.Core.Abstract.FileStorage;
 
 namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
 {
@@ -44,8 +44,7 @@ namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
 
         public PatentService(IService<Attorney> attorneyService, IService<AttorneyCompany> attorneyCompanyService,
             IService<Holder> holderService, IService<HolderRelation> holderRelationService,
-            IFileTransferManager fileTransferManager, IAmazonS3ClientFactory amazonS3ClientFactory,
-            IConfiguration configuration, IService<Patent> patentService, IService<Shared.MainData.Core.Models.PatentPdf> patentPdfService,
+            IFileTransferManager fileTransferManager, IService<Patent> patentService, IService<Shared.MainData.Core.Models.PatentPdf> patentPdfService,
             IService<PatentApplicationType> patentApplicationTypeService, IService<PatentProtectionType> patentProtectionTypeService, IService<Inventor> inventorService, IService<InventorRelation> inventorRelationService, IService<PatentPriorty> patentPriortyService, IService<PatentPriortyCountry> patentPriortyCountryService, IService<PatentClass> patentClassService, IService<PatentClassType> patentClassTypeService, IService<PatentClassRelation> patentClassRelationService, IService<PatentTransaction> patentTransactionService, IService<PatentTransactionName> patentTransactionNameService, IService<PatentPublication> patentPublicationService, IService<PatentPublicationDescription> patentPublicationDescriptionService, IService<PatentPayment> patentPaymentService, IPdfDownloaderService pdfDownloaderService)
         {
             _attorneyService = attorneyService;
@@ -70,7 +69,18 @@ namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
             _patentPublicationDescriptionService = patentPublicationDescriptionService;
             _patentPaymentService = patentPaymentService;
             _pdfDownloaderService = pdfDownloaderService;
-            GeneralDı.CreateClient(amazonS3ClientFactory, configuration);
+        }
+
+        public async Task<IEnumerable<string>> GetLastPulledApplicationNumbersAsync(ISearchParam searchParam)
+        {
+            return await _patentService.AsNoTracking.Where(x =>
+                x.ApplicationDate >= ((DateRangeParam)searchParam).StartDate && x.ApplicationDate <= ((DateRangeParam)searchParam).EndDate).Select(x=>x.ApplicationNumber).ToListAsync();
+        }
+
+        public async Task<int> GetLastPulledCountAsync(ISearchParam searchParam)
+        {
+            return await _patentService.GetCountAsync(x =>
+                x.ApplicationDate>= ((DateRangeParam)searchParam).StartDate&&x.ApplicationDate <= ((DateRangeParam)searchParam).EndDate);
         }
 
         public async Task InsertAsync(PatentModel model)

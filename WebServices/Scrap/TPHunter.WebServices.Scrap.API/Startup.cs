@@ -9,6 +9,11 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System.Collections.Generic;
 using System.Reflection;
+using Amazon.S3;
+using TPHunter.Shared.Scrapper.Models;
+using TPHunter.WebServices.Scrap.API.ControllerServices.Abstract;
+using TPHunter.WebServices.Scrap.API.ControllerServices.Contracts;
+using TPHunter.WebServices.Scrap.API.DI;
 using TPHunter.WebServices.Scrap.PatentPdf.Abstract;
 using TPHunter.WebServices.Scrap.PatentPdf.Concrete;
 using TPHunter.WebServices.Shared.MainData.Core.Repositories;
@@ -19,6 +24,8 @@ using TPHunter.WebServices.Shared.MainData.Data.Repositories;
 using TPHunter.WebServices.Shared.MainData.Data.UnitOfWorks;
 using TPHunter.WebServices.Shared.MainData.Services;
 using TPHunter.WebServices.Shared.Utility.FileStorage;
+using TPHunter.WebServices.Shared.Utility.Core.Abstract.FileStorage;
+using AmazonS3Config = TPHunter.WebServices.Shared.Utility.Core.Models.FileStorage.AmazonS3Config;
 
 namespace TPHunter.WebServices.Scrap.API
 {
@@ -47,19 +54,21 @@ namespace TPHunter.WebServices.Scrap.API
                 options.UseNpgsql(Configuration["ConnectionStrings:RDS"], x => x.MigrationsAssembly(migrationsAssembly));
                 options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
             });
+            services.AddOptions();
             services.AddAutoMapper(typeof(Startup));
             services.AddScoped<DbContext, MainDataContext>();
-            services.AddScoped(typeof(IService<>), typeof(Service<>));
-            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
-            services.AddScoped(typeof(IAmazonS3ClientFactory), typeof(AmazonS3ClientFactory));
+            services.Configure<AmazonS3Config>(Configuration.GetSection("AmazonConfig:AmazonS3Config"));
+            services.AddScoped(typeof(IAmazonS3Config), typeof(AmazonConfigFactory));
+            services.AddScoped(typeof(IAmazonS3), typeof(CustomAmazonS3Client));
             services.AddScoped(typeof(IFileTransferManager), typeof(AmazonStorage));
-            services.AddAutoMapper(typeof(Startup));
             services.AddScoped(typeof(IService<>), typeof(Service<>));
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
             services.AddHttpClient<IPdfDownloaderService,PdfDownloaderService>(client =>
                 client.Timeout = TimeSpan.FromMinutes(10));
+            services.AddScoped(typeof(IControllerService<MarkModel>), typeof(TradeMarkService));
+            services.AddScoped(typeof(IControllerService<PatentModel>), typeof(PatentService));
+            services.AddScoped(typeof(IControllerService<DesignModel>), typeof(DesignService));
             services.AddControllers();
 
          
@@ -109,16 +118,18 @@ namespace TPHunter.WebServices.Scrap.API
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TPHunter.WebServices.Scrap.API v1"));
             }
-
+            
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllers().RequireAuthorization();
             });
         }
     }

@@ -6,6 +6,15 @@
 
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="Static\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IdentityModel" Version="4.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Source\TPHunter.Source.Core\TPHunter.Source.Core.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,5 @@
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.DataSender\obj\Debug\net5.0\TPHunter.Source.DataSender.csproj.AssemblyReference.cache
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.DataSender\obj\Debug\net5.0\TPHunter.Source.DataSender.GeneratedMSBuildEditorConfig.editorconfig
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.DataSender\obj\Debug\net5.0\TPHunter.Source.DataSender.AssemblyInfoInputs.cache
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.DataSender\obj\Debug\net5.0\TPHunter.Source.DataSender.AssemblyInfo.cs
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.DataSender\obj\Debug\net5.0\TPHunter.Source.DataSender.csproj.CoreCompileInputs.cache

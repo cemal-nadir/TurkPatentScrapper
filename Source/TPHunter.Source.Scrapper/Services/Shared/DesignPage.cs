@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using System.Collections.Generic;
+using TPHunter.Shared.Scrapper.Abstracts;
 using TPHunter.Shared.Scrapper.Models;
 using TPHunter.Source.Browser.Helpers;
 using TPHunter.Source.Scrapper.Abstract.Shared;
@@ -43,9 +44,9 @@ namespace TPHunter.Source.Scrapper.Services.Shared
             return _webDriver.GetDesignData(MainHelper.ScrapType.Upload);
         }
 
-        public void Search(object searchParam)
+        public void Search(ISearchParam searchParam)
         {
-            _webDriver.SearchDesigns(searchParam.ToString());
+            _webDriver.SearchDesigns(((BulletinParam)searchParam).BulletinNumber.ToString());
         }
 
         public void Search(string applicationNumber)

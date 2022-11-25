@@ -25,4 +25,8 @@
     <ProjectReference Include="..\TPHunter.WebServices.Scrap.PatentPdf\TPHunter.WebServices.Scrap.PatentPdf.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ApiServices\" />
+  </ItemGroup>
+
 </Project>

@@ -10,5 +10,13 @@
   "TPConfig": {
     "TPSearchPage": "https://www.turkpatent.gov.tr/arastirma-yap",
     "TPPatentPdfPage": "https://portal.turkpatent.gov.tr/anonim/arastirma/patent/sonuc/dosya"
+  },
+  "Services": {
+    "IdentityApiUri": "http://localhost:6030",
+    "ScrapApiUri": "https://localhost:5001"
+  },
+  "ServiceConfigs": {
+    "ScrapApiClient": "DataSupplierClient",
+    "ScrapApiSecret": "cv7VzznOzv8RrqLaaSJA4jZ5GeB3TvM8"
   }
 }

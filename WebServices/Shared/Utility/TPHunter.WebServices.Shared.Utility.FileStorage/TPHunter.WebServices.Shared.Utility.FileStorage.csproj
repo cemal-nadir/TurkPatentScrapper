@@ -8,4 +8,8 @@
     <PackageReference Include="AWSSDK.S3" Version="3.7.101.16" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TPHunter.WebServices.Shared.Utility.Core\TPHunter.WebServices.Shared.Utility.Core.csproj" />
+  </ItemGroup>
+
 </Project>

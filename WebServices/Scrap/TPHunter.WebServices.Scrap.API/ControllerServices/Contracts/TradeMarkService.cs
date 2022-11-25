@@ -1,13 +1,14 @@
-﻿using Microsoft.Extensions.Configuration;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using TPHunter.Shared.Scrapper.Abstracts;
 using TPHunter.Shared.Scrapper.Models;
 using TPHunter.WebServices.Scrap.API.ControllerServices.Abstract;
-using TPHunter.WebServices.Scrap.API.DI;
 using TPHunter.WebServices.Shared.MainData.Core.Models;
 using TPHunter.WebServices.Shared.MainData.Core.Services;
-using TPHunter.WebServices.Shared.Utility.FileStorage;
+using TPHunter.WebServices.Shared.Utility.Core.Abstract.FileStorage;
 
 namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
 {
@@ -52,8 +53,6 @@ namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
             IService<TradeMarkTransactionType> trademarkTransactionTypeService,
             IService<Holder> holderService,
             IService<HolderRelation> holderRelationService,
-            IAmazonS3ClientFactory amazonS3ClientFactory,
-            IConfiguration configuration,
             IFileTransferManager fileTransferManager
             )
         {
@@ -75,7 +74,19 @@ namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
             _trademarkTransactionTypeService = trademarkTransactionTypeService;
             _holderService = holderService;
             _holderRelationService = holderRelationService;
-            GeneralDı.CreateClient(amazonS3ClientFactory, configuration);
+        }
+
+        public async Task<int> GetLastPulledCountAsync(ISearchParam searchParam)
+        {
+            return await _trademarkService.GetCountAsync(x =>
+                x.DeclareBullettinNumber == ((BulletinParam)searchParam).BulletinNumber.ToString());
+        }
+
+        public async Task<IEnumerable<string>> GetLastPulledApplicationNumbersAsync(ISearchParam searchParam)
+        {
+            return await _trademarkService.AsNoTracking.Where(x =>
+                    x.DeclareBullettinNumber == ((BulletinParam)searchParam).BulletinNumber.ToString())
+                .Select(x => x.ApplicationNumber).ToListAsync();
         }
 
         public async Task InsertAsync(MarkModel model)

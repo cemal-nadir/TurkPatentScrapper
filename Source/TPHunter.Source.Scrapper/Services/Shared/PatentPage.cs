@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
+using TPHunter.Shared.Scrapper.Abstracts;
 using TPHunter.Shared.Scrapper.Models;
 using TPHunter.Source.Browser.Helpers;
 using TPHunter.Source.Scrapper.Abstract.Shared;
@@ -45,9 +46,9 @@ namespace TPHunter.Source.Scrapper.Services.Shared
             return _webDriver.GetPatentData(MainHelper.ScrapType.Upload);
         }
 
-        public void Search(object searchParam)
+        public void Search(ISearchParam searchParam)
         {
-            if (searchParam is DateTime[] dates) _webDriver.SearchPatents(dates[0], dates[1]);
+           _webDriver.SearchPatents(((DateRangeParam)searchParam).StartDate, ((DateRangeParam)searchParam).EndDate);
         }
 
         public void Search(string applicationNumber)

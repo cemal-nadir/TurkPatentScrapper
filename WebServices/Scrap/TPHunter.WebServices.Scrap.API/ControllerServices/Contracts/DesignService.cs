@@ -1,14 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TPHunter.Shared.Scrapper.Abstracts;
 using TPHunter.Shared.Scrapper.Models;
 using TPHunter.WebServices.Scrap.API.ControllerServices.Abstract;
-using TPHunter.WebServices.Scrap.API.DI;
 using TPHunter.WebServices.Shared.MainData.Core.Models;
 using TPHunter.WebServices.Shared.MainData.Core.Services;
-using TPHunter.WebServices.Shared.Utility.FileStorage;
+using TPHunter.WebServices.Shared.Utility.Core.Abstract.FileStorage;
 
 namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
 {
@@ -52,8 +52,6 @@ namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
             IService<DesignTransactionDescriptionDetail> designTransactionDescriptionDetailService,
             IService<DesignTransactionType> designTransactionTypeService,
             IService<DesignTransactionTypeDetail> designTransactionTypeDetailService,
-            IAmazonS3ClientFactory amazonS3ClientFactory,
-            IConfiguration configuration,
             IFileTransferManager fileTransferManager, IService<DesignProduct> designProductService,
             IService<DesignProductClassesRelation> designProductClassesRelationService,
             IService<DesignProductImage> designProductImageService,
@@ -81,7 +79,19 @@ namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
             _designTransactionTypeDetailService = designTransactionTypeDetailService;
             _designTransactionDescriptionService = designTransactionDescriptionService;
             _designTransactionDescriptionDetailService = designTransactionDescriptionDetailService;
-            GeneralDı.CreateClient(amazonS3ClientFactory, configuration);
+        }
+
+        public async Task<int> GetLastPulledCountAsync(ISearchParam searchParam)
+        {
+            return await _designService.GetCountAsync(x =>
+                x.BulletinNumber == ((BulletinParam)searchParam).BulletinNumber.ToString());
+        }
+
+        public async Task<IEnumerable<string>> GetLastPulledApplicationNumbersAsync(ISearchParam searchParam)
+        {
+            return await _designService.AsNoTracking.Where(x =>
+                    x.BulletinNumber == ((BulletinParam)searchParam).BulletinNumber.ToString())
+                .Select(x => x.ApplicationNumber).ToListAsync();
         }
 
         public async Task InsertAsync(DesignModel model)

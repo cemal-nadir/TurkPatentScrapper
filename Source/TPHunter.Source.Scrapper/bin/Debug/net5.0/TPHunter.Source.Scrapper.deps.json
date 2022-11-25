@@ -8,9 +8,9 @@
     ".NETCoreApp,Version=v5.0": {
       "TPHunter.Source.Scrapper/1.0.0": {
         "dependencies": {
+          "TPHunter.Shared.Scrapper": "1.0.0",
           "TPHunter.Source.Browser": "1.0.0",
           "TPHunter.Source.Core": "1.0.0",
-          "TPHunter.Source.FileStorage": "1.0.0",
           "TPHunter.Source.ImageProcess": "1.0.0"
         },
         "runtime": {
@@ -26,25 +26,6 @@
           "lib/netstandard2.0/AngleSharp.dll": {
             "assemblyVersion": "0.17.1.0",
             "fileVersion": "0.17.1.0"
-          }
-        }
-      },
-      "AWSSDK.Core/3.7.100.6": {
-        "runtime": {
-          "lib/netcoreapp3.1/AWSSDK.Core.dll": {
-            "assemblyVersion": "3.3.0.0",
-            "fileVersion": "3.7.100.6"
-          }
-        }
-      },
-      "AWSSDK.S3/3.7.101.6": {
-        "dependencies": {
-          "AWSSDK.Core": "3.7.100.6"
-        },
-        "runtime": {
-          "lib/netcoreapp3.1/AWSSDK.S3.dll": {
-            "assemblyVersion": "3.3.0.0",
-            "fileVersion": "3.7.101.6"
           }
         }
       },
@@ -1010,6 +991,11 @@
           }
         }
       },
+      "TPHunter.Shared.Scrapper/1.0.0": {
+        "runtime": {
+          "TPHunter.Shared.Scrapper.dll": {}
+        }
+      },
       "TPHunter.Source.Browser/1.0.0": {
         "dependencies": {
           "Selenium.Support": "4.5.1",
@@ -1028,15 +1014,6 @@
         },
         "runtime": {
           "TPHunter.Source.Core.dll": {}
-        }
-      },
-      "TPHunter.Source.FileStorage/1.0.0": {
-        "dependencies": {
-          "AWSSDK.S3": "3.7.101.6",
-          "TPHunter.Source.Core": "1.0.0"
-        },
-        "runtime": {
-          "TPHunter.Source.FileStorage.dll": {}
         }
       },
       "TPHunter.Source.ImageProcess/1.0.0": {
@@ -1062,20 +1039,6 @@
       "sha512": "sha512-5MPI4bbixlwxb0W/smOMeIR+QlxMy5/5jD+WnIAw4pBC+7AhLPe5bS3cLgQMJyvd6q0A48sG+uYOt/ep406GLA==",
       "path": "anglesharp/0.17.1",
       "hashPath": "anglesharp.0.17.1.nupkg.sha512"
-    },
-    "AWSSDK.Core/3.7.100.6": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-TABd2IP9MUPtoLJ3EouOsZ1RfNqFPz0w7pblWcaXMw8BgaLSH4xWD7uX+0oIhRVs0GalIl3RHZEjOibEGezDUA==",
-      "path": "awssdk.core/3.7.100.6",
-      "hashPath": "awssdk.core.3.7.100.6.nupkg.sha512"
-    },
-    "AWSSDK.S3/3.7.101.6": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-1wCx4NZAXdoKyKRMLuVvb6KaqM8nfpXAp41ltxM+a4p8+TS+Iagvs2dq9Mz/ALzTazd4rW41en1S1gsXCWusBQ==",
-      "path": "awssdk.s3/3.7.101.6",
-      "hashPath": "awssdk.s3.3.7.101.6.nupkg.sha512"
     },
     "Castle.Core/4.4.1": {
       "type": "package",
@@ -1791,17 +1754,17 @@
       "path": "webdrivermanager/2.16.0",
       "hashPath": "webdrivermanager.2.16.0.nupkg.sha512"
     },
+    "TPHunter.Shared.Scrapper/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "TPHunter.Source.Browser/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
     "TPHunter.Source.Core/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "TPHunter.Source.FileStorage/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -1,0 +1,12 @@
+D:\CustomProjects\SistemPatent\TPHunter\WebServices\Shared\Utility\TPHunter.WebServices.Shared.Utility.Core\bin\Debug\net5.0\TPHunter.WebServices.Shared.Utility.Core.deps.json
+D:\CustomProjects\SistemPatent\TPHunter\WebServices\Shared\Utility\TPHunter.WebServices.Shared.Utility.Core\bin\Debug\net5.0\TPHunter.WebServices.Shared.Utility.Core.dll
+D:\CustomProjects\SistemPatent\TPHunter\WebServices\Shared\Utility\TPHunter.WebServices.Shared.Utility.Core\bin\Debug\net5.0\TPHunter.WebServices.Shared.Utility.Core.pdb
+D:\CustomProjects\SistemPatent\TPHunter\WebServices\Shared\Utility\TPHunter.WebServices.Shared.Utility.Core\obj\Debug\net5.0\TPHunter.WebServices.Shared.Utility.Core.csproj.AssemblyReference.cache
+D:\CustomProjects\SistemPatent\TPHunter\WebServices\Shared\Utility\TPHunter.WebServices.Shared.Utility.Core\obj\Debug\net5.0\TPHunter.WebServices.Shared.Utility.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\CustomProjects\SistemPatent\TPHunter\WebServices\Shared\Utility\TPHunter.WebServices.Shared.Utility.Core\obj\Debug\net5.0\TPHunter.WebServices.Shared.Utility.Core.AssemblyInfoInputs.cache
+D:\CustomProjects\SistemPatent\TPHunter\WebServices\Shared\Utility\TPHunter.WebServices.Shared.Utility.Core\obj\Debug\net5.0\TPHunter.WebServices.Shared.Utility.Core.AssemblyInfo.cs
+D:\CustomProjects\SistemPatent\TPHunter\WebServices\Shared\Utility\TPHunter.WebServices.Shared.Utility.Core\obj\Debug\net5.0\TPHunter.WebServices.Shared.Utility.Core.csproj.CoreCompileInputs.cache
+D:\CustomProjects\SistemPatent\TPHunter\WebServices\Shared\Utility\TPHunter.WebServices.Shared.Utility.Core\obj\Debug\net5.0\TPHunter.WebServices.Shared.Utility.Core.dll
+D:\CustomProjects\SistemPatent\TPHunter\WebServices\Shared\Utility\TPHunter.WebServices.Shared.Utility.Core\obj\Debug\net5.0\refint\TPHunter.WebServices.Shared.Utility.Core.dll
+D:\CustomProjects\SistemPatent\TPHunter\WebServices\Shared\Utility\TPHunter.WebServices.Shared.Utility.Core\obj\Debug\net5.0\TPHunter.WebServices.Shared.Utility.Core.pdb
+D:\CustomProjects\SistemPatent\TPHunter\WebServices\Shared\Utility\TPHunter.WebServices.Shared.Utility.Core\obj\Debug\net5.0\ref\TPHunter.WebServices.Shared.Utility.Core.dll

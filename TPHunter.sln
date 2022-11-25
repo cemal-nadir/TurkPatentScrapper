@@ -49,7 +49,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TPHunter.WebServices.Shared
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TPHunter.WebServices.Shared.Utility.FileStorage", "WebServices\Shared\Utility\TPHunter.WebServices.Shared.Utility.FileStorage\TPHunter.WebServices.Shared.Utility.FileStorage.csproj", "{06F15747-33B2-4DAE-8346-19DDBB5B8968}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPHunter.WebServices.Scrap.PatentPdf", "WebServices\Scrap\TPHunter.WebServices.Scrap.PatentPdf\TPHunter.WebServices.Scrap.PatentPdf.csproj", "{5EE9B428-954E-426A-8DF2-DF49A43BA53D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TPHunter.WebServices.Scrap.PatentPdf", "WebServices\Scrap\TPHunter.WebServices.Scrap.PatentPdf\TPHunter.WebServices.Scrap.PatentPdf.csproj", "{5EE9B428-954E-426A-8DF2-DF49A43BA53D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TPHunter.WebServices.Shared.Utility.Core", "WebServices\Shared\Utility\TPHunter.WebServices.Shared.Utility.Core\TPHunter.WebServices.Shared.Utility.Core.csproj", "{30B4C406-1E7B-4ECB-93A8-834C1B55645A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPHunter.Source.DataSaver", "Source\TPHunter.Source.DataSaver\TPHunter.Source.DataSaver.csproj", "{8033B61C-0532-421F-8BC9-85CD4562206A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{496F3572-A5BE-4BAD-9AA6-5B784263026A} = {496F3572-A5BE-4BAD-9AA6-5B784263026A}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -113,6 +120,14 @@ Global
 		{5EE9B428-954E-426A-8DF2-DF49A43BA53D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EE9B428-954E-426A-8DF2-DF49A43BA53D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EE9B428-954E-426A-8DF2-DF49A43BA53D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30B4C406-1E7B-4ECB-93A8-834C1B55645A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30B4C406-1E7B-4ECB-93A8-834C1B55645A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30B4C406-1E7B-4ECB-93A8-834C1B55645A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30B4C406-1E7B-4ECB-93A8-834C1B55645A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8033B61C-0532-421F-8BC9-85CD4562206A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8033B61C-0532-421F-8BC9-85CD4562206A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8033B61C-0532-421F-8BC9-85CD4562206A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8033B61C-0532-421F-8BC9-85CD4562206A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -138,6 +153,8 @@ Global
 		{5E13FEE6-BC2C-40AD-ACB7-D84AD48C6993} = {FB887598-4397-4EFF-8D9C-90565AF580DF}
 		{06F15747-33B2-4DAE-8346-19DDBB5B8968} = {FB887598-4397-4EFF-8D9C-90565AF580DF}
 		{5EE9B428-954E-426A-8DF2-DF49A43BA53D} = {55F8BC61-9160-4DC5-8209-CC8C98C7E62B}
+		{30B4C406-1E7B-4ECB-93A8-834C1B55645A} = {FB887598-4397-4EFF-8D9C-90565AF580DF}
+		{8033B61C-0532-421F-8BC9-85CD4562206A} = {A7C320CD-CC66-4862-B28E-8097E2016D4F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {920A07D5-8595-4D62-AB08-67D929EF8037}
