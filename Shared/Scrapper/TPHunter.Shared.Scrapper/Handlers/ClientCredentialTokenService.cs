@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using IdentityModel.Client;
-using Newtonsoft.Json.Linq;
 using TPHunter.Shared.Scrapper.Abstracts;
 using TPHunter.Source.Core.Configs;
 
@@ -18,7 +14,7 @@ namespace TPHunter.Shared.Scrapper.Handlers
         public ClientCredentialTokenService()
         {
             _config=new LiveConfig();
-            Ioc.HttpClientFactory();
+            Ioc.ApiClientFactory();
             _httpClient = Ioc.Resolve<IApiClient>().Client;
         }
         public async Task<string> GetToken()

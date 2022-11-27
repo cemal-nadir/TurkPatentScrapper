@@ -1,8 +1,6 @@
-﻿using TPHunter.Shared.Scrapper.Abstracts;
-
-namespace TPHunter.Shared.Scrapper.Models
+﻿namespace TPHunter.Shared.Scrapper.Models
 {
-    public class HolderModel : IModel
+    public class HolderModel
     {
         public string HolderCode { get; set; }
         public string HolderName { get; set; }

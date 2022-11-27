@@ -13,7 +13,14 @@ namespace TPHunter.Source.Scrapper.Services.Shared
         private readonly IWebDriver _webDriver;
         public MarkaPage(IWebDriver webDriver)
         {
+
             _webDriver = webDriver;
+
+        }
+
+        public int GetDataCount()
+        {
+            return _webDriver.GetDataCount();
         }
 
         public bool CheckAndClickNext()
@@ -46,6 +53,8 @@ namespace TPHunter.Source.Scrapper.Services.Shared
         {
             return _webDriver.GetMarkData(MainHelper.ScrapType.Upload);
         }
+
+     
 
         public void Search(ISearchParam searchParam)
         {

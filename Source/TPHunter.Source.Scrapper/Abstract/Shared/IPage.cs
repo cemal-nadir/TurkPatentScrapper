@@ -8,6 +8,7 @@ namespace TPHunter.Source.Scrapper.Abstract.Shared
         public void Prepare();
         public void Search(ISearchParam searchParam);
         public void Search(string applicationNumber);
+        public int GetDataCount();
         public bool CheckAndClickNext();
         public IEnumerable<T> ScrapMulti();
         public T ScrapSingle();

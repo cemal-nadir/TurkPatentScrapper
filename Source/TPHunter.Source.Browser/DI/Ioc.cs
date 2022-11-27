@@ -10,7 +10,7 @@ namespace TPHunter.Source.Browser.DI
         public static void ChromeBaseFactory()
         {
             Container.Register(
-                Component.For<IBrowserBase>().ImplementedBy<ChromeBase>()
+                Component.For<IBrowserBase>().ImplementedBy<ChromeBase>().Named(nameof(ChromeBase))
                 );
         }
         public static T Resolve<T>()

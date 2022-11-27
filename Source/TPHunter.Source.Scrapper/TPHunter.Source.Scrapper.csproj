@@ -8,6 +8,7 @@
     <ProjectReference Include="..\..\Shared\Scrapper\TPHunter.Shared.Scrapper\TPHunter.Shared.Scrapper.csproj" />
     <ProjectReference Include="..\TPHunter.Source.Browser\TPHunter.Source.Browser.csproj" />
     <ProjectReference Include="..\TPHunter.Source.Core\TPHunter.Source.Core.csproj" />
+    <ProjectReference Include="..\TPHunter.Source.DataSaver\TPHunter.Source.DataSaver.csproj" />
     <ProjectReference Include="..\TPHunter.Source.ImageProcess\TPHunter.Source.ImageProcess.csproj" />
   </ItemGroup>
 

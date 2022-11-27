@@ -1,8 +1,6 @@
-﻿using TPHunter.Shared.Scrapper.Abstracts;
-
-namespace TPHunter.Shared.Scrapper.Models
+﻿namespace TPHunter.Shared.Scrapper.Models
 {
-   public class MarkTransactionDetail : IModel
+   public class MarkTransactionDetail
     {
         public string DecisionReason { get; set; }
         public string AboutMark { get; set; }

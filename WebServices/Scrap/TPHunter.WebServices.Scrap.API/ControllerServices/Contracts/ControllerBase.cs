@@ -9,6 +9,8 @@ using TPHunter.WebServices.Shared.Utility.ApiUtility.ControllerBases.Dtos;
 
 namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class ControllerBase<TModel> : CustomBaseController where TModel:IModel
     {
         private readonly IControllerService<TModel> _service;
@@ -18,7 +20,7 @@ namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
         }
 
         [HttpPost]
-        public async Task<IActionResult> InsertAsync(IEnumerable<TModel> models)
+        public async Task<IActionResult> Insert(IEnumerable<TModel> models)
         {
             foreach (var model in models)
             {
@@ -27,14 +29,14 @@ namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
 
             return CreateActionResultInstance(Response<NoContent>.Success(201));
         }
-        [HttpDelete]
-        public async Task<IActionResult> RemoveAsync(Guid ıd)
+        [HttpDelete("{ıd:guid}")]
+        public async Task<IActionResult> Remove(Guid ıd)
         {
             await _service.RemoveAsync(ıd);
             return CreateActionResultInstance(Response<NoContent>.Success(201));
         }
         [HttpPut]
-        public async Task<IActionResult> UpdateAsync(TModel model)
+        public async Task<IActionResult> Update(TModel model)
         {
             await _service.UpdateAsync(model);
             return CreateActionResultInstance(Response<NoContent>.Success(201));

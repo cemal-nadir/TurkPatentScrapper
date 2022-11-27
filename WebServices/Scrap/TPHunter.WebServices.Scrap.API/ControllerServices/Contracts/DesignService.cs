@@ -94,6 +94,13 @@ namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
                 .Select(x => x.ApplicationNumber).ToListAsync();
         }
 
+        public async Task<IEnumerable<Guid>> GetLastPulledIdsAsync(ISearchParam searchParam)
+        {
+            return await _designService.AsNoTracking.Where(x =>
+                    x.BulletinNumber == ((BulletinParam)searchParam).BulletinNumber.ToString())
+                .Select(x => x.Id).ToListAsync();
+        }
+
         public async Task InsertAsync(DesignModel model)
         {
             Design dbModel = new();

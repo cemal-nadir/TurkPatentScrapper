@@ -1,9 +1,8 @@
 ﻿using System;
-using TPHunter.Shared.Scrapper.Abstracts;
 
 namespace TPHunter.Shared.Scrapper.Models
 {
-    public class DesignTransactionModel : IModel
+    public class DesignTransactionModel
     {
         public string TransactionType { get; set; }
         public string TransactionDetail { get; set; }

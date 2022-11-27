@@ -1,0 +1,17 @@
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.DataSaver\bin\Debug\net5.0\TPHunter.Source.DataSaver.deps.json
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.DataSaver\bin\Debug\net5.0\TPHunter.Source.DataSaver.dll
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.DataSaver\bin\Debug\net5.0\TPHunter.Source.DataSaver.pdb
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.DataSaver\bin\Debug\net5.0\TPHunter.Shared.Scrapper.dll
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.DataSaver\bin\Debug\net5.0\TPHunter.Source.Core.dll
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.DataSaver\bin\Debug\net5.0\TPHunter.Shared.Scrapper.pdb
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.DataSaver\bin\Debug\net5.0\TPHunter.Source.Core.pdb
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.DataSaver\obj\Debug\net5.0\TPHunter.Source.DataSaver.csproj.AssemblyReference.cache
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.DataSaver\obj\Debug\net5.0\TPHunter.Source.DataSaver.GeneratedMSBuildEditorConfig.editorconfig
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.DataSaver\obj\Debug\net5.0\TPHunter.Source.DataSaver.AssemblyInfoInputs.cache
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.DataSaver\obj\Debug\net5.0\TPHunter.Source.DataSaver.AssemblyInfo.cs
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.DataSaver\obj\Debug\net5.0\TPHunter.Source.DataSaver.csproj.CoreCompileInputs.cache
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.DataSaver\obj\Debug\net5.0\TPHunter.Source.DataSaver.csproj.CopyComplete
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.DataSaver\obj\Debug\net5.0\TPHunter.Source.DataSaver.dll
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.DataSaver\obj\Debug\net5.0\refint\TPHunter.Source.DataSaver.dll
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.DataSaver\obj\Debug\net5.0\TPHunter.Source.DataSaver.pdb
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.DataSaver\obj\Debug\net5.0\ref\TPHunter.Source.DataSaver.dll

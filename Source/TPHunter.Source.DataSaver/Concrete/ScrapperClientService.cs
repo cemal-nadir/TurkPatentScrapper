@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Net.Http.Json;
-using System.Text;
 using System.Threading.Tasks;
 using TPHunter.Shared.Scrapper.Abstracts;
-using TPHunter.Shared.Scrapper.Handlers;
-using TPHunter.Shared.Scrapper.Models;
 using TPHunter.Source.DataSaver.Abstract;
 using TPHunter.Source.DataSaver.DI;
 
@@ -20,8 +15,7 @@ namespace TPHunter.Source.DataSaver.Concrete
 
         public ScrapperClientService(string apiUri)
         {
-            Shared.Scrapper.Ioc.HttpClientFactory();
-            Ioc.ScrapperClientFactory(apiUri);
+            Shared.Scrapper.Ioc.ApiClientFactory();
             _httpClient = Ioc.Resolve<IApiClient>().Client;
             _httpClient.BaseAddress = new Uri(apiUri);
         }
@@ -30,10 +24,7 @@ namespace TPHunter.Source.DataSaver.Concrete
         {
             var response = await _httpClient.PostAsJsonAsync("GetLastPulledApplicationNumbers", searchParam);
 
-            if (response.StatusCode == HttpStatusCode.Unauthorized)
-            {
-                //Authorize Olman gerekiyor
-            }
+           
 
             if (!response.IsSuccessStatusCode)
                 throw new Exception($"api error code => {response.StatusCode}");
@@ -42,14 +33,23 @@ namespace TPHunter.Source.DataSaver.Concrete
 
         }
 
+        public async Task<IEnumerable<Guid>> GetLastPulledIdsAsync(ISearchParam searchParam)
+        {
+            var response = await _httpClient.PostAsJsonAsync("GetLastPulledIds", searchParam);
+
+
+
+            if (!response.IsSuccessStatusCode)
+                throw new Exception($"api error code => {response.StatusCode}");
+
+            return await response.Content.ReadFromJsonAsync<IEnumerable<Guid>>();
+        }
+
         public async Task<int> GetLastPulledCountAsync(ISearchParam searchParam)
         {
             var response = await _httpClient.PostAsJsonAsync("GetLastPulledCount", searchParam);
 
-            if (response.StatusCode == HttpStatusCode.Unauthorized)
-            {
-                //Authorize Olman gerekiyor
-            }
+           
 
             if (!response.IsSuccessStatusCode)
                 throw new Exception($"api error code => {response.StatusCode}");
@@ -61,10 +61,7 @@ namespace TPHunter.Source.DataSaver.Concrete
         {
             var response = await _httpClient.PostAsJsonAsync(default(string), model);
 
-            if (response.StatusCode == HttpStatusCode.Unauthorized)
-            {
-                //Authorize Olman gerekiyor
-            }
+           
 
             if (!response.IsSuccessStatusCode)
                 throw new Exception($"api error code => {response.StatusCode}");
@@ -75,10 +72,7 @@ namespace TPHunter.Source.DataSaver.Concrete
         {
             var response = await _httpClient.DeleteAsync(ıd.ToString());
 
-            if (response.StatusCode == HttpStatusCode.Unauthorized)
-            {
-                //Authorize Olman gerekiyor
-            }
+           
 
             if (!response.IsSuccessStatusCode)
                 throw new Exception($"api error code => {response.StatusCode}");
@@ -88,10 +82,7 @@ namespace TPHunter.Source.DataSaver.Concrete
         {
             var response = await _httpClient.PutAsJsonAsync(default(string), model);
 
-            if (response.StatusCode == HttpStatusCode.Unauthorized)
-            {
-                //Authorize Olman gerekiyor
-            }
+           
 
             if (!response.IsSuccessStatusCode)
                 throw new Exception($"api error code => {response.StatusCode}");

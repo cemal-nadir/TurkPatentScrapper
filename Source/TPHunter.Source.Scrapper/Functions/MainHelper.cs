@@ -9,6 +9,7 @@ using TPHunter.Shared.Scrapper.Models;
 using TPHunter.Source.Browser.Helpers;
 using TPHunter.Source.ImageProcess;
 using TPHunter.Source.Scrapper.Models;
+using System.Text.RegularExpressions;
 
 namespace TPHunter.Source.Scrapper.Functions
 {
@@ -66,7 +67,7 @@ namespace TPHunter.Source.Scrapper.Functions
 
             #region Section Marka Bilgileri
 
-            markModel.ImageText = sections[0].FindElement(By.TagName("img")).GetAttribute("src");
+            markModel.ImageText = sections[0].FindElement(By.TagName("img")).GetAttribute("src").FixImageBase64();
             var cacheRows = sections[0].FindElement(By.TagName("tbody")).FindElements(By.TagName("tr")).ToList();
             markModel.ApplicationNumber = cacheRows[0].FindElements(By.TagName("td"))[1].Text.NormalizeText();
             markModel.ApplicationDate = cacheRows[0].FindElements(By.TagName("td"))[3].Text.CustomConvertToDatetime();
@@ -233,7 +234,7 @@ namespace TPHunter.Source.Scrapper.Functions
                     {
                         Name = cacheCols[1].Text.NormalizeText(),
                         LocarnoClass = cacheCols[2].Text.Contains(",") ? cacheCols[2].Text.Split(',') : new[] { cacheCols[2].Text.NormalizeText() },
-                        ProductImages = cacheCols[3].FindElements(By.TagName("img")).Select(x => x.GetAttribute("src")).ToArray()
+                        ProductImages = cacheCols[3].FindElements(By.TagName("img")).Select(x => x.GetAttribute("src")).Select(x=>x.FixImageBase64()).ToArray()
                     };
                     Ioc.ProcessorFactory();
                     cacheProductModel.IsProductApproved = Ioc.Resolve<IProcessor>().IsProductImageApproved(cacheProductModel.ProductImages.FirstOrDefault()).Result;
@@ -467,6 +468,7 @@ namespace TPHunter.Source.Scrapper.Functions
             }
             return driver.FindElement(by);
         }
+
         public static IEnumerable<IWebElement> FindElements(this IWebDriver driver, By by, int timeoutInSeconds)
         {
             driver.CheckAndSolveCaptcha();
@@ -486,6 +488,14 @@ namespace TPHunter.Source.Scrapper.Functions
             driver.ClickWithJs(nextPageButton);
             driver.WaitAjaxLoad();
             return false;
+        }
+
+        public static int GetDataCount(this IWebDriver driver)
+        {
+            var value = driver.FindElement(By.XPath("//*[@id=\"search-results\"]/div[2]/p"), 20).Text;
+            var regex = new Regex("[0-9]");
+            var match = regex.Match(value.Replace(" ",""));
+            return int.Parse(match.Value);
         }
         public static void WaitAjaxLoad(this IWebDriver driver)
         {
@@ -507,10 +517,7 @@ namespace TPHunter.Source.Scrapper.Functions
                 throw new Exception("Sebebi Bilinmeyen Bir Hata Oluştu " + ex.Message);
             }
         }
-        public static string FixMarkImageBase64(this string base64Text)
-        {
-            return base64Text.Replace('-', '+').Replace("data:image/jpeg;base64,", "").Replace('_', '/');
-        }
+       
 
 
 

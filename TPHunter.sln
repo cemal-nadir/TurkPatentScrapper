@@ -14,6 +14,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TPHunter.Source.Core", "Source\TPHunter.Source.Core\TPHunter.Source.Core.csproj", "{496F3572-A5BE-4BAD-9AA6-5B784263026A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TPHunter.Source.Scrapper", "Source\TPHunter.Source.Scrapper\TPHunter.Source.Scrapper.csproj", "{744CD2B9-1978-4715-B692-A1EA48ABB6E0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8033B61C-0532-421F-8BC9-85CD4562206A} = {8033B61C-0532-421F-8BC9-85CD4562206A}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebServices", "WebServices", "{F5E6DC35-0227-45D1-9D3C-ED2AFACF448E}"
 EndProject
@@ -53,7 +56,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TPHunter.WebServices.Scrap.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TPHunter.WebServices.Shared.Utility.Core", "WebServices\Shared\Utility\TPHunter.WebServices.Shared.Utility.Core\TPHunter.WebServices.Shared.Utility.Core.csproj", "{30B4C406-1E7B-4ECB-93A8-834C1B55645A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPHunter.Source.DataSaver", "Source\TPHunter.Source.DataSaver\TPHunter.Source.DataSaver.csproj", "{8033B61C-0532-421F-8BC9-85CD4562206A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TPHunter.Source.DataSaver", "Source\TPHunter.Source.DataSaver\TPHunter.Source.DataSaver.csproj", "{8033B61C-0532-421F-8BC9-85CD4562206A}"
 	ProjectSection(ProjectDependencies) = postProject
 		{496F3572-A5BE-4BAD-9AA6-5B784263026A} = {496F3572-A5BE-4BAD-9AA6-5B784263026A}
 	EndProjectSection

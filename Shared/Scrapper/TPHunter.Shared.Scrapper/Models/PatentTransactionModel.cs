@@ -1,9 +1,8 @@
 ﻿using System;
-using TPHunter.Shared.Scrapper.Abstracts;
 
 namespace TPHunter.Shared.Scrapper.Models
 {
-   public class PatentTransactionModel : IModel
+   public class PatentTransactionModel
     {
         public DateTime? Date { get; set; }
         public DateTime? NotificationDate { get; set; }

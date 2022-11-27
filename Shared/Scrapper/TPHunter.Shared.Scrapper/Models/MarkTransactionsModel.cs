@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using TPHunter.Shared.Scrapper.Abstracts;
 
 namespace TPHunter.Shared.Scrapper.Models
 {
-   public class MarkTransactionsModel : IModel
+   public class MarkTransactionsModel
     {
         public string TransactionType { get; set; }
         public DateTime? TransactionDate { get; set; }

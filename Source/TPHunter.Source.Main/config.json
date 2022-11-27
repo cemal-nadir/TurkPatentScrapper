@@ -18,5 +18,9 @@
   "ServiceConfigs": {
     "ScrapApiClient": "DataSupplierClient",
     "ScrapApiSecret": "cv7VzznOzv8RrqLaaSJA4jZ5GeB3TvM8"
+  },
+  "MainConfigs": {
+    "BrowserCount": 5,
+    "MaxUploadPerBrowser": 100
   }
 }

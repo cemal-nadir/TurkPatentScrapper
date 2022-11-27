@@ -10,7 +10,7 @@ namespace TPHunter.Source.ImageProcess
         public static void ProcessorFactory()
         {
             Container.Register(
-                Component.For<IProcessor>().ImplementedBy<Processor>()
+                Component.For<IProcessor>().ImplementedBy<Processor>().Named(nameof(Processor))
                 );
         }
         public static T Resolve<T>()

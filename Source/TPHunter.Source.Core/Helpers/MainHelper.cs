@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 
 namespace TPHunter.Source.Core.Helpers
@@ -21,6 +22,7 @@ namespace TPHunter.Source.Core.Helpers
             if (text.Length == 1)
                 text = text.Replace("-", "");
             text = text.Replace("*", "");
+            text = text.ToLower(CultureInfo.CreateSpecificCulture("tr"));
             return text.Length == 0 ? null : text;
         }
         public static int[] ParseClasses(this string classesText)
@@ -38,6 +40,11 @@ namespace TPHunter.Source.Core.Helpers
             if (string.IsNullOrEmpty(classText) || classText == "-")
                 return null;
             return Convert.ToInt32(classText);
+        }
+
+        public static string FixImageBase64(this string base64Text)
+        {
+            return base64Text.Replace('-', '+').Replace("data:image/jpeg;base64,", "").Replace('_', '/');
         }
     }
 }

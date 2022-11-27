@@ -1,9 +1,8 @@
 ﻿using System;
-using TPHunter.Shared.Scrapper.Abstracts;
 
 namespace TPHunter.Shared.Scrapper.Models
 {
-    public class PatentPriortyModel : IModel
+    public class PatentPriortyModel
     {
         public DateTime? PriortyDate { get; set; }
         public string PriortyNumber { get; set; }

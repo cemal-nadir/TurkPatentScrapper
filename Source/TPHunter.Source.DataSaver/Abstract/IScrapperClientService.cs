@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using TPHunter.Shared.Scrapper.Abstracts;
 
@@ -14,5 +12,6 @@ namespace TPHunter.Source.DataSaver.Abstract
         public Task RemoveAsync(Guid ıd);
         public Task<int> GetLastPulledCountAsync(ISearchParam searchParam);
         public Task<IEnumerable<string>> GetLastPulledApplicationNumbersAsync(ISearchParam searchParam);
+        public Task<IEnumerable<Guid>> GetLastPulledIdsAsync(ISearchParam searchParam);
     }
 }

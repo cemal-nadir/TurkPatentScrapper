@@ -1,16 +1,17 @@
-﻿using System;
-using TPHunter.Source.Scrapper.Abstract.Main;
+﻿using System.Threading.Tasks;
+using TPHunter.Source.Main.Workers;
 
 namespace TPHunter.Source.Main
 {
     internal static class Program
     {
-        private static void Main()
+        private static readonly MainWorker Worker = new ();
+
+        private static async Task Main()
         {
             Startup.SetConfigs();
-            Scrapper.DI.Ioc.MarkaWorkerFactory();
-            Scrapper.DI.Ioc.Resolve<IWorker>().Download().Wait();
-            Console.ReadKey();
+           
+            await Worker.DoWork().ConfigureAwait(false);
         }
     }
 }

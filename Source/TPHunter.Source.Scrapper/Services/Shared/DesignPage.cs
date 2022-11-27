@@ -19,7 +19,10 @@ namespace TPHunter.Source.Scrapper.Services.Shared
         {
             return _webDriver.CheckPageIsLastAndClick();
         }
-
+        public int GetDataCount()
+        {
+            return _webDriver.GetDataCount();
+        }
         public void Prepare()
         {
             _webDriver.GoTpPage();

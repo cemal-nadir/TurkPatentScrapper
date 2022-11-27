@@ -83,6 +83,12 @@ namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
                 x.ApplicationDate>= ((DateRangeParam)searchParam).StartDate&&x.ApplicationDate <= ((DateRangeParam)searchParam).EndDate);
         }
 
+        public async Task<IEnumerable<Guid>> GetLastPulledIdsAsync(ISearchParam searchParam)
+        {
+            return await _patentService.AsNoTracking.Where(x =>
+                x.ApplicationDate >= ((DateRangeParam)searchParam).StartDate && x.ApplicationDate <= ((DateRangeParam)searchParam).EndDate).Select(x => x.Id).ToListAsync();
+        }
+
         public async Task InsertAsync(PatentModel model)
         {
             Patent dbModel = new();

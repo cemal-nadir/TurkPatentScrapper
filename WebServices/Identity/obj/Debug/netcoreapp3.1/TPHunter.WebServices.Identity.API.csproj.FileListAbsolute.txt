@@ -109,8 +109,8 @@ D:\.NET PROJELER\SistemPatent\tphunter\WebServices\Identity\obj\Debug\netcoreapp
 D:\.NET PROJELER\SistemPatent\tphunter\WebServices\Identity\obj\Debug\netcoreapp3.1\TPHunter.WebServices.Identity.API.dll
 D:\.NET PROJELER\SistemPatent\tphunter\WebServices\Identity\obj\Debug\netcoreapp3.1\TPHunter.WebServices.Identity.API.pdb
 D:\.NET PROJELER\SistemPatent\tphunter\WebServices\Identity\obj\Debug\netcoreapp3.1\TPHunter.WebServices.Identity.API.genruntimeconfig.cache
-D:\CustomProjects\SistemPatent\TPHunter\WebServices\Identity\bin\Debug\netcoreapp3.1\appsettings.json
 D:\CustomProjects\SistemPatent\TPHunter\WebServices\Identity\bin\Debug\netcoreapp3.1\web.config
+D:\CustomProjects\SistemPatent\TPHunter\WebServices\Identity\bin\Debug\netcoreapp3.1\appsettings.json
 D:\CustomProjects\SistemPatent\TPHunter\WebServices\Identity\bin\Debug\netcoreapp3.1\TPHunter.WebServices.Identity.API.StaticWebAssets.xml
 D:\CustomProjects\SistemPatent\TPHunter\WebServices\Identity\bin\Debug\netcoreapp3.1\TPHunter.WebServices.Identity.API.exe
 D:\CustomProjects\SistemPatent\TPHunter\WebServices\Identity\bin\Debug\netcoreapp3.1\TPHunter.WebServices.Identity.API.deps.json

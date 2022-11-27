@@ -2,20 +2,16 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace TPHunter.Source.Core.Configs
 {
     public class LiveConfig
     {
-        public TrademarkSettings TrademarkSettings { get; set; }
-        public DesignSettings DesignSettings { get; set; }
-        public PatentSettings PatentSettings { get; set; }
-        public string AccessToken { get; set; }
-        public DateTime TokenExpirationDate { get; set; }
+        public TrademarkSettings TrademarkSettings { get; private init; }
+        public DesignSettings DesignSettings { get; private init; }
+        public PatentSettings PatentSettings { get; private init; }
+        private string AccessToken { get; set; }
+        private DateTime TokenExpirationDate { get; set; }
         public LiveConfig GetConfig()
         {
             if (File.Exists(RuntimeConfigs.ApplicationStartupPath + "\\liveconfigs.json"))
@@ -34,7 +30,8 @@ namespace TPHunter.Source.Core.Configs
                         DownloadHourDelay = 0,
                         DownloadMinuteDelay = 15,
                         DownloadSecondDelay = 0,
-                        LastScrapTime = DateTime.MinValue,
+                        LastDownload = DateTime.MinValue,
+                        LastUpload = DateTime.MinValue,
                         UpdateHourDelay = 24,
                         UpdateMinuteDelay = 0,
                         UpdateSecondDelay = 0
@@ -56,7 +53,8 @@ namespace TPHunter.Source.Core.Configs
                         DownloadHourDelay = 24,
                         DownloadSecondDelay = 0,
                         DownloadMinuteDelay = 0,
-                        LastScrapTime = DateTime.MinValue,
+                        LastDownload = DateTime.MinValue,
+                        LastUpload = DateTime.MinValue,
                         UpdateHourDelay = 168,
                         UpdateMinuteDelay = 0,
                         UpdateSecondDelay = 0
@@ -78,7 +76,8 @@ namespace TPHunter.Source.Core.Configs
                         DownloadHourDelay = 24,
                         DownloadMinuteDelay = 0,
                         DownloadSecondDelay = 0,
-                        LastScrapTime = DateTime.MinValue,
+                        LastDownload = DateTime.MinValue,
+                        LastUpload = DateTime.MinValue,
                         UpdateHourDelay = 168,
                         UpdateMinuteDelay = 0,
                         UpdateSecondDelay = 0
@@ -103,6 +102,7 @@ namespace TPHunter.Source.Core.Configs
 
         public string GetAccessToken() => GetConfig().AccessToken;
         public DateTime GetAccessTokenExpiration() => GetConfig().TokenExpirationDate;
+
         public void SetAccessToken(string token, DateTime expirationDate)
         {
             var config = GetConfig();
@@ -112,7 +112,82 @@ namespace TPHunter.Source.Core.Configs
             var serializer = new JsonSerializer();
             serializer.Serialize(streamWriter, config);
         }
+        public void SetTradeMarkCurrentBulletin(int bulletin)
+        {
+            var config = GetConfig();
+            config.TrademarkSettings.CurrentBulletin = bulletin;
+            using var streamWriter = new StreamWriter(RuntimeConfigs.ApplicationStartupPath + "\\liveconfigs.json");
+            var serializer = new JsonSerializer();
+            serializer.Serialize(streamWriter, config);
+        }
+        public void SetDesignCurrentBulletin(int bulletin)
+        {
+            var config = GetConfig();
+            config.DesignSettings.CurrentBulletin = bulletin;
+            using var streamWriter = new StreamWriter(RuntimeConfigs.ApplicationStartupPath + "\\liveconfigs.json");
+            var serializer = new JsonSerializer();
+            serializer.Serialize(streamWriter, config);
+        }
+        public void SetPatentCurrentBulletin(DateTime bulletin)
+        {
+            var config = GetConfig();
+            config.PatentSettings.CurrentPulledDate = bulletin;
+            using var streamWriter = new StreamWriter(RuntimeConfigs.ApplicationStartupPath + "\\liveconfigs.json");
+            var serializer = new JsonSerializer();
+            serializer.Serialize(streamWriter, config);
+        }
+
+        public void UpdateTrademarkLastDownload()
+        {
+            var config = GetConfig();
+            config.TrademarkSettings.ScrapTimings.LastDownload = DateTime.Now;
+            using var streamWriter = new StreamWriter(RuntimeConfigs.ApplicationStartupPath + "\\liveconfigs.json");
+            var serializer = new JsonSerializer();
+            serializer.Serialize(streamWriter, config);
+        }
+        public void UpdateTrademarkLastUpload()
+        {
+            var config = GetConfig();
+            config.TrademarkSettings.ScrapTimings.LastUpload = DateTime.Now;
+            using var streamWriter = new StreamWriter(RuntimeConfigs.ApplicationStartupPath + "\\liveconfigs.json");
+            var serializer = new JsonSerializer();
+            serializer.Serialize(streamWriter, config);
+        }
+        public void UpdatePatentLastDownload()
+        {
+            var config = GetConfig();
+            config.PatentSettings.ScrapTimings.LastDownload = DateTime.Now;
+            using var streamWriter = new StreamWriter(RuntimeConfigs.ApplicationStartupPath + "\\liveconfigs.json");
+            var serializer = new JsonSerializer();
+            serializer.Serialize(streamWriter, config);
+        }
+        public void UpdatePatentLastUpload()
+        {
+            var config = GetConfig();
+            config.PatentSettings.ScrapTimings.LastUpload = DateTime.Now;
+            using var streamWriter = new StreamWriter(RuntimeConfigs.ApplicationStartupPath + "\\liveconfigs.json");
+            var serializer = new JsonSerializer();
+            serializer.Serialize(streamWriter, config);
+        }
+        public void UpdateDesignLastDownload()
+        {
+            var config = GetConfig();
+            config.DesignSettings.ScrapTimings.LastDownload = DateTime.Now;
+            using var streamWriter = new StreamWriter(RuntimeConfigs.ApplicationStartupPath + "\\liveconfigs.json");
+            var serializer = new JsonSerializer();
+            serializer.Serialize(streamWriter, config);
+        }
+        public void UpdateDesignLastUpload()
+        {
+            var config = GetConfig();
+            config.DesignSettings.ScrapTimings.LastUpload = DateTime.Now;
+            using var streamWriter = new StreamWriter(RuntimeConfigs.ApplicationStartupPath + "\\liveconfigs.json");
+            var serializer = new JsonSerializer();
+            serializer.Serialize(streamWriter, config);
+        }
+
     }
+}
 
     #region Settings
     public class TrademarkSettings
@@ -149,11 +224,12 @@ namespace TPHunter.Source.Core.Configs
         public int UpdateHourDelay { get; set; }
         public int UpdateMinuteDelay { get; set; }
         public int UpdateSecondDelay { get; set; }
-        public DateTime LastScrapTime { get; set; }
+        public DateTime LastDownload { get; set; }
+        public DateTime LastUpload { get; set; }
     }
 
 
     #endregion
 
 
-}
+

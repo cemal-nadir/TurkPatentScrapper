@@ -6,6 +6,9 @@ namespace TPHunter.Shared.Scrapper.Handlers
     public class ApiClient:IApiClient
     {
         private HttpClient _httpClient;
-        public HttpClient Client => _httpClient ??= new HttpClient(new ClientCredentialTokenHandler());
+        private ClientCredentialTokenHandler _clientCredentialTokenHandler;
+
+        public HttpClient Client => _httpClient ??= new HttpClient(ClientCredentialTokenHandler);
+        private ClientCredentialTokenHandler ClientCredentialTokenHandler=> _clientCredentialTokenHandler??=new ClientCredentialTokenHandler();
     }
 }

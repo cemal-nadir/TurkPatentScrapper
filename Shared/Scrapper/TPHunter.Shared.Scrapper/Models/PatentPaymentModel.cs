@@ -1,9 +1,8 @@
 ﻿using System;
-using TPHunter.Shared.Scrapper.Abstracts;
 
 namespace TPHunter.Shared.Scrapper.Models
 {
-    public class PatentPaymentModel : IModel
+    public class PatentPaymentModel
     {
         public string Queue { get; set; }
         public string Year { get; set; }

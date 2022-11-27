@@ -1,9 +1,8 @@
 ﻿using System;
-using TPHunter.Shared.Scrapper.Abstracts;
 
 namespace TPHunter.Shared.Scrapper.Models
 {
-    public class ProductModel : IModel
+    public class ProductModel
     {
         public string Name { get; set; }
         public string[] LocarnoClass { get; set; }

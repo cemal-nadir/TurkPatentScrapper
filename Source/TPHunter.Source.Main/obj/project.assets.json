@@ -1897,6 +1897,20 @@
           "bin/placeholder/TPHunter.Source.Core.dll": {}
         }
       },
+      "TPHunter.Source.DataSaver/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "TPHunter.Shared.Scrapper": "1.0.0",
+          "TPHunter.Source.Core": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/TPHunter.Source.DataSaver.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TPHunter.Source.DataSaver.dll": {}
+        }
+      },
       "TPHunter.Source.ImageProcess/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
@@ -1918,6 +1932,7 @@
           "TPHunter.Shared.Scrapper": "1.0.0",
           "TPHunter.Source.Browser": "1.0.0",
           "TPHunter.Source.Core": "1.0.0",
+          "TPHunter.Source.DataSaver": "1.0.0",
           "TPHunter.Source.ImageProcess": "1.0.0"
         },
         "compile": {
@@ -6298,6 +6313,11 @@
       "type": "project",
       "path": "../TPHunter.Source.Core/TPHunter.Source.Core.csproj",
       "msbuildProject": "../TPHunter.Source.Core/TPHunter.Source.Core.csproj"
+    },
+    "TPHunter.Source.DataSaver/1.0.0": {
+      "type": "project",
+      "path": "../TPHunter.Source.DataSaver/TPHunter.Source.DataSaver.csproj",
+      "msbuildProject": "../TPHunter.Source.DataSaver/TPHunter.Source.DataSaver.csproj"
     },
     "TPHunter.Source.ImageProcess/1.0.0": {
       "type": "project",

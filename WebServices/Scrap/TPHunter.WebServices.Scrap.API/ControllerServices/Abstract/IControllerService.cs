@@ -13,5 +13,6 @@ namespace TPHunter.WebServices.Scrap.API.ControllerServices.Abstract
         public Task RemoveAsync(Guid ıd);
         public Task<int> GetLastPulledCountAsync(ISearchParam searchParam);
         public Task<IEnumerable<string>> GetLastPulledApplicationNumbersAsync(ISearchParam searchParam);
+        public Task<IEnumerable<Guid>> GetLastPulledIdsAsync(ISearchParam searchParam);
     }
 }

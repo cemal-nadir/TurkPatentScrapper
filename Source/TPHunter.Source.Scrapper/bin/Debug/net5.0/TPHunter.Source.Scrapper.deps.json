@@ -11,6 +11,7 @@
           "TPHunter.Shared.Scrapper": "1.0.0",
           "TPHunter.Source.Browser": "1.0.0",
           "TPHunter.Source.Core": "1.0.0",
+          "TPHunter.Source.DataSaver": "1.0.0",
           "TPHunter.Source.ImageProcess": "1.0.0"
         },
         "runtime": {
@@ -75,6 +76,18 @@
           "lib/netstandard2.0/Emgu.CV.dll": {
             "assemblyVersion": "4.6.0.5131",
             "fileVersion": "4.6.0.5131"
+          }
+        }
+      },
+      "IdentityModel/4.4.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1",
+          "System.Text.Encodings.Web": "4.7.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/IdentityModel.dll": {
+            "assemblyVersion": "4.4.0.0",
+            "fileVersion": "4.4.0.0"
           }
         }
       },
@@ -892,6 +905,7 @@
           "System.Text.Encoding": "4.3.0"
         }
       },
+      "System.Text.Encodings.Web/4.7.0": {},
       "System.Text.RegularExpressions/4.3.0": {
         "dependencies": {
           "System.Runtime": "4.3.1"
@@ -992,6 +1006,10 @@
         }
       },
       "TPHunter.Shared.Scrapper/1.0.0": {
+        "dependencies": {
+          "IdentityModel": "4.4.0",
+          "TPHunter.Source.Core": "1.0.0"
+        },
         "runtime": {
           "TPHunter.Shared.Scrapper.dll": {}
         }
@@ -1014,6 +1032,15 @@
         },
         "runtime": {
           "TPHunter.Source.Core.dll": {}
+        }
+      },
+      "TPHunter.Source.DataSaver/1.0.0": {
+        "dependencies": {
+          "TPHunter.Shared.Scrapper": "1.0.0",
+          "TPHunter.Source.Core": "1.0.0"
+        },
+        "runtime": {
+          "TPHunter.Source.DataSaver.dll": {}
         }
       },
       "TPHunter.Source.ImageProcess/1.0.0": {
@@ -1060,6 +1087,13 @@
       "sha512": "sha512-pRtYFTe+IZBoxm79cfkAS2QHnmLiz6upyKJNUnxUyVrOlw+QoLL7lx1siXCruvOVU5wkxCqOCBYDHnDNBSURsQ==",
       "path": "emgu.cv/4.6.0.5131",
       "hashPath": "emgu.cv.4.6.0.5131.nupkg.sha512"
+    },
+    "IdentityModel/4.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-b18wrIx5wnZlMxAX7oVsE+nDtAJ4hajYlH0xPlaRvo4r/fz08K6pPeZvbiqS9nfNbzfIgLFmNX+FL9qR9ZR5PA==",
+      "path": "identitymodel/4.4.0",
+      "hashPath": "identitymodel.4.4.0.nupkg.sha512"
     },
     "Microsoft.DotNet.PlatformAbstractions/1.1.2": {
       "type": "package",
@@ -1684,6 +1718,13 @@
       "path": "system.text.encoding.extensions/4.3.0",
       "hashPath": "system.text.encoding.extensions.4.3.0.nupkg.sha512"
     },
+    "System.Text.Encodings.Web/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-IJanJWPQvya2sbGStt3Fkdy4IaomUBSadAfYWeJDQw0zclMk9ixSvMeei6cSmTTQ6ZkGIIAbhHZVCoLR7GgX7Q==",
+      "path": "system.text.encodings.web/4.7.0",
+      "hashPath": "system.text.encodings.web.4.7.0.nupkg.sha512"
+    },
     "System.Text.RegularExpressions/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -1765,6 +1806,11 @@
       "sha512": ""
     },
     "TPHunter.Source.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TPHunter.Source.DataSaver/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
