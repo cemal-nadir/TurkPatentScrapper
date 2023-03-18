@@ -7,6 +7,7 @@ namespace TPHunter.Shared.Scrapper.Models
     public class PatentModel : IModel
     {
         public string ApplicationNumber { get; set; }
+        public string Bulletin { get; set; }
         public DateTime? ApplicationDate { get; set; }
         public string ApplicationType { get; set; }
         public string DocumentNumber { get; set; }

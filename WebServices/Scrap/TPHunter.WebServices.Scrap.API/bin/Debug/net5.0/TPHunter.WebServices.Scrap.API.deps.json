@@ -38,12 +38,12 @@
           "Microsoft.AspNetCore.Authentication.JwtBearer": "5.0.17",
           "Microsoft.EntityFrameworkCore.Design": "5.0.17",
           "Swashbuckle.AspNetCore": "5.6.3",
+          "TPHunter.Shared.ApiUtility": "1.0.0",
           "TPHunter.Shared.Scrapper": "1.0.0",
           "TPHunter.Shared.Utility.ApiUtility": "1.0.0",
           "TPHunter.WebServices.Scrap.PatentPdf": "1.0.0",
           "TPHunter.WebServices.Shared.MainData.Data": "1.0.0",
           "TPHunter.WebServices.Shared.MainData.Services": "1.0.0",
-          "TPHunter.WebServices.Shared.Utility.ApiUtility": "1.0.0",
           "TPHunter.WebServices.Shared.Utility.FileStorage": "1.0.0",
           "Microsoft.AspNetCore.Antiforgery": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "5.0.0.0",
@@ -1651,6 +1651,14 @@
           "System.Xml.ReaderWriter": "4.3.0"
         }
       },
+      "TPHunter.Shared.ApiUtility/1.0.0": {
+        "runtime": {
+          "TPHunter.Shared.ApiUtility.dll": {}
+        },
+        "compile": {
+          "TPHunter.Shared.ApiUtility.dll": {}
+        }
+      },
       "TPHunter.Shared.Scrapper/1.0.0": {
         "dependencies": {
           "IdentityModel": "4.4.0",
@@ -1713,14 +1721,6 @@
         },
         "compile": {
           "TPHunter.WebServices.Shared.MainData.Services.dll": {}
-        }
-      },
-      "TPHunter.WebServices.Shared.Utility.ApiUtility/1.0.0": {
-        "runtime": {
-          "TPHunter.WebServices.Shared.Utility.ApiUtility.dll": {}
-        },
-        "compile": {
-          "TPHunter.WebServices.Shared.Utility.ApiUtility.dll": {}
         }
       },
       "TPHunter.WebServices.Shared.Utility.Core/1.0.0": {
@@ -4340,6 +4340,11 @@
       "path": "system.xml.xmldocument/4.3.0",
       "hashPath": "system.xml.xmldocument.4.3.0.nupkg.sha512"
     },
+    "TPHunter.Shared.ApiUtility/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "TPHunter.Shared.Scrapper/1.0.0": {
       "type": "project",
       "serviceable": false,
@@ -4366,11 +4371,6 @@
       "sha512": ""
     },
     "TPHunter.WebServices.Shared.MainData.Services/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "TPHunter.WebServices.Shared.Utility.ApiUtility/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "sEBCBvw7E35t9D6Z9UClNiJiGdy6snce+b2Yz5s+UZJSUWtqrKVJbIA72gwDjM7iOnBsoTHkZTcOrOoCauKgrQ==",
+  "dgSpecHash": "LpKFhBNSehWIiRExWKL1ghtPYTQ80ynZcHjs7WCOmo19Pk1vMwc/4ooydZDa+8SnxvMlIfie0Bylfp23jx7ALA==",
   "success": true,
   "projectFilePath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Main\\TPHunter.Source.Main.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\HUAWEI\\.nuget\\packages\\anglesharp\\0.17.1\\anglesharp.0.17.1.nupkg.sha512",
     "C:\\Users\\HUAWEI\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
     "C:\\Users\\HUAWEI\\.nuget\\packages\\castle.windsor\\5.1.2\\castle.windsor.5.1.2.nupkg.sha512",
+    "C:\\Users\\HUAWEI\\.nuget\\packages\\dotnetseleniumextras.waithelpers\\3.11.0\\dotnetseleniumextras.waithelpers.3.11.0.nupkg.sha512",
     "C:\\Users\\HUAWEI\\.nuget\\packages\\emgu.cv\\4.6.0.5131\\emgu.cv.4.6.0.5131.nupkg.sha512",
     "C:\\Users\\HUAWEI\\.nuget\\packages\\identitymodel\\4.4.0\\identitymodel.4.4.0.nupkg.sha512",
     "C:\\Users\\HUAWEI\\.nuget\\packages\\microsoft.dotnet.platformabstractions\\1.1.2\\microsoft.dotnet.platformabstractions.1.1.2.nupkg.sha512",

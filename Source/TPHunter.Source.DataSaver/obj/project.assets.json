@@ -1645,6 +1645,19 @@
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
       },
+      "TPHunter.Shared.ApiUtility/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/TPHunter.Shared.ApiUtility.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TPHunter.Shared.ApiUtility.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "TPHunter.Shared.Scrapper/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
@@ -5641,6 +5654,11 @@
         "system.xml.xmldocument.nuspec"
       ]
     },
+    "TPHunter.Shared.ApiUtility/1.0.0": {
+      "type": "project",
+      "path": "../../Shared/TPHunter.Shared.ApiUtility/TPHunter.Shared.ApiUtility.csproj",
+      "msbuildProject": "../../Shared/TPHunter.Shared.ApiUtility/TPHunter.Shared.ApiUtility.csproj"
+    },
     "TPHunter.Shared.Scrapper/1.0.0": {
       "type": "project",
       "path": "../../Shared/Scrapper/TPHunter.Shared.Scrapper/TPHunter.Shared.Scrapper.csproj",
@@ -5654,12 +5672,15 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "TPHunter.Shared.ApiUtility >= 1.0.0",
       "TPHunter.Shared.Scrapper >= 1.0.0",
       "TPHunter.Source.Core >= 1.0.0"
     ]
   },
   "packageFolders": {
     "C:\\Users\\HUAWEI\\.nuget\\packages\\": {},
+    "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages": {},
+    "C:\\Program Files\\DevExpress 22.2\\Components\\Offline Packages": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
@@ -5672,10 +5693,14 @@
       "outputPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.DataSaver\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages",
+        "C:\\Program Files\\DevExpress 22.2\\Components\\Offline Packages",
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
         "C:\\Users\\HUAWEI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.1.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.2.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -5685,7 +5710,8 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://nuget.devexpress.com/kaMrR6YKccpV1mrDb9YrM2zxaD7alADoWKZkHag4VXTWpt3F65/api": {}
       },
       "frameworks": {
         "net5.0": {
@@ -5693,6 +5719,9 @@
           "projectReferences": {
             "D:\\CustomProjects\\SistemPatent\\TPHunter\\Shared\\Scrapper\\TPHunter.Shared.Scrapper\\TPHunter.Shared.Scrapper.csproj": {
               "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Shared\\Scrapper\\TPHunter.Shared.Scrapper\\TPHunter.Shared.Scrapper.csproj"
+            },
+            "D:\\CustomProjects\\SistemPatent\\TPHunter\\Shared\\TPHunter.Shared.ApiUtility\\TPHunter.Shared.ApiUtility.csproj": {
+              "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Shared\\TPHunter.Shared.ApiUtility\\TPHunter.Shared.ApiUtility.csproj"
             },
             "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Core\\TPHunter.Source.Core.csproj": {
               "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Core\\TPHunter.Source.Core.csproj"

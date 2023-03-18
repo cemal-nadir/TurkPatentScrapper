@@ -1,0 +1,10 @@
+D:\CustomProjects\SistemPatent\TPHunter\Shared\TPHunter.Shared.ApiUtility\bin\Debug\netcoreapp3.1\TPHunter.Shared.ApiUtility.deps.json
+D:\CustomProjects\SistemPatent\TPHunter\Shared\TPHunter.Shared.ApiUtility\bin\Debug\netcoreapp3.1\TPHunter.Shared.ApiUtility.dll
+D:\CustomProjects\SistemPatent\TPHunter\Shared\TPHunter.Shared.ApiUtility\bin\Debug\netcoreapp3.1\TPHunter.Shared.ApiUtility.pdb
+D:\CustomProjects\SistemPatent\TPHunter\Shared\TPHunter.Shared.ApiUtility\obj\Debug\netcoreapp3.1\TPHunter.Shared.ApiUtility.csproj.AssemblyReference.cache
+D:\CustomProjects\SistemPatent\TPHunter\Shared\TPHunter.Shared.ApiUtility\obj\Debug\netcoreapp3.1\TPHunter.Shared.ApiUtility.GeneratedMSBuildEditorConfig.editorconfig
+D:\CustomProjects\SistemPatent\TPHunter\Shared\TPHunter.Shared.ApiUtility\obj\Debug\netcoreapp3.1\TPHunter.Shared.ApiUtility.AssemblyInfoInputs.cache
+D:\CustomProjects\SistemPatent\TPHunter\Shared\TPHunter.Shared.ApiUtility\obj\Debug\netcoreapp3.1\TPHunter.Shared.ApiUtility.AssemblyInfo.cs
+D:\CustomProjects\SistemPatent\TPHunter\Shared\TPHunter.Shared.ApiUtility\obj\Debug\netcoreapp3.1\TPHunter.Shared.ApiUtility.csproj.CoreCompileInputs.cache
+D:\CustomProjects\SistemPatent\TPHunter\Shared\TPHunter.Shared.ApiUtility\obj\Debug\netcoreapp3.1\TPHunter.Shared.ApiUtility.dll
+D:\CustomProjects\SistemPatent\TPHunter\Shared\TPHunter.Shared.ApiUtility\obj\Debug\netcoreapp3.1\TPHunter.Shared.ApiUtility.pdb

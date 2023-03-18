@@ -33,6 +33,11 @@ namespace TPHunter.Source.Browser.Helpers
             var executor = (IJavaScriptExecutor)webDriver;
             executor.ExecuteScript("arguments[0].click();", webElement);
         }
+
+        public static void WriteWithJs(this IWebDriver driver, IWebElement element,string text)
+        {
+            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].value='"+text+"';", element);
+        }
         public static void PressEsc(this IWebDriver driver)
         {
             driver.FindElement(By.XPath("//body")).SendKeys(Keys.Escape);

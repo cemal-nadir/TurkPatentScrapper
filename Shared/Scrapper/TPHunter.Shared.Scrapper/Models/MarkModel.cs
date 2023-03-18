@@ -7,6 +7,7 @@ namespace TPHunter.Shared.Scrapper.Models
    public class MarkModel : IModel
     {
         public string ApplicationNumber { get; set; }
+        public string Bulletin { get; set; }
         public DateTime? ApplicationDate { get; set; }
         public string RegistrationNumber { get; set; }
         public DateTime? RegistrationDate { get; set; }
@@ -14,7 +15,6 @@ namespace TPHunter.Shared.Scrapper.Models
         public string DocumentNumber { get; set; }
         public DateTime? DeclareBullettinDate { get; set; }
         public DateTime? RegistrationBullettinDate { get; set; }
-        public string DeclareBullettinNumber { get; set; }
         public string RegistrationBullettinNumber { get; set; }
         public DateTime? ProtectionDate { get; set; }
         public string Status { get; set; }

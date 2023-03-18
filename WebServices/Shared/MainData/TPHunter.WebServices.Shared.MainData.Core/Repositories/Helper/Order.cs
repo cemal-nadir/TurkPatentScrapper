@@ -6,7 +6,9 @@
     public class Order
     {
         public string OrderColumnName { get; set; }
+
         public OrderDirection OrderColumnDirection { get; set; }
+
         /// <summary>
         /// Varsayılan Order Değeri Atamasını Yapar (CreateTime'a göre büyükten küçüğe sıralama)
         /// </summary>

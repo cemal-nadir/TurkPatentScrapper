@@ -1,30 +1,47 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
+using Newtonsoft.Json;
 
 namespace TPHunter.Source.Core.Configs
 {
     public class LiveConfig
     {
-        public TrademarkSettings TrademarkSettings { get; private init; }
-        public DesignSettings DesignSettings { get; private init; }
-        public PatentSettings PatentSettings { get; private init; }
-        private string AccessToken { get; set; }
-        private DateTime TokenExpirationDate { get; set; }
-        public LiveConfig GetConfig()
+        public TrademarkSettings TrademarkSettings { get; set; }
+        public DesignSettings DesignSettings { get; set; }
+        public PatentSettings PatentSettings { get; set; }
+        public string AccessToken { get; set; }
+        public DateTime TokenExpirationDate { get; set; }
+    }
+
+    #region Methods
+    public static class LiveConfigFunctions
+    {
+        public static LiveConfig GetConfig()
         {
             if (File.Exists(RuntimeConfigs.ApplicationStartupPath + "\\liveconfigs.json"))
             {
-                using var streamReader = new StreamReader(RuntimeConfigs.ApplicationStartupPath + "\\liveconfigs.json");
-                return JsonConvert.DeserializeObject<LiveConfig>(streamReader.ReadToEndAsync().Result);
+                while (true)
+                {
+                    try
+                    {
+                        using var streamReader = new StreamReader(RuntimeConfigs.ApplicationStartupPath + "\\liveconfigs.json");
+                        return JsonConvert.DeserializeObject<LiveConfig>(streamReader.ReadToEndAsync().Result);
+                    }
+                    catch
+                    {
+                        Thread.Sleep(1000);
+                    }
+                }
+               
             }
 
             LiveConfig config = new()
             {
                 TrademarkSettings = new TrademarkSettings()
                 {
-                    CurrentBulletin = 1,
+                    CurrentBulletin = 0,
                     ScrapTimings = new ScrapTimings()
                     {
                         DownloadHourDelay = 0,
@@ -47,7 +64,7 @@ namespace TPHunter.Source.Core.Configs
                 },
                 DesignSettings = new DesignSettings()
                 {
-                    CurrentBulletin = 1,
+                    CurrentBulletin = 0,
                     ScrapTimings = new ScrapTimings()
                     {
                         DownloadHourDelay = 24,
@@ -93,17 +110,18 @@ namespace TPHunter.Source.Core.Configs
                 AccessToken = string.Empty,
                 TokenExpirationDate = DateTime.Now
             };
-            using var streamWriter = File.CreateText(RuntimeConfigs.ApplicationStartupPath + "\\liveconfigs.json");
+            using var streamWriter = File.CreateText(RuntimeConfigs.ApplicationStartupPath + "liveconfigs.json");
             var serializer = new JsonSerializer();
             serializer.Serialize(streamWriter, config);
+            streamWriter.Close();
             return GetConfig();
 
         }
 
-        public string GetAccessToken() => GetConfig().AccessToken;
-        public DateTime GetAccessTokenExpiration() => GetConfig().TokenExpirationDate;
+        public static string GetAccessToken() => GetConfig().AccessToken;
+        public static DateTime GetAccessTokenExpiration() => GetConfig().TokenExpirationDate;
 
-        public void SetAccessToken(string token, DateTime expirationDate)
+        public static void SetAccessToken(string token, DateTime expirationDate)
         {
             var config = GetConfig();
             config.AccessToken = token;
@@ -111,8 +129,9 @@ namespace TPHunter.Source.Core.Configs
             using var streamWriter = new StreamWriter(RuntimeConfigs.ApplicationStartupPath + "\\liveconfigs.json");
             var serializer = new JsonSerializer();
             serializer.Serialize(streamWriter, config);
+            streamWriter.Close();
         }
-        public void SetTradeMarkCurrentBulletin(int bulletin)
+        public static void SetTradeMarkCurrentBulletin(int bulletin)
         {
             var config = GetConfig();
             config.TrademarkSettings.CurrentBulletin = bulletin;
@@ -120,7 +139,7 @@ namespace TPHunter.Source.Core.Configs
             var serializer = new JsonSerializer();
             serializer.Serialize(streamWriter, config);
         }
-        public void SetDesignCurrentBulletin(int bulletin)
+        public static void SetDesignCurrentBulletin(int bulletin)
         {
             var config = GetConfig();
             config.DesignSettings.CurrentBulletin = bulletin;
@@ -128,7 +147,7 @@ namespace TPHunter.Source.Core.Configs
             var serializer = new JsonSerializer();
             serializer.Serialize(streamWriter, config);
         }
-        public void SetPatentCurrentBulletin(DateTime bulletin)
+        public static void SetPatentCurrentBulletin(DateTime bulletin)
         {
             var config = GetConfig();
             config.PatentSettings.CurrentPulledDate = bulletin;
@@ -137,7 +156,7 @@ namespace TPHunter.Source.Core.Configs
             serializer.Serialize(streamWriter, config);
         }
 
-        public void UpdateTrademarkLastDownload()
+        public static void UpdateTrademarkLastDownload()
         {
             var config = GetConfig();
             config.TrademarkSettings.ScrapTimings.LastDownload = DateTime.Now;
@@ -145,7 +164,7 @@ namespace TPHunter.Source.Core.Configs
             var serializer = new JsonSerializer();
             serializer.Serialize(streamWriter, config);
         }
-        public void UpdateTrademarkLastUpload()
+        public static void UpdateTrademarkLastUpload()
         {
             var config = GetConfig();
             config.TrademarkSettings.ScrapTimings.LastUpload = DateTime.Now;
@@ -153,7 +172,7 @@ namespace TPHunter.Source.Core.Configs
             var serializer = new JsonSerializer();
             serializer.Serialize(streamWriter, config);
         }
-        public void UpdatePatentLastDownload()
+        public static void UpdatePatentLastDownload()
         {
             var config = GetConfig();
             config.PatentSettings.ScrapTimings.LastDownload = DateTime.Now;
@@ -161,7 +180,7 @@ namespace TPHunter.Source.Core.Configs
             var serializer = new JsonSerializer();
             serializer.Serialize(streamWriter, config);
         }
-        public void UpdatePatentLastUpload()
+        public static void UpdatePatentLastUpload()
         {
             var config = GetConfig();
             config.PatentSettings.ScrapTimings.LastUpload = DateTime.Now;
@@ -169,7 +188,7 @@ namespace TPHunter.Source.Core.Configs
             var serializer = new JsonSerializer();
             serializer.Serialize(streamWriter, config);
         }
-        public void UpdateDesignLastDownload()
+        public static void UpdateDesignLastDownload()
         {
             var config = GetConfig();
             config.DesignSettings.ScrapTimings.LastDownload = DateTime.Now;
@@ -177,7 +196,7 @@ namespace TPHunter.Source.Core.Configs
             var serializer = new JsonSerializer();
             serializer.Serialize(streamWriter, config);
         }
-        public void UpdateDesignLastUpload()
+        public static void UpdateDesignLastUpload()
         {
             var config = GetConfig();
             config.DesignSettings.ScrapTimings.LastUpload = DateTime.Now;
@@ -185,9 +204,8 @@ namespace TPHunter.Source.Core.Configs
             var serializer = new JsonSerializer();
             serializer.Serialize(streamWriter, config);
         }
-
     }
-}
+    #endregion
 
     #region Settings
     public class TrademarkSettings
@@ -230,6 +248,4 @@ namespace TPHunter.Source.Core.Configs
 
 
     #endregion
-
-
-
+}

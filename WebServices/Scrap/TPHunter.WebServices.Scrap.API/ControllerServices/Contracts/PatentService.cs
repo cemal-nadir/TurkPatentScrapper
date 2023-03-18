@@ -74,19 +74,19 @@ namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
         public async Task<IEnumerable<string>> GetLastPulledApplicationNumbersAsync(ISearchParam searchParam)
         {
             return await _patentService.AsNoTracking.Where(x =>
-                x.ApplicationDate >= ((DateRangeParam)searchParam).StartDate && x.ApplicationDate <= ((DateRangeParam)searchParam).EndDate).Select(x=>x.ApplicationNumber).ToListAsync();
+                x.BulletinDate == searchParam.StartDate).Select(x=>x.ApplicationNumber).ToListAsync();
         }
 
         public async Task<int> GetLastPulledCountAsync(ISearchParam searchParam)
         {
             return await _patentService.GetCountAsync(x =>
-                x.ApplicationDate>= ((DateRangeParam)searchParam).StartDate&&x.ApplicationDate <= ((DateRangeParam)searchParam).EndDate);
+                x.BulletinDate == searchParam.StartDate);
         }
 
         public async Task<IEnumerable<Guid>> GetLastPulledIdsAsync(ISearchParam searchParam)
         {
             return await _patentService.AsNoTracking.Where(x =>
-                x.ApplicationDate >= ((DateRangeParam)searchParam).StartDate && x.ApplicationDate <= ((DateRangeParam)searchParam).EndDate).Select(x => x.Id).ToListAsync();
+                x.BulletinDate == searchParam.StartDate).Select(x => x.Id).ToListAsync();
         }
 
         public async Task InsertAsync(PatentModel model)
@@ -116,7 +116,7 @@ namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
             dbModel.PctPublishNumber = model.PctPublishNumber;
             dbModel.RegistrationDate = model.RegistrationDate;
             dbModel.RegistrationNumber = model.RegistrationNumber;
-
+            dbModel.BulletinDate = DateTime.Parse(model.Bulletin);
             #endregion
 
             #region Patent Application Type
@@ -176,178 +176,182 @@ namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
 
             #region Patent Inventors
 
-            foreach (var inventor in model.Inventors)
-            {
-                var inventorModel = await _inventorService.SingleOrDefaultAsync(x => x.InventorCode == inventor.InventorCode);
-                inventorModel ??= await _inventorService.AddAsync(new Inventor()
+            if (model.Inventors != null)
+                foreach (var inventor in model.Inventors)
                 {
-                    Address = inventor.Address,
-                    InventorCode = inventor.InventorCode,
-                    InventorName = inventor.InventorName
-                });
-                await _inventorRelationService.AddAsync(new InventorRelation()
-                {
-                    InventorId = inventorModel.Id,
-                    PatentId = dbModel.Id
-                });
-            }
+                    var inventorModel =
+                        await _inventorService.SingleOrDefaultAsync(x => x.InventorCode == inventor.InventorCode);
+                    inventorModel ??= await _inventorService.AddAsync(new Inventor()
+                    {
+                        Address = inventor.Address,
+                        InventorCode = inventor.InventorCode,
+                        InventorName = inventor.InventorName
+                    });
+                    await _inventorRelationService.AddAsync(new InventorRelation()
+                    {
+                        InventorId = inventorModel.Id,
+                        PatentId = dbModel.Id
+                    });
+                }
 
             #endregion
 
             #region Patent Priorties
 
-            foreach (var patentPriorty in model.PatentPriorties)
-            {
-                PatentPriortyCountry patentPriortyCountry = default;
-                if (!string.IsNullOrEmpty(patentPriorty.PriortyCountry))
-                    patentPriortyCountry =
-                        await _patentPriortyCountryService.SingleOrDefaultAsync(x =>
-                            x.Country == patentPriorty.PriortyCountry) ?? await _patentPriortyCountryService.AddAsync(
-                            new PatentPriortyCountry()
-                            {
-                                Country = patentPriorty.PriortyCountry
-                            });
-                await _patentPriortyService.AddAsync(new PatentPriorty()
+            if (model.PatentPriorties != null)
+                foreach (var patentPriorty in model.PatentPriorties)
                 {
-                    PatentId = dbModel.Id,
-                    PatentPriortyCountryId = patentPriortyCountry?.Id,
-                    PriortyDate = patentPriorty.PriortyDate,
-                    PriortyNumber = patentPriorty.PriortyNumber
-                });
-            }
-
+                    PatentPriortyCountry patentPriortyCountry = default;
+                    if (!string.IsNullOrEmpty(patentPriorty.PriortyCountry))
+                        patentPriortyCountry =
+                            await _patentPriortyCountryService.SingleOrDefaultAsync(x =>
+                                x.Country == patentPriorty.PriortyCountry) ??
+                            await _patentPriortyCountryService.AddAsync(
+                                new PatentPriortyCountry()
+                                {
+                                    Country = patentPriorty.PriortyCountry
+                                });
+                    await _patentPriortyService.AddAsync(new PatentPriorty()
+                    {
+                        PatentId = dbModel.Id,
+                        PatentPriortyCountryId = patentPriortyCountry?.Id,
+                        PriortyDate = patentPriorty.PriortyDate,
+                        PriortyNumber = patentPriorty.PriortyNumber
+                    });
+                }
 
             #endregion
 
             #region Patent Classes
 
-            foreach (var patentClass in model.PatentClasses)
-            {
-                #region Patent Class Type
-
-                PatentClassType patentClassType = default;
-                if (!string.IsNullOrEmpty(patentClass.Type))
-                    patentClassType =
-                        await _patentClassTypeService.SingleOrDefaultAsync(x => x.Type == patentClass.Type) ??
-                        await _patentClassTypeService.AddAsync(new PatentClassType()
-                        {
-                            Type = patentClass.Type
-                        });
-
-
-                #endregion
-
-                #region Patent Class
-                PatentClass patentClassModel = default;
-                if (!string.IsNullOrEmpty(patentClass.Name))
-                    patentClassModel =
-                        await _patentClassService.SingleOrDefaultAsync(x => x.Name == patentClass.Name) ??
-                        await _patentClassService.AddAsync(new PatentClass()
-                        {
-                            Name = patentClass.Name,
-                            PatentClassTypeId = patentClassType.Id
-                        });
-
-
-                #endregion
-
-                #region Patent Class Relation
-
-                await _patentClassRelationService.AddAsync(new PatentClassRelation()
+            if (model.PatentClasses != null)
+                foreach (var patentClass in model.PatentClasses)
                 {
-                    PatentId = dbModel.Id,
-                    PatentClassId = patentClassModel.Id
-                });
+                    #region Patent Class Type
 
+                    PatentClassType patentClassType = default;
+                    if (!string.IsNullOrEmpty(patentClass.Type))
+                        patentClassType =
+                            await _patentClassTypeService.SingleOrDefaultAsync(x => x.Type == patentClass.Type) ??
+                            await _patentClassTypeService.AddAsync(new PatentClassType()
+                            {
+                                Type = patentClass.Type
+                            });
 
-                #endregion
+                    #endregion
 
-            }
+                    #region Patent Class
 
+                    PatentClass patentClassModel = default;
+                    if (!string.IsNullOrEmpty(patentClass.Name))
+                        patentClassModel =
+                            await _patentClassService.SingleOrDefaultAsync(x => x.Name == patentClass.Name) ??
+                            await _patentClassService.AddAsync(new PatentClass()
+                            {
+                                Name = patentClass.Name,
+                                PatentClassTypeId = patentClassType.Id
+                            });
+
+                    #endregion
+
+                    #region Patent Class Relation
+
+                    await _patentClassRelationService.AddAsync(new PatentClassRelation()
+                    {
+                        PatentId = dbModel.Id,
+                        PatentClassId = patentClassModel.Id
+                    });
+
+                    #endregion
+                }
 
             #endregion
 
             #region Patent Transactions
 
-            foreach (var patentTransaction in model.PatentTransactions)
-            {
-                var patentTransactionName =
-                    await _patentTransactionNameService.SingleOrDefaultAsync(x =>
-                        x.Transaction == patentTransaction.Transaction) ?? await _patentTransactionNameService.AddAsync(
-                        new PatentTransactionName()
-                        {
-                            Transaction = patentTransaction.Transaction
-                        });
-                await _patentTransactionService.AddAsync(new PatentTransaction()
+            if (model.PatentTransactions != null)
+                foreach (var patentTransaction in model.PatentTransactions)
                 {
-                    Date = patentTransaction.Date,
-                    NotificationDate = patentTransaction.NotificationDate,
-                    PatentId = dbModel.Id,
-                    PatentTransactionNameId = patentTransactionName.Id
-                });
-            }
-
+                    var patentTransactionName =
+                        await _patentTransactionNameService.SingleOrDefaultAsync(x =>
+                            x.Transaction == patentTransaction.Transaction) ??
+                        await _patentTransactionNameService.AddAsync(
+                            new PatentTransactionName()
+                            {
+                                Transaction = patentTransaction.Transaction
+                            });
+                    await _patentTransactionService.AddAsync(new PatentTransaction()
+                    {
+                        Date = patentTransaction.Date,
+                        NotificationDate = patentTransaction.NotificationDate,
+                        PatentId = dbModel.Id,
+                        PatentTransactionNameId = patentTransactionName.Id
+                    });
+                }
 
             #endregion
 
             #region Patent Publications
 
-            foreach (var patentPublication in model.PatentPublications)
-            {
-                var patentPublicationDescription =
-                    await _patentPublicationDescriptionService.SingleOrDefaultAsync(x =>
-                        x.Description == patentPublication.Description) ??
-                    await _patentPublicationDescriptionService.AddAsync(new PatentPublicationDescription()
-                    {
-                        Description = patentPublication.Description
-                    });
-
-                await _patentPublicationService.AddAsync(new PatentPublication()
+            if (model.PatentPublications != null)
+                foreach (var patentPublication in model.PatentPublications)
                 {
-                    PatentId = dbModel.Id,
-                    PatentPublicationDescriptionId = patentPublicationDescription.Id,
-                    PublishDate = patentPublication.PublishDate
-                });
-            }
+                    var patentPublicationDescription =
+                        await _patentPublicationDescriptionService.SingleOrDefaultAsync(x =>
+                            x.Description == patentPublication.Description) ??
+                        await _patentPublicationDescriptionService.AddAsync(new PatentPublicationDescription()
+                        {
+                            Description = patentPublication.Description
+                        });
+
+                    await _patentPublicationService.AddAsync(new PatentPublication()
+                    {
+                        PatentId = dbModel.Id,
+                        PatentPublicationDescriptionId = patentPublicationDescription.Id,
+                        PublishDate = patentPublication.PublishDate
+                    });
+                }
 
             #endregion
 
             #region Patent Payments
 
-            foreach (var patentPayment in model.PatentPayments)
-            {
-                await _patentPaymentService.AddAsync(new PatentPayment()
+            if (model.PatentPayments != null)
+                foreach (var patentPayment in model.PatentPayments)
                 {
-                    PaidAmount = decimal.Parse(patentPayment.PaidAmount, CultureInfo.InvariantCulture),
-                    PatentId = dbModel.Id,
-                    PaymentDate = patentPayment.PaymentDate,
-                    Queue = int.Parse(patentPayment.Queue),
-                    Year = int.Parse(patentPayment.Year)
-                });
-            }
+                    await _patentPaymentService.AddAsync(new PatentPayment()
+                    {
+                        PaidAmount = decimal.Parse(patentPayment.PaidAmount, CultureInfo.InvariantCulture),
+                        PatentId = dbModel.Id,
+                        PaymentDate = patentPayment.PaymentDate,
+                        Queue = int.Parse(patentPayment.Queue),
+                        Year = int.Parse(patentPayment.Year)
+                    });
+                }
 
             #endregion
 
             #region Patent Holders
 
-            foreach (var holder in model.Holders)
-            {
-                var holderModel = await _holderService.SingleOrDefaultAsync(x => x.HolderCode == holder.HolderCode) ??
-                                  await _holderService.AddAsync(new Holder()
-                                  {
-                                      HolderCode = holder.HolderCode,
-                                      HolderName = holder.HolderName,
-                                      Address = holder.Address
-                                  });
-
-                await _holderRelationService.AddAsync(new HolderRelation()
+            if (model.Holders != null)
+                foreach (var holder in model.Holders)
                 {
-                    DataId = dbModel.Id,
-                    DataType = DataType.Patent,
-                    HolderId = holderModel.Id
+                    var holderModel =
+                        await _holderService.SingleOrDefaultAsync(x => x.HolderCode == holder.HolderCode) ??
+                        await _holderService.AddAsync(new Holder()
+                        {
+                            HolderCode = holder.HolderCode,
+                            HolderName = holder.HolderName,
+                            Address = holder.Address
+                        });
 
-                });
-            }
+                    await _holderRelationService.AddAsync(new HolderRelation()
+                    {
+                        DataId = dbModel.Id,
+                        DataType = DataType.Patent,
+                        HolderId = holderModel.Id
+                    });
+                }
 
             #endregion
 
@@ -355,56 +359,65 @@ namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
 
             #region Analyses Report
 
-            var analysisReport = await _pdfDownloaderService.DownloadPdf(model.AnalysisReportUrl);
-            if (analysisReport != null)
+            if (model.AnalysisReportUrl != null)
             {
-                await _patentPdfService.AddAsync(new Shared.MainData.Core.Models.PatentPdf()
+                var analysisReport = await _pdfDownloaderService.DownloadPdf(model.AnalysisReportUrl);
+                if (analysisReport != null)
                 {
-                    PatentId = dbModel.Id,
-                    PdfType = PdfType.AnalysisReport,
-                    FileId = await _fileTransferManager.Upload(analysisReport, ".pdf", BucketName,
-                       SubFileDirectoryName)
-                });
+                    await _patentPdfService.AddAsync(new Shared.MainData.Core.Models.PatentPdf()
+                    {
+                        PatentId = dbModel.Id,
+                        PdfType = PdfType.AnalysisReport,
+                        FileId = await _fileTransferManager.Upload(analysisReport, ".pdf", BucketName,
+                            SubFileDirectoryName)
+                    });
+                }
             }
-
-
 
             #endregion
 
             #region Document
 
-            var document = await _pdfDownloaderService.DownloadPdf(model.DocumentsUrl);
-            if (document != null)
+            if (model.DocumentsUrl != null)
             {
-                await _patentPdfService.AddAsync(new Shared.MainData.Core.Models.PatentPdf()
+                var document = await _pdfDownloaderService.DownloadPdf(model.DocumentsUrl);
+                if (document != null)
                 {
-                    PatentId = dbModel.Id,
-                    PdfType = PdfType.Documents,
-                    FileId = await _fileTransferManager.Upload(document, ".pdf", BucketName,
-                        SubFileDirectoryName)
-                });
+                    await _patentPdfService.AddAsync(new Shared.MainData.Core.Models.PatentPdf()
+                    {
+                        PatentId = dbModel.Id,
+                        PdfType = PdfType.Documents,
+                        FileId = await _fileTransferManager.Upload(document, ".pdf", BucketName,
+                            SubFileDirectoryName)
+                    });
+                }
             }
 
             #endregion
 
             #region Research Report
 
-            var researchReport = await _pdfDownloaderService.DownloadPdf(model.ResearchReportUrl);
-            if (researchReport != null)
+            if (model.ResearchReportUrl != null)
             {
-                await _patentPdfService.AddAsync(new Shared.MainData.Core.Models.PatentPdf()
+                var researchReport = await _pdfDownloaderService.DownloadPdf(model.ResearchReportUrl);
+                if (researchReport != null)
                 {
-                    PatentId = dbModel.Id,
-                    PdfType = PdfType.ResearchReport,
-                    FileId = await _fileTransferManager.Upload(researchReport, ".pdf", BucketName,
-                        SubFileDirectoryName)
-                });
+                    await _patentPdfService.AddAsync(new Shared.MainData.Core.Models.PatentPdf()
+                    {
+                        PatentId = dbModel.Id,
+                        PdfType = PdfType.ResearchReport,
+                        FileId = await _fileTransferManager.Upload(researchReport, ".pdf", BucketName,
+                            SubFileDirectoryName)
+                    });
+                }
             }
 
             #endregion
 
             #endregion
         }
+
+        
 
         public async Task RemoveAsync(string applicationNumber)
         {
@@ -423,7 +436,7 @@ namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
             _patentService.Remove(model);
             #endregion
             #region Remove Holder Relations
-            var holderRelations = await _holderRelationService.Where(x => x.DataId == model.Id && x.DataType == DataType.Patent, default);
+            var holderRelations = await _holderRelationService.Where(x => x.DataId == model.Id && x.DataType == DataType.Patent);
             var enumerable = holderRelations.ToList();
             if (enumerable.Any())
                 _holderRelationService.RemoveRange(enumerable);
@@ -447,7 +460,7 @@ namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
             _patentService.Remove(model);
             #endregion
             #region Remove Holder Relations
-            var holderRelations = await _holderRelationService.Where(x => x.DataId == model.Id && x.DataType == DataType.Patent, default);
+            var holderRelations = await _holderRelationService.Where(x => x.DataId == model.Id && x.DataType == DataType.Patent);
             var enumerable = holderRelations.ToList();
             if (enumerable.Any())
                 _holderRelationService.RemoveRange(enumerable);
@@ -541,209 +554,212 @@ namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
 
             #region Patent Inventors
 
-            var removeInventorRelations = await _inventorRelationService.Where(x => x.PatentId == dbModel.Id, default);
+            var removeInventorRelations = await _inventorRelationService.Where(x => x.PatentId == dbModel.Id);
             var ınventorRelations = removeInventorRelations.ToList();
             if (ınventorRelations.Any())
                 _inventorRelationService.RemoveRange(ınventorRelations);
-            foreach (var inventor in model.Inventors)
-            {
-                var inventorModel = await _inventorService.SingleOrDefaultAsync(x => x.InventorCode == inventor.InventorCode);
-                inventorModel ??= await _inventorService.AddAsync(new Inventor()
+            if (model.Inventors != null)
+                foreach (var inventor in model.Inventors)
                 {
-                    Address = inventor.Address,
-                    InventorCode = inventor.InventorCode,
-                    InventorName = inventor.InventorName
-                });
-                await _inventorRelationService.AddAsync(new InventorRelation()
-                {
-                    InventorId = inventorModel.Id,
-                    PatentId = dbModel.Id
-                });
-            }
+                    var inventorModel =
+                        await _inventorService.SingleOrDefaultAsync(x => x.InventorCode == inventor.InventorCode);
+                    inventorModel ??= await _inventorService.AddAsync(new Inventor()
+                    {
+                        Address = inventor.Address,
+                        InventorCode = inventor.InventorCode,
+                        InventorName = inventor.InventorName
+                    });
+                    await _inventorRelationService.AddAsync(new InventorRelation()
+                    {
+                        InventorId = inventorModel.Id,
+                        PatentId = dbModel.Id
+                    });
+                }
 
             #endregion
 
             #region Patent Priorties
 
-            var removePatentPriorties = await _patentPriortyService.Where(x => x.PatentId == dbModel.Id, default);
+            var removePatentPriorties = await _patentPriortyService.Where(x => x.PatentId == dbModel.Id);
             var patentPriorties = removePatentPriorties.ToList();
             if (patentPriorties.Any())
                 _patentPriortyService.RemoveRange(patentPriorties);
-            foreach (var patentPriorty in model.PatentPriorties)
-            {
-                PatentPriortyCountry patentPriortyCountry = default;
-                if (!string.IsNullOrEmpty(patentPriorty.PriortyCountry))
-                    patentPriortyCountry =
-                        await _patentPriortyCountryService.SingleOrDefaultAsync(x =>
-                            x.Country == patentPriorty.PriortyCountry) ?? await _patentPriortyCountryService.AddAsync(
-                            new PatentPriortyCountry()
-                            {
-                                Country = patentPriorty.PriortyCountry
-                            });
-                await _patentPriortyService.AddAsync(new PatentPriorty()
+            if (model.PatentPriorties != null)
+                foreach (var patentPriorty in model.PatentPriorties)
                 {
-                    PatentId = dbModel.Id,
-                    PatentPriortyCountryId = patentPriortyCountry?.Id,
-                    PriortyDate = patentPriorty.PriortyDate,
-                    PriortyNumber = patentPriorty.PriortyNumber
-                });
-            }
-
+                    PatentPriortyCountry patentPriortyCountry = default;
+                    if (!string.IsNullOrEmpty(patentPriorty.PriortyCountry))
+                        patentPriortyCountry =
+                            await _patentPriortyCountryService.SingleOrDefaultAsync(x =>
+                                x.Country == patentPriorty.PriortyCountry) ??
+                            await _patentPriortyCountryService.AddAsync(
+                                new PatentPriortyCountry()
+                                {
+                                    Country = patentPriorty.PriortyCountry
+                                });
+                    await _patentPriortyService.AddAsync(new PatentPriorty()
+                    {
+                        PatentId = dbModel.Id,
+                        PatentPriortyCountryId = patentPriortyCountry?.Id,
+                        PriortyDate = patentPriorty.PriortyDate,
+                        PriortyNumber = patentPriorty.PriortyNumber
+                    });
+                }
 
             #endregion
 
             #region Patent Classes
 
-            var removePatentClassRelations = await _patentClassRelationService.Where(x => x.PatentId == dbModel.Id, default);
+            var removePatentClassRelations = await _patentClassRelationService.Where(x => x.PatentId == dbModel.Id);
             var patentClassRelations = removePatentClassRelations.ToList();
             if (patentClassRelations.Any())
                 _patentClassRelationService.RemoveRange(patentClassRelations);
-            foreach (var patentClass in model.PatentClasses)
-            {
-                #region Patent Class Type
-
-                PatentClassType patentClassType = default;
-                if (!string.IsNullOrEmpty(patentClass.Type))
-                    patentClassType =
-                        await _patentClassTypeService.SingleOrDefaultAsync(x => x.Type == patentClass.Type) ??
-                        await _patentClassTypeService.AddAsync(new PatentClassType()
-                        {
-                            Type = patentClass.Type
-                        });
-
-
-                #endregion
-
-                #region Patent Class
-                PatentClass patentClassModel = default;
-                if (!string.IsNullOrEmpty(patentClass.Name))
-                    patentClassModel =
-                        await _patentClassService.SingleOrDefaultAsync(x => x.Name == patentClass.Name) ??
-                        await _patentClassService.AddAsync(new PatentClass()
-                        {
-                            Name = patentClass.Name,
-                            PatentClassTypeId = patentClassType.Id
-                        });
-
-
-                #endregion
-
-                #region Patent Class Relation
-
-                await _patentClassRelationService.AddAsync(new PatentClassRelation()
+            if (model.PatentClasses != null)
+                foreach (var patentClass in model.PatentClasses)
                 {
-                    PatentId = dbModel.Id,
-                    PatentClassId = patentClassModel.Id
-                });
+                    #region Patent Class Type
 
+                    PatentClassType patentClassType = default;
+                    if (!string.IsNullOrEmpty(patentClass.Type))
+                        patentClassType =
+                            await _patentClassTypeService.SingleOrDefaultAsync(x => x.Type == patentClass.Type) ??
+                            await _patentClassTypeService.AddAsync(new PatentClassType()
+                            {
+                                Type = patentClass.Type
+                            });
 
-                #endregion
+                    #endregion
 
-            }
+                    #region Patent Class
 
+                    PatentClass patentClassModel = default;
+                    if (!string.IsNullOrEmpty(patentClass.Name))
+                        patentClassModel =
+                            await _patentClassService.SingleOrDefaultAsync(x => x.Name == patentClass.Name) ??
+                            await _patentClassService.AddAsync(new PatentClass()
+                            {
+                                Name = patentClass.Name,
+                                PatentClassTypeId = patentClassType.Id
+                            });
+
+                    #endregion
+
+                    #region Patent Class Relation
+
+                    await _patentClassRelationService.AddAsync(new PatentClassRelation()
+                    {
+                        PatentId = dbModel.Id,
+                        PatentClassId = patentClassModel.Id
+                    });
+
+                    #endregion
+                }
 
             #endregion
 
             #region Patent Transactions
 
-            var removePatentTransactions = await _patentTransactionService.Where(x => x.PatentId == dbModel.Id, default);
+            var removePatentTransactions = await _patentTransactionService.Where(x => x.PatentId == dbModel.Id);
             var patentTransactions = removePatentTransactions.ToList();
             if (patentTransactions.Any())
                 _patentTransactionService.RemoveRange(patentTransactions);
-            foreach (var patentTransaction in model.PatentTransactions)
-            {
-                var patentTransactionName =
-                    await _patentTransactionNameService.SingleOrDefaultAsync(x =>
-                        x.Transaction == patentTransaction.Transaction) ?? await _patentTransactionNameService.AddAsync(
-                        new PatentTransactionName()
-                        {
-                            Transaction = patentTransaction.Transaction
-                        });
-                await _patentTransactionService.AddAsync(new PatentTransaction()
+            if (model.PatentTransactions != null)
+                foreach (var patentTransaction in model.PatentTransactions)
                 {
-                    Date = patentTransaction.Date,
-                    NotificationDate = patentTransaction.NotificationDate,
-                    PatentId = dbModel.Id,
-                    PatentTransactionNameId = patentTransactionName.Id
-                });
-            }
-
+                    var patentTransactionName =
+                        await _patentTransactionNameService.SingleOrDefaultAsync(x =>
+                            x.Transaction == patentTransaction.Transaction) ??
+                        await _patentTransactionNameService.AddAsync(
+                            new PatentTransactionName()
+                            {
+                                Transaction = patentTransaction.Transaction
+                            });
+                    await _patentTransactionService.AddAsync(new PatentTransaction()
+                    {
+                        Date = patentTransaction.Date,
+                        NotificationDate = patentTransaction.NotificationDate,
+                        PatentId = dbModel.Id,
+                        PatentTransactionNameId = patentTransactionName.Id
+                    });
+                }
 
             #endregion
 
             #region Patent Publications
 
             var removePatentPublications =
-                await _patentPublicationService.Where(x => x.PatentId == dbModel.Id, default);
+                await _patentPublicationService.Where(x => x.PatentId == dbModel.Id);
             var patentPublications = removePatentPublications.ToList();
             if (patentPublications.Any())
                 _patentPublicationService.RemoveRange(patentPublications);
-            foreach (var patentPublication in model.PatentPublications)
-            {
-                var patentPublicationDescription =
-                    await _patentPublicationDescriptionService.SingleOrDefaultAsync(x =>
-                        x.Description == patentPublication.Description) ??
-                    await _patentPublicationDescriptionService.AddAsync(new PatentPublicationDescription()
-                    {
-                        Description = patentPublication.Description
-                    });
-
-                await _patentPublicationService.AddAsync(new PatentPublication()
+            if (model.PatentPublications != null)
+                foreach (var patentPublication in model.PatentPublications)
                 {
-                    PatentId = dbModel.Id,
-                    PatentPublicationDescriptionId = patentPublicationDescription.Id,
-                    PublishDate = patentPublication.PublishDate
-                });
-            }
+                    var patentPublicationDescription =
+                        await _patentPublicationDescriptionService.SingleOrDefaultAsync(x =>
+                            x.Description == patentPublication.Description) ??
+                        await _patentPublicationDescriptionService.AddAsync(new PatentPublicationDescription()
+                        {
+                            Description = patentPublication.Description
+                        });
+
+                    await _patentPublicationService.AddAsync(new PatentPublication()
+                    {
+                        PatentId = dbModel.Id,
+                        PatentPublicationDescriptionId = patentPublicationDescription.Id,
+                        PublishDate = patentPublication.PublishDate
+                    });
+                }
 
             #endregion
 
             #region Patent Payments
 
-            var removePatentPayments = await _patentPaymentService.Where(x => x.PatentId == dbModel.Id, default);
+            var removePatentPayments = await _patentPaymentService.Where(x => x.PatentId == dbModel.Id);
             var patentPayments = removePatentPayments.ToList();
             if (patentPayments.Any())
                 _patentPaymentService.RemoveRange(patentPayments);
-            foreach (var patentPayment in model.PatentPayments)
-            {
-                await _patentPaymentService.AddAsync(new PatentPayment()
+            if (model.PatentPayments != null)
+                foreach (var patentPayment in model.PatentPayments)
                 {
-                    PaidAmount = decimal.Parse(patentPayment.PaidAmount, CultureInfo.InvariantCulture),
-                    PatentId = dbModel.Id,
-                    PaymentDate = patentPayment.PaymentDate,
-                    Queue = int.Parse(patentPayment.Queue),
-                    Year = int.Parse(patentPayment.Year)
-                });
-            }
+                    await _patentPaymentService.AddAsync(new PatentPayment()
+                    {
+                        PaidAmount = decimal.Parse(patentPayment.PaidAmount, CultureInfo.InvariantCulture),
+                        PatentId = dbModel.Id,
+                        PaymentDate = patentPayment.PaymentDate,
+                        Queue = int.Parse(patentPayment.Queue),
+                        Year = int.Parse(patentPayment.Year)
+                    });
+                }
 
             #endregion
 
             #region Patent Holders
 
             var removeHolderRelations =
-                await _holderRelationService.Where(x => x.DataId == dbModel.Id && x.DataType == DataType.Patent,
-                    default);
+                await _holderRelationService.Where(x => x.DataId == dbModel.Id && x.DataType == DataType.Patent);
             var holderRelations = removeHolderRelations.ToList();
             if (holderRelations.Any())
                 _holderRelationService.RemoveRange(holderRelations);
-            foreach (var holder in model.Holders)
-            {
-                var holderModel = await _holderService.SingleOrDefaultAsync(x => x.HolderCode == holder.HolderCode) ??
-                                  await _holderService.AddAsync(new Holder()
-                                  {
-                                      HolderCode = holder.HolderCode,
-                                      HolderName = holder.HolderName,
-                                      Address = holder.Address
-                                  });
-
-                await _holderRelationService.AddAsync(new HolderRelation()
+            if (model.Holders != null)
+                foreach (var holder in model.Holders)
                 {
-                    DataId = dbModel.Id,
-                    DataType = DataType.Patent,
-                    HolderId = holderModel.Id
+                    var holderModel =
+                        await _holderService.SingleOrDefaultAsync(x => x.HolderCode == holder.HolderCode) ??
+                        await _holderService.AddAsync(new Holder()
+                        {
+                            HolderCode = holder.HolderCode,
+                            HolderName = holder.HolderName,
+                            Address = holder.Address
+                        });
 
-                });
-            }
+                    await _holderRelationService.AddAsync(new HolderRelation()
+                    {
+                        DataId = dbModel.Id,
+                        DataType = DataType.Patent,
+                        HolderId = holderModel.Id
+                    });
+                }
 
             #endregion
 
@@ -751,56 +767,65 @@ namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
 
             #region Analyses Report
 
-            var removePdFs =await _patentPdfService.Where(x => x.PatentId == dbModel.Id,default);
-            foreach (var removePdF in removePdFs)
-            {
-                await _fileTransferManager.DeleteFile(removePdF.FileId, ".pdf", BucketName, SubFileDirectoryName);
-                _patentPdfService.Remove(removePdF);
-            }
-            var analysisReport = await _pdfDownloaderService.DownloadPdf(model.AnalysisReportUrl);
-            if (analysisReport != null)
-            {
-                await _patentPdfService.AddAsync(new Shared.MainData.Core.Models.PatentPdf()
+            var removePdFs =await _patentPdfService.Where(x => x.PatentId == dbModel.Id);
+            if (removePdFs != null)
+                foreach (var removePdF in removePdFs)
                 {
-                    PatentId = dbModel.Id,
-                    PdfType = PdfType.AnalysisReport,
-                    FileId = await _fileTransferManager.Upload(analysisReport, ".pdf", BucketName,
-                       SubFileDirectoryName)
-                });
+                    await _fileTransferManager.DeleteFile(removePdF.FileId, ".pdf", BucketName, SubFileDirectoryName);
+                    _patentPdfService.Remove(removePdF);
+                }
+
+            if (model.AnalysisReportUrl != null)
+            {
+                var analysisReport = await _pdfDownloaderService.DownloadPdf(model.AnalysisReportUrl);
+                if (analysisReport != null)
+                {
+                    await _patentPdfService.AddAsync(new Shared.MainData.Core.Models.PatentPdf()
+                    {
+                        PatentId = dbModel.Id,
+                        PdfType = PdfType.AnalysisReport,
+                        FileId = await _fileTransferManager.Upload(analysisReport, ".pdf", BucketName,
+                            SubFileDirectoryName)
+                    });
+                }
             }
-
-
 
             #endregion
 
             #region Document
 
-            var document = await _pdfDownloaderService.DownloadPdf(model.DocumentsUrl);
-            if (document != null)
+            if (model.DocumentsUrl != null)
             {
-                await _patentPdfService.AddAsync(new Shared.MainData.Core.Models.PatentPdf()
+                var document = await _pdfDownloaderService.DownloadPdf(model.DocumentsUrl);
+                if (document != null)
                 {
-                    PatentId = dbModel.Id,
-                    PdfType = PdfType.Documents,
-                    FileId = await _fileTransferManager.Upload(document, ".pdf", BucketName,
-                        SubFileDirectoryName)
-                });
+                    await _patentPdfService.AddAsync(new Shared.MainData.Core.Models.PatentPdf()
+                    {
+                        PatentId = dbModel.Id,
+                        PdfType = PdfType.Documents,
+                        FileId = await _fileTransferManager.Upload(document, ".pdf", BucketName,
+                            SubFileDirectoryName)
+                    });
+                }
             }
 
             #endregion
 
             #region Research Report
 
-            var researchReport = await _pdfDownloaderService.DownloadPdf(model.ResearchReportUrl);
-            if (researchReport != null)
+            if (model.ResearchReportUrl != null)
             {
-                await _patentPdfService.AddAsync(new Shared.MainData.Core.Models.PatentPdf()
+                var researchReport = await _pdfDownloaderService.DownloadPdf(model.ResearchReportUrl);
+                if (researchReport != null)
                 {
-                    PatentId = dbModel.Id,
-                    PdfType = PdfType.ResearchReport,
-                    FileId = await _fileTransferManager.Upload(researchReport, ".pdf", BucketName,
-                        SubFileDirectoryName)
-                });
+                    await _patentPdfService.AddAsync(new Shared.MainData.Core.Models.PatentPdf()
+                    {
+                        PatentId = dbModel.Id,
+                        PdfType = PdfType.ResearchReport,
+                        FileId = await _fileTransferManager.Upload(researchReport, ".pdf", BucketName,
+                            SubFileDirectoryName)
+                    });
+                }
             }
 
             #endregion

@@ -6,9 +6,12 @@ using TPHunter.Shared.Scrapper.Abstracts;
 using TPHunter.Shared.Scrapper.Models;
 using TPHunter.Source.Core.Configs;
 using TPHunter.Source.DataSaver.Abstract;
-using TPHunter.Source.Scrapper.Abstract.Main;
+using TPHunter.Source.DataSaver.Concrete;
 using TPHunter.Source.Scrapper.Abstract.Shared;
 using TPHunter.Source.Scrapper.DI;
+using TPHunter.Source.Scrapper.Enums;
+using TPHunter.Source.Scrapper.Services.Main;
+using TPHunter.Source.Scrapper.Services.Shared;
 
 namespace TPHunter.Source.Main.Workers
 {
@@ -16,55 +19,48 @@ namespace TPHunter.Source.Main.Workers
     {
         private readonly ITurkPatentClientService _turkPatentClientService;
         private readonly IScrapperClientHelperService _scrapperClientHelperService;
-        private readonly LiveConfig _liveConfig;
-        public WorkerTasks(LiveConfig liveConfig)
+        public WorkerTasks()
         {
-            Shared.Scrapper.Ioc.TurkPatentClientFactory();
-            DataSaver.DI.Ioc.ScrapperClientHelperFactory();
-            Ioc.TurkPatentClientServiceFactory();
-            _turkPatentClientService = Ioc.Resolve<ITurkPatentClientService>();
-            _scrapperClientHelperService = DataSaver.DI.Ioc.Resolve<IScrapperClientHelperService>();
-            _liveConfig = liveConfig;
+            _turkPatentClientService = Ioc.Resolve<ITurkPatentClientService>(nameof(TurkPatentClientService));
+            _scrapperClientHelperService = DataSaver.DI.Ioc.Resolve<IScrapperClientHelperService>(nameof(ScrapperClientHelperService));
+
         }
         public Task DownloadTrademark()
         {
             return Task.Run(async () =>
             {
                 var currentRemoteBulletin = await _turkPatentClientService.GetTrademarkParam();
-                var config = _liveConfig.GetConfig();
-                Ioc.WorkerFactory<MarkModel>();
+                var config = LiveConfigFunctions.GetConfig();
+              
                 do
                 {
                     var workers = new Dictionary<int, Task>();
 
 
 
-                    var currentBulletin = config.TrademarkSettings.CurrentBulletin;
+                    var currentBulletin = config.TrademarkSettings.CurrentBulletin+1;
 
 
                     for (var i = currentBulletin;
                          (i < currentBulletin + RuntimeConfigs.GeneralConfig.MainConfig.BrowserCount) &&
-                         (i <= ((BulletinParam)currentRemoteBulletin).BulletinNumber);
+                         (i <= currentRemoteBulletin.BulletinNumber);
                          i++)
                     {
                         var cacheNumber = i;
                         workers.Add(
                             cacheNumber,
-                            Task.Run(() =>
+                            Task.Run(() => new Worker<MarkModel>(WorkType.Trademark).Download(new SearchParam()
                             {
-                                Ioc.Resolve<IWorker>().Download(new BulletinParam()
-                                {
-                                    BulletinNumber = cacheNumber
-                                });
-                            })
+                                BulletinNumber = cacheNumber
+                            }))
                         );
                     }
 
                     Task.WaitAll(workers.Values.ToArray());
-                    _liveConfig.SetTradeMarkCurrentBulletin(workers.Keys.Max());
-                    config = _liveConfig.GetConfig();
+                    LiveConfigFunctions.SetTradeMarkCurrentBulletin(workers.Keys.Max());
+                    config = LiveConfigFunctions.GetConfig();
                 } while (config.TrademarkSettings.CurrentBulletin <
-                         ((BulletinParam)currentRemoteBulletin).BulletinNumber);
+                         currentRemoteBulletin.BulletinNumber);
 
 
                 return Task.CompletedTask;
@@ -76,20 +72,20 @@ namespace TPHunter.Source.Main.Workers
             return Task.Run(async () =>
             {
                 var currentRemoteBulletin = await _turkPatentClientService.GetDesignParam();
-                var config = _liveConfig.GetConfig();
-                Ioc.WorkerFactory<DesignModel>();
+                var config = LiveConfigFunctions.GetConfig();
+             
                 do
                 {
                     var workers = new Dictionary<int, Task>();
 
 
 
-                    var currentBulletin = config.DesignSettings.CurrentBulletin;
+                    var currentBulletin = config.DesignSettings.CurrentBulletin+1;
 
 
                     for (var i = currentBulletin;
                          (i < currentBulletin + RuntimeConfigs.GeneralConfig.MainConfig.BrowserCount) &&
-                         (i <= ((BulletinParam)currentRemoteBulletin).BulletinNumber);
+                         (i <= currentRemoteBulletin.BulletinNumber);
                          i++)
                     {
                         var cacheNumber = i;
@@ -97,19 +93,19 @@ namespace TPHunter.Source.Main.Workers
                             cacheNumber,
                             Task.Run(() =>
                             {
-                                Ioc.Resolve<IWorker>().Download(new BulletinParam()
+                                Task.Run(() => new Worker<DesignModel>(WorkType.Design).Download(new SearchParam()
                                 {
                                     BulletinNumber = cacheNumber
-                                });
+                                }));
                             })
                         );
                     }
 
                     Task.WaitAll(workers.Values.ToArray());
-                    _liveConfig.SetDesignCurrentBulletin(workers.Keys.Max());
-                    config = _liveConfig.GetConfig();
+                    LiveConfigFunctions.SetDesignCurrentBulletin(workers.Keys.Max());
+                    config = LiveConfigFunctions.GetConfig();
                 } while (config.DesignSettings.CurrentBulletin <
-                         ((BulletinParam)currentRemoteBulletin).BulletinNumber);
+                         currentRemoteBulletin.BulletinNumber);
 
 
                 return Task.CompletedTask;
@@ -121,44 +117,41 @@ namespace TPHunter.Source.Main.Workers
             return Task.Run(async () =>
             {
                 var currentRemoteBulletin = await _turkPatentClientService.GetPatentParam();
-                var config = _liveConfig.GetConfig();
-                Ioc.WorkerFactory<PatentModel>();
+                var config = LiveConfigFunctions.GetConfig();
+           
                 do
                 {
                     var workers = new Dictionary<DateTime, Task>();
 
 
 
-                    var currentBulletin = config.PatentSettings.CurrentPulledDate;
+                    var currentBulletin = config.PatentSettings.CurrentPulledDate.AddMonths(1);
 
 
                     for (var i = currentBulletin;
                          (i < currentBulletin.AddMonths(RuntimeConfigs.GeneralConfig.MainConfig.BrowserCount)) &&
-                         (i <= ((DateRangeParam)currentRemoteBulletin).StartDate);
+                         (i <= currentRemoteBulletin.StartDate);
                          i = i.AddMonths(1))
                     {
                         var cacheDate = i;
                         workers.Add(
                             cacheDate,
-                            Task.Run(() =>
+                            Task.Run(() => new Worker<PatentModel>(WorkType.Patent).Download(new SearchParam()
                             {
-                                Ioc.Resolve<IWorker>().Download(new DateRangeParam()
-                                {
-                                    StartDate = cacheDate,
-                                    EndDate = new DateTime(cacheDate.Year, cacheDate.Month,
-                                        cacheDate.Year == DateTime.Now.Year && cacheDate.Month == DateTime.Now.Month
-                                            ? DateTime.Now.Day
-                                            : DateTime.DaysInMonth(cacheDate.Year, cacheDate.Month))
-                                });
-                            })
+                                StartDate = cacheDate,
+                                EndDate = new DateTime(cacheDate.Year, cacheDate.Month,
+                                    cacheDate.Year == DateTime.Now.Year && cacheDate.Month == DateTime.Now.Month
+                                        ? DateTime.Now.Day
+                                        : DateTime.DaysInMonth(cacheDate.Year, cacheDate.Month))
+                            }))
                         );
                     }
 
                     Task.WaitAll(workers.Values.ToArray());
-                    _liveConfig.SetPatentCurrentBulletin(workers.Keys.Max());
-                    config = _liveConfig.GetConfig();
+                    LiveConfigFunctions.SetPatentCurrentBulletin(workers.Keys.Max());
+                    config = LiveConfigFunctions.GetConfig();
                 } while (config.PatentSettings.CurrentPulledDate <
-                         ((DateRangeParam)currentRemoteBulletin).StartDate);
+                         currentRemoteBulletin.StartDate);
 
 
                 return Task.CompletedTask;
@@ -170,12 +163,12 @@ namespace TPHunter.Source.Main.Workers
         {
             return Task.Run(async () =>
             {
-                var config = _liveConfig.GetConfig();
+                var config = LiveConfigFunctions.GetConfig();
                 if (!config.TrademarkSettings.UpdateConditions.UpdateAttorneyNames.Any() && !config.TrademarkSettings.UpdateConditions.UpdateHolderCodes.Any())
                 {
                     return Task.CompletedTask;
                 }
-                Ioc.WorkerFactory<MarkModel>();
+           
                 List<Guid> attorneyIds = null;
                 if (config.TrademarkSettings.UpdateConditions.UpdateAttorneyNames.Any())
                     attorneyIds = (await _scrapperClientHelperService.GetAttorneyIdsByNames(config.TrademarkSettings.UpdateConditions
@@ -200,9 +193,9 @@ namespace TPHunter.Source.Main.Workers
                     {
                         var cache = i;
                         workers[i] = Task.Run(() =>
-                        {
-                            Ioc.Resolve<IWorker>().Update(applicationNumbers.Skip(uploadPerBrowser * cache).Take(uploadPerBrowser).ToArray());
-                        });
+                            new Worker<MarkModel>(WorkType.Trademark).Update(applicationNumbers.Skip(uploadPerBrowser * cache)
+                                .Take(uploadPerBrowser).ToArray()));
+
                     }
 
                     Task.WaitAll();
@@ -211,20 +204,18 @@ namespace TPHunter.Source.Main.Workers
 
                 for (var k = 0;
                      k < applicationNumbers.Count;
-                     k = k + (RuntimeConfigs.GeneralConfig.MainConfig.MaxUploadPerBrowser *
-                              RuntimeConfigs.GeneralConfig.MainConfig.BrowserCount))
+                     k += RuntimeConfigs.GeneralConfig.MainConfig.MaxUploadPerBrowser *
+                          RuntimeConfigs.GeneralConfig.MainConfig.BrowserCount)
                 {
                     var kCache = k;
                     for (var i = 0; i < RuntimeConfigs.GeneralConfig.MainConfig.BrowserCount; i++)
                     {
                         var iCache = i;
-
                         workers[i] = Task.Run(() =>
-                        {
-                            Ioc.Resolve<IWorker>().Update(applicationNumbers
+                            new Worker<MarkModel>(WorkType.Trademark).Update(applicationNumbers
                                 .Skip((RuntimeConfigs.GeneralConfig.MainConfig.MaxUploadPerBrowser * iCache) + kCache)
-                                .Take(RuntimeConfigs.GeneralConfig.MainConfig.MaxUploadPerBrowser).ToArray());
-                        });
+                                .Take(RuntimeConfigs.GeneralConfig.MainConfig.MaxUploadPerBrowser).ToArray()));
+                       
                     }
                     Task.WaitAll();
                 }
@@ -237,12 +228,12 @@ namespace TPHunter.Source.Main.Workers
         {
             return Task.Run(async () =>
             {
-                var config = _liveConfig.GetConfig();
+                var config = LiveConfigFunctions.GetConfig();
                 if (!config.PatentSettings.UpdateConditions.UpdateAttorneyNames.Any() && !config.PatentSettings.UpdateConditions.UpdateHolderCodes.Any())
                 {
                     return Task.CompletedTask;
                 }
-                Ioc.WorkerFactory<PatentModel>();
+        
                 List<Guid> attorneyIds = null;
                 if (config.PatentSettings.UpdateConditions.UpdateAttorneyNames.Any())
                     attorneyIds = (await _scrapperClientHelperService.GetAttorneyIdsByNames(config.TrademarkSettings.UpdateConditions
@@ -267,9 +258,8 @@ namespace TPHunter.Source.Main.Workers
                     {
                         var cache = i;
                         workers[i] = Task.Run(() =>
-                        {
-                            Ioc.Resolve<IWorker>().Update(applicationNumbers.Skip(uploadPerBrowser * cache).Take(uploadPerBrowser).ToArray());
-                        });
+                            new Worker<PatentModel>(WorkType.Patent).Update(applicationNumbers.Skip(uploadPerBrowser * cache)
+                                .Take(uploadPerBrowser).ToArray()));
                     }
 
                     Task.WaitAll();
@@ -287,11 +277,9 @@ namespace TPHunter.Source.Main.Workers
                         var iCache = i;
 
                         workers[i] = Task.Run(() =>
-                        {
-                            Ioc.Resolve<IWorker>().Update(applicationNumbers
+                            new Worker<PatentModel>(WorkType.Patent).Update(applicationNumbers
                                 .Skip((RuntimeConfigs.GeneralConfig.MainConfig.MaxUploadPerBrowser * iCache) + kCache)
-                                .Take(RuntimeConfigs.GeneralConfig.MainConfig.MaxUploadPerBrowser).ToArray());
-                        });
+                                .Take(RuntimeConfigs.GeneralConfig.MainConfig.MaxUploadPerBrowser).ToArray()));
                     }
                     Task.WaitAll();
                 }
@@ -304,12 +292,12 @@ namespace TPHunter.Source.Main.Workers
         {
             return Task.Run(async () =>
             {
-                var config = _liveConfig.GetConfig();
+                var config = LiveConfigFunctions.GetConfig();
                 if (!config.DesignSettings.UpdateConditions.UpdateAttorneyNames.Any() && !config.DesignSettings.UpdateConditions.UpdateHolderCodes.Any())
                 {
                     return Task.CompletedTask;
                 }
-                Ioc.WorkerFactory<DesignModel>();
+             
                 List<Guid> attorneyIds = null;
                 if (config.DesignSettings.UpdateConditions.UpdateAttorneyNames.Any())
                     attorneyIds = (await _scrapperClientHelperService.GetAttorneyIdsByNames(config.DesignSettings.UpdateConditions
@@ -334,9 +322,7 @@ namespace TPHunter.Source.Main.Workers
                     {
                         var cache = i;
                         workers[i] = Task.Run(() =>
-                        {
-                            Ioc.Resolve<IWorker>().Update(applicationNumbers.Skip(uploadPerBrowser * cache).Take(uploadPerBrowser).ToArray());
-                        });
+                        new Worker<DesignModel>(WorkType.Design).Update(applicationNumbers.Skip(uploadPerBrowser * cache).Take(uploadPerBrowser).ToArray()));
                     }
 
                     Task.WaitAll();
@@ -354,11 +340,9 @@ namespace TPHunter.Source.Main.Workers
                         var iCache = i;
 
                         workers[i] = Task.Run(() =>
-                        {
-                            Ioc.Resolve<IWorker>().Update(applicationNumbers
+                            new Worker<DesignModel>(WorkType.Design).Update(applicationNumbers
                                 .Skip((RuntimeConfigs.GeneralConfig.MainConfig.MaxUploadPerBrowser * iCache) + kCache)
-                                .Take(RuntimeConfigs.GeneralConfig.MainConfig.MaxUploadPerBrowser).ToArray());
-                        });
+                                .Take(RuntimeConfigs.GeneralConfig.MainConfig.MaxUploadPerBrowser).ToArray()));
                     }
                     Task.WaitAll();
                 }

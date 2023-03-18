@@ -6,15 +6,15 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "TPHunter.WebServices.Shared.Utility.ApiUtility/1.0.0": {
+      "TPHunter.Shared.ApiUtility/1.0.0": {
         "runtime": {
-          "TPHunter.WebServices.Shared.Utility.ApiUtility.dll": {}
+          "TPHunter.Shared.ApiUtility.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "TPHunter.WebServices.Shared.Utility.ApiUtility/1.0.0": {
+    "TPHunter.Shared.ApiUtility/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

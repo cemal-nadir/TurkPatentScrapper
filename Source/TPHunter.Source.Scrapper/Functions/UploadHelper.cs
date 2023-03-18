@@ -8,7 +8,7 @@ namespace TPHunter.Source.Scrapper.Functions
     {
         public static void SearchSingle(this IWebDriver driver, string applicationNumber)
         {
-            var tabPanelDiv = driver.FindElement(By.CssSelector("#__next > div > div.jss2.jss5 > main > div.jss219 > div > div.jss221 > div.jss227 > div:nth-child(1)"), 20);
+            var tabPanelDiv = driver.FindElement(By.XPath("//*[@id=\"__next\"]/div/div[2]/main/div[1]/div/div/div[2]/div[1]"), 20);
             driver.ClickWithJs(tabPanelDiv.FindElements(By.TagName("button")).FirstOrDefault(x => x.GetAttribute("aria-label") == "Dosya Takibi"));
             driver.FindElement(By.CssSelector("input[placeholder='Başvuru Numarası']"), 20).Click();
             driver.FindElement(By.CssSelector("input[placeholder='Başvuru Numarası']"), 20).SendKeys(applicationNumber);

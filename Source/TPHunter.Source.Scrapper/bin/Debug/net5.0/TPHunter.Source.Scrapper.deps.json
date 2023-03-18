@@ -66,6 +66,17 @@
           }
         }
       },
+      "DotNetSeleniumExtras.WaitHelpers/3.11.0": {
+        "dependencies": {
+          "Selenium.WebDriver": "4.5.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/SeleniumExtras.WaitHelpers.dll": {
+            "assemblyVersion": "3.11.0.0",
+            "fileVersion": "3.11.0.0"
+          }
+        }
+      },
       "Emgu.CV/4.6.0.5131": {
         "dependencies": {
           "System.Drawing.Primitives": "4.3.0",
@@ -1005,6 +1016,11 @@
           }
         }
       },
+      "TPHunter.Shared.ApiUtility/1.0.0": {
+        "runtime": {
+          "TPHunter.Shared.ApiUtility.dll": {}
+        }
+      },
       "TPHunter.Shared.Scrapper/1.0.0": {
         "dependencies": {
           "IdentityModel": "4.4.0",
@@ -1016,6 +1032,7 @@
       },
       "TPHunter.Source.Browser/1.0.0": {
         "dependencies": {
+          "DotNetSeleniumExtras.WaitHelpers": "3.11.0",
           "Selenium.Support": "4.5.1",
           "Selenium.WebDriver": "4.5.1",
           "Selenium.WebDriver.ChromeDriver": "107.0.5304.6200",
@@ -1036,6 +1053,7 @@
       },
       "TPHunter.Source.DataSaver/1.0.0": {
         "dependencies": {
+          "TPHunter.Shared.ApiUtility": "1.0.0",
           "TPHunter.Shared.Scrapper": "1.0.0",
           "TPHunter.Source.Core": "1.0.0"
         },
@@ -1080,6 +1098,13 @@
       "sha512": "sha512-DWobWQBNi4p4I0xgTxEqQMld4qYhdUNAIWmdqpAQTno2CNb0iC+Jnqsf1/8xih7TmIOzAdCTIhmDeKau50Zn4w==",
       "path": "castle.windsor/5.1.2",
       "hashPath": "castle.windsor.5.1.2.nupkg.sha512"
+    },
+    "DotNetSeleniumExtras.WaitHelpers/3.11.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-xc6jVVl5ymgk3ZNWnC/KHxkEup1QpnwYbrwF+NQoCOGERsD8YMlLwmsX4lGhLXCLo/YQTRTIwlKCN9E/doGUNg==",
+      "path": "dotnetseleniumextras.waithelpers/3.11.0",
+      "hashPath": "dotnetseleniumextras.waithelpers.3.11.0.nupkg.sha512"
     },
     "Emgu.CV/4.6.0.5131": {
       "type": "package",
@@ -1794,6 +1819,11 @@
       "sha512": "sha512-UPbTiGzz2lr/dik85GFcEsI8Hacn+j5f3779Kb3AhNovpEtKyTTMk/6dZcjG4jLHRPbrkAXTf8TL/+38LQUMeg==",
       "path": "webdrivermanager/2.16.0",
       "hashPath": "webdrivermanager.2.16.0.nupkg.sha512"
+    },
+    "TPHunter.Shared.ApiUtility/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "TPHunter.Shared.Scrapper/1.0.0": {
       "type": "project",

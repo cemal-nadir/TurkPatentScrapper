@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using System;
+using OpenQA.Selenium;
 using System.Collections.Generic;
 using TPHunter.Shared.Scrapper.Abstracts;
 using TPHunter.Shared.Scrapper.Models;
@@ -8,14 +9,12 @@ using TPHunter.Source.Scrapper.Functions;
 
 namespace TPHunter.Source.Scrapper.Services.Shared
 {
-    public class MarkaPage : IPage<MarkModel>
+    public class MarkaPage : IPage<MarkModel>,IDisposable
     {
-        private readonly IWebDriver _webDriver;
-        public MarkaPage(IWebDriver webDriver)
+        private IWebDriver _webDriver;
+        public void SetDriver(IWebDriver driver)
         {
-
-            _webDriver = webDriver;
-
+            _webDriver = driver;
         }
 
         public int GetDataCount()
@@ -42,8 +41,24 @@ namespace TPHunter.Source.Scrapper.Services.Shared
             foreach(var responseListTableModel in responseListTableModels)
             {
                 _webDriver.ClickWithJs(responseListTableModel.DetailButton);
-                markModels.Add(_webDriver.GetMarkData(MainHelper.ScrapType.Download));
-                _webDriver.CloseDataPopUp();
+                var data = _webDriver.GetMarkData();
+                if (data is null)
+                {
+                    var applicationNumber =
+                        _webDriver.FindElements(By.ClassName("MuiTableRow-hover"), 20)[markModels.Count]
+                            .FindElements(By.TagName("td"))[1].Text;
+                    markModels.Add(new MarkModel()
+                    {
+                        ApplicationNumber = applicationNumber
+                    });
+                }
+                else
+                {
+                    markModels.Add(data);
+                    _webDriver.CloseDataPopUp();
+                }
+
+   
             }
             return markModels;
 
@@ -51,19 +66,25 @@ namespace TPHunter.Source.Scrapper.Services.Shared
 
         public MarkModel ScrapSingle()
         {
-            return _webDriver.GetMarkData(MainHelper.ScrapType.Upload);
+            return _webDriver.GetMarkData();
         }
 
      
 
         public void Search(ISearchParam searchParam)
         {
-            _webDriver.SearchMarks(((BulletinParam)searchParam).BulletinNumber.ToString());
+            _webDriver.SearchMarks(searchParam.BulletinNumber.ToString());
         }
 
         public void Search(string applicationNumber)
         {
             _webDriver.SearchSingle(applicationNumber);
         }
+
+        public void Dispose()
+        {
+            _webDriver?.Dispose();
+        }
+
     }
 }

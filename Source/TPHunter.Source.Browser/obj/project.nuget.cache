@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "AkozyFb7N40siAegFMuON4uivY+5MvwKpi1BVhvXV4NIytyHJlODsrzapy0Qwht/qelW5ZIebBVlPOkVW4pZcQ==",
+  "dgSpecHash": "eQCZrWLLBtEqVeJM+/ZkXjfz5dYVIT1dB80Q717/IBK9cguQCxdbWswLKf5ZUrRyxniqhpnC6leFh95aQeS0XA==",
   "success": true,
   "projectFilePath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Browser\\TPHunter.Source.Browser.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\HUAWEI\\.nuget\\packages\\anglesharp\\0.17.1\\anglesharp.0.17.1.nupkg.sha512",
     "C:\\Users\\HUAWEI\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
     "C:\\Users\\HUAWEI\\.nuget\\packages\\castle.windsor\\5.1.2\\castle.windsor.5.1.2.nupkg.sha512",
+    "C:\\Users\\HUAWEI\\.nuget\\packages\\dotnetseleniumextras.waithelpers\\3.11.0\\dotnetseleniumextras.waithelpers.3.11.0.nupkg.sha512",
     "C:\\Users\\HUAWEI\\.nuget\\packages\\microsoft.dotnet.platformabstractions\\1.1.2\\microsoft.dotnet.platformabstractions.1.1.2.nupkg.sha512",
     "C:\\Users\\HUAWEI\\.nuget\\packages\\microsoft.extensions.dependencymodel\\1.1.2\\microsoft.extensions.dependencymodel.1.1.2.nupkg.sha512",
     "C:\\Users\\HUAWEI\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",

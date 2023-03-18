@@ -3,5 +3,6 @@
     public interface IModel
     {
         public string ApplicationNumber { get; set; }
+        public string Bulletin { get; set; }
     }
 }

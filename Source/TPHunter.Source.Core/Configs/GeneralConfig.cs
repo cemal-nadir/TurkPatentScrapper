@@ -4,7 +4,7 @@
     {
         public TpConfig TpConfig { get; set; }
         public Services Services { get; set; }
-        public ServiceConfigs ServicesConfigs { get; set; }
+        public ServiceConfigs ServiceConfig { get; set; }
         public MainConfig MainConfig { get; set; }
 
     }

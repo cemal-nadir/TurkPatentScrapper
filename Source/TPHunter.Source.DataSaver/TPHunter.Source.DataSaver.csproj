@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\Scrapper\TPHunter.Shared.Scrapper\TPHunter.Shared.Scrapper.csproj" />
+    <ProjectReference Include="..\..\Shared\TPHunter.Shared.ApiUtility\TPHunter.Shared.ApiUtility.csproj" />
     <ProjectReference Include="..\TPHunter.Source.Core\TPHunter.Source.Core.csproj" />
   </ItemGroup>
 

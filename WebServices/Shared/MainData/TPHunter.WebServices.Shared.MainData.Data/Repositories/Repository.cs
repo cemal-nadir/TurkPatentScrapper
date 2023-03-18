@@ -53,8 +53,9 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Repositories
             return await _dbSet.CountAsync(x => !x.IsDeleted);
         }
 
-        public async Task<IEnumerable<TEntity>> GetAllAsync(Order order)
+        public async Task<IEnumerable<TEntity>> GetAllAsync(Order order=default)
         {
+            order ??= new Order();
             return await _dbSet.Where(x => !x.IsDeleted).AsQueryable().OrderBy($"{order.OrderColumnName} {order.OrderColumnDirection}").ToListAsync();
         }
 
@@ -85,23 +86,27 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Repositories
             return entity;
         }
 
-        public async Task<IEnumerable<TEntity>> Where(Expression<Func<TEntity, bool>> predicate, Order order)
+        public async Task<IEnumerable<TEntity>> Where(Expression<Func<TEntity, bool>> predicate, Order order=default)
         {
+            order ??= new Order();
             return await _dbSet.Where(predicate).Where(x => !x.IsDeleted).AsQueryable().OrderBy($"{order.OrderColumnName} {order.OrderColumnDirection}").ToListAsync();
         }
-        public async Task<IEnumerable<TEntity>> GetAllPrivateRemovedAsync(Order order)
+        public async Task<IEnumerable<TEntity>> GetAllPrivateRemovedAsync(Order order = default)
         {
+            order ??= new Order();
             return await _dbSet.Where(x => x.IsDeleted).AsQueryable().OrderBy($"{order.OrderColumnName} {order.OrderColumnDirection}").ToListAsync();
         }
-        public async Task<IEnumerable<TEntity>> GetAllPaginateAsync(Expression<Func<TEntity, bool>> predicate, Order order, int page, int size)
+        public async Task<IEnumerable<TEntity>> GetAllPaginateAsync(Expression<Func<TEntity, bool>> predicate, int page, int size,Order order= default)
         {
+            order ??= new Order();
             page = (page < 1) ? 1 : page;
             size = (size < 1) ? 1 : size;
             return await _dbSet.Where(predicate).Where(x => !x.IsDeleted).AsQueryable().OrderBy($"{order.OrderColumnName} {order.OrderColumnDirection}").Skip((page - 1) * size).Take(size).ToListAsync();
         }
 
-        public async Task<IEnumerable<TEntity>> GetByIdsAsync(Guid[] ds, Order order)
+        public async Task<IEnumerable<TEntity>> GetByIdsAsync(Guid[] ds, Order order = default)
         {
+            order ??= new Order();
             return await _dbSet.Where(x => ds.Contains(x.Id)).AsQueryable().OrderBy($"{order.OrderColumnName} {order.OrderColumnDirection}").ToListAsync();
         }
 

@@ -4,7 +4,7 @@ using TPHunter.WebServices.Shared.MainData.Core.Repositories.Helper;
 
 namespace TPHunter.WebServices.Shared.MainData.Core.Models
 {
-    public class Patent : EntityBase
+    public class Patent : EntityBase,IItemBase
     {
         public string ApplicationNumber { get; set; }
         public DateTime? ApplicationDate { get; set; }
@@ -26,6 +26,7 @@ namespace TPHunter.WebServices.Shared.MainData.Core.Models
         public string InventionSummary { get; set; }
         public Guid? AttorneyId { get; set; }
         public virtual Attorney Attorney { get; set; }
+        public DateTime BulletinDate { get; set; }
         public virtual ICollection<PatentPriorty> PatentPriorties { get; set; }
         public virtual ICollection<PatentClassRelation> PatentClassRelations { get; set; }
         public virtual ICollection<PatentTransaction> PatentTransactions { get; set; }

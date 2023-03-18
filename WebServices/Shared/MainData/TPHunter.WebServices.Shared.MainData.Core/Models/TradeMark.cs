@@ -4,7 +4,7 @@ using TPHunter.WebServices.Shared.MainData.Core.Repositories.Helper;
 
 namespace TPHunter.WebServices.Shared.MainData.Core.Models
 {
-    public class TradeMark:EntityBase
+    public class TradeMark: EntityBase, IItemBase
     {
         public string ApplicationNumber { get; set; }
         public DateTime? ApplicationDate { get; set; }

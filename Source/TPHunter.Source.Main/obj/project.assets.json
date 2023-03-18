@@ -65,6 +65,18 @@
           }
         }
       },
+      "DotNetSeleniumExtras.WaitHelpers/3.11.0": {
+        "type": "package",
+        "dependencies": {
+          "Selenium.WebDriver": "3.10.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/SeleniumExtras.WaitHelpers.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SeleniumExtras.WaitHelpers.dll": {}
+        }
+      },
       "Emgu.CV/4.6.0.5131": {
         "type": "package",
         "dependencies": {
@@ -1853,6 +1865,19 @@
           "lib/netstandard2.1/WebDriverManager.dll": {}
         }
       },
+      "TPHunter.Shared.ApiUtility/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/TPHunter.Shared.ApiUtility.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TPHunter.Shared.ApiUtility.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "TPHunter.Shared.Scrapper/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
@@ -1871,6 +1896,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
+          "DotNetSeleniumExtras.WaitHelpers": "3.11.0",
           "Selenium.Support": "4.5.1",
           "Selenium.WebDriver": "4.5.1",
           "Selenium.WebDriver.ChromeDriver": "107.0.5304.6200",
@@ -1901,6 +1927,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
+          "TPHunter.Shared.ApiUtility": "1.0.0",
           "TPHunter.Shared.Scrapper": "1.0.0",
           "TPHunter.Source.Core": "1.0.0"
         },
@@ -2005,6 +2032,21 @@
         "lib/netstandard1.6/Castle.Windsor.dll",
         "lib/netstandard1.6/Castle.Windsor.xml",
         "windsor-logo.png"
+      ]
+    },
+    "DotNetSeleniumExtras.WaitHelpers/3.11.0": {
+      "sha512": "xc6jVVl5ymgk3ZNWnC/KHxkEup1QpnwYbrwF+NQoCOGERsD8YMlLwmsX4lGhLXCLo/YQTRTIwlKCN9E/doGUNg==",
+      "type": "package",
+      "path": "dotnetseleniumextras.waithelpers/3.11.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "dotnetseleniumextras.waithelpers.3.11.0.nupkg.sha512",
+        "dotnetseleniumextras.waithelpers.nuspec",
+        "lib/net35/SeleniumExtras.WaitHelpers.dll",
+        "lib/net40/SeleniumExtras.WaitHelpers.dll",
+        "lib/net45/SeleniumExtras.WaitHelpers.dll",
+        "lib/netstandard2.0/SeleniumExtras.WaitHelpers.dll"
       ]
     },
     "Emgu.CV/4.6.0.5131": {
@@ -6299,6 +6341,11 @@
         "webdrivermanager.nuspec"
       ]
     },
+    "TPHunter.Shared.ApiUtility/1.0.0": {
+      "type": "project",
+      "path": "../../Shared/TPHunter.Shared.ApiUtility/TPHunter.Shared.ApiUtility.csproj",
+      "msbuildProject": "../../Shared/TPHunter.Shared.ApiUtility/TPHunter.Shared.ApiUtility.csproj"
+    },
     "TPHunter.Shared.Scrapper/1.0.0": {
       "type": "project",
       "path": "../../Shared/Scrapper/TPHunter.Shared.Scrapper/TPHunter.Shared.Scrapper.csproj",
@@ -6338,6 +6385,8 @@
   },
   "packageFolders": {
     "C:\\Users\\HUAWEI\\.nuget\\packages\\": {},
+    "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages": {},
+    "C:\\Program Files\\DevExpress 22.2\\Components\\Offline Packages": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
@@ -6350,10 +6399,14 @@
       "outputPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Main\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages",
+        "C:\\Program Files\\DevExpress 22.2\\Components\\Offline Packages",
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
         "C:\\Users\\HUAWEI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.1.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.2.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -6363,7 +6416,8 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://nuget.devexpress.com/kaMrR6YKccpV1mrDb9YrM2zxaD7alADoWKZkHag4VXTWpt3F65/api": {}
       },
       "frameworks": {
         "net5.0": {

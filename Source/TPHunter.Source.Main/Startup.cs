@@ -16,6 +16,17 @@ namespace TPHunter.Source.Main
             RuntimeConfigs.GeneralConfig = JsonConvert.DeserializeObject<GeneralConfig>(streamReader.ReadToEnd());
             ServicePointManager.Expect100Continue = true;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+            #region Dependency  Injection
+
+            Browser.DI.Ioc.RegisterModules();
+            Shared.Scrapper.Ioc.RegisterModules();
+            DataSaver.DI.Ioc.RegisterModules();
+            ImageProcess.Ioc.RegisterModules();
+            Scrapper.DI.Ioc.RegisterModules();
+
+            #endregion
+
         }
        
     }

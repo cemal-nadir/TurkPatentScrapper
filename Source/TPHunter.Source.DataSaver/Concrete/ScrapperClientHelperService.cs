@@ -6,6 +6,7 @@ using System.Net.Http.Json;
 using System.Threading.Tasks;
 using TPHunter.Shared.Scrapper;
 using TPHunter.Shared.Scrapper.Abstracts;
+using TPHunter.Shared.Scrapper.Handlers;
 using TPHunter.Source.Core.Configs;
 using TPHunter.Source.DataSaver.Abstract;
 
@@ -14,15 +15,13 @@ namespace TPHunter.Source.DataSaver.Concrete
     public class ScrapperClientHelperService:IScrapperClientHelperService
     {
         private readonly HttpClient _httpClient;
-        private const string GetAttorneyIdsByNamesUri = "/Api/Attorney?";
-        private const string GetFilteredTrademarkApplicationNumbersUri = "/Api/Trademark/GetFilteredApplicationNumbers?";
-        private const string GetFilteredPatentApplicationNumbersUri = "/Api/Patent/GetFilteredApplicationNumbers?";
-        private const string GetFilteredDesignApplicationNumbersUri = "/Api/Design/GetFilteredApplicationNumbers?";
+        private readonly string _getAttorneyIdsByNamesUri = $"{RuntimeConfigs.GeneralConfig.Services.ScrapApiUri}/Api/Attorney?";
+        private readonly string _getFilteredTrademarkApplicationNumbersUri = $"{RuntimeConfigs.GeneralConfig.Services.ScrapApiUri}/Api/Trademark/GetFilteredApplicationNumbers?";
+        private readonly string _getFilteredPatentApplicationNumbersUri = $"{RuntimeConfigs.GeneralConfig.Services.ScrapApiUri}/Api/Patent/GetFilteredApplicationNumbers?";
+        private readonly string _getFilteredDesignApplicationNumbersUri = $"{RuntimeConfigs.GeneralConfig.Services.ScrapApiUri}/Api/Design/GetFilteredApplicationNumbers?";
         public ScrapperClientHelperService()
         {
-            Ioc.ApiClientFactory();
-            _httpClient = Ioc.Resolve<IApiClient>().Client;
-            _httpClient.BaseAddress = new Uri(RuntimeConfigs.GeneralConfig.Services.ScrapApiUri);
+            _httpClient = Ioc.Resolve<IApiClient>(nameof(ApiClient)).Client;
         }
 
         private static string PrepareUrlQueryString(IReadOnlyList<string> values, string valueName,string requestUri)
@@ -37,7 +36,7 @@ namespace TPHunter.Source.DataSaver.Concrete
         }
         public async Task<IEnumerable<Guid>> GetAttorneyIdsByNames(string[] attorneyNames)
         {
-            var requestUri =PrepareUrlQueryString(attorneyNames, nameof(attorneyNames), GetAttorneyIdsByNamesUri);
+            var requestUri =PrepareUrlQueryString(attorneyNames, nameof(attorneyNames), _getAttorneyIdsByNamesUri);
 
             var response = await _httpClient.GetAsync(requestUri);
 
@@ -49,7 +48,7 @@ namespace TPHunter.Source.DataSaver.Concrete
 
         public async Task<IEnumerable<string>> GetFilteredTrademarkApplicationNumbers(Guid[] attorneyIds, string[] holderCodes)
         {
-            var requestUri = GetFilteredTrademarkApplicationNumbersUri;
+            var requestUri = _getFilteredTrademarkApplicationNumbersUri;
             requestUri = PrepareUrlQueryString(attorneyIds.Select(x=>x.ToString()).ToArray(), nameof(attorneyIds), requestUri)+"&";
             requestUri = PrepareUrlQueryString(holderCodes, nameof(holderCodes), requestUri);
 
@@ -63,7 +62,7 @@ namespace TPHunter.Source.DataSaver.Concrete
 
         public async Task<IEnumerable<string>> GetFilteredPatentApplicationNumbers(Guid[] attorneyIds, string[] holderCodes)
         {
-            var requestUri = GetFilteredPatentApplicationNumbersUri;
+            var requestUri = _getFilteredPatentApplicationNumbersUri;
             requestUri = PrepareUrlQueryString(attorneyIds.Select(x => x.ToString()).ToArray(), nameof(attorneyIds), requestUri) + "&";
             requestUri = PrepareUrlQueryString(holderCodes, nameof(holderCodes), requestUri);
 
@@ -77,7 +76,7 @@ namespace TPHunter.Source.DataSaver.Concrete
 
         public async Task<IEnumerable<string>> GetFilteredDesignApplicationNumbers(Guid[] attorneyIds, string[] holderCodes)
         {
-            var requestUri = GetFilteredDesignApplicationNumbersUri;
+            var requestUri = _getFilteredDesignApplicationNumbersUri;
             requestUri = PrepareUrlQueryString(attorneyIds.Select(x => x.ToString()).ToArray(), nameof(attorneyIds), requestUri) + "&";
             requestUri = PrepareUrlQueryString(holderCodes, nameof(holderCodes), requestUri);
 

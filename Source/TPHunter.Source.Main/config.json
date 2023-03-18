@@ -12,15 +12,15 @@
     "TPPatentPdfPage": "https://portal.turkpatent.gov.tr/anonim/arastirma/patent/sonuc/dosya"
   },
   "Services": {
-    "IdentityApiUri": "http://localhost:6030",
+    "IdentityApiUri": "https://localhost:6030",
     "ScrapApiUri": "https://localhost:5001"
   },
-  "ServiceConfigs": {
+  "ServiceConfig": {
     "ScrapApiClient": "DataSupplierClient",
     "ScrapApiSecret": "cv7VzznOzv8RrqLaaSJA4jZ5GeB3TvM8"
   },
-  "MainConfigs": {
-    "BrowserCount": 5,
+  "MainConfig": {
+    "BrowserCount": 1,
     "MaxUploadPerBrowser": 100
   }
 }

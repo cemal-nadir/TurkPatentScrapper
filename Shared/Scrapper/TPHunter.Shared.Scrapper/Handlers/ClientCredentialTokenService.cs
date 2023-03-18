@@ -9,18 +9,15 @@ namespace TPHunter.Shared.Scrapper.Handlers
 {
     internal class ClientCredentialTokenService:IClientCredentialTokenService
     {
-        private readonly LiveConfig _config;
         private readonly HttpClient _httpClient;
         public ClientCredentialTokenService()
         {
-            _config=new LiveConfig();
-            Ioc.ApiClientFactory();
-            _httpClient = Ioc.Resolve<IApiClient>().Client;
+            _httpClient = Ioc.Resolve<IApiClient>(nameof(IdentityClient)).Client;
         }
         public async Task<string> GetToken()
         {
-            var currentToken = _config.GetAccessToken();
-            var currentTokenExpiration=_config.GetAccessTokenExpiration();
+            var currentToken = LiveConfigFunctions.GetAccessToken();
+            var currentTokenExpiration=LiveConfigFunctions.GetAccessTokenExpiration();
             if (!string.IsNullOrEmpty(currentToken) && currentTokenExpiration > DateTime.Now)
                 return currentToken;
 
@@ -37,8 +34,8 @@ namespace TPHunter.Shared.Scrapper.Handlers
 
             var clientCredentialTokenRequest = new ClientCredentialsTokenRequest
             {
-                ClientId = RuntimeConfigs.GeneralConfig.ServicesConfigs.ScrapApiClient,
-                ClientSecret = RuntimeConfigs.GeneralConfig.ServicesConfigs.ScrapApiSecret,
+                ClientId = RuntimeConfigs.GeneralConfig.ServiceConfig.ScrapApiClient,
+                ClientSecret = RuntimeConfigs.GeneralConfig.ServiceConfig.ScrapApiSecret,
                 Address = disco.TokenEndpoint
             };
 
@@ -49,7 +46,7 @@ namespace TPHunter.Shared.Scrapper.Handlers
                 throw newToken.Exception;
             }
 
-            _config.SetAccessToken(newToken.AccessToken, DateTimeOffset.FromUnixTimeSeconds(newToken.ExpiresIn).Date);
+            LiveConfigFunctions.SetAccessToken(newToken.AccessToken, DateTime.Now.AddSeconds(newToken.ExpiresIn));
 
             return newToken.AccessToken;
 

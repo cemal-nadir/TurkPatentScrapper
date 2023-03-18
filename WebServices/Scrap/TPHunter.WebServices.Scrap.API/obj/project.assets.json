@@ -2251,6 +2251,19 @@
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
       },
+      "TPHunter.Shared.ApiUtility/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/TPHunter.Shared.ApiUtility.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TPHunter.Shared.ApiUtility.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "TPHunter.Shared.Scrapper/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
@@ -2339,19 +2352,6 @@
         "runtime": {
           "bin/placeholder/TPHunter.WebServices.Shared.MainData.Services.dll": {}
         }
-      },
-      "TPHunter.WebServices.Shared.Utility.ApiUtility/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
-        "compile": {
-          "bin/placeholder/TPHunter.WebServices.Shared.Utility.ApiUtility.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/TPHunter.WebServices.Shared.Utility.ApiUtility.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
       },
       "TPHunter.WebServices.Shared.Utility.Core/1.0.0": {
         "type": "project",
@@ -7290,6 +7290,11 @@
         "system.xml.xmldocument.nuspec"
       ]
     },
+    "TPHunter.Shared.ApiUtility/1.0.0": {
+      "type": "project",
+      "path": "../../../Shared/TPHunter.Shared.ApiUtility/TPHunter.Shared.ApiUtility.csproj",
+      "msbuildProject": "../../../Shared/TPHunter.Shared.ApiUtility/TPHunter.Shared.ApiUtility.csproj"
+    },
     "TPHunter.Shared.Scrapper/1.0.0": {
       "type": "project",
       "path": "../../../Shared/Scrapper/TPHunter.Shared.Scrapper/TPHunter.Shared.Scrapper.csproj",
@@ -7325,11 +7330,6 @@
       "path": "../../Shared/MainData/TPHunter.WebServices.Shared.MainData.Services/TPHunter.WebServices.Shared.MainData.Services.csproj",
       "msbuildProject": "../../Shared/MainData/TPHunter.WebServices.Shared.MainData.Services/TPHunter.WebServices.Shared.MainData.Services.csproj"
     },
-    "TPHunter.WebServices.Shared.Utility.ApiUtility/1.0.0": {
-      "type": "project",
-      "path": "../../Shared/Utility/TPHunter.WebServices.Shared.Utility.ApiUtility/TPHunter.WebServices.Shared.Utility.ApiUtility.csproj",
-      "msbuildProject": "../../Shared/Utility/TPHunter.WebServices.Shared.Utility.ApiUtility/TPHunter.WebServices.Shared.Utility.ApiUtility.csproj"
-    },
     "TPHunter.WebServices.Shared.Utility.Core/1.0.0": {
       "type": "project",
       "path": "../../Shared/Utility/TPHunter.WebServices.Shared.Utility.Core/TPHunter.WebServices.Shared.Utility.Core.csproj",
@@ -7348,17 +7348,19 @@
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 5.0.17",
       "Microsoft.EntityFrameworkCore.Design >= 5.0.17",
       "Swashbuckle.AspNetCore >= 5.6.3",
+      "TPHunter.Shared.ApiUtility >= 1.0.0",
       "TPHunter.Shared.Scrapper >= 1.0.0",
       "TPHunter.Shared.Utility.ApiUtility >= 1.0.0",
       "TPHunter.WebServices.Scrap.PatentPdf >= 1.0.0",
       "TPHunter.WebServices.Shared.MainData.Data >= 1.0.0",
       "TPHunter.WebServices.Shared.MainData.Services >= 1.0.0",
-      "TPHunter.WebServices.Shared.Utility.ApiUtility >= 1.0.0",
       "TPHunter.WebServices.Shared.Utility.FileStorage >= 1.0.0"
     ]
   },
   "packageFolders": {
     "C:\\Users\\HUAWEI\\.nuget\\packages\\": {},
+    "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages": {},
+    "C:\\Program Files\\DevExpress 22.2\\Components\\Offline Packages": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
@@ -7371,10 +7373,14 @@
       "outputPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Scrap\\TPHunter.WebServices.Scrap.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages",
+        "C:\\Program Files\\DevExpress 22.2\\Components\\Offline Packages",
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
         "C:\\Users\\HUAWEI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.1.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.2.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -7384,7 +7390,8 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://nuget.devexpress.com/kaMrR6YKccpV1mrDb9YrM2zxaD7alADoWKZkHag4VXTWpt3F65/api": {}
       },
       "frameworks": {
         "net5.0": {
@@ -7392,6 +7399,9 @@
           "projectReferences": {
             "D:\\CustomProjects\\SistemPatent\\TPHunter\\Shared\\Scrapper\\TPHunter.Shared.Scrapper\\TPHunter.Shared.Scrapper.csproj": {
               "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Shared\\Scrapper\\TPHunter.Shared.Scrapper\\TPHunter.Shared.Scrapper.csproj"
+            },
+            "D:\\CustomProjects\\SistemPatent\\TPHunter\\Shared\\TPHunter.Shared.ApiUtility\\TPHunter.Shared.ApiUtility.csproj": {
+              "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Shared\\TPHunter.Shared.ApiUtility\\TPHunter.Shared.ApiUtility.csproj"
             },
             "D:\\CustomProjects\\SistemPatent\\TPHunter\\Shared\\Utility\\TPHunter.Shared.Utility.ApiUtility\\TPHunter.Shared.Utility.ApiUtility.csproj": {
               "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Shared\\Utility\\TPHunter.Shared.Utility.ApiUtility\\TPHunter.Shared.Utility.ApiUtility.csproj"
@@ -7404,9 +7414,6 @@
             },
             "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\MainData\\TPHunter.WebServices.Shared.MainData.Services\\TPHunter.WebServices.Shared.MainData.Services.csproj": {
               "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\MainData\\TPHunter.WebServices.Shared.MainData.Services\\TPHunter.WebServices.Shared.MainData.Services.csproj"
-            },
-            "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\Utility\\TPHunter.WebServices.Shared.Utility.ApiUtility\\TPHunter.WebServices.Shared.Utility.ApiUtility.csproj": {
-              "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\Utility\\TPHunter.WebServices.Shared.Utility.ApiUtility\\TPHunter.WebServices.Shared.Utility.ApiUtility.csproj"
             },
             "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\Utility\\TPHunter.WebServices.Shared.Utility.FileStorage\\TPHunter.WebServices.Shared.Utility.FileStorage.csproj": {
               "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\WebServices\\Shared\\Utility\\TPHunter.WebServices.Shared.Utility.FileStorage\\TPHunter.WebServices.Shared.Utility.FileStorage.csproj"

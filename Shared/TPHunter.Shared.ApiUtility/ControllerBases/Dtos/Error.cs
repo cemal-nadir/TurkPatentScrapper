@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TPHunter.WebServices.Shared.Utility.ApiUtility.ControllerBases.Dtos
+namespace TPHunter.Shared.ApiUtility.ControllerBases.Dtos
 {
     /// <summary>
     /// Hata dönüleceği durumlarda bu DTO tercih edilmelidir

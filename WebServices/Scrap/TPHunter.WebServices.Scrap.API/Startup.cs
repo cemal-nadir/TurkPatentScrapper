@@ -60,7 +60,8 @@ namespace TPHunter.WebServices.Scrap.API
             services.Configure<AmazonS3Config>(Configuration.GetSection("AmazonConfig:AmazonS3Config"));
             services.AddScoped(typeof(IAmazonS3Config), typeof(AmazonConfigFactory));
             services.AddScoped(typeof(IAmazonS3), typeof(CustomAmazonS3Client));
-            services.AddScoped(typeof(IFileTransferManager), typeof(AmazonStorage));
+            //services.AddScoped(typeof(IFileTransferManager), typeof(AmazonStorage));
+            services.AddScoped(typeof(IFileTransferManager), typeof(FakeStorage));
             services.AddScoped(typeof(IService<>), typeof(Service<>));
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));

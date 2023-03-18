@@ -7,7 +7,7 @@ namespace TPHunter.Source.Browser.Helpers
 {
     public class ChromeHelper
     {
-        public string FindReleaseService()
+        public static string FindReleaseService()
         {
             try
             {
@@ -16,11 +16,9 @@ namespace TPHunter.Source.Browser.Helpers
                     .OrderByDescending(d => d.CreationTime)
                     .Select(d => d.Name)
                     .ToList();
-                foreach (var directory in directories)
+                foreach (var serviceLocation in directories.Select(directory => Directory.GetDirectories(RuntimeConfigs.ApplicationStartupPath + "Chrome\\"+directory).FirstOrDefault()).Where(serviceLocation => serviceLocation != null))
                 {
-                    var serviceLocation = Directory.GetDirectories(RuntimeConfigs.ApplicationStartupPath + "Chrome\\"+directory).FirstOrDefault();
-                    if (serviceLocation != null)
-                        return serviceLocation;
+                    return serviceLocation;
                 }
 
                 throw new Exception("Servis Bulunamadı");

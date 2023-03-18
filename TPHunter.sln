@@ -48,8 +48,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scrapper", "Scrapper", "{8F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TPHunter.Shared.Scrapper", "Shared\Scrapper\TPHunter.Shared.Scrapper\TPHunter.Shared.Scrapper.csproj", "{C027E720-FD9E-43A3-A76C-65EA46640D23}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TPHunter.WebServices.Shared.Utility.ApiUtility", "WebServices\Shared\Utility\TPHunter.WebServices.Shared.Utility.ApiUtility\TPHunter.WebServices.Shared.Utility.ApiUtility.csproj", "{5E13FEE6-BC2C-40AD-ACB7-D84AD48C6993}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TPHunter.WebServices.Shared.Utility.FileStorage", "WebServices\Shared\Utility\TPHunter.WebServices.Shared.Utility.FileStorage\TPHunter.WebServices.Shared.Utility.FileStorage.csproj", "{06F15747-33B2-4DAE-8346-19DDBB5B8968}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TPHunter.WebServices.Scrap.PatentPdf", "WebServices\Scrap\TPHunter.WebServices.Scrap.PatentPdf\TPHunter.WebServices.Scrap.PatentPdf.csproj", "{5EE9B428-954E-426A-8DF2-DF49A43BA53D}"
@@ -60,6 +58,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TPHunter.Source.DataSaver",
 	ProjectSection(ProjectDependencies) = postProject
 		{496F3572-A5BE-4BAD-9AA6-5B784263026A} = {496F3572-A5BE-4BAD-9AA6-5B784263026A}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPHunter.Shared.ApiUtility", "Shared\TPHunter.Shared.ApiUtility\TPHunter.Shared.ApiUtility.csproj", "{523F973A-CFE1-4576-ACDB-31D5B35204C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -111,10 +111,6 @@ Global
 		{C027E720-FD9E-43A3-A76C-65EA46640D23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C027E720-FD9E-43A3-A76C-65EA46640D23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C027E720-FD9E-43A3-A76C-65EA46640D23}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5E13FEE6-BC2C-40AD-ACB7-D84AD48C6993}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5E13FEE6-BC2C-40AD-ACB7-D84AD48C6993}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5E13FEE6-BC2C-40AD-ACB7-D84AD48C6993}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5E13FEE6-BC2C-40AD-ACB7-D84AD48C6993}.Release|Any CPU.Build.0 = Release|Any CPU
 		{06F15747-33B2-4DAE-8346-19DDBB5B8968}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{06F15747-33B2-4DAE-8346-19DDBB5B8968}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06F15747-33B2-4DAE-8346-19DDBB5B8968}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -131,6 +127,10 @@ Global
 		{8033B61C-0532-421F-8BC9-85CD4562206A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8033B61C-0532-421F-8BC9-85CD4562206A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8033B61C-0532-421F-8BC9-85CD4562206A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{523F973A-CFE1-4576-ACDB-31D5B35204C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{523F973A-CFE1-4576-ACDB-31D5B35204C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{523F973A-CFE1-4576-ACDB-31D5B35204C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{523F973A-CFE1-4576-ACDB-31D5B35204C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -153,11 +153,11 @@ Global
 		{FB887598-4397-4EFF-8D9C-90565AF580DF} = {EF4E5B07-B14C-454F-916D-370074EECEC2}
 		{8FCCC5CE-09CC-4633-BEC1-718F8D3E8301} = {DB567948-31CA-482D-B4AF-46B79144912A}
 		{C027E720-FD9E-43A3-A76C-65EA46640D23} = {8FCCC5CE-09CC-4633-BEC1-718F8D3E8301}
-		{5E13FEE6-BC2C-40AD-ACB7-D84AD48C6993} = {FB887598-4397-4EFF-8D9C-90565AF580DF}
 		{06F15747-33B2-4DAE-8346-19DDBB5B8968} = {FB887598-4397-4EFF-8D9C-90565AF580DF}
 		{5EE9B428-954E-426A-8DF2-DF49A43BA53D} = {55F8BC61-9160-4DC5-8209-CC8C98C7E62B}
 		{30B4C406-1E7B-4ECB-93A8-834C1B55645A} = {FB887598-4397-4EFF-8D9C-90565AF580DF}
 		{8033B61C-0532-421F-8BC9-85CD4562206A} = {A7C320CD-CC66-4862-B28E-8097E2016D4F}
+		{523F973A-CFE1-4576-ACDB-31D5B35204C1} = {DB567948-31CA-482D-B4AF-46B79144912A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {920A07D5-8595-4D62-AB08-67D929EF8037}

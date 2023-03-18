@@ -657,6 +657,9 @@ namespace TPHunter.WebServices.Shared.MainData.Data.Migrations
                     b.Property<Guid?>("AttorneyId")
                         .HasColumnType("uuid");
 
+                    b.Property<DateTime>("BulletinDate")
+                        .HasColumnType("timestamp without time zone");
+
                     b.Property<DateTime?>("CreateTime")
                         .HasColumnType("timestamp without time zone");
 

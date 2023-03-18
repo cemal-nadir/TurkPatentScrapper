@@ -79,20 +79,20 @@ namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
         public async Task<int> GetLastPulledCountAsync(ISearchParam searchParam)
         {
             return await _trademarkService.GetCountAsync(x =>
-                x.DeclareBullettinNumber == ((BulletinParam)searchParam).BulletinNumber.ToString());
+                x.DeclareBullettinNumber == searchParam.BulletinNumber.ToString());
         }
 
         public async Task<IEnumerable<string>> GetLastPulledApplicationNumbersAsync(ISearchParam searchParam)
         {
             return await _trademarkService.AsNoTracking.Where(x =>
-                    x.DeclareBullettinNumber == ((BulletinParam)searchParam).BulletinNumber.ToString())
+                    x.DeclareBullettinNumber == searchParam.BulletinNumber.ToString())
                 .Select(x => x.ApplicationNumber).ToListAsync();
         }
 
         public async Task<IEnumerable<Guid>> GetLastPulledIdsAsync(ISearchParam searchParam)
         {
             return await _trademarkService.AsNoTracking.Where(x =>
-                    x.DeclareBullettinNumber == ((BulletinParam)searchParam).BulletinNumber.ToString())
+                    x.DeclareBullettinNumber == searchParam.BulletinNumber.ToString())
                 .Select(x => x.Id).ToListAsync();
         }
 
@@ -114,7 +114,6 @@ namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
             dbModel.ApplicationDate = model.ApplicationDate;
             dbModel.Classes = model.Classes;
             dbModel.DeclareBullettinDate = model.DeclareBullettinDate;
-            dbModel.DeclareBullettinNumber = model.DeclareBullettinNumber;
             dbModel.DocumentNumber = model.DocumentNumber;
             #region Save TradeMark Image
             dbModel.ImageId = await _fileTransferManager.Upload(model.ImageText, ".jpg", BucketName, SubFileDirectoryName);
@@ -126,6 +125,7 @@ namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
             dbModel.RegistrationBullettinNumber = model.RegistrationBullettinNumber;
             dbModel.RegistrationDate = model.RegistrationDate;
             dbModel.RegistrationNumber = model.RegistrationNumber;
+            dbModel.DeclareBullettinNumber = model.Bulletin;
             #endregion
 
             #region TradeMark Status
@@ -226,91 +226,104 @@ namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
             #endregion
 
             #region TradeMark Services
-            foreach (var service in model.Services)
-            {
-                await _trademarkServicesService.AddAsync(new TradeMarkServices()
+
+            if (model.Services != null)
+                foreach (var service in model.Services)
                 {
-                    Class = service.Class,
-                    Service = service.Service,
-                    TradeMarkId = dbModel.Id
-                });
-            }
+                    await _trademarkServicesService.AddAsync(new TradeMarkServices()
+                    {
+                        Class = service.Class,
+                        Service = service.Service,
+                        TradeMarkId = dbModel.Id
+                    });
+                }
+
             #endregion
 
             #region TradeMark Transactions
-            foreach (var transaction in model.Transactions)
-            {
-                var transactionType = await _trademarkTransactionTypeService.SingleOrDefaultAsync(x => x.Type == transaction.TransactionType) ??
-                                      await _trademarkTransactionTypeService.AddAsync(new TradeMarkTransactionType()
-                {
-                    Type = transaction.TransactionType
-                });
 
-                TradeMarkTransactionName tradeMarkTransactionName = default;
-                if (!string.IsNullOrEmpty(transaction.Name))
+            if (model.Transactions != null)
+                foreach (var transaction in model.Transactions)
                 {
-                    tradeMarkTransactionName = await _trademarkTransactionNameService.SingleOrDefaultAsync(x => x.Transaction == transaction.Name) ??
-                                               await _trademarkTransactionNameService.AddAsync(new TradeMarkTransactionName()
+                    var transactionType =
+                        await _trademarkTransactionTypeService.SingleOrDefaultAsync(x =>
+                            x.Type == transaction.TransactionType) ??
+                        await _trademarkTransactionTypeService.AddAsync(new TradeMarkTransactionType()
+                        {
+                            Type = transaction.TransactionType
+                        });
+
+                    TradeMarkTransactionName tradeMarkTransactionName = default;
+                    if (!string.IsNullOrEmpty(transaction.Name))
                     {
-                        Transaction = transaction.Name
+                        tradeMarkTransactionName =
+                            await _trademarkTransactionNameService.SingleOrDefaultAsync(x =>
+                                x.Transaction == transaction.Name) ??
+                            await _trademarkTransactionNameService.AddAsync(new TradeMarkTransactionName()
+                            {
+                                Transaction = transaction.Name
+                            });
+                    }
+
+                    TradeMarkTransactionDescription tradeMarkTransactionDescription = default;
+                    if (!string.IsNullOrEmpty(transaction.Description))
+                    {
+                        tradeMarkTransactionDescription =
+                            await _trademarkTransactionDescriptionService.SingleOrDefaultAsync(x =>
+                                x.Description == transaction.Description) ??
+                            await _trademarkTransactionDescriptionService.AddAsync(new TradeMarkTransactionDescription()
+                            {
+                                Description = transaction.Description
+                            });
+                    }
+
+                    var transactionModel = await _trademarkTransactionService.AddAsync(new TradeMarkTransaction()
+                    {
+                        NotificationDate = transaction.NotificationDate,
+                        TradeMarkId = dbModel.Id,
+                        TradeMarkTransactionDescriptionId = tradeMarkTransactionDescription?.Id,
+                        TradeMarkTransactionNameId = tradeMarkTransactionName?.Id,
+                        TradeMarkTransactionTypeId = transactionType.Id,
+                        TransactionDate = transaction.TransactionDate
                     });
+
+
+                    if (transaction.MarkTransactionDetails == null ||
+                        !transaction.MarkTransactionDetails.Any()) continue;
+                    foreach (var transactionDetail in transaction.MarkTransactionDetails)
+                    {
+                        await _trademarkTransactionDetailService.AddAsync(new TradeMarkTransactionDetail()
+                        {
+                            AboutMark = transactionDetail.AboutMark,
+                            DecisionReason = transactionDetail.DecisionReason,
+                            TradeMarkTransactionId = transactionModel.Id
+                        });
+                    }
                 }
 
-                TradeMarkTransactionDescription tradeMarkTransactionDescription = default;
-                if (!string.IsNullOrEmpty(transaction.Description))
-                {
-                    tradeMarkTransactionDescription = await _trademarkTransactionDescriptionService.SingleOrDefaultAsync(x => x.Description == transaction.Description) ??
-                                                      await _trademarkTransactionDescriptionService.AddAsync(new TradeMarkTransactionDescription()
-                    {
-                        Description = transaction.Description
-                    });
-                }
-
-                var transactionModel = await _trademarkTransactionService.AddAsync(new TradeMarkTransaction()
-                {
-                    NotificationDate = transaction.NotificationDate,
-                    TradeMarkId = dbModel.Id,
-                    TradeMarkTransactionDescriptionId = tradeMarkTransactionDescription?.Id,
-                    TradeMarkTransactionNameId = tradeMarkTransactionName?.Id,
-                    TradeMarkTransactionTypeId = transactionType.Id,
-                    TransactionDate = transaction.TransactionDate
-                });
-
-
-                if (transaction.MarkTransactionDetails == null || !transaction.MarkTransactionDetails.Any()) continue;
-                foreach (var transactionDetail in transaction.MarkTransactionDetails)
-                {
-                    await _trademarkTransactionDetailService.AddAsync(new TradeMarkTransactionDetail()
-                    {
-                        AboutMark = transactionDetail.AboutMark,
-                        DecisionReason = transactionDetail.DecisionReason,
-                        TradeMarkTransactionId = transactionModel.Id
-                    });
-                }
-
-
-            }
             #endregion
 
             #region TradeMark Holders
-            foreach (var holder in model.Holders)
-            {
-                var holderModel = await _holderService.SingleOrDefaultAsync(x => x.HolderCode == holder.HolderCode) ??
-                                  await _holderService.AddAsync(new Holder()
-                {
-                    HolderCode = holder.HolderCode,
-                    HolderName = holder.HolderName,
-                    Address = holder.Address
-                });
 
-                await _holderRelationService.AddAsync(new HolderRelation()
+            if (model.Holders != null)
+                foreach (var holder in model.Holders)
                 {
-                    DataId = dbModel.Id,
-                    DataType = DataType.Trademark,
-                    HolderId = holderModel.Id
+                    var holderModel =
+                        await _holderService.SingleOrDefaultAsync(x => x.HolderCode == holder.HolderCode) ??
+                        await _holderService.AddAsync(new Holder()
+                        {
+                            HolderCode = holder.HolderCode,
+                            HolderName = holder.HolderName,
+                            Address = holder.Address
+                        });
 
-                });
-            }
+                    await _holderRelationService.AddAsync(new HolderRelation()
+                    {
+                        DataId = dbModel.Id,
+                        DataType = DataType.Trademark,
+                        HolderId = holderModel.Id
+                    });
+                }
 
             #endregion
 
@@ -325,7 +338,7 @@ namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
             _trademarkService.Remove(model);
             #endregion
             #region Remove Holder Relations
-            var holderRelations = await _holderRelationService.Where(x => x.DataId == model.Id && x.DataType == DataType.Trademark, default);
+            var holderRelations = await _holderRelationService.Where(x => x.DataId == model.Id && x.DataType == DataType.Trademark);
             var enumerable = holderRelations.ToList();
             if (enumerable.Any())
                 _holderRelationService.RemoveRange(enumerable);
@@ -340,7 +353,7 @@ namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
                 _trademarkService.Remove(model);
             #endregion
             #region Remove Holder Relations
-            var holderRelations = await _holderRelationService.Where(x => x.DataId == ıd && x.DataType == DataType.Trademark, default);
+            var holderRelations = await _holderRelationService.Where(x => x.DataId == ıd && x.DataType == DataType.Trademark);
             var enumerable = holderRelations.ToList();
             if (enumerable.Any())
                 _holderRelationService.RemoveRange(enumerable);
@@ -365,7 +378,6 @@ namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
             dbModel.ApplicationDate = model.ApplicationDate;
             dbModel.Classes = model.Classes;
             dbModel.DeclareBullettinDate = model.DeclareBullettinDate;
-            dbModel.DeclareBullettinNumber = model.DeclareBullettinNumber;
             dbModel.DocumentNumber = model.DocumentNumber;
             #region Save TradeMark Image
             await _fileTransferManager.DeleteFile(dbModel.ImageId, ".jpg", BucketName, SubFileDirectoryName);
@@ -478,106 +490,115 @@ namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
             #endregion
 
             #region TradeMark Services
-            var removeServices = await _trademarkServicesService.Where(x => x.TradeMarkId == dbModel.Id, default);
+            var removeServices = await _trademarkServicesService.Where(x => x.TradeMarkId == dbModel.Id);
             var tradeMarkServicesEnumerable = removeServices.ToList();
             if (tradeMarkServicesEnumerable.Any())
                 _trademarkServicesService.RemoveRange(tradeMarkServicesEnumerable);
 
-            foreach (var service in model.Services)
-            {
-                await _trademarkServicesService.AddAsync(new TradeMarkServices()
+            if (model.Services != null)
+                foreach (var service in model.Services)
                 {
-                    Class = service.Class,
-                    Service = service.Service,
-                    TradeMarkId = dbModel.Id
-                });
-            }
+                    await _trademarkServicesService.AddAsync(new TradeMarkServices()
+                    {
+                        Class = service.Class,
+                        Service = service.Service,
+                        TradeMarkId = dbModel.Id
+                    });
+                }
+
             #endregion
 
             #region TradeMark Transactions
-            var removeTransactions = await _trademarkTransactionService.Where(x => x.TradeMarkId == dbModel.Id, default);
+            var removeTransactions = await _trademarkTransactionService.Where(x => x.TradeMarkId == dbModel.Id);
             var tradeMarkTransactions = removeTransactions.ToList();
             if (tradeMarkTransactions.Any())
                 _trademarkTransactionService.RemoveRange(tradeMarkTransactions);
-            foreach (var transaction in model.Transactions)
-            {
-
-                var transactionType = await _trademarkTransactionTypeService.SingleOrDefaultAsync(x => x.Type == transaction.TransactionType) ??
-                                      await _trademarkTransactionTypeService.AddAsync(new TradeMarkTransactionType()
+            if (model.Transactions != null)
+                foreach (var transaction in model.Transactions)
                 {
-                    Type = transaction.TransactionType
-                });
+                    var transactionType =
+                        await _trademarkTransactionTypeService.SingleOrDefaultAsync(x =>
+                            x.Type == transaction.TransactionType) ??
+                        await _trademarkTransactionTypeService.AddAsync(new TradeMarkTransactionType()
+                        {
+                            Type = transaction.TransactionType
+                        });
 
-                TradeMarkTransactionName tradeMarkTransactionName = default;
-                if (!string.IsNullOrEmpty(transaction.Name))
-                {
-                    tradeMarkTransactionName = await _trademarkTransactionNameService.SingleOrDefaultAsync(x => x.Transaction == transaction.Name) ??
-                                               await _trademarkTransactionNameService.AddAsync(new TradeMarkTransactionName()
+                    TradeMarkTransactionName tradeMarkTransactionName = default;
+                    if (!string.IsNullOrEmpty(transaction.Name))
                     {
-                        Transaction = transaction.Name
+                        tradeMarkTransactionName =
+                            await _trademarkTransactionNameService.SingleOrDefaultAsync(x =>
+                                x.Transaction == transaction.Name) ??
+                            await _trademarkTransactionNameService.AddAsync(new TradeMarkTransactionName()
+                            {
+                                Transaction = transaction.Name
+                            });
+                    }
+
+                    TradeMarkTransactionDescription tradeMarkTransactionDescription = default;
+                    if (!string.IsNullOrEmpty(transaction.Description))
+                    {
+                        tradeMarkTransactionDescription =
+                            await _trademarkTransactionDescriptionService.SingleOrDefaultAsync(x =>
+                                x.Description == transaction.Description) ??
+                            await _trademarkTransactionDescriptionService.AddAsync(new TradeMarkTransactionDescription()
+                            {
+                                Description = transaction.Description
+                            });
+                    }
+
+                    var transactionModel = await _trademarkTransactionService.AddAsync(new TradeMarkTransaction()
+                    {
+                        NotificationDate = transaction.NotificationDate,
+                        TradeMarkId = dbModel.Id,
+                        TradeMarkTransactionDescriptionId = tradeMarkTransactionDescription?.Id,
+                        TradeMarkTransactionNameId = tradeMarkTransactionName?.Id,
+                        TradeMarkTransactionTypeId = transactionType.Id,
+                        TransactionDate = transaction.TransactionDate
                     });
+
+
+                    if (transaction.MarkTransactionDetails == null ||
+                        !transaction.MarkTransactionDetails.Any()) continue;
+                    foreach (var transactionDetail in transaction.MarkTransactionDetails)
+                    {
+                        await _trademarkTransactionDetailService.AddAsync(new TradeMarkTransactionDetail()
+                        {
+                            AboutMark = transactionDetail.AboutMark,
+                            DecisionReason = transactionDetail.DecisionReason,
+                            TradeMarkTransactionId = transactionModel.Id
+                        });
+                    }
                 }
 
-                TradeMarkTransactionDescription tradeMarkTransactionDescription = default;
-                if (!string.IsNullOrEmpty(transaction.Description))
-                {
-                    tradeMarkTransactionDescription = await _trademarkTransactionDescriptionService.SingleOrDefaultAsync(x => x.Description == transaction.Description) ??
-                                                      await _trademarkTransactionDescriptionService.AddAsync(new TradeMarkTransactionDescription()
-                    {
-                        Description = transaction.Description
-                    });
-                }
-
-                var transactionModel = await _trademarkTransactionService.AddAsync(new TradeMarkTransaction()
-                {
-                    NotificationDate = transaction.NotificationDate,
-                    TradeMarkId = dbModel.Id,
-                    TradeMarkTransactionDescriptionId = tradeMarkTransactionDescription?.Id,
-                    TradeMarkTransactionNameId = tradeMarkTransactionName?.Id,
-                    TradeMarkTransactionTypeId = transactionType.Id,
-                    TransactionDate = transaction.TransactionDate
-                });
-
-
-                if (transaction.MarkTransactionDetails == null || !transaction.MarkTransactionDetails.Any()) continue;
-                foreach (var transactionDetail in transaction.MarkTransactionDetails)
-                {
-                    await _trademarkTransactionDetailService.AddAsync(new TradeMarkTransactionDetail()
-                    {
-                        AboutMark = transactionDetail.AboutMark,
-                        DecisionReason = transactionDetail.DecisionReason,
-                        TradeMarkTransactionId = transactionModel.Id
-                    });
-                }
-
-
-            }
             #endregion
 
             #region TradeMark Holders
-            var holderRelations = await _holderRelationService.Where(x => x.DataId == dbModel.Id && x.DataType == DataType.Trademark,default);
+            var holderRelations = await _holderRelationService.Where(x => x.DataId == dbModel.Id && x.DataType == DataType.Trademark);
             var enumerable = holderRelations.ToList();
             if (enumerable.Any())
                 _holderRelationService.RemoveRange(enumerable);
 
-            foreach (var holder in model.Holders)
-            {
-                var holderModel = await _holderService.SingleOrDefaultAsync(x => x.HolderCode == holder.HolderCode) ??
-                                  await _holderService.AddAsync(new Holder()
+            if (model.Holders != null)
+                foreach (var holder in model.Holders)
                 {
-                    HolderCode = holder.HolderCode,
-                    HolderName = holder.HolderName,
-                    Address = holder.Address
-                });
+                    var holderModel =
+                        await _holderService.SingleOrDefaultAsync(x => x.HolderCode == holder.HolderCode) ??
+                        await _holderService.AddAsync(new Holder()
+                        {
+                            HolderCode = holder.HolderCode,
+                            HolderName = holder.HolderName,
+                            Address = holder.Address
+                        });
 
-                await _holderRelationService.AddAsync(new HolderRelation()
-                {
-                    DataId = dbModel.Id,
-                    DataType = DataType.Trademark,
-                    HolderId = holderModel.Id
-
-                });
-            }
+                    await _holderRelationService.AddAsync(new HolderRelation()
+                    {
+                        DataId = dbModel.Id,
+                        DataType = DataType.Trademark,
+                        HolderId = holderModel.Id
+                    });
+                }
 
             #endregion
 

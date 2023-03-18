@@ -22,14 +22,14 @@ namespace TPHunter.WebServices.Shared.MainData.Core.Services
         /// <param name="ds">ID dizisi</param>
         /// <param name="order">Sıralama Yönü ve Kolon Adını İçeren Model</param>
         /// <returns></returns>
-        Task<IEnumerable<TEntity>> GetByIdsAsync(Guid[] ds, Order order);
+        Task<IEnumerable<TEntity>> GetByIdsAsync(Guid[] ds, Order order=default);
 
         /// <summary>
         /// Veritabanından ilgili bütün verileri çekmek için kullanılır
         /// </summary>
         /// <param name="order">Sıralama Yönü ve Kolon Adını İçeren Model</param>
         /// <returns></returns>
-        Task<IEnumerable<TEntity>> GetAllAsync(Order order);
+        Task<IEnumerable<TEntity>> GetAllAsync(Order order = default);
         /// <summary>
         /// Veritabanından verilen koşula uyan tüm verileri pagination tekniği ile getirir
         /// </summary>
@@ -38,7 +38,7 @@ namespace TPHunter.WebServices.Shared.MainData.Core.Services
         /// <param name="page">Paginationda Gerekli Olan Sayfa Numarası</param>
         /// <param name="size">Paginationda Gerekli Olan Getirilecek Veri Adedi</param>
         /// <returns></returns>
-        Task<IEnumerable<TEntity>> GetAllPaginateAsync(Expression<Func<TEntity, bool>> predicate, Order order, int page, int size);
+        Task<IEnumerable<TEntity>> GetAllPaginateAsync(Expression<Func<TEntity, bool>> predicate, int page, int size, Order order=default);
 
         /// <summary>
         /// Veritabanından verilen koşula uyan tüm verileri getirir
@@ -46,7 +46,7 @@ namespace TPHunter.WebServices.Shared.MainData.Core.Services
         /// <param name="predicate"></param>
         /// <param name="order">Sıralama Yönü ve Kolon Adını İçeren Model</param>
         /// <returns></returns>
-        Task<IEnumerable<TEntity>> Where(Expression<Func<TEntity, bool>> predicate, Order order);
+        Task<IEnumerable<TEntity>> Where(Expression<Func<TEntity, bool>> predicate, Order order=default);
         /// <summary>
         /// Veritabanından verilen koşula uyan ilk veriyi getirir
         /// </summary>
@@ -80,7 +80,7 @@ namespace TPHunter.WebServices.Shared.MainData.Core.Services
         /// </summary>
         /// <param name="order">Sıralama Yönü ve Kolon Adını İçeren Model</param>
         /// <returns></returns>
-        Task<IEnumerable<TEntity>> GetAllPrivateRemovedAsync(Order order);
+        Task<IEnumerable<TEntity>> GetAllPrivateRemovedAsync(Order order = default);
         /// <summary>
         /// Veritabanından ilgili ID'ye göre veri siler
         /// </summary>

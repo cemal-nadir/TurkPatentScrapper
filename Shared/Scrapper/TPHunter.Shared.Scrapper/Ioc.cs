@@ -8,28 +8,43 @@ namespace TPHunter.Shared.Scrapper
     public static class Ioc
     {
         private static readonly IWindsorContainer Container = new WindsorContainer();
-        public static void ApiClientFactory()
+
+        public static void RegisterModules()
+        {
+            IdentityClientFactory();
+            ClientCredentialTokenFactory();
+            ApiClientFactory();
+            TurkPatentClientFactory();
+          
+        }
+        private static void ApiClientFactory()
         {
             Container.Register(
                 Component.For<IApiClient>().ImplementedBy<ApiClient>().Named(nameof(ApiClient))
             );
         }
+        private static void IdentityClientFactory()
+        {
+            Container.Register(
+                Component.For<IApiClient>().ImplementedBy<IdentityClient>().Named(nameof(IdentityClient))
+            );
+        }
 
-        public static void TurkPatentClientFactory()
+        private static void TurkPatentClientFactory()
         {
             Container.Register(
                 Component.For<IApiClient>().ImplementedBy<TurkPatentClient>().Named(nameof(TurkPatentClient))
             );
         }
-        public static void ClientCredentialTokenFactory()
+        private static void ClientCredentialTokenFactory()
         {
             Container.Register(
                 Component.For<IClientCredentialTokenService>().ImplementedBy<ClientCredentialTokenService>().Named(nameof(ClientCredentialTokenService))
             );
         }
-        public static T Resolve<T>()
+        public static T Resolve<T>(string key)
         {
-            return Container.Resolve<T>();
+            return Container.Resolve<T>(key);
         }
     }
 }

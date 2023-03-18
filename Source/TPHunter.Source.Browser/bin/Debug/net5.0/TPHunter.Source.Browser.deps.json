@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v5.0": {
       "TPHunter.Source.Browser/1.0.0": {
         "dependencies": {
+          "DotNetSeleniumExtras.WaitHelpers": "3.11.0",
           "Selenium.Support": "4.5.1",
           "Selenium.WebDriver": "4.5.1",
           "Selenium.WebDriver.ChromeDriver": "107.0.5304.6200",
@@ -63,6 +64,17 @@
           "lib/netstandard1.6/Castle.Windsor.dll": {
             "assemblyVersion": "5.0.0.0",
             "fileVersion": "5.1.2.0"
+          }
+        }
+      },
+      "DotNetSeleniumExtras.WaitHelpers/3.11.0": {
+        "dependencies": {
+          "Selenium.WebDriver": "4.5.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/SeleniumExtras.WaitHelpers.dll": {
+            "assemblyVersion": "3.11.0.0",
+            "fileVersion": "3.11.0.0"
           }
         }
       },
@@ -1009,6 +1021,13 @@
       "sha512": "sha512-DWobWQBNi4p4I0xgTxEqQMld4qYhdUNAIWmdqpAQTno2CNb0iC+Jnqsf1/8xih7TmIOzAdCTIhmDeKau50Zn4w==",
       "path": "castle.windsor/5.1.2",
       "hashPath": "castle.windsor.5.1.2.nupkg.sha512"
+    },
+    "DotNetSeleniumExtras.WaitHelpers/3.11.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-xc6jVVl5ymgk3ZNWnC/KHxkEup1QpnwYbrwF+NQoCOGERsD8YMlLwmsX4lGhLXCLo/YQTRTIwlKCN9E/doGUNg==",
+      "path": "dotnetseleniumextras.waithelpers/3.11.0",
+      "hashPath": "dotnetseleniumextras.waithelpers.3.11.0.nupkg.sha512"
     },
     "Microsoft.DotNet.PlatformAbstractions/1.1.2": {
       "type": "package",

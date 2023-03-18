@@ -8,12 +8,11 @@ namespace TPHunter.Source.Main.Workers
 {
     public class MainWorker
     {
-        private readonly LiveConfig _liveConfig = new();
         private readonly WorkerTasks _workerTasks;
 
         public MainWorker()
         {
-            _workerTasks = new WorkerTasks(_liveConfig);
+            _workerTasks = new WorkerTasks();
         }
         public async Task DoWork()
         {
@@ -21,30 +20,31 @@ namespace TPHunter.Source.Main.Workers
             {
                 await RunWork(GetNextWork());
             }
+            // ReSharper disable once FunctionNeverReturns
         }
 
         private WorkType GetNextWork()
         {
-            var config = _liveConfig.GetConfig();
+            var config = LiveConfigFunctions.GetConfig();
 
             #region Download Control
-            if (config.PatentSettings.ScrapTimings.LastDownload
-                    .AddHours(config.PatentSettings.ScrapTimings.DownloadHourDelay)
-                    .AddMinutes(config.PatentSettings.ScrapTimings.DownloadMinuteDelay)
-                    .AddSeconds(config.PatentSettings.ScrapTimings.DownloadSecondDelay)
-                > DateTime.Now
-               ) return WorkType.DownloadPatent;
-            if (config.DesignSettings.ScrapTimings.LastDownload
-                    .AddHours(config.DesignSettings.ScrapTimings.DownloadHourDelay)
-                    .AddMinutes(config.DesignSettings.ScrapTimings.DownloadMinuteDelay)
-                    .AddSeconds(config.DesignSettings.ScrapTimings.DownloadSecondDelay)
-                > DateTime.Now
-               ) return WorkType.DownloadDesign;
+            //if (config.PatentSettings.ScrapTimings.LastDownload
+            //        .AddHours(config.PatentSettings.ScrapTimings.DownloadHourDelay)
+            //        .AddMinutes(config.PatentSettings.ScrapTimings.DownloadMinuteDelay)
+            //        .AddSeconds(config.PatentSettings.ScrapTimings.DownloadSecondDelay)
+            //    < DateTime.Now
+            //   ) return WorkType.DownloadPatent;
+            //if (config.DesignSettings.ScrapTimings.LastDownload
+            //        .AddHours(config.DesignSettings.ScrapTimings.DownloadHourDelay)
+            //        .AddMinutes(config.DesignSettings.ScrapTimings.DownloadMinuteDelay)
+            //        .AddSeconds(config.DesignSettings.ScrapTimings.DownloadSecondDelay)
+            //    < DateTime.Now
+            //   ) return WorkType.DownloadDesign;
             if (config.TrademarkSettings.ScrapTimings.LastDownload
                     .AddHours(config.TrademarkSettings.ScrapTimings.DownloadHourDelay)
                     .AddMinutes(config.TrademarkSettings.ScrapTimings.DownloadMinuteDelay)
                     .AddSeconds(config.TrademarkSettings.ScrapTimings.DownloadSecondDelay)
-                > DateTime.Now
+                < DateTime.Now
                ) return WorkType.DownloadTrademark;
 
 
@@ -55,19 +55,19 @@ namespace TPHunter.Source.Main.Workers
                     .AddHours(config.PatentSettings.ScrapTimings.UpdateHourDelay)
                     .AddMinutes(config.PatentSettings.ScrapTimings.UpdateMinuteDelay)
                     .AddSeconds(config.PatentSettings.ScrapTimings.UpdateSecondDelay)
-                > DateTime.Now
+                < DateTime.Now
                ) return WorkType.UploadPatent;
             if (config.DesignSettings.ScrapTimings.LastUpload
                     .AddHours(config.DesignSettings.ScrapTimings.UpdateHourDelay)
                     .AddMinutes(config.DesignSettings.ScrapTimings.UpdateMinuteDelay)
                     .AddSeconds(config.DesignSettings.ScrapTimings.UpdateSecondDelay)
-                > DateTime.Now
+                < DateTime.Now
                ) return WorkType.UploadDesign;
             if (config.TrademarkSettings.ScrapTimings.LastUpload
                     .AddHours(config.TrademarkSettings.ScrapTimings.UpdateHourDelay)
                     .AddMinutes(config.TrademarkSettings.ScrapTimings.UpdateMinuteDelay)
                     .AddSeconds(config.TrademarkSettings.ScrapTimings.UpdateSecondDelay)
-                > DateTime.Now
+                < DateTime.Now
                ) return WorkType.UploadTrademark;
 
 
@@ -85,27 +85,27 @@ namespace TPHunter.Source.Main.Workers
                 case WorkType.DownloadTrademark:
 
                     await _workerTasks.DownloadTrademark();
-                    _liveConfig.UpdateTrademarkLastDownload();
+                    LiveConfigFunctions.UpdateTrademarkLastDownload();
                     break;
                 case WorkType.DownloadPatent:
                     await _workerTasks.DownloadPatent();
-                    _liveConfig.UpdatePatentLastDownload();
+                    LiveConfigFunctions.UpdatePatentLastDownload();
                     break;
                 case WorkType.DownloadDesign:
                     await _workerTasks.DownloadDesign();
-                    _liveConfig.UpdateDesignLastDownload();
+                    LiveConfigFunctions.UpdateDesignLastDownload();
                     break;
                 case WorkType.UploadTrademark:
                     await _workerTasks.UploadTrademark();
-                    _liveConfig.UpdateTrademarkLastUpload();
+                    LiveConfigFunctions.UpdateTrademarkLastUpload();
                     break;
                 case WorkType.UploadPatent:
                     await _workerTasks.UploadPatent();
-                    _liveConfig.UpdatePatentLastUpload();
+                    LiveConfigFunctions.UpdatePatentLastUpload();
                     break;
                 case WorkType.UploadDesign:
                     await _workerTasks.UploadDesign();
-                    _liveConfig.UpdateDesignLastUpload();
+                    LiveConfigFunctions.UpdateDesignLastUpload();
                     break;
                 case WorkType.Wait:
                     Thread.Sleep(TimeSpan.FromSeconds(59));

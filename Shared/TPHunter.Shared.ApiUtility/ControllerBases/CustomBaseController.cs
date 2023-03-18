@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TPHunter.WebServices.Shared.Utility.ApiUtility.ControllerBases.Dtos;
+using TPHunter.Shared.ApiUtility.ControllerBases.Dtos;
 
-namespace TPHunter.WebServices.Shared.Utility.ApiUtility.ControllerBases
+namespace TPHunter.Shared.ApiUtility.ControllerBases
 {
     /// <summary>
     /// Api'larda statik hale getirdiğimiz response tipini dönebilmemiz için gerekli controller base

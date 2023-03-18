@@ -84,20 +84,20 @@ namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
         public async Task<int> GetLastPulledCountAsync(ISearchParam searchParam)
         {
             return await _designService.GetCountAsync(x =>
-                x.BulletinNumber == ((BulletinParam)searchParam).BulletinNumber.ToString());
+                x.BulletinNumber == searchParam.BulletinNumber.ToString());
         }
 
         public async Task<IEnumerable<string>> GetLastPulledApplicationNumbersAsync(ISearchParam searchParam)
         {
             return await _designService.AsNoTracking.Where(x =>
-                    x.BulletinNumber == ((BulletinParam)searchParam).BulletinNumber.ToString())
+                    x.BulletinNumber == searchParam.BulletinNumber.ToString())
                 .Select(x => x.ApplicationNumber).ToListAsync();
         }
 
         public async Task<IEnumerable<Guid>> GetLastPulledIdsAsync(ISearchParam searchParam)
         {
             return await _designService.AsNoTracking.Where(x =>
-                    x.BulletinNumber == ((BulletinParam)searchParam).BulletinNumber.ToString())
+                    x.BulletinNumber == searchParam.BulletinNumber.ToString())
                 .Select(x => x.Id).ToListAsync();
         }
 
@@ -115,11 +115,11 @@ namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
 
             #region Design
             dbModel.ApplicationNumber = model.ApplicationNumber;
-            dbModel.BulletinNumber = model.BulletinNumber;
             dbModel.RegistrationNumber = model.RegistrationNumber;
             dbModel.ApplicationDate = model.ApplicationDate;
             dbModel.BulletinDate = model.BulletinDate;
             dbModel.RegistrationDate = model.RegistrationDate;
+            dbModel.BulletinNumber = model.Bulletin;
             #endregion
 
             #region Design Status
@@ -160,198 +160,225 @@ namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
             #endregion
 
             #region Designers
-            foreach (var designer in model.Designers)
-            {
-                var designerModel = await _designerService.SingleOrDefaultAsync(x => x.Name == designer);
-                designerModel ??= await _designerService.AddAsync(new Designer()
+
+            if (model.Designers != null)
+                foreach (var designer in model.Designers)
                 {
-                    Name = designer
-                });
-                await _designerRelationService.AddAsync(new DesignerRelation()
-                {
-                    DesignerId = designerModel.Id,
-                    DesignId = dbModel.Id
-                });
-            }
+                    var designerModel = await _designerService.SingleOrDefaultAsync(x => x.Name == designer);
+                    designerModel ??= await _designerService.AddAsync(new Designer()
+                    {
+                        Name = designer
+                    });
+                    await _designerRelationService.AddAsync(new DesignerRelation()
+                    {
+                        DesignerId = designerModel.Id,
+                        DesignId = dbModel.Id
+                    });
+                }
+
             #endregion
 
             #region Design Transaction
-            foreach (var transaction in model.DesignTransactions)
-            {
-                #region Design Transaction Type
-                DesignTransactionTypeDetail designTransactionTypeDetail = default;
-                if (!string.IsNullOrEmpty(transaction.TransactionDetail))
+
+            if (model.DesignTransactions != null)
+                foreach (var transaction in model.DesignTransactions)
                 {
-                    designTransactionTypeDetail =
-                        await _designTransactionTypeDetailService.SingleOrDefaultAsync(x =>
-                            x.Detail == transaction.TransactionDetail);
-                    designTransactionTypeDetail ??= await _designTransactionTypeDetailService.AddAsync(
-                        new DesignTransactionTypeDetail()
-                        {
-                            Detail = transaction.TransactionDetail
-                        });
-                }
-                var designTransactionType = await _designTransactionTypeService.SingleOrDefaultAsync(x =>
-                    x.Type == transaction.TransactionType &&
-                    x.DesignTransactionTypeDetailId ==
-                    (designTransactionTypeDetail == default ? null : designTransactionTypeDetail.Id));
-                designTransactionType ??= await _designTransactionTypeService.AddAsync(
-                    new DesignTransactionType()
+                    #region Design Transaction Type
+
+                    DesignTransactionTypeDetail designTransactionTypeDetail = default;
+                    if (!string.IsNullOrEmpty(transaction.TransactionDetail))
                     {
-                        DesignTransactionTypeDetailId = designTransactionTypeDetail?.Id,
-                        Type = transaction.TransactionType
-                    });
-                #endregion
+                        designTransactionTypeDetail =
+                            await _designTransactionTypeDetailService.SingleOrDefaultAsync(x =>
+                                x.Detail == transaction.TransactionDetail);
+                        designTransactionTypeDetail ??= await _designTransactionTypeDetailService.AddAsync(
+                            new DesignTransactionTypeDetail()
+                            {
+                                Detail = transaction.TransactionDetail
+                            });
+                    }
 
-                #region Design Transaction Description
-
-                DesignTransactionDescriptionDetail designTransactionDescriptionDetail = new();
-                if (!string.IsNullOrEmpty(transaction.DescriptionDetail))
-                {
-                    designTransactionDescriptionDetail =
-                        await _designTransactionDescriptionDetailService.SingleOrDefaultAsync(x =>
-                            x.Detail == transaction.DescriptionDetail);
-                    designTransactionDescriptionDetail ??= await _designTransactionDescriptionDetailService.AddAsync(
-                        new DesignTransactionDescriptionDetail()
+                    var designTransactionType = await _designTransactionTypeService.SingleOrDefaultAsync(x =>
+                        x.Type == transaction.TransactionType &&
+                        x.DesignTransactionTypeDetailId ==
+                        (designTransactionTypeDetail == default ? null : designTransactionTypeDetail.Id));
+                    designTransactionType ??= await _designTransactionTypeService.AddAsync(
+                        new DesignTransactionType()
                         {
-                            Detail = transaction.DescriptionDetail
+                            DesignTransactionTypeDetailId = designTransactionTypeDetail?.Id,
+                            Type = transaction.TransactionType
                         });
-                }
-                var designTransactionDescription = await _designTransactionDescriptionService.SingleOrDefaultAsync(x =>
-                    x.Description == transaction.Description &&
-                    x.DesignTransactionDescriptionDetailId ==
-                    (designTransactionDescriptionDetail == default ? null : designTransactionDescriptionDetail.Id));
-                designTransactionDescription ??= await _designTransactionDescriptionService.AddAsync(
-                    new DesignTransactionDescription()
+
+                    #endregion
+
+                    #region Design Transaction Description
+
+                    DesignTransactionDescriptionDetail designTransactionDescriptionDetail = new();
+                    if (!string.IsNullOrEmpty(transaction.DescriptionDetail))
                     {
-                        DesignTransactionDescriptionDetailId = designTransactionDescriptionDetail?.Id,
-                        Description = transaction.Description
+                        designTransactionDescriptionDetail =
+                            await _designTransactionDescriptionDetailService.SingleOrDefaultAsync(x =>
+                                x.Detail == transaction.DescriptionDetail);
+                        designTransactionDescriptionDetail ??=
+                            await _designTransactionDescriptionDetailService.AddAsync(
+                                new DesignTransactionDescriptionDetail()
+                                {
+                                    Detail = transaction.DescriptionDetail
+                                });
+                    }
+
+                    var designTransactionDescription = await _designTransactionDescriptionService.SingleOrDefaultAsync(
+                        x =>
+                            x.Description == transaction.Description &&
+                            x.DesignTransactionDescriptionDetailId ==
+                            (designTransactionDescriptionDetail == default
+                                ? null
+                                : designTransactionDescriptionDetail.Id));
+                    designTransactionDescription ??= await _designTransactionDescriptionService.AddAsync(
+                        new DesignTransactionDescription()
+                        {
+                            DesignTransactionDescriptionDetailId = designTransactionDescriptionDetail?.Id,
+                            Description = transaction.Description
+                        });
+
+                    #endregion
+
+
+                    await _designTransactionService.AddAsync(new DesignTransaction()
+                    {
+                        Date = transaction.Date,
+                        DesignId = dbModel.Id,
+                        DesignTransactionDescriptionId = designTransactionDescription.Id,
+                        DesignTransactionTypeId = designTransactionType.Id
                     });
-                #endregion
+                }
 
-
-                await _designTransactionService.AddAsync(new DesignTransaction()
-                {
-                    Date = transaction.Date,
-                    DesignId = dbModel.Id,
-                    DesignTransactionDescriptionId = designTransactionDescription.Id,
-                    DesignTransactionTypeId = designTransactionType.Id
-
-                });
-            }
             #endregion
 
             #region Design Product
 
-            foreach (var product in model.Products)
-            {
-                DesignProductPriortyCountry designProductPriortyCountry = default;
-                DesignProductPriortyType designProductPriortyType = default;
-
-                #region Design Product Priorty Country
-                if (!string.IsNullOrEmpty(product.PriortyCountry))
+            if (model.Products != null)
+                foreach (var product in model.Products)
                 {
-                    designProductPriortyCountry =
-                        await _designProductPriortyCountryService.SingleOrDefaultAsync(x =>
-                            x.Country == product.PriortyCountry);
-                    designProductPriortyCountry ??= await _designProductPriortyCountryService.AddAsync(
-                        new DesignProductPriortyCountry()
-                        {
-                            Country = product.PriortyCountry
-                        });
-                }
-                #endregion
+                    DesignProductPriortyCountry designProductPriortyCountry = default;
+                    DesignProductPriortyType designProductPriortyType = default;
 
-                #region Design Product Priorty Type
-                if (!string.IsNullOrEmpty(product.PriortyType))
-                {
-                    designProductPriortyType =
-                        await _designProductPriortyTypeService.SingleOrDefaultAsync(x =>
-                            x.Type == product.PriortyType);
-                    designProductPriortyType ??= await _designProductPriortyTypeService.AddAsync(
-                        new DesignProductPriortyType()
-                        {
-                            Type = product.PriortyType
-                        });
-                }
-                #endregion
+                    #region Design Product Priorty Country
 
-                #region Save Design Product
-                var designProduct = await _designProductService.AddAsync(new DesignProduct()
-                {
-                    DesignProductPriortyTypeId = designProductPriortyType?.Id,
-                    DesignId = dbModel.Id,
-                    DesignPriortyCountryId = designProductPriortyCountry?.Id,
-                    ExhibitionDate = product.ExhibitionDate,
-                    ExhibitionName = product.ExhibitionName,
-                    ExhibitionPlace = product.ExhibitionPlace,
-                    FirstExhibitionDate = product.FirstExhibitionDate,
-                    IsProductApproved = product.IsProductApproved,
-                    Name = product.Name,
-                    PriortyApplicationNumber = product.PriortyApplicationNumber,
-                    PriortyDate = product.PriortyDate
-                });
-                #endregion
-
-                #region Design Product Image
-
-                foreach (var productImage in product.ProductImages)
-                {
-                    #region Save Design Product Image
-                    await _designProductImageService.AddAsync(new DesignProductImage()
+                    if (!string.IsNullOrEmpty(product.PriortyCountry))
                     {
-                        DesignProductId = designProduct.Id,
-                        ImageId = await _fileTransferManager.Upload(productImage, ".jpg", BucketName,
-                            SubFileDirectoryName)
+                        designProductPriortyCountry =
+                            await _designProductPriortyCountryService.SingleOrDefaultAsync(x =>
+                                x.Country == product.PriortyCountry);
+                        designProductPriortyCountry ??= await _designProductPriortyCountryService.AddAsync(
+                            new DesignProductPriortyCountry()
+                            {
+                                Country = product.PriortyCountry
+                            });
+                    }
+
+                    #endregion
+
+                    #region Design Product Priorty Type
+
+                    if (!string.IsNullOrEmpty(product.PriortyType))
+                    {
+                        designProductPriortyType =
+                            await _designProductPriortyTypeService.SingleOrDefaultAsync(x =>
+                                x.Type == product.PriortyType);
+                        designProductPriortyType ??= await _designProductPriortyTypeService.AddAsync(
+                            new DesignProductPriortyType()
+                            {
+                                Type = product.PriortyType
+                            });
+                    }
+
+                    #endregion
+
+                    #region Save Design Product
+
+                    var designProduct = await _designProductService.AddAsync(new DesignProduct()
+                    {
+                        DesignProductPriortyTypeId = designProductPriortyType?.Id,
+                        DesignId = dbModel.Id,
+                        DesignPriortyCountryId = designProductPriortyCountry?.Id,
+                        ExhibitionDate = product.ExhibitionDate,
+                        ExhibitionName = product.ExhibitionName,
+                        ExhibitionPlace = product.ExhibitionPlace,
+                        FirstExhibitionDate = product.FirstExhibitionDate,
+                        IsProductApproved = product.IsProductApproved,
+                        Name = product.Name,
+                        PriortyApplicationNumber = product.PriortyApplicationNumber,
+                        PriortyDate = product.PriortyDate
                     });
+
+                    #endregion
+
+                    #region Design Product Image
+
+                    if (product.ProductImages != null)
+                        foreach (var productImage in product.ProductImages)
+                        {
+                            #region Save Design Product Image
+
+                            await _designProductImageService.AddAsync(new DesignProductImage()
+                            {
+                                DesignProductId = designProduct.Id,
+                                ImageId = await _fileTransferManager.Upload(productImage, ".jpg", BucketName,
+                                    SubFileDirectoryName)
+                            });
+
+                            #endregion
+                        }
+
+                    #endregion
+
+                    #region Design Product Classes
+
+                    if (product.LocarnoClass == null) continue;
+                    {
+                        foreach (var locarnoClass in product.LocarnoClass)
+                        {
+                            var classModel =
+                                await _locarnoClassService.SingleOrDefaultAsync(x => x.Name == locarnoClass);
+                            classModel ??= await _locarnoClassService.AddAsync(new LocarnoClass()
+                            {
+                                Name = locarnoClass
+                            });
+                            await _designProductClassesRelationService.AddAsync(new DesignProductClassesRelation()
+                            {
+                                LocarnoClassId = classModel.Id,
+                                DesignProductId = designProduct.Id
+                            });
+                        }
+                    }
+
                     #endregion
                 }
-
-
-                #endregion
-
-                #region Design Product Classes
-
-                foreach (var locarnoClass in product.LocarnoClass)
-                {
-                    var classModel = await _locarnoClassService.SingleOrDefaultAsync(x => x.Name == locarnoClass);
-                    classModel ??= await _locarnoClassService.AddAsync(new LocarnoClass()
-                    {
-                        Name = locarnoClass
-                    });
-                    await _designProductClassesRelationService.AddAsync(new DesignProductClassesRelation()
-                    {
-                        LocarnoClassId = classModel.Id,
-                        DesignProductId = designProduct.Id
-                    });
-                }
-
-                #endregion
-
-            }
-
 
             #endregion
 
             #region Design Holders
-            foreach (var holder in model.Holders)
-            {
-                var holderModel = await _holderService.SingleOrDefaultAsync(x => x.HolderCode == holder.HolderCode) ??
-                                  await _holderService.AddAsync(new Holder()
-                                  {
-                                      HolderCode = holder.HolderCode,
-                                      HolderName = holder.HolderName,
-                                      Address = holder.Address
-                                  });
 
-                await _holderRelationService.AddAsync(new HolderRelation()
+            if (model.Holders != null)
+                foreach (var holder in model.Holders)
                 {
-                    DataId = dbModel.Id,
-                    DataType = DataType.Design,
-                    HolderId = holderModel.Id
+                    var holderModel =
+                        await _holderService.SingleOrDefaultAsync(x => x.HolderCode == holder.HolderCode) ??
+                        await _holderService.AddAsync(new Holder()
+                        {
+                            HolderCode = holder.HolderCode,
+                            HolderName = holder.HolderName,
+                            Address = holder.Address
+                        });
 
-                });
-            }
+                    await _holderRelationService.AddAsync(new HolderRelation()
+                    {
+                        DataId = dbModel.Id,
+                        DataType = DataType.Design,
+                        HolderId = holderModel.Id
+                    });
+                }
 
             #endregion
         }
@@ -381,7 +408,7 @@ namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
             _designService.Remove(model);
             #endregion
             #region Remove Holder Relations
-            var holderRelations = await _holderRelationService.Where(x => x.DataId == model.Id && x.DataType == DataType.Design, default);
+            var holderRelations = await _holderRelationService.Where(x => x.DataId == model.Id && x.DataType == DataType.Design);
             var enumerable = holderRelations.ToList();
             if (enumerable.Any())
                 _holderRelationService.RemoveRange(enumerable);
@@ -416,7 +443,7 @@ namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
           
             #endregion
             #region Remove Holder Relations
-            var holderRelations = await _holderRelationService.Where(x => x.DataId == ıd && x.DataType == DataType.Trademark, default);
+            var holderRelations = await _holderRelationService.Where(x => x.DataId == ıd && x.DataType == DataType.Trademark);
             var enumerable = holderRelations.ToList();
             if (enumerable.Any())
                 _holderRelationService.RemoveRange(enumerable);
@@ -437,7 +464,6 @@ namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
 
             #region Design
             dbModel.ApplicationNumber = model.ApplicationNumber;
-            dbModel.BulletinNumber = model.BulletinNumber;
             dbModel.RegistrationNumber = model.RegistrationNumber;
             dbModel.ApplicationDate = model.ApplicationDate;
             dbModel.BulletinDate = model.BulletinDate;
@@ -483,94 +509,106 @@ namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
 
             #region Designers
 
-            var removeDesignerRelations = await _designerRelationService.Where(x => x.DesignId == dbModel.Id,default);
+            var removeDesignerRelations = await _designerRelationService.Where(x => x.DesignId == dbModel.Id);
             var designerRelations = removeDesignerRelations.ToList();
             if (designerRelations.Any())
                 _designerRelationService.RemoveRange(designerRelations);
-            foreach (var designer in model.Designers)
-            {
-                var designerModel = await _designerService.SingleOrDefaultAsync(x => x.Name == designer);
-                designerModel ??= await _designerService.AddAsync(new Designer()
+            if (model.Designers != null)
+                foreach (var designer in model.Designers)
                 {
-                    Name = designer
-                });
-                await _designerRelationService.AddAsync(new DesignerRelation()
-                {
-                    DesignerId = designerModel.Id,
-                    DesignId = dbModel.Id
-                });
-            }
+                    var designerModel = await _designerService.SingleOrDefaultAsync(x => x.Name == designer);
+                    designerModel ??= await _designerService.AddAsync(new Designer()
+                    {
+                        Name = designer
+                    });
+                    await _designerRelationService.AddAsync(new DesignerRelation()
+                    {
+                        DesignerId = designerModel.Id,
+                        DesignId = dbModel.Id
+                    });
+                }
+
             #endregion
 
             #region Design Transaction
-            var removeDesignTransactions = await _designTransactionService.Where(x => x.DesignId == dbModel.Id, default);
+            var removeDesignTransactions = await _designTransactionService.Where(x => x.DesignId == dbModel.Id);
 
             var designTransactions = removeDesignTransactions.ToList();
             if (designTransactions.Any())
                 _designTransactionService.RemoveRange(designTransactions);
-            foreach (var transaction in model.DesignTransactions)
-            {
-                #region Design Transaction Type
-                DesignTransactionTypeDetail designTransactionTypeDetail = default;
-                if (!string.IsNullOrEmpty(transaction.TransactionDetail))
+            if (model.DesignTransactions != null)
+                foreach (var transaction in model.DesignTransactions)
                 {
-                    designTransactionTypeDetail =
-                        await _designTransactionTypeDetailService.SingleOrDefaultAsync(x =>
-                            x.Detail == transaction.TransactionDetail);
-                    designTransactionTypeDetail ??= await _designTransactionTypeDetailService.AddAsync(
-                        new DesignTransactionTypeDetail()
-                        {
-                            Detail = transaction.TransactionDetail
-                        });
-                }
-                var designTransactionType = await _designTransactionTypeService.SingleOrDefaultAsync(x =>
-                    x.Type == transaction.TransactionType &&
-                    x.DesignTransactionTypeDetailId ==
-                    (designTransactionTypeDetail == default ? null : designTransactionTypeDetail.Id));
-                designTransactionType ??= await _designTransactionTypeService.AddAsync(
-                    new DesignTransactionType()
+                    #region Design Transaction Type
+
+                    DesignTransactionTypeDetail designTransactionTypeDetail = default;
+                    if (!string.IsNullOrEmpty(transaction.TransactionDetail))
                     {
-                        DesignTransactionTypeDetailId = designTransactionTypeDetail?.Id,
-                        Type = transaction.TransactionType
-                    });
-                #endregion
+                        designTransactionTypeDetail =
+                            await _designTransactionTypeDetailService.SingleOrDefaultAsync(x =>
+                                x.Detail == transaction.TransactionDetail);
+                        designTransactionTypeDetail ??= await _designTransactionTypeDetailService.AddAsync(
+                            new DesignTransactionTypeDetail()
+                            {
+                                Detail = transaction.TransactionDetail
+                            });
+                    }
 
-                #region Design Transaction Description
-
-                DesignTransactionDescriptionDetail designTransactionDescriptionDetail = new();
-                if (!string.IsNullOrEmpty(transaction.DescriptionDetail))
-                {
-                    designTransactionDescriptionDetail =
-                        await _designTransactionDescriptionDetailService.SingleOrDefaultAsync(x =>
-                            x.Detail == transaction.DescriptionDetail);
-                    designTransactionDescriptionDetail ??= await _designTransactionDescriptionDetailService.AddAsync(
-                        new DesignTransactionDescriptionDetail()
+                    var designTransactionType = await _designTransactionTypeService.SingleOrDefaultAsync(x =>
+                        x.Type == transaction.TransactionType &&
+                        x.DesignTransactionTypeDetailId ==
+                        (designTransactionTypeDetail == default ? null : designTransactionTypeDetail.Id));
+                    designTransactionType ??= await _designTransactionTypeService.AddAsync(
+                        new DesignTransactionType()
                         {
-                            Detail = transaction.DescriptionDetail
+                            DesignTransactionTypeDetailId = designTransactionTypeDetail?.Id,
+                            Type = transaction.TransactionType
                         });
-                }
-                var designTransactionDescription = await _designTransactionDescriptionService.SingleOrDefaultAsync(x =>
-                    x.Description == transaction.Description &&
-                    x.DesignTransactionDescriptionDetailId ==
-                    (designTransactionDescriptionDetail == default ? null : designTransactionDescriptionDetail.Id));
-                designTransactionDescription ??= await _designTransactionDescriptionService.AddAsync(
-                    new DesignTransactionDescription()
+
+                    #endregion
+
+                    #region Design Transaction Description
+
+                    DesignTransactionDescriptionDetail designTransactionDescriptionDetail = new();
+                    if (!string.IsNullOrEmpty(transaction.DescriptionDetail))
                     {
-                        DesignTransactionDescriptionDetailId = designTransactionDescriptionDetail?.Id,
-                        Description = transaction.Description
+                        designTransactionDescriptionDetail =
+                            await _designTransactionDescriptionDetailService.SingleOrDefaultAsync(x =>
+                                x.Detail == transaction.DescriptionDetail);
+                        designTransactionDescriptionDetail ??=
+                            await _designTransactionDescriptionDetailService.AddAsync(
+                                new DesignTransactionDescriptionDetail()
+                                {
+                                    Detail = transaction.DescriptionDetail
+                                });
+                    }
+
+                    var designTransactionDescription = await _designTransactionDescriptionService.SingleOrDefaultAsync(
+                        x =>
+                            x.Description == transaction.Description &&
+                            x.DesignTransactionDescriptionDetailId ==
+                            (designTransactionDescriptionDetail == default
+                                ? null
+                                : designTransactionDescriptionDetail.Id));
+                    designTransactionDescription ??= await _designTransactionDescriptionService.AddAsync(
+                        new DesignTransactionDescription()
+                        {
+                            DesignTransactionDescriptionDetailId = designTransactionDescriptionDetail?.Id,
+                            Description = transaction.Description
+                        });
+
+                    #endregion
+
+
+                    await _designTransactionService.AddAsync(new DesignTransaction()
+                    {
+                        Date = transaction.Date,
+                        DesignId = dbModel.Id,
+                        DesignTransactionDescriptionId = designTransactionDescription.Id,
+                        DesignTransactionTypeId = designTransactionType.Id
                     });
-                #endregion
+                }
 
-
-                await _designTransactionService.AddAsync(new DesignTransaction()
-                {
-                    Date = transaction.Date,
-                    DesignId = dbModel.Id,
-                    DesignTransactionDescriptionId = designTransactionDescription.Id,
-                    DesignTransactionTypeId = designTransactionType.Id
-
-                });
-            }
             #endregion
 
             #region Design Product
@@ -591,117 +629,132 @@ namespace TPHunter.WebServices.Scrap.API.ControllerServices.Contracts
                 _designProductService.RemoveRange(designProducts);
             }
             #endregion
-            foreach (var product in model.Products)
-            {
-                DesignProductPriortyCountry designProductPriortyCountry = default;
-                DesignProductPriortyType designProductPriortyType = default;
 
-                #region Design Product Priorty Country
-                if (!string.IsNullOrEmpty(product.PriortyCountry))
+            if (model.Products != null)
+                foreach (var product in model.Products)
                 {
-                    designProductPriortyCountry =
-                        await _designProductPriortyCountryService.SingleOrDefaultAsync(x =>
-                            x.Country == product.PriortyCountry);
-                    designProductPriortyCountry ??= await _designProductPriortyCountryService.AddAsync(
-                        new DesignProductPriortyCountry()
-                        {
-                            Country = product.PriortyCountry
-                        });
-                }
-                #endregion
+                    DesignProductPriortyCountry designProductPriortyCountry = default;
+                    DesignProductPriortyType designProductPriortyType = default;
 
-                #region Design Product Priorty Type
-                if (!string.IsNullOrEmpty(product.PriortyType))
-                {
-                    designProductPriortyType =
-                        await _designProductPriortyTypeService.SingleOrDefaultAsync(x =>
-                            x.Type == product.PriortyType);
-                    designProductPriortyType ??= await _designProductPriortyTypeService.AddAsync(
-                        new DesignProductPriortyType()
-                        {
-                            Type = product.PriortyType
-                        });
-                }
-                #endregion
+                    #region Design Product Priorty Country
 
-                #region Save Design Product
-                var designProduct = await _designProductService.AddAsync(new DesignProduct()
-                {
-                    DesignProductPriortyTypeId = designProductPriortyType?.Id,
-                    DesignId = dbModel.Id,
-                    DesignPriortyCountryId = designProductPriortyCountry?.Id,
-                    ExhibitionDate = product.ExhibitionDate,
-                    ExhibitionName = product.ExhibitionName,
-                    ExhibitionPlace = product.ExhibitionPlace,
-                    FirstExhibitionDate = product.FirstExhibitionDate,
-                    IsProductApproved = product.IsProductApproved,
-                    Name = product.Name,
-                    PriortyApplicationNumber = product.PriortyApplicationNumber,
-                    PriortyDate = product.PriortyDate
-                });
-                #endregion
-
-                #region Design Product Image
-
-                foreach (var productImage in product.ProductImages)
-                {
-                    #region Save Design Product Image
-                    await _designProductImageService.AddAsync(new DesignProductImage()
+                    if (!string.IsNullOrEmpty(product.PriortyCountry))
                     {
-                        DesignProductId = designProduct.Id,
-                        ImageId = await _fileTransferManager.Upload(productImage, ".jpg", BucketName,
-                            SubFileDirectoryName)
+                        designProductPriortyCountry =
+                            await _designProductPriortyCountryService.SingleOrDefaultAsync(x =>
+                                x.Country == product.PriortyCountry);
+                        designProductPriortyCountry ??= await _designProductPriortyCountryService.AddAsync(
+                            new DesignProductPriortyCountry()
+                            {
+                                Country = product.PriortyCountry
+                            });
+                    }
+
+                    #endregion
+
+                    #region Design Product Priorty Type
+
+                    if (!string.IsNullOrEmpty(product.PriortyType))
+                    {
+                        designProductPriortyType =
+                            await _designProductPriortyTypeService.SingleOrDefaultAsync(x =>
+                                x.Type == product.PriortyType);
+                        designProductPriortyType ??= await _designProductPriortyTypeService.AddAsync(
+                            new DesignProductPriortyType()
+                            {
+                                Type = product.PriortyType
+                            });
+                    }
+
+                    #endregion
+
+                    #region Save Design Product
+
+                    var designProduct = await _designProductService.AddAsync(new DesignProduct()
+                    {
+                        DesignProductPriortyTypeId = designProductPriortyType?.Id,
+                        DesignId = dbModel.Id,
+                        DesignPriortyCountryId = designProductPriortyCountry?.Id,
+                        ExhibitionDate = product.ExhibitionDate,
+                        ExhibitionName = product.ExhibitionName,
+                        ExhibitionPlace = product.ExhibitionPlace,
+                        FirstExhibitionDate = product.FirstExhibitionDate,
+                        IsProductApproved = product.IsProductApproved,
+                        Name = product.Name,
+                        PriortyApplicationNumber = product.PriortyApplicationNumber,
+                        PriortyDate = product.PriortyDate
                     });
+
+                    #endregion
+
+                    #region Design Product Image
+
+                    if (product.ProductImages != null)
+                        foreach (var productImage in product.ProductImages)
+                        {
+                            #region Save Design Product Image
+
+                            await _designProductImageService.AddAsync(new DesignProductImage()
+                            {
+                                DesignProductId = designProduct.Id,
+                                ImageId = await _fileTransferManager.Upload(productImage, ".jpg", BucketName,
+                                    SubFileDirectoryName)
+                            });
+
+                            #endregion
+                        }
+
+                    #endregion
+
+                    #region Design Product Classes
+
+                    if (product.LocarnoClass == null) continue;
+                    {
+                        foreach (var locarnoClass in product.LocarnoClass)
+                        {
+                            var classModel =
+                                await _locarnoClassService.SingleOrDefaultAsync(x => x.Name == locarnoClass);
+                            classModel ??= await _locarnoClassService.AddAsync(new LocarnoClass()
+                            {
+                                Name = locarnoClass
+                            });
+                            await _designProductClassesRelationService.AddAsync(new DesignProductClassesRelation()
+                            {
+                                LocarnoClassId = classModel.Id,
+                                DesignProductId = designProduct.Id
+                            });
+                        }
+                    }
+
                     #endregion
                 }
 
-
-                #endregion
-
-                #region Design Product Classes
-
-                foreach (var locarnoClass in product.LocarnoClass)
-                {
-                    var classModel = await _locarnoClassService.SingleOrDefaultAsync(x => x.Name == locarnoClass);
-                    classModel ??= await _locarnoClassService.AddAsync(new LocarnoClass()
-                    {
-                        Name = locarnoClass
-                    });
-                    await _designProductClassesRelationService.AddAsync(new DesignProductClassesRelation()
-                    {
-                        LocarnoClassId = classModel.Id,
-                        DesignProductId = designProduct.Id
-                    });
-                }
-
-                #endregion
-
-            }
             #endregion
 
             #region Design Holders
-            var holderRelations = await _holderRelationService.Where(x => x.DataId == dbModel.Id && x.DataType == DataType.Design, default);
+            var holderRelations = await _holderRelationService.Where(x => x.DataId == dbModel.Id && x.DataType == DataType.Design);
             var enumerable = holderRelations.ToList();
             if (enumerable.Any())
                 _holderRelationService.RemoveRange(enumerable);
-            foreach (var holder in model.Holders)
-            {
-                var holderModel = await _holderService.SingleOrDefaultAsync(x => x.HolderCode == holder.HolderCode) ??
-                                  await _holderService.AddAsync(new Holder()
-                                  {
-                                      HolderCode = holder.HolderCode,
-                                      HolderName = holder.HolderName,
-                                      Address = holder.Address
-                                  });
-
-                await _holderRelationService.AddAsync(new HolderRelation()
+            if (model.Holders != null)
+                foreach (var holder in model.Holders)
                 {
-                    DataId = dbModel.Id,
-                    DataType = DataType.Design,
-                    HolderId = holderModel.Id
+                    var holderModel =
+                        await _holderService.SingleOrDefaultAsync(x => x.HolderCode == holder.HolderCode) ??
+                        await _holderService.AddAsync(new Holder()
+                        {
+                            HolderCode = holder.HolderCode,
+                            HolderName = holder.HolderName,
+                            Address = holder.Address
+                        });
 
-                });
-            }
+                    await _holderRelationService.AddAsync(new HolderRelation()
+                    {
+                        DataId = dbModel.Id,
+                        DataType = DataType.Design,
+                        HolderId = holderModel.Id
+                    });
+                }
 
             #endregion
 

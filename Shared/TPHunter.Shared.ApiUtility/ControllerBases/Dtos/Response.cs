@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace TPHunter.WebServices.Shared.Utility.ApiUtility.ControllerBases.Dtos
+namespace TPHunter.Shared.ApiUtility.ControllerBases.Dtos
 {
     /// <summary>
     /// Response oluşturmak için kullanılan static factor metodlarının yer aldıkğı class

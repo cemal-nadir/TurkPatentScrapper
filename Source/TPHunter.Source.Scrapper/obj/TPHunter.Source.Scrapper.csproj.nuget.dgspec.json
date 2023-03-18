@@ -14,10 +14,14 @@
         "outputPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Shared\\Scrapper\\TPHunter.Shared.Scrapper\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages",
+          "C:\\Program Files\\DevExpress 22.2\\Components\\Offline Packages",
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\HUAWEI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.1.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.2.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -27,7 +31,8 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.devexpress.com/kaMrR6YKccpV1mrDb9YrM2zxaD7alADoWKZkHag4VXTWpt3F65/api": {}
         },
         "frameworks": {
           "net5.0": {
@@ -74,6 +79,74 @@
         }
       }
     },
+    "D:\\CustomProjects\\SistemPatent\\TPHunter\\Shared\\TPHunter.Shared.ApiUtility\\TPHunter.Shared.ApiUtility.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Shared\\TPHunter.Shared.ApiUtility\\TPHunter.Shared.ApiUtility.csproj",
+        "projectName": "TPHunter.Shared.ApiUtility",
+        "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Shared\\TPHunter.Shared.ApiUtility\\TPHunter.Shared.ApiUtility.csproj",
+        "packagesPath": "C:\\Users\\HUAWEI\\.nuget\\packages\\",
+        "outputPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Shared\\TPHunter.Shared.ApiUtility\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages",
+          "C:\\Program Files\\DevExpress 22.2\\Components\\Offline Packages",
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\HUAWEI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.1.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.2.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.devexpress.com/kaMrR6YKccpV1mrDb9YrM2zxaD7alADoWKZkHag4VXTWpt3F65/api": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Browser\\TPHunter.Source.Browser.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -84,10 +157,14 @@
         "outputPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Browser\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages",
+          "C:\\Program Files\\DevExpress 22.2\\Components\\Offline Packages",
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\HUAWEI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.1.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.2.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -97,7 +174,8 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.devexpress.com/kaMrR6YKccpV1mrDb9YrM2zxaD7alADoWKZkHag4VXTWpt3F65/api": {}
         },
         "frameworks": {
           "net5.0": {
@@ -119,6 +197,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "DotNetSeleniumExtras.WaitHelpers": {
+              "target": "Package",
+              "version": "[3.11.0, )"
+            },
             "Selenium.Support": {
               "target": "Package",
               "version": "[4.5.1, )"
@@ -166,10 +248,14 @@
         "outputPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages",
+          "C:\\Program Files\\DevExpress 22.2\\Components\\Offline Packages",
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\HUAWEI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.1.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.2.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -179,7 +265,8 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.devexpress.com/kaMrR6YKccpV1mrDb9YrM2zxaD7alADoWKZkHag4VXTWpt3F65/api": {}
         },
         "frameworks": {
           "net5.0": {
@@ -232,10 +319,14 @@
         "outputPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.DataSaver\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages",
+          "C:\\Program Files\\DevExpress 22.2\\Components\\Offline Packages",
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\HUAWEI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.1.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.2.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -245,7 +336,8 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.devexpress.com/kaMrR6YKccpV1mrDb9YrM2zxaD7alADoWKZkHag4VXTWpt3F65/api": {}
         },
         "frameworks": {
           "net5.0": {
@@ -253,6 +345,9 @@
             "projectReferences": {
               "D:\\CustomProjects\\SistemPatent\\TPHunter\\Shared\\Scrapper\\TPHunter.Shared.Scrapper\\TPHunter.Shared.Scrapper.csproj": {
                 "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Shared\\Scrapper\\TPHunter.Shared.Scrapper\\TPHunter.Shared.Scrapper.csproj"
+              },
+              "D:\\CustomProjects\\SistemPatent\\TPHunter\\Shared\\TPHunter.Shared.ApiUtility\\TPHunter.Shared.ApiUtility.csproj": {
+                "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Shared\\TPHunter.Shared.ApiUtility\\TPHunter.Shared.ApiUtility.csproj"
               },
               "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Core\\TPHunter.Source.Core.csproj": {
                 "projectPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Core\\TPHunter.Source.Core.csproj"
@@ -299,10 +394,14 @@
         "outputPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.ImageProcess\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages",
+          "C:\\Program Files\\DevExpress 22.2\\Components\\Offline Packages",
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\HUAWEI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.1.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.2.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -312,7 +411,8 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.devexpress.com/kaMrR6YKccpV1mrDb9YrM2zxaD7alADoWKZkHag4VXTWpt3F65/api": {}
         },
         "frameworks": {
           "net5.0": {
@@ -369,10 +469,14 @@
         "outputPath": "D:\\CustomProjects\\SistemPatent\\TPHunter\\Source\\TPHunter.Source.Scrapper\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages",
+          "C:\\Program Files\\DevExpress 22.2\\Components\\Offline Packages",
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\HUAWEI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.1.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.2.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -382,7 +486,8 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.devexpress.com/kaMrR6YKccpV1mrDb9YrM2zxaD7alADoWKZkHag4VXTWpt3F65/api": {}
         },
         "frameworks": {
           "net5.0": {

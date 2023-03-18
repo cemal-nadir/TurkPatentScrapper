@@ -10,8 +10,8 @@ namespace TPHunter.Shared.Scrapper.Handlers
         private readonly IClientCredentialTokenService _clientCredentialTokenService;
         public ClientCredentialTokenHandler()
         {
-            Ioc.ClientCredentialTokenFactory();
-            _clientCredentialTokenService = Ioc.Resolve<IClientCredentialTokenService>();
+            _clientCredentialTokenService = Ioc.Resolve<IClientCredentialTokenService>(nameof(ClientCredentialTokenService));
+            InnerHandler = new HttpClientHandler();
         }
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {

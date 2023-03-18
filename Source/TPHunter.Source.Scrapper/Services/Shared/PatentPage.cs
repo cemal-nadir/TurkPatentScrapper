@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using System;
+using OpenQA.Selenium;
 using System.Collections.Generic;
 using TPHunter.Shared.Scrapper.Abstracts;
 using TPHunter.Shared.Scrapper.Models;
@@ -8,12 +9,12 @@ using TPHunter.Source.Scrapper.Functions;
 
 namespace TPHunter.Source.Scrapper.Services.Shared
 {
-   public class PatentPage :IPage<PatentModel>
+    public class PatentPage : IPage<PatentModel>, IDisposable
     {
-        private readonly IWebDriver _webDriver;
-        public PatentPage(IWebDriver webDriver)
+        private IWebDriver _webDriver;
+        public void SetDriver(IWebDriver driver)
         {
-            _webDriver = webDriver;
+            _webDriver = driver;
         }
 
         public bool CheckAndClickNext()
@@ -37,26 +38,47 @@ namespace TPHunter.Source.Scrapper.Services.Shared
             foreach (var responseListTableModel in responseListTableModels)
             {
                 _webDriver.ClickWithJs(responseListTableModel.DetailButton);
-                patentModels.Add(_webDriver.GetPatentData(MainHelper.ScrapType.Download));
-                _webDriver.CloseDataPopUp();
+                var data = _webDriver.GetPatentData();
+                if (data is null)
+                {
+                    var applicationNumber =
+                        _webDriver.FindElements(By.ClassName("MuiTableRow-hover"), 20)[patentModels.Count]
+                            .FindElements(By.TagName("td"))[1].Text;
+                    patentModels.Add(new PatentModel()
+                    {
+                        ApplicationNumber = applicationNumber
+                    });
+                }
+                else
+                {
+                    patentModels.Add(data);
+                    _webDriver.CloseDataPopUp();
+                }
+
+             
             }
             return patentModels;
         }
 
         public PatentModel ScrapSingle()
         {
-            return _webDriver.GetPatentData(MainHelper.ScrapType.Upload);
+            return _webDriver.GetPatentData();
         }
 
 
         public void Search(ISearchParam searchParam)
         {
-           _webDriver.SearchPatents(((DateRangeParam)searchParam).StartDate, ((DateRangeParam)searchParam).EndDate);
+            _webDriver.SearchPatents(searchParam.StartDate ?? DateTime.Now, searchParam.EndDate?? DateTime.Now);
         }
 
         public void Search(string applicationNumber)
         {
             _webDriver.SearchSingle(applicationNumber);
+        }
+
+        public void Dispose()
+        {
+            _webDriver?.Dispose();
         }
     }
 }

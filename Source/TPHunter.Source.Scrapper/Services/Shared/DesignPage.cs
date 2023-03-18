@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using System;
+using OpenQA.Selenium;
 using System.Collections.Generic;
 using TPHunter.Shared.Scrapper.Abstracts;
 using TPHunter.Shared.Scrapper.Models;
@@ -8,12 +9,12 @@ using TPHunter.Source.Scrapper.Functions;
 
 namespace TPHunter.Source.Scrapper.Services.Shared
 {
-    public class DesignPage : IPage<DesignModel>
+    public class DesignPage : IPage<DesignModel>,IDisposable
     {
-        private readonly IWebDriver _webDriver;
-        public DesignPage(IWebDriver webDriver)
+        private IWebDriver _webDriver;
+        public void SetDriver(IWebDriver driver)
         {
-            _webDriver = webDriver;
+            _webDriver = driver;
         }
         public bool CheckAndClickNext()
         {
@@ -36,25 +37,46 @@ namespace TPHunter.Source.Scrapper.Services.Shared
             foreach (var responseListTableModel in responseListTableModels)
             {
                 _webDriver.ClickWithJs(responseListTableModel.DetailButton);
-                designModels.Add(_webDriver.GetDesignData(MainHelper.ScrapType.Download));
-                _webDriver.CloseDataPopUp();
+                var data = _webDriver.GetDesignData();
+                if (data is null)
+                {
+                    var applicationNumber =
+                        _webDriver.FindElements(By.ClassName("MuiTableRow-hover"), 20)[designModels.Count]
+                            .FindElements(By.TagName("td"))[1].Text;
+                    designModels.Add(new DesignModel()
+                    {
+                        ApplicationNumber = applicationNumber
+                    });
+                }
+                else
+                {
+                    designModels.Add(data);
+                    _webDriver.CloseDataPopUp();
+                }
+
+            
             }
             return designModels;
         }
 
         public DesignModel ScrapSingle()
         {
-            return _webDriver.GetDesignData(MainHelper.ScrapType.Upload);
+            return _webDriver.GetDesignData();
         }
 
         public void Search(ISearchParam searchParam)
         {
-            _webDriver.SearchDesigns(((BulletinParam)searchParam).BulletinNumber.ToString());
+            _webDriver.SearchDesigns(searchParam.BulletinNumber.ToString());
         }
 
         public void Search(string applicationNumber)
         {
             _webDriver.SearchSingle(applicationNumber);
+        }
+
+        public void Dispose()
+        {
+            _webDriver?.Dispose();
         }
     }
 }

@@ -15,3 +15,5 @@ D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.DataSaver\obj\Deb
 D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.DataSaver\obj\Debug\net5.0\refint\TPHunter.Source.DataSaver.dll
 D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.DataSaver\obj\Debug\net5.0\TPHunter.Source.DataSaver.pdb
 D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.DataSaver\obj\Debug\net5.0\ref\TPHunter.Source.DataSaver.dll
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.DataSaver\bin\Debug\net5.0\TPHunter.Shared.ApiUtility.dll
+D:\CustomProjects\SistemPatent\TPHunter\Source\TPHunter.Source.DataSaver\bin\Debug\net5.0\TPHunter.Shared.ApiUtility.pdb

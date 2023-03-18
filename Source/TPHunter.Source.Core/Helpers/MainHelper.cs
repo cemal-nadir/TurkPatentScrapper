@@ -19,11 +19,11 @@ namespace TPHunter.Source.Core.Helpers
         public static string NormalizeText(this string text)
         {
 
-            if (text.Length == 1)
+            if (text.Replace(" ","").Length < 3)
                 text = text.Replace("-", "");
             text = text.Replace("*", "");
             text = text.ToLower(CultureInfo.CreateSpecificCulture("tr"));
-            return text.Length == 0 ? null : text;
+            return text.Replace(" ","").Length == 0 ? null : text;
         }
         public static int[] ParseClasses(this string classesText)
         {
@@ -36,6 +36,7 @@ namespace TPHunter.Source.Core.Helpers
         }
         public static int? ParseClass(this string classText)
         {
+            if (classText == null) return null;
             classText = classText.Replace(" ", "");
             if (string.IsNullOrEmpty(classText) || classText == "-")
                 return null;

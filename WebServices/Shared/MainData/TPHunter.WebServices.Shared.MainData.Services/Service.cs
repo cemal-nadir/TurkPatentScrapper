@@ -35,17 +35,17 @@ namespace TPHunter.WebServices.Shared.MainData.Services
             return addRangeAsync;
         }
 
-        public async Task<IEnumerable<TEntity>> GetAllAsync(Order order)
+        public async Task<IEnumerable<TEntity>> GetAllAsync(Order order=default)
         {
             return await _repository.GetAllAsync(order);
         }
 
-        public async Task<IEnumerable<TEntity>> GetAllPaginateAsync(Expression<Func<TEntity, bool>> predicate, Order order, int page, int size)
+        public async Task<IEnumerable<TEntity>> GetAllPaginateAsync(Expression<Func<TEntity, bool>> predicate, int page, int size,Order order=default)
         {
-            return await _repository.GetAllPaginateAsync(predicate, order, page, size);
+            return await _repository.GetAllPaginateAsync(predicate,page, size,order);
         }
 
-        public async Task<IEnumerable<TEntity>> GetAllPrivateRemovedAsync(Order order)
+        public async Task<IEnumerable<TEntity>> GetAllPrivateRemovedAsync(Order order = default)
         {
             return await _repository.GetAllPrivateRemovedAsync(order);
         }
@@ -55,7 +55,7 @@ namespace TPHunter.WebServices.Shared.MainData.Services
             return await _repository.GetByIdAsync(ıd);
         }
 
-        public async Task<IEnumerable<TEntity>> GetByIdsAsync(Guid[] ds, Order order)
+        public async Task<IEnumerable<TEntity>> GetByIdsAsync(Guid[] ds, Order order=default)
         {
             return await _repository.GetByIdsAsync(ds, order);
         }
@@ -108,7 +108,7 @@ namespace TPHunter.WebServices.Shared.MainData.Services
 
         }
 
-        public async Task<IEnumerable<TEntity>> Where(Expression<Func<TEntity, bool>> predicate, Order order)
+        public async Task<IEnumerable<TEntity>> Where(Expression<Func<TEntity, bool>> predicate, Order order = default)
         {
             return await _repository.Where(predicate, order);
         }
