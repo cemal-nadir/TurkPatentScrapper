@@ -71,16 +71,17 @@ namespace TPHunter.Source.Scrapper.Services.Shared
             public Payload Payloads { get; set; }
 
           
-            public class Data
-            {
-                [JsonPropertyName("title")] public string Title { get; set; }
-            }
+          
 
             public class Payload
             {
                 [JsonPropertyName("data")]
                 // ReSharper disable once AutoPropertyCanBeMadeGetOnly.Local
                 public IEnumerable<Data> Datas { get; set; }
+            }
+            public class Data
+            {
+                [JsonPropertyName("title")] public string Title { get; set; }
             }
         }
 
